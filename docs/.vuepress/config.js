@@ -1,3 +1,4 @@
+const nav = require('./nav')
 module.exports = {
   base: '/blog/',
   lang: 'zh-CN',
@@ -7,4 +8,20 @@ module.exports = {
   //   themeConfig: {
   //     logo: 'https://vuejs.org/images/logo.png',
   //   },
+  plugins: [
+    [
+      'vuepress-plugin-auto-sidebar',
+      {
+        output: {
+          filename: 'config/sidebarConf',
+        },
+        title: {
+          mode: 'uppercase',
+        },
+      },
+    ],
+  ],
+  themeConfig: {
+    navbar: nav,
+  },
 }
