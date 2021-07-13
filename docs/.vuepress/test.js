@@ -1,0 +1,5 @@
+const { autoNavBar } = require('./navBarUtil')
+const { autoSideBar } = require('./sideBarUtil')
+// console.log(autoNavBar())
+console.log(JSON.stringify(autoNavBar(), null, 2))
+// console.log(JSON.stringify(autoSideBar(autoNavBar()), null, 2))

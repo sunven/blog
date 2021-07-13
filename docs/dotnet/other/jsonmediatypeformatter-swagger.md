@@ -1,10 +1,10 @@
-# JsonMediaTypeFormatter和Swagger
+# JsonMediaTypeFormatter 和 Swagger
 
-使用JsonMediaTypeFormatter是为了让long类型的字段都以字符串格式输出
+使用 JsonMediaTypeFormatter 是为了让 long 类型的字段都以字符串格式输出
 
 ## 方法一
 
-WebApiConfig中增加
+WebApiConfig 中增加
 
 ```csharp
 var jsonFormatter = new JsonMediaTypeFormatter();
@@ -13,7 +13,7 @@ settings.Converters.Add(new LongToStringConverter());
 config.Services.Replace(typeof(IContentNegotiator), new JsonContentNegotiator(jsonFormatter));
 ```
 
-JsonContentNegotiator类
+JsonContentNegotiator 类
 
 ```csharp
 public class JsonContentNegotiator : IContentNegotiator
@@ -31,7 +31,7 @@ public class JsonContentNegotiator : IContentNegotiator
 }
 ```
 
-LongToStringConverter类
+LongToStringConverter 类
 
 ```csharp
 public class LongToStringConverter : Newtonsoft.Json.JsonConverter
@@ -52,7 +52,7 @@ public class LongToStringConverter : Newtonsoft.Json.JsonConverter
 }
 ```
 
-> 这种方法会导致Swagger文档不能打开（js报错）
+> 这种方法会导致 Swagger 文档不能打开（js 报错）
 
 ## 方法二
 
