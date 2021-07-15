@@ -9,6 +9,11 @@
 5. `npm help`：查看帮助命令
 6. `npm set global=true`：设定安装模式
 7. `npm get global`：查看当前使用的安装模式
+8. `npm root -g`：查看全局包目录
+9. `npm ls -g`：查看全局包
+10. `npm ls -g --depth 0`：查看全局包
+
+11. `npm ls vue -g`：查看vue目录
 
 ## 增
 
@@ -67,3 +72,28 @@ npm install -g npm
 ### 通过cnpm使用
 
 > npm install -g cnpm –registry=https://registry.npm.taobao.org
+
+
+
+# 发布项目到npm
+
+1. 在官网注册npm账号
+2. 用户验证，命令行执行
+
+```
+npm adduser 
+```
+
+3. 发布模块，在模块的根文件夹执行
+
+```
+npm publish
+```
+
+4. 更新版本
+
+```
+ npm version 0.0.4
+ npm publish
+```
+如果是git库时，会为新版本号创建一条提交信息，package版本号会自动递增。

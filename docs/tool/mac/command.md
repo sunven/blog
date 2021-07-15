@@ -15,3 +15,10 @@ xattr -r -d com.apple.quarantine <path>
 ## 查看隐藏文件
 
 **Command+Shift+.** 可以显示隐藏文件、文件夹，再按一次，恢复隐藏
+
+
+
+- `command -v npm`：查看命令来源
+
+- `open /usr/local/bin`：用finder打开目录
+
