@@ -19,6 +19,6 @@ xattr -r -d com.apple.quarantine <path>
 
 
 - `command -v npm`：查看命令来源
-
 - `open /usr/local/bin`：用finder打开目录
+- `open -a typora /Users/seven/project/blog/docs`:用typora打开
 
