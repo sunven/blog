@@ -110,6 +110,12 @@
 
 [https://boostnote.io/](https://boostnote.io/)
 
+
+
+[PowerToys](https://github.com/microsoft/PowerToys)
+
+
+
 ## 七 破解激活
 
 ### Windwos

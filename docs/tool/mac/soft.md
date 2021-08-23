@@ -37,3 +37,10 @@ Mounty for NTFS 完美实现 Mac 系统对 NTFS 磁盘格式的读写
 ## 压缩刻录
 
 [eZip](http://ezip.awehunt.com/)
+
+
+
+## 其它
+
+[SwitchHosts](https://github.com/oldj/SwitchHosts)
+
