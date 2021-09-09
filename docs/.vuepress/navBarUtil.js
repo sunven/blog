@@ -15,7 +15,8 @@ const autoNavBar = () => {
           .sort((a, b) => b.isDirectory() - a.isDirectory())
           .map(c => ({
             text: path.basename(c.name, path.extname(c.name)),
-            link: `/${item.name}/${c.name + (c.isDirectory() ? '/' : '')}`,
+            link: `/${item.name}/${c.name.replace('.md', '.html') +
+              (c.isDirectory() ? '/' : '')}`,
           }))
         return {
           text: item.name,
@@ -25,7 +26,7 @@ const autoNavBar = () => {
         //文件
         return {
           text: path.basename(item.name, path.extname(item.name)),
-          link: `/${item.name}`,
+          link: `/${item.name.replace('.md', '.html')}`,
         }
       }
     })
