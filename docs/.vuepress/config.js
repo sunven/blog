@@ -4,6 +4,55 @@ const { autoSideBar } = require('./sideBarUtil')
 let navbar = autoNavBar()
 const sidebar = autoSideBar(navbar)
 navbar = fixNavBar(navbar, sidebar)
+
+//https://developer.mozilla.org/zh-CN/docs/Web/MathML/Element
+//var as=new Set();document.querySelectorAll('.main-page-content a[href*="MathML/Element"]').forEach(item=>{var a=item.innerText;a=a.replace('<','');a=a.replace('>','');a=a.replace('(en-US)','');a=a.trim(' ');as.add(a)});console.log(Array.from(as))
+const mathml = [
+  'math',
+  'maction',
+  'maligngroup',
+  'malignmark',
+  'menclose',
+  'merror',
+  'mfenced',
+  'mfrac',
+  'mglyph',
+  'mi',
+  'mlabeledtr',
+  'mlongdiv',
+  'mmultiscripts',
+  'mn',
+  'mo',
+  'mover',
+  'mpadded',
+  'mphantom',
+  'mroot',
+  'mrow',
+  'ms',
+  'mscarries',
+  'mscarry',
+  'msgroup',
+  'mstack',
+  'msline',
+  'mspace',
+  'msqrt',
+  'msrow',
+  'mstyle',
+  'msub',
+  'msup',
+  'msubsup',
+  'mtable',
+  'mtd',
+  'mtext',
+  'mtr',
+  'munder',
+  'munderover',
+  'semantics',
+  'annotation',
+  'annotation-xml',
+  'mprescripts',
+  'none',
+]
 module.exports = {
   base: '/blog/',
   lang: 'zh-CN',
@@ -48,13 +97,18 @@ module.exports = {
     navbar,
     sidebar,
   },
+  //clientAppEnhanceFiles: path.resolve(__dirname, './clientAppEnhance.js'),
   extendsMarkdown: md => {
     md.use(require('./plugins/markdown-it-katex'))
     //md.linkify.set({ fuzzyEmail: false })
   },
-  // markdown: {
-  //   extendMarkdown: md => {
-  //     md.use(require('markdown-it-katex'))
-  //   },
-  // },
+  bundlerConfig: {
+    vue: {
+      compilerOptions: {
+        isCustomElement: tag => {
+          return mathml.indexOf(tag) !== -1
+        },
+      },
+    },
+  },
 }
