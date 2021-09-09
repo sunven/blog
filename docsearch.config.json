@@ -1,6 +1,6 @@
 {
   "index_name": "blog",
-  "start_urls": ["http://localhost:8080/blog/"],
+  "start_urls": ["https://sunven.github.io/blog/"],
   "stop_urls": [],
   "selectors": {
     "lvl0": {

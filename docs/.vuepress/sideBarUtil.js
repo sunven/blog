@@ -19,7 +19,11 @@ module.exports.autoSideBar = navbar => {
           children: fs
             .readdirSync(path.join(docsDir, link), { withFileTypes: true })
             .filter(c => c.isFile && c.name[0] !== '.')
-            .map(c => c.name.replace('.md', '.html')),
+            .map(c =>
+              c.name
+                .replace('.md', '.html')
+                .replace(/readme.html/i, 'index.html')
+            ),
         },
       ]
     })

@@ -2,6 +2,7 @@ const path = require('path')
 const { autoNavBar, fixNavBar } = require('./navBarUtil')
 const { autoSideBar } = require('./sideBarUtil')
 let navbar = autoNavBar()
+//
 const sidebar = autoSideBar(navbar)
 navbar = fixNavBar(navbar, sidebar)
 
@@ -84,14 +85,27 @@ module.exports = {
       },
     ],
     [
-      'vuepress-plugin-mathjax',
+      '@vuepress/plugin-docsearch',
       {
-        target: 'svg',
-        macros: {
-          '*': '\\times',
+        appId: 'MFM87Q4KVR',
+        apiKey: 'a778f10a7918c72287c9bf7a9db85e07',
+        indexName: 'blog',
+        locales: {
+          '/': {
+            placeholder: '搜索文档',
+          },
         },
       },
     ],
+    // [
+    //   'vuepress-plugin-mathjax',
+    //   {
+    //     target: 'svg',
+    //     macros: {
+    //       '*': '\\times',
+    //     },
+    //   },
+    // ],
   ],
   themeConfig: {
     navbar,

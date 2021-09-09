@@ -1,5 +1,9 @@
-const { autoNavBar } = require('./navBarUtil')
+const { autoNavBar, fixNavBar } = require('./navBarUtil')
 const { autoSideBar } = require('./sideBarUtil')
-// console.log(autoNavBar())
-console.log(JSON.stringify(autoNavBar(), null, 2))
-// console.log(JSON.stringify(autoSideBar(autoNavBar()), null, 2))
+let navbar = autoNavBar()
+console.log('navbar', JSON.stringify(navbar, null, 2))
+//
+const sidebar = autoSideBar(navbar)
+console.log('sidebar', JSON.stringify(sidebar, null, 2))
+navbar = fixNavBar(navbar, sidebar)
+console.log('navbar1', JSON.stringify(navbar, null, 2))

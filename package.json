@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.2.2",
+    "@vuepress/plugin-docsearch": "^2.0.0-beta.25",
     "@vuepress/plugin-register-components": "^2.0.0-beta.22",
     "@vuepress/shared-utils": "^1.8.2",
     "postcss-loader": "^6.1.1",
