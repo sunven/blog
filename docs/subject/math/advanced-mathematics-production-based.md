@@ -495,8 +495,10 @@ $$
 
 若级数$\sum_{n=1}^\infty u_n$绝对收敛，则级数$\sum_{n=1}^\infty u_n$必收敛
 
+
 $$
 \begin{align}
 & 1 \\
+爹 \alpha
 \end{align}
 $$
