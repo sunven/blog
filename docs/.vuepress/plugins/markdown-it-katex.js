@@ -189,8 +189,8 @@ function math_block(state, start, end, silent) {
 
 module.exports = function math_plugin(md, options) {
   // Default options
-
-  options = options || {}
+  // https://katex.org/docs/options.html
+  options = options || { strict: false }
 
   // set KaTeX as the renderer for markdown-it-simplemath
   var katexInline = function(latex) {

@@ -22,16 +22,20 @@ $$
 
 ### 向量坐标
 
-$ \overrightarrow{M_1M_2}=\{(x_2-x_1),(y_2-y_1),(z_2-z_1)\} $
-
-$\alpha=\{a1,a2,a3\},\beta=\{b1,b2,b3\}$,若$\alpha // \beta$，则$\frac{a1}{b1}=\frac{a2}{b2}=\frac{a3}{b3}
-$
+$$
+\overrightarrow{M_1M_2}=\{(x_2-x_1),(y_2-y_1),(z_2-z_1)\} \\
+\alpha=\{a1,a2,a3\},\beta=\{b1,b2,b3\} \\
+若\alpha // \beta，则\frac{a1}{b1}=\frac{a2}{b2}=\frac{a3}{b3}
+$$
 
 ### 数量积
 
-$\alpha \cdot \beta=|\alpha| |\beta| \cos\varphi $
+$$
+\alpha \cdot \beta=|\alpha| |\beta| \cos\varphi \\
+若 \alpha 与 \beta垂直，则\alpha \cdot \beta=0
+$$
 
-若 $\alpha$ 与 $\beta$垂直，则$\alpha \cdot \beta=0$
+
 
 #### 数量积的坐标表示
 
@@ -198,9 +202,10 @@ $$
 
 #### 空间曲线的切线与法平
 
-空间区线 L：$\begin{cases}x=x(t) \\ y=y(t) \\ z=z(t)\end{cases}$，L 上的点$P_0(x_0,y_0,z_0)$
-
-L 在$P_0$的切向量为：$\{x'(t_0),y'(t_0),z'(t_0)\}$
+$$
+空间区线 L：\begin{cases}x=x(t) \\ y=y(t) \\ z=z(t)\end{cases}，L 上的点P_0(x_0,y_0,z_0) \\
+L 在P_0的切向量为：\{x'(t_0),y'(t_0),z'(t_0)\}
+$$
 
 ##### 切线方程
 
@@ -216,8 +221,10 @@ $$
 
 #### 空间曲面的切平面与法线
 
-曲面$\Sigma$ 的方程 $F(x,y,z)=0$，$\Sigma$上的点$P_0(x_0,y_0,z_0)$
-$\Sigma$在$P_0$上的法向量：$\{F_x(x_0,y_0,z_0),F_y(x_0,y_0,z_0),F_z(x_0,y_0,z_0)\}$
+$$
+曲面\Sigma 的方程 F(x,y,z)=0，\Sigma上的点P_0(x_0,y_0,z_0) \\
+\Sigma在P_0上的法向量：\{F_x(x_0,y_0,z_0),F_y(x_0,y_0,z_0),F_z(x_0,y_0,z_0)\}
+$$
 
 ##### 法线方程
 
@@ -247,25 +254,73 @@ $$
 
 ### 二重积分性质
 
+#### 性质一
+
 $$
-\int\underset{D}\int
+\mathop{\iint}_Dkf(x,y)d\sigma=k\mathop{\iint}_Df(x,y)d\sigma
 $$
 
-$\beta$
+#### 性质二
+
+$$
+\mathop{\iint}_D(f(x,y) \pm g(x,y))d\sigma=\mathop{\iint}_Df(x,y)d\sigma \pm \mathop{\iint}_Dg(x,y)d\sigma \\
+\mathop{\iint}_D(af(x,y) \pm bg(x,y))d\sigma=a\mathop{\iint}_Df(x,y)d\sigma \pm b\mathop{\iint}_Dg(x,y)d\sigma
+$$
+
+
+
+#### 性质三
+
+$$
+\mathop{\iint}_D f(x,y)d\sigma=\mathop{\iint}_{D_1}f(x,y)d\sigma+\mathop{\iint}_{D_2}f(x,y)d\sigma
+$$
+
+
+
+#### 性质四
+
+$$
+若 f(x,y) \geq g(x,y) \\
+则 \mathop{\iint}_D f(x,y)d\sigma \geq \mathop{\iint}_D g(x,y)d\sigma
+$$
+
+$$
+|\mathop{\iint}_D f(x,y)d\sigma| \leq \mathop{\iint}_D |f(x,y)|d\sigma
+$$
+
+
+
+#### 性质五
+
+$$
+若 m \leq f(x,y) \leq M \\
+则 m|D| \leq \mathop{\iint}_D f(x,y)d\sigma \leq M|D| \quad (|D|表示区域D的面积)
+$$
+
+
+
+#### 性质六
+
+$$
+\mathop{\iint}_D f(x,y)d\sigma = f(\xi,\eta)|D| \\
+当f(x,y)=1时，有\mathop{\iint}_D f(x,y)d\sigma=\mathop{\iint}_D 1d\sigma =\mathop{\iint}_D d\sigma = |D|
+$$
+
+
 
 #### 直角坐标下的二重积分
 
 $$
 \begin{array}{lcl}
     \begin{array}{lcl}
-        D & \text{有界闭区域,积分区域}\\
-        \Delta_{\sigma_i}&\text{第i个小闭区域} \\
-        \lambda &\text{所有小闭区域中直径最大的值} \\
-        f(x,y),g(x,y)&\text{定义在D上的有界函数,被积函数} \\
-        \sigma & \text{D的面积} \\
-        d\sigma , dx dy&\text{直角坐标系中的微元面积} \\
-        \alpha , \beta &\text{常数} \\
-        m,M & \text{在D上f(x,y)的最小值和最大值}
+        D & &\text{有界闭区域,积分区域}\\
+        \Delta_{\sigma_i}& &\text{第i个小闭区域} \\
+        \lambda & &\text{所有小闭区域中直径最大的值} \\
+        f(x,y),g(x,y)& &\text{定义在D上的有界函数,被积函数} \\
+        \sigma & &\text{D的面积} \\
+        d\sigma , dx dy& &\text{直角坐标系中的微元面积} \\
+        \alpha , \beta & &\text{常数} \\
+        m,M & &\text{在D上f(x,y)的最小值和最大值}
     \end{array}\\
     \iint_Df(x,y)d\sigma =\mathop{ lim }\limits_{ \lambda  \to 0}\mathop{ \sum }\limits_{i=1}^{n}f(\xi_i,\eta_i) \Delta \sigma_i\\
     \mathop{\iint}\limits_{D}f(x,y)dxdy=\int_{a}^{b}[\int_{\varphi_1(x)}^{\varphi_2(x)}f(x,y)dy]dx \\
@@ -293,14 +348,14 @@ $$
 $$
 \begin{array}{lcl}
     \begin{array}{lcl}
-        \Omega & \text{空间有界闭区域,积分区域} \\
-        \Delta{\upsilon_i} & \text{第i个小闭区域} \\
-        f(x,y,z) & \text{定义在} \Omega \text{上的有界函数,被积函数} \\
-        \upsilon & \Omega \text{的体积} \\
-        d\upsilon , dxdydz & \text{直角坐标系中的微元面积}
+        \Omega & &\text{空间有界闭区域,积分区域} \\
+        \Delta{\upsilon_i} & &\text{第i个小闭区域} \\
+        f(x,y,z) & &\text{定义在} \Omega \text{上的有界函数,被积函数} \\
+        \upsilon & &\Omega \text{的体积} \\
+        d\upsilon , dxdydz & &\text{直角坐标系中的微元面积}
     \end{array} \\
     \mathop{\iiint}\limits_{\Omega}f(x,y,z) d\upsilon = \mathop{\lim}\limits_{ \lambda  \to 0}\mathop{\sum}\limits_{i=1}^nf(\xi_i,\eta_i,\zeta_i)\Delta  \upsilon \\
-    \mathop{\iiint}\limits_{\Omega}f(x,y,z)dxdydz=\int_a^b(\int_{\varphi_1(x)}^{\varphi_2(x)}(\int_{z_1(x,y)}^{z_2(x,y)}f(x,y)dz)dy)dx \\
+    \mathop{\iiint}\limits_{\Omega}f(x,y,z)dxdydz =\int_a^b(\int_{\varphi_1(x)}^{\varphi_2(x)}(\int_{z_1(x,y)}^{z_2(x,y)}f(x,y)dz)dy)dx \\
     \mathop{\iiint}\limits_{\Omega}f(x,y,z)dxdydz=\mathop{\iint}\limits_{D_{xy}}dxdy\int_{z_1(x,y)}^{z_2(x,y)}f(x,y,z)dz \\
     \mathop{\iiint}\limits_{\Omega}f(x,y,z)dxdydz=\int_a^bdx\int_{y_1(x)}^{y_2(x)}dy\int_{z_1(x,y)}^{z_2(x,y)}f(x,y,z)dz
     \end{array}
@@ -390,15 +445,15 @@ $$
 
 #### 齐次方程
 
-$ \frac{dy}{dx}=f(x,y) $
+$$
+\frac{dy}{dx}=f(x,y) \\
+\frac{dy}{dx}=\varphi(\frac{y}{x}) \\
+令u=\frac{y}{x},则y=xu,\frac{dy}{dx}=u+x\frac{du}{dx} \\
+u+x\frac{du}{dx}=\varphi(u) \\
+x\frac{du}{dx}=\varphi(u) -u \\
+$$
 
-$ \frac{dy}{dx}=\varphi(\frac{y}{x}) $
 
-令$u=\frac{y}{x}$,则$y=xu,\frac{dy}{dx}=u+x\frac{du}{dx} $
-
-$ u+x\frac{du}{dx}=\varphi(u) $
-
-$ x\frac{du}{dx}=\varphi(u) -u $
 
 #### 一阶线性微分方程
 
@@ -432,7 +487,8 @@ $$
 ### 二阶常系数线性微分方程
 
 $$
-y''+py'+qy=0
+y''+py'+qy=0 \\
+r^2+pr+q=0
 $$
 
 $$
@@ -447,58 +503,136 @@ $$
 
 ### 数项级数的概率
 
+$$
+s_n=\sum_{k=1}^n u_k =u_1+u_2+u_3+\cdots+u_n \\
+若存在常数s使得:s=\lim_{}s_n，则称该级数收敛，否则发散
+$$
+
+
+
 ### 数项级数的基本性质
+
+#### 性质一
+
+$$
+\sum_{n=1}^\infty u_n 和 \sum_{n=1}^\infty Cu_n都收敛,则 \\
+\sum_{n=1}^\infty Cu_n=C\sum_{n=1}^\infty u_n
+$$
+
+#### 性质二
+
+$$
+\sum_{n=1}^\infty u_n,\sum_{n=1}^\infty v_n分别收敛于和s,\sigma,则 \\
+\sum_{n=1}^\infty (u_n \pm v_n)也收敛于和s\pm\sigma
+$$
+
+#### 性质三
+
+在级数中去掉、增加或改变有限项，其敛散性不变
+
+#### 性质四
+
+$$
+若\sum_{n=1}^\infty u_n收敛，则对这个级数的项任意加括号所得的新级数 \\
+(u_1+\cdots+u_{n_1})+(u_{n_1+1}+\cdots+u_{n_2})+\cdots+(u_{n_{k-1}+1}+\cdots+u_{n_k})+\cdots \\
+也收敛，且其和不变
+$$
+
+#### 性质五（收敛的必要条件）
+
+$$
+若\sum_{n=1}^\infty u_n收敛,则必有\lim_{n \to \infty}u_n=0
+$$
+
+### 常见级数
+
+#### 调和级数
+
+$$
+\sum_{n=1}^\infty \frac{1}{n} 发散
+$$
+
+
+
+#### P级数
+
+$$
+\sum_{n=1}^\infty \frac{1}{n^p} (p>0) \\
+p>1时收敛，0<p\leq1时发散
+$$
+
+#### 交错级数
+
+$$
+\sum_{n=1}^\infty (-1)^{n-1}u_n 和 \sum_{n=1}^\infty (-1)^nu_n 为交错级数，两者敛散性相同
+$$
+
+### 绝对收敛和条件收敛
+
+$$
+若\sum_{n=1}^\infty |u_n| 收敛，则称\sum_{n=1}^\infty u_n绝对收敛 \\
+若\sum_{n=1}^\infty u_n 收敛,而\sum_{n=1}^\infty |u_n| 发散，则称\sum_{n=1}^\infty u_n条件收敛
+$$
+
+
 
 ### 审敛法
 
 #### 定理 1
 
-正项级数$\sum_{n=1}^\infty u_n$ 收敛的充要条件是它的部分和数列 $\{s_n\}$有上界
+$$
+正项级数\sum_{n=1}^\infty u_n收敛的充要条件是:它的部分和数列\{s_n\}有上界
+$$
 
 #### 定理 2（比较审敛法）
 
-设$\sum_{n=1}^\infty u_n$ 和 $\sum_{n=1}^\infty v_n$ 都是正项级数，且$u_n \leq v_n (n=1,2,\cdot\cdot\cdot)$
-
-若$\sum_{n=1}^\infty v_n$收敛，则$\sum_{n=1}^\infty u_n$收敛
-
-若$\sum_{n=1}^\infty u_n$发散，则$\sum_{n=1}^\infty v_n$发散
+$$
+设\sum_{n=1}^\infty u_n 和 \sum_{n=1}^\infty v_n 都是正项级数，且u_n \leq v_n (n=1,2,\cdots) \\
+若\sum_{n=1}^\infty v_n收敛，则\sum_{n=1}^\infty u_n收敛 \quad (大的收敛，小的也收敛) \\
+若\sum_{n=1}^\infty u_n发散，则\sum_{n=1}^\infty v_n发散 \quad (小的发散，大的也发散)
+$$
 
 #### 定理 3（比较审敛法的极限形式）
 
-设$\lim_{n \to \infty}\frac{u_n}{v_n}=l$ 和 $\sum_{n=1}^\infty v_n$ 都是正项级数
-
-如果$\lim_{n \to \infty}\frac{u_n}{v_n}=l \quad (0<l<+\infty)$,
-
-则$\sum_{n=1}^\infty u_n$ 和 $\sum_{n=1}^\infty v_n$同收敛或同发散
+$$
+设\lim_{n \to \infty}\frac{u_n}{v_n}=l 和 \sum_{n=1}^\infty v_n 都是正项级数 \\
+如果\lim_{n \to \infty}\frac{u_n}{v_n}=l \quad (0<l<+\infty) \\
+则\sum_{n=1}^\infty u_n 和 \sum_{n=1}^\infty v_n同收敛或同发散
+$$
 
 #### 定理 4【比值审敛法，达朗贝尔（D'Alembert）审敛法】
 
-有正项级数$\sum_{n=1}^\infty u_n$,若$\lim_{n \to \infty}\frac{u_{n+1}}{u_n}=\rho$
-
-则当 $\rho < 1$，改级数收敛，当$\rho>1$，改级数发散，当$\rho=1$时，不能判断
+$$
+有正项级数\sum_{n=1}^\infty u_n,若\lim_{n \to \infty}\frac{u_{n+1}}{u_n}=\rho \\
+则当 \rho < 1，该级数收敛，当\rho>1，该级数发散，当\rho=1时，不能判断
+$$
 
 #### 定理 5【根值审敛法，柯西（Cauchy）审敛法】
 
-有正项级数$\sum_{n=1}^\infty u_n$,若$\lim_{n \to \infty}\sqrt[n]{u_n}=\rho$
-
-则当$\rho<1$，改级数收敛，当$\rho>1$，改级数发散，当$\rho=1$时，不能判断
+$$
+有正项级数\sum_{n=1}^\infty u_n,若\lim_{n \to \infty}\sqrt[n]{u_n}=\rho \\
+则当\rho<1，该级数收敛，当\rho>1，该级数发散，当\rho=1时，不能判断
+$$
 
 #### 定理 6（布莱尼茨审敛法）
 
-若交错级数$\sum_{n=1}^\infty (-1)^{n-1}u_n$满足:
-
-1. 数列$\{u_n\}$单调递减，对于一切正整数$n$,都有$u_n\geq u_{n+1}$
-2. $\lim_{n \to \infty}u_n=0$
-   则该级数收敛，且其和$\leq u_1$
+$$
+若交错级数\sum_{n=1}^\infty (-1)^{n-1}u_n满足: \\
+1. 数列\{u_n\}单调递减，对于一切正整数n,都有u_n\geq u_{n+1} \\
+2. \lim_{n \to \infty}u_n=0 \\
+则该级数收敛，且其和\leq u_1
+$$
 
 #### 定理 7
 
-若级数$\sum_{n=1}^\infty u_n$绝对收敛，则级数$\sum_{n=1}^\infty u_n$必收敛
+$$
+若级数\sum_{n=1}^\infty u_n绝对收敛，则级数\sum_{n=1}^\infty u_n必收敛
+$$
+
 
 
 $$
 \begin{align}
 & 1 \\
-爹 \alpha
 \end{align}
 $$

@@ -58,8 +58,8 @@ module.exports = {
   base: '/blog/',
   lang: 'zh-CN',
   //debug: true,
-  // title: '你好， VuePress ！',
-  // description: '这是我的第一个 VuePress 站点',
+  title: 'sunven',
+  description: '笔记、博客、awesome',
   head: [
     [
       'link',
@@ -110,6 +110,7 @@ module.exports = {
   themeConfig: {
     navbar,
     sidebar,
+    repo: 'sunven/blog',
   },
   //clientAppEnhanceFiles: path.resolve(__dirname, './clientAppEnhance.js'),
   extendsMarkdown: md => {

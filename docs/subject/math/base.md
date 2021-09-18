@@ -6,20 +6,20 @@
 
 $$
 \begin{array}{lcl}
-& C'=0 \\
-& (x^n)'=nx^{n-1} \\
-& (sin x)'=cosx \\
-& (cosx)'=-sinx \\
-& (tanx)'=sec^2x \\
-& (cotx)'=-csc^2x \\
-& (arcsinx)'=\frac{1}{\sqrt{1-x^2}} \\
-& (arccosx)'=-\frac{1}{\sqrt{1-x^2}} \\
-& (arctanx)'=\frac{1}{1+x^2} \\
-& (arccotx)'=-\frac{1}{1+x^2} \\
-& (e^x)'=e^x \\
-& (a^x)'=a^xlna \\
-& (lnx)'=\frac{1}{x} \\
-& (log_ax)'=\frac{1}{xlna} \\
+C'&&=0 \\
+(x^n)'&&=nx^{n-1} \\
+(sin x)'&&=cosx \\
+(cosx)'&&=-sinx \\
+(tanx)'&&=sec^2x \\
+(cotx)'&&=-csc^2x \\
+(arcsinx)'&&=\frac{1}{\sqrt{1-x^2}} \\
+(arccosx)'&&=-\frac{1}{\sqrt{1-x^2}} \\
+(arctanx)'&&=\frac{1}{1+x^2} \\
+(arccotx)'&&=-\frac{1}{1+x^2} \\
+(e^x)'&&=e^x \\
+(a^x)'&&=a^xlna \\
+(lnx)'&&=\frac{1}{x} \\
+(log_ax)'&&=\frac{1}{xlna} \\
 \end{array}
 $$
 
@@ -27,9 +27,9 @@ $$
 
 $$
 \begin{array}{lcl}
-& (u(x)\pm v(x))'=u'(x)\pm v'(x) \\
-& (u(x)v(x))'=u'(x)v(x)+u(x)v'(x) \\
-& (\frac{u(x)}{v(x)})'=\frac{u'(x)v(x)-u(x)v'(x)}{v^2(x)}
+(u(x)\pm v(x))'&&=u'(x)\pm v'(x) \\
+(u(x)v(x))'&&=u'(x)v(x)+u(x)v'(x) \\
+(\frac{u(x)}{v(x)})'&&=\frac{u'(x)v(x)-u(x)v'(x)}{v^2(x)}
 \end{array}
 $$
 
@@ -86,10 +86,10 @@ $$
 
 $$
 \begin{array}{lcl}
-\int k dx=kx+C \\
-\int x^{\mu} dx=\frac{x^{\mu +1}}{ \mu +1}+C,(\mu  \neq -1) \\
-\int \frac{1}{x} dx= \ln x+C \\
-\int \frac{1}{1+x^2} dx= \arctan x+C \\
-\int \frac{1}{\sqrt{1-x^2}} dx= \arcsin x+C
+\int k dx&&=kx+C \\
+\int x^{\mu} dx&&=\frac{x^{\mu +1}}{ \mu +1}+C,(\mu  \neq -1) \\
+\int \frac{1}{x} dx&&= \ln x+C \\
+\int \frac{1}{1+x^2} dx&&= \arctan x+C \\
+\int \frac{1}{\sqrt{1-x^2}} dx&&= \arcsin x+C
 \end{array}
 $$
