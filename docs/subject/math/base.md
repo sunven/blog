@@ -93,3 +93,26 @@ $$
 \int \frac{1}{\sqrt{1-x^2}} dx&&= \arcsin x+C
 \end{array}
 $$
+
+## 极限
+
+### 运算法则
+
+- 两个无穷小的和是无穷小，有限个无穷小和是无穷小
+- 有界与无穷小的积是无穷小
+- 常数与无穷小的积是无穷小
+- 有限个无穷小的积是无穷小
+
+$$
+\lim f(x)=A,\lim g(x)=B \\
+\lim(f(x)\pm g(x))=\lim f(x) \pm \lim g(x)=A \pm B \\
+\lim(f(x) \cdot g(x))=\lim f(x) \cdot \lim g(x)=A \cdot B \\
+\lim \frac{f(x)}{g(x)}=\frac{\lim f(x)}{\lim g(x)} (B \neq 0)
+$$
+
+$$
+\lim (Cf(x))=C\lim f(xC \\
+\lim (f(x))^n=(\lim f(x))^n \\
+若f(x) \geq g(x),或f(x)>f(x),则\lim f(x) \geq \lim g(x)
+$$
+
