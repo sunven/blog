@@ -82,7 +82,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: "-avzr --delete"
-          SOURCE: "docs/.vuepress/dist"
+          SOURCE: "docs/.vuepress/dist/"
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: "root"
           TARGET: "/home/blog"
