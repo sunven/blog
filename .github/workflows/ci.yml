@@ -84,5 +84,5 @@ jobs:
           ARGS: "-avzr --delete"
           SOURCE: "docs/.vuepress/dist"
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: "ubuntu"
+          REMOTE_USER: "root"
           TARGET: "/home/blog"
