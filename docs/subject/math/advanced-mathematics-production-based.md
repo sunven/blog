@@ -399,6 +399,20 @@ $$
 \int_Lf(x,y)\,ds=\int_{\alpha}^{\beta}f(\psi(t),\varphi(t))\sqrt{(\psi'(t))^2+\varphi'(t)}dt
 $$
 
+####  极坐标
+
+$$
+L:r=r(\theta),\theta_0 \leq \theta \leq \theta_1 \\
+\begin{cases}
+x=r(\theta)\cos\theta \\
+y=r(\theta)\sin\theta
+\end{cases} (\theta_0 \leq \theta \leq \theta_1) \\
+ds=\sqrt{(x^{'}(\theta))^2+(y^{'}(\theta))^2}d\theta \\
+\int_Lf(x,y)ds=\int_{\theta_0}^{\theta_1}f(r(\theta)\cos\theta,r(\theta)\sin\theta)\sqrt{r^2(\theta)+(r^{'}(\theta))^2}d\theta
+$$
+
+
+
 ### 对坐标的曲线积分
 
 $$
