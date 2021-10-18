@@ -55,7 +55,7 @@ const mathml = [
   'none',
 ]
 module.exports = {
-  base: '/blog/',
+  //base: '/blog/',
   lang: 'zh-CN',
   //debug: true,
   title: 'sunven',
