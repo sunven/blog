@@ -13,10 +13,7 @@
               target="_blank"
               href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011502001402"
             >
-              <img
-                style="margin:0 0px -3px 5px;"
-                src="../../../.images/batb.png"
-              />
+              <img style="margin:0 0px -3px 5px;" src="/images/batb.png" />
               鄂公网安备 42011502001402号
             </a>
           </div>

@@ -76,6 +76,7 @@ module.exports = {
           'https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css',
       },
     ],
+    ['link', { rel: 'icon', href: '/images/logo.png' }],
   ],
   plugins: [
     [
@@ -100,6 +101,7 @@ module.exports = {
   ],
   theme: path.resolve(__dirname, './theme'),
   themeConfig: {
+    logo: '/images/logo.png',
     navbar,
     sidebar,
     repo: 'sunven/blog',
