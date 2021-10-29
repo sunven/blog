@@ -97,20 +97,14 @@ module.exports = {
         },
       },
     ],
-    // [
-    //   'vuepress-plugin-mathjax',
-    //   {
-    //     target: 'svg',
-    //     macros: {
-    //       '*': '\\times',
-    //     },
-    //   },
-    // ],
   ],
+  theme: path.resolve(__dirname, './theme'),
   themeConfig: {
     navbar,
     sidebar,
     repo: 'sunven/blog',
+    docsBranch: 'master',
+    docsDir: 'docs',
   },
   //clientAppEnhanceFiles: path.resolve(__dirname, './clientAppEnhance.js'),
   extendsMarkdown: md => {
