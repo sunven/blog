@@ -22,6 +22,28 @@
 
 
 
+### DNS
+
+#### dns-prefetch
+
+当前页面要做DNS预解析
+
+```html
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+```
+
+使用<link>标签来强制对DNS预解析
+
+```html
+<link ref="dns-prefetch" href="//tce.taobao.com" />
+```
+
+
+
+
+
+
+
 ## 运行
 
 减少重排重绘

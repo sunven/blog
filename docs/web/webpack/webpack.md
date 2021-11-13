@@ -1,8 +1,8 @@
 # webpack
 
+## 打包后源码解读
 
-
-## main.js
+### main.js
 
 index.js
 
@@ -204,7 +204,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _a__
 
 
 
-## sourcemap
+### sourcemap
 
 
 
@@ -213,5 +213,178 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _a__
   devtool:'eval-cheap-module-source-map' //开发
   //devtool:'cheap-module-source-map'    //生产
 }
+```
+
+## 简易webpack实现
+
+入口文件index.js,依赖a.js,b.js
+
+index.js
+
+```js
+import { str as stra } from './a'
+import { str as strb } from './b'
+console.log('index.js', stra, strb)
+```
+
+a.js
+
+```js
+export const str = 'a.js'
+```
+
+b.js
+
+```javascript
+export const str = 'b.js'
+```
+
+执行打包文件，bundle.js
+
+```js
+const MiniWebpack = require('./lib/miniwebpack')
+const config = require('./webpack.config')
+new MiniWebpack(config).run()
+```
+
+webpack配置文件，webpack.config.js
+
+```js
+const path = require('path')
+module.exports = {
+  entry: './src/index.js',
+  output: { path: path.resolve(__dirname, './dist'), filename: 'main.js' },
+}
+```
+
+miniwebpack具体实现,miniwebpack.js
+
+```js
+//babel使用的JavaScript解析器，得到ast
+const parser = require('@babel/parser')
+//遍历ast，解析出依赖
+const traverse = require('@babel/traverse').default
+const { transformFromAst } = require('@babel/core')
+const path = require('path')
+const fs = require('fs')
+class MiniWebpack {
+  constructor(options) {
+    //入口
+    this.entry = options.entry
+    //出口
+    this.output = options.output
+    //模块
+    this.modules = []
+  }
+  run() {
+    //解析
+    const info = this.parse(this.entry)
+    this.modules.push(info)
+    for (let i = 0; i < this.modules.length; i++) {
+      const { dependencies } = this.modules[i]
+      if (dependencies) {
+        //遍历依赖，解析依赖
+        for (let j in dependencies) {
+          this.modules.push(this.parse(dependencies[j]))
+        }
+      }
+    }
+    //modules中就保存了所有的模块，并且知道每个模块依赖那些模块
+    const obj = {}
+    this.modules.forEach(item => {
+      obj[item.entryFile] = { dependencies: item.dependencies, code: item.code }
+    })
+    // 生成出口文件
+    this.file(obj)
+  }
+  file(code) {
+    const filepath = path.join(this.output.path, this.output.filename)
+    //转为字符串
+    const newcode = JSON.stringify(code)
+    const bundle = `;(function(graph){
+        //自定义require
+        function require(module){
+            function otherRequire(relativePath){
+                return require(graph[module].dependencies[relativePath])
+            }
+            var exports = {}
+            ;(function(require,exports,code){
+                //动态执行代码
+                eval(code)
+            })(otherRequire,exports,graph[module].code)
+            return exports
+        }
+        //先获取入口文件
+        require('${this.entry}')
+    })(${newcode})`
+    //写到指定的出口文件
+    fs.writeFileSync(filepath, bundle)
+  }
+  //解析入口文件
+  parse(entryFile) {
+    //读取文件
+    const content = fs.readFileSync(entryFile).toString()
+    //转化为ast
+    const ast = parser.parse(content, {
+      sourceType: 'module',
+    })
+
+    const dependencies = {}
+    //遍历ast,解析出依赖那些模块
+    traverse(ast, {
+      ImportDeclaration: ({ node }) => {
+        // 将依赖收集到dependencies
+        dependencies[node.source.value] =
+          './' + path.join(path.dirname(entryFile), node.source.value) + '.js'
+      },
+    })
+    // 从ast转换出代码,
+    // 允许您使用最新的 JavaScript，而无需对目标环境需要哪些语法转换（以及可选的浏览器 polyfill）进行微观管理
+    const { code } = transformFromAst(ast, null, {
+      presets: ['@babel/preset-env'],
+    })
+    return {
+      entryFile,
+      dependencies,
+      code,
+    }
+  }
+}
+
+module.exports = MiniWebpack
+```
+
+输出文件main.js
+
+```js
+;(function (graph) {
+  //自定义require
+  function require(module) {
+    function otherRequire(relativePath) {
+      return require(graph[module].dependencies[relativePath])
+    }
+    var exports = {}
+    ;(function (require, exports, code) {
+      //动态执行代码
+      eval(code)
+    })(otherRequire, exports, graph[module].code)
+    return exports
+  }
+  //先获取入口文件
+  require('./src/index.js')
+})({
+  './src/index.js': {
+    dependencies: { './a': './src/a.js', './b': './src/b.js' },
+    code: '"use strict";\n\nvar _a = require("./a");\n\nvar _b = require("./b");\n\nconsole.log(\'index.js\', _a.str, _b.str);',
+  },
+  './src/a.js': {
+    dependencies: {},
+    code: '"use strict";\n\nObject.defineProperty(exports, "__esModule", {\n  value: true\n});\nexports.str = void 0;\nvar str = \'a.js\';\nexports.str = str;',
+  },
+  './src/b.js': {
+    dependencies: {},
+    code: '"use strict";\n\nObject.defineProperty(exports, "__esModule", {\n  value: true\n});\nexports.str = void 0;\nvar str = \'b.js\';\nexports.str = str;',
+  },
+})vite
 ```
 
