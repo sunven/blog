@@ -1,5 +1,7 @@
 # Promise
 
+给你一个承诺，未来一定有结果
+
 实现一个符合 Promises/A+ 规范的 Promise
 
 https://promisesaplus.com/

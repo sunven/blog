@@ -149,6 +149,65 @@ require(['a'],function(a){
 })
 ```
 
+### 简易实现
+
+```javascript
+var MyModules = (function Manager() {
+  // 保存模块
+  var modules = {};
+  // 方法名，依赖名，方法
+  function define(name, deps, impl) {
+    // 解析得到该模块的依赖
+    for (var i = 0; i < deps.length; i++) {
+      deps[i] = modules[deps[i]];
+    }
+    // 得到该模块中的方法
+    modules[name] = impl.apply(impl, deps);
+  }
+  // 获取方法
+  function get(name) {
+    return modules[name];
+  }
+  return {
+    define: define,
+    get: get,
+  };
+})();
+
+// example
+MyModules.define("bar", [], function () {
+  function hello(who) {
+    return "Let me introduce: " + who;
+  }
+
+  return {
+    hello: hello,
+  };
+});
+
+// 定义一个foo方法，foo方法会调用模块中之前定义的bar方法
+MyModules.define("foo", ["bar"], function (bar) {
+  var hungry = "hippo";
+
+  function awesome() {
+    console.log(bar.hello(hungry).toUpperCase());
+  }
+
+  return {
+    awesome: awesome,
+  };
+});
+
+var bar = MyModules.get("bar");
+var foo = MyModules.get("foo");
+
+console.log(bar.hello("hippo")); //Let me introduce: hippo
+
+foo.awesome(); //LET ME INTRODUCE: HIPPO
+```
+
+
+
 缺点
 
 - 语法相对复杂
@@ -218,6 +277,69 @@ UMD 加载模块的方式取决于所处的环境，Node.js 同步加载，浏�
 在支持的浏览器环境下可以直接使用，在不支持的端需要编译/打包后使用
 
 ESM 加载模块的方式同样取决于所处的环境，Node.js 同步加载，浏览器端异步加载。
+
+### export
+用于从模块中导出实时绑定的函数、对象或原始值，以便其他脚本可以通过 import 语句使用它们
+
+
+#### 默认导出
+每个模块包含一个
+```javascript
+let a = 1;
+export default a;
+export default b = 2;
+export default function () {}
+export default function name1() {}
+export { c as default };
+
+// import a from "./demo.js";
+// console.log(a); // 1
+```
+#### 命名导出
+```javascript
+let a = 1;
+let b = 2;
+export { a, b };
+export let c = 3;
+export function fn() {
+  return 4;
+}
+
+// import {a,b,c,fn as d} from "./demo.js";
+// console.log(a,b,c,d()); // 1 2 3 4
+```
+
+
+### import
+用于导入由另一个模块导出的绑定。无论是否声明了 strict mode ，导入的模块都运行在严格模式下
+
+- 在HTML 中需要包含 type="module" 的 <script> 元素才能正确识别模块
+- 不能通过 file:// URL 引用 JS 模块，否则将导致 CORS 错误
+
+
+
+#### import()
+合适需要动态导入
+
+- 当静态导入的模块很明显的降低了代码的加载速度且被使用的可能性很低，或者并不需要马上使用它。
+- 当静态导入的模块很明显的占用了大量系统内存且被使用的可能性很低。
+- 需要异步获取的模块
+- 当导入模块的说明符，需要动态构建。（静态导入只能使用静态说明符）
+- 当被导入的模块有副作用（这里说的副作用，可以理解为模块中会直接运行的代码），这些副作用只有在触发了某些条件才被需要时。（原则上来说，模块不能有副作用，但是很多时候，你无法控制你所依赖的模块的内容）
+
+
+
+```javascript
+import("./demo.js").then(({a,b,c,fn})=>{
+  console.log(a,b,c,fn()); // 1 2 3 4
+});
+```
+await用法
+```javascript
+// 注：await需要在async方法中才能使用
+const { a, b, c, fn } = await import("./demo.js");
+console.log(a, b, c, fn());
+```
 
 ## 静态分析
 
