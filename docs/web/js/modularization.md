@@ -2,19 +2,19 @@
 
 ## 为什么需要模块化
 
-也就是常规方式引入js有啥问题？
+也就是常规方式引入 js 有啥问题？
 
-1. 加载时阻塞页面渲染，引入JS越多，阻塞时间越长。
+1. 加载时阻塞页面渲染，引入 JS 越多，阻塞时间越长。
 2. 容易污染全局变量。
-3. js文件有依赖关系，加载一定要有序。当项目很大时，Dependence 可能会很复杂。
-4. 引入JS 文档太多，不美观，而且不好管理
+3. js 文件有依赖关系，加载一定要有序。当项目很大时，Dependence 可能会很复杂。
+4. 引入 JS 文档太多，不美观，而且不好管理
 
 ## 脚本的无阻塞加载
 
 moduleA.js 代码
 
 ```js
-console.log("I'm A");
+console.log("I'm A")
 /*
 此处可以放jquery源码
 使得该文件变大，以便异步加载时看效果
@@ -24,15 +24,15 @@ console.log("I'm A");
 moduleB.js 代码
 
 ```js
-console.log("I'm B");
+console.log("I'm B")
 ```
 
 同步加载
 
 ```js
 <body>
-    <script src="moduleA.js" onload="console.log('A loaded')"></script>
-    <script src="moduleB.js" onload="console.log('B loaded')"></script>
+  <script src="moduleA.js" onload="console.log('A loaded')"></script>
+  <script src="moduleB.js" onload="console.log('B loaded')"></script>
 </body>
 ```
 
@@ -49,14 +49,14 @@ A loaded
 
 `defer`：在文档完成解析后，触发 DOMContentLoaded 事件前执行。如果缺少 src 属性（即内嵌脚本），该属性不应被使用，因为这种情况下它不起作用。对动态嵌入的脚本使用 `async=false` 来达到类似的效果。
 
-`async`：是否在允许的情况下异步执行该脚本。该属性对于内联脚本无作用 (即没有src属性的脚本）。
+`async`：是否在允许的情况下异步执行该脚本。该属性对于内联脚本无作用 (即没有 src 属性的脚本）。
 
 #### defer 示例
 
 ```html
 <body>
-    <script defer src="moduleA.js" onload="console.log('A loaded')"></script>
-    <script src="moduleB.js" onload="console.log('B loaded')"></script>
+  <script defer src="moduleA.js" onload="console.log('A loaded')"></script>
+  <script src="moduleB.js" onload="console.log('B loaded')"></script>
 </body>
 ```
 
@@ -92,7 +92,7 @@ A loaded
 </body>
 ```
 
-> 动态创建的script标签，async默认为true;
+> 动态创建的 script 标签，async 默认为 true;
 
 输出
 
@@ -106,13 +106,13 @@ async A loaded
 相同之处：
 
 - 加载文件时不阻塞页面渲染
-- 使用这两个属性的脚本中不能调用document.write方法
-- 有脚本的onload的事件回调
+- 使用这两个属性的脚本中不能调用 document.write 方法
+- 有脚本的 onload 的事件回调
 
 不同之处
 
-- 每一个async属性的脚本都在它下载结束之后立刻执行，同时会在window的load事件之前执行。所以就有可能出现脚本执行顺序被打乱的情况；
-- 每一个defer属性的脚本都是在页面解析完毕之后，按照原本的顺序执行，同时会在document的DOMContentLoaded之前执行
+- 每一个 async 属性的脚本都在它下载结束之后立刻执行，同时会在 window 的 load 事件之前执行。所以就有可能出现脚本执行顺序被打乱的情况；
+- 每一个 defer 属性的脚本都是在页面解析完毕之后，按照原本的顺序执行，同时会在 document 的 DOMContentLoaded 之前执行
 
 ## CommonJS
 
@@ -128,7 +128,7 @@ async A loaded
 
 ## AMD
 
-RequireJS的标准
+RequireJS 的标准
 
 用来解决浏览器端模块加载的问题。AMD 主要是**浏览器端**使用，通过 `define` 定义模块和依赖，`require` **异步**加载模块，推崇**依赖前置**
 
@@ -138,15 +138,13 @@ RequireJS的标准
 
 ```js
 define(['./a', './b'], function(a, b) {
-    //运行至此，a.js和b.js已经下载完成
-    //a模块和b模块已经执行完
-    a.doing();
-    b.doing();
-});
-
-require(['a'],function(a){
-  
+  //运行至此，a.js和b.js已经下载完成
+  //a模块和b模块已经执行完
+  a.doing()
+  b.doing()
 })
+
+require(['a'], function(a) {})
 ```
 
 ### 简易实现
@@ -154,59 +152,57 @@ require(['a'],function(a){
 ```javascript
 var MyModules = (function Manager() {
   // 保存模块
-  var modules = {};
+  var modules = {}
   // 方法名，依赖名，方法
   function define(name, deps, impl) {
     // 解析得到该模块的依赖
     for (var i = 0; i < deps.length; i++) {
-      deps[i] = modules[deps[i]];
+      deps[i] = modules[deps[i]]
     }
     // 得到该模块中的方法
-    modules[name] = impl.apply(impl, deps);
+    modules[name] = impl.apply(impl, deps)
   }
   // 获取方法
   function get(name) {
-    return modules[name];
+    return modules[name]
   }
   return {
     define: define,
     get: get,
-  };
-})();
+  }
+})()
 
 // example
-MyModules.define("bar", [], function () {
+MyModules.define('bar', [], function() {
   function hello(who) {
-    return "Let me introduce: " + who;
+    return 'Let me introduce: ' + who
   }
 
   return {
     hello: hello,
-  };
-});
+  }
+})
 
 // 定义一个foo方法，foo方法会调用模块中之前定义的bar方法
-MyModules.define("foo", ["bar"], function (bar) {
-  var hungry = "hippo";
+MyModules.define('foo', ['bar'], function(bar) {
+  var hungry = 'hippo'
 
   function awesome() {
-    console.log(bar.hello(hungry).toUpperCase());
+    console.log(bar.hello(hungry).toUpperCase())
   }
 
   return {
     awesome: awesome,
-  };
-});
+  }
+})
 
-var bar = MyModules.get("bar");
-var foo = MyModules.get("foo");
+var bar = MyModules.get('bar')
+var foo = MyModules.get('foo')
 
-console.log(bar.hello("hippo")); //Let me introduce: hippo
+console.log(bar.hello('hippo')) //Let me introduce: hippo
 
-foo.awesome(); //LET ME INTRODUCE: HIPPO
+foo.awesome() //LET ME INTRODUCE: HIPPO
 ```
-
-
 
 缺点
 
@@ -216,7 +212,7 @@ foo.awesome(); //LET ME INTRODUCE: HIPPO
 
 ## CMD
 
-SeaJS的标准
+SeaJS 的标准
 
 用来解决浏览器端模块加载的问题。CMD 主要是**浏览器端**使用，通过 `define` 定义模块和依赖，`require` **异步**加载模块，推崇**依赖就近**
 
@@ -226,13 +222,13 @@ SeaJS的标准
 
 ```js
 define(function(require, exports, module) {
-    var a = require("./a");
-    //等待a.js下载、执行完
-    a.doing();
-    var b = require("./b");
-    //等待b.js下载、执行完
-    b.doing();
-});
+  var a = require('./a')
+  //等待a.js下载、执行完
+  a.doing()
+  var b = require('./b')
+  //等待b.js下载、执行完
+  b.doing()
+})
 ```
 
 缺点
@@ -250,20 +246,20 @@ UMD 主要为了解决 CommonJS 和 AMD 规范下的代码不通用的问题，�
 UMD 加载模块的方式取决于所处的环境，Node.js 同步加载，浏览器端异步加载。
 
 ```javascript
-((root, factory) => {
-    if (typeof define === 'function' && define.amd) {
-        //AMD
-        define(['jquery'], factory);
-    } else if (typeof exports === 'object') {
-        //CommonJS
-        var $ = requie('jquery');
-        module.exports = factory($);
-    } else {
-        root.testModule = factory(root.jQuery);
-    }
-})(this, ($) => {
-    //todo
-});
+;((root, factory) => {
+  if (typeof define === 'function' && define.amd) {
+    //AMD
+    define(['jquery'], factory)
+  } else if (typeof exports === 'object') {
+    //CommonJS
+    var $ = requie('jquery')
+    module.exports = factory($)
+  } else {
+    root.testModule = factory(root.jQuery)
+  }
+})(this, $ => {
+  //todo
+})
 ```
 
 缺点
@@ -279,46 +275,49 @@ UMD 加载模块的方式取决于所处的环境，Node.js 同步加载，浏�
 ESM 加载模块的方式同样取决于所处的环境，Node.js 同步加载，浏览器端异步加载。
 
 ### export
+
 用于从模块中导出实时绑定的函数、对象或原始值，以便其他脚本可以通过 import 语句使用它们
 
-
 #### 默认导出
+
 每个模块包含一个
+
 ```javascript
-let a = 1;
-export default a;
-export default b = 2;
-export default function () {}
+let a = 1
+export default a
+export default b = 2
+export default function() {}
 export default function name1() {}
-export { c as default };
+export { c as default }
 
 // import a from "./demo.js";
 // console.log(a); // 1
 ```
+
 #### 命名导出
+
 ```javascript
-let a = 1;
-let b = 2;
-export { a, b };
-export let c = 3;
+let a = 1
+let b = 2
+export { a, b }
+export let c = 3
 export function fn() {
-  return 4;
+  return 4
 }
 
 // import {a,b,c,fn as d} from "./demo.js";
 // console.log(a,b,c,d()); // 1 2 3 4
 ```
 
-
 ### import
+
 用于导入由另一个模块导出的绑定。无论是否声明了 strict mode ，导入的模块都运行在严格模式下
 
-- 在HTML 中需要包含 type="module" 的 <script> 元素才能正确识别模块
+- 在 HTML 中需要包含 `type="module"` 的 `<script>` 元素才能正确识别模块
 - 不能通过 file:// URL 引用 JS 模块，否则将导致 CORS 错误
 
-
-
 #### import()
+
 合适需要动态导入
 
 - 当静态导入的模块很明显的降低了代码的加载速度且被使用的可能性很低，或者并不需要马上使用它。
@@ -327,18 +326,18 @@ export function fn() {
 - 当导入模块的说明符，需要动态构建。（静态导入只能使用静态说明符）
 - 当被导入的模块有副作用（这里说的副作用，可以理解为模块中会直接运行的代码），这些副作用只有在触发了某些条件才被需要时。（原则上来说，模块不能有副作用，但是很多时候，你无法控制你所依赖的模块的内容）
 
-
-
 ```javascript
-import("./demo.js").then(({a,b,c,fn})=>{
-  console.log(a,b,c,fn()); // 1 2 3 4
-});
+import('./demo.js').then(({ a, b, c, fn }) => {
+  console.log(a, b, c, fn()) // 1 2 3 4
+})
 ```
-await用法
+
+await 用法
+
 ```javascript
 // 注：await需要在async方法中才能使用
-const { a, b, c, fn } = await import("./demo.js");
-console.log(a, b, c, fn());
+const { a, b, c, fn } = await import('./demo.js')
+console.log(a, b, c, fn())
 ```
 
 ## 静态分析
@@ -347,6 +346,6 @@ console.log(a, b, c, fn());
 
 ## Tree shaking
 
-依赖于ES2015中的 [import](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import) 和 [export](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/export) 语句，用来检测代码模块是否被导出、导入，且被 JavaScript 文件使用
+依赖于 ES2015 中的 [import](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import) 和 [export](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/export) 语句，用来检测代码模块是否被导出、导入，且被 JavaScript 文件使用
 
 在现代 JavaScript 应用程序中，我们使用模块打包(如[webpack](https://webpack.js.org/)或[Rollup](https://github.com/rollup/rollup))将多个 JavaScript 文件打包为单个文件时自动删除未引用的代码。这对于准备预备发布代码的工作非常重要，这样可以使最终文件具有简洁的结构和最小化大小
