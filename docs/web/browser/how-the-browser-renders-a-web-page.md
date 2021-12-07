@@ -75,13 +75,17 @@ document.addEventListener(' DOMContentLoaded ', function(e) {
 
 ### Css 阻塞渲染
 
-
+https://cloud.tencent.com/developer/article/1370715
 
 DOM 树的生成是**增量的**
 
 CSSOM 树的构建[**不是增量式的**](https://developer.mozilla.org/en-US/docs/Web/Performance/Critical_rendering_path#CSS_Object_Model)
 
+css不阻塞dom解析，则塞渲染
 
+这种机制为什么？
+
+css加载会阻塞后面js语句的执行
 
 ```js
 window.addEventListener('load', function(e) { 

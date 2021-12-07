@@ -1,10 +1,14 @@
 const path = require('path')
-const { autoNavBar, fixNavBar } = require('./navBarUtil')
-const { autoSideBar } = require('./sideBarUtil')
+const fs = require('fs')
+const { autoNavBar, fixNavBar } = require('./utils/navBarUtil')
+const { autoSideBar } = require('./utils/sideBarUtil')
+const { genIndex } = require('./utils/genIndexUtil')
 let navbar = autoNavBar()
 //
 const sidebar = autoSideBar(navbar)
 navbar = fixNavBar(navbar, sidebar)
+
+genIndex(sidebar)
 
 //https://developer.mozilla.org/zh-CN/docs/Web/MathML/Element
 //var as=new Set();document.querySelectorAll('.main-page-content a[href*="MathML/Element"]').forEach(item=>{var a=item.innerText;a=a.replace('<','');a=a.replace('>','');a=a.replace('(en-US)','');a=a.trim(' ');as.add(a)});console.log(Array.from(as))
@@ -58,7 +62,7 @@ module.exports = {
   //base: '/blog/',
   lang: 'zh-CN',
   //debug: true,
-  title: 'sunven',
+  title: '聊聊前端',
   description: '笔记、博客、awesome',
   head: [
     [
@@ -114,10 +118,22 @@ module.exports = {
     //md.linkify.set({ fuzzyEmail: false })
   },
   bundlerConfig: {
+    //webpack 打包配置
     vue: {
       compilerOptions: {
         isCustomElement: tag => {
+          console.log(11)
           return mathml.indexOf(tag) !== -1
+        },
+      },
+    },
+    //vite 打包配置
+    vuePluginOptions: {
+      template: {
+        compilerOptions: {
+          isCustomElement: tag => {
+            return mathml.indexOf(tag) !== -1
+          },
         },
       },
     },

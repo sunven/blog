@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>center in css</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      div {
+        padding: 10px;
+        margin: 10px;
+      }
+      pre {
+        color: red;
+        font-size: 18px;
+      }
+      .border {
+        border: 1px solid #000;
+      }
+      .horizontal {
+        background-color: antiquewhite;
+      }
+      .horizontal .inline {
+        border: 1px solid #000;
+        text-align: center;
+      }
+      .horizontal .block {
+        width: 100px;
+        height: 50px;
+        border: 1px solid #000;
+        margin: 0 auto;
+      }
+
+      .horizontal .inline-block {
+        text-align: center;
+      }
+      .horizontal .inline-block div {
+        display: inline-block;
+        width: 100px;
+        height: 50px;
+        border: 1px solid #000;
+      }
+      .horizontal .flexbox {
+        display: flex;
+        justify-content: center;
+      }
+      .horizontal .flexbox div {
+        width: 100px;
+        height: 50px;
+        border: 1px solid #000;
+      }
+      .vertical {
+        background-color: beige;
+      }
+      .vertical .inline span {
+        margin: 10px;
+        border: 1px solid #000;
+        padding: 20px 30px;
+      }
+      .vertical .line-height {
+        border: 1px solid #000;
+        height: 100px;
+        line-height: 100px;
+      }
+      .vertical table {
+        border: 1px solid #000;
+        width: 240px;
+        height: 200px;
+      }
+      .vertical .table {
+        display: table-cell;
+        vertical-align: middle;
+        height: 200px;
+        width: 240px;
+        border: 1px solid #000;
+      }
+      .vertical .flex {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 200px;
+        border: 1px solid #000;
+      }
+      .ghost-center {
+        border: 1px solid #000;
+        height: 200px;
+      }
+      .ghost-center::before {
+        content: ' ';
+        display: inline-block;
+        height: 100%;
+        width: 1%;
+        vertical-align: middle;
+      }
+      .ghost-center p {
+        border: 1px solid #000;
+        display: inline-block;
+        vertical-align: middle;
+        width: 190px;
+        margin: 0;
+      }
+      .vertical .block-h {
+        border: 1px solid #000;
+        position: relative;
+        height: 200px;
+      }
+
+      .vertical .block-h div {
+        border: 1px solid #000;
+        position: absolute;
+        top: 40px;
+        height: 100px;
+        /* margin-top: -60px; */
+      }
+
+      .vertical .block-nh {
+        border: 1px solid #000;
+        position: relative;
+        height: 200px;
+      }
+
+      .vertical .block-nh div {
+        border: 1px solid #000;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0px;
+      }
+
+      .vertical .block-table-cell {
+        border: 1px solid #000;
+        height: 200px;
+        display: table;
+      }
+
+      .vertical .block-table-cell div {
+        border: 1px solid #000;
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      .vertical .block-flex {
+        border: 1px solid #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 200px;
+      }
+
+      .vertical .block-flex div {
+        border: 1px solid #000;
+      }
+      .hv {
+        background-color: lightblue;
+      }
+      .hv-wh {
+        border: 1px solid #000;
+        position: relative;
+        height: 200px;
+      }
+      .hv-wh div {
+        border: 1px solid #000;
+        width: 300px;
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -60px 0 0 -160px;
+      }
+      .hv-nwh {
+        border: 1px solid #000;
+        position: relative;
+        height: 200px;
+      }
+      .hv-nwh div {
+        border: 1px solid #000;
+        width: 300px;
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+      }
+      .hv-flex {
+        height: 100px;
+        border: 1px solid #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .hv-flex div {
+        border: 1px solid #000;
+      }
+      .hv-grid {
+        height: 100px;
+        border: 1px solid #000;
+        display: grid;
+        justify-items: center;
+        align-items: center;
+      }
+      .hv-grid div {
+        border: 1px solid #000;
+        /* margin: auto; */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>一、水平居中</h1>
+    <a href="https://css-tricks.com/centering-css-complete-guide/"
+      >centering-css-complete-guide</a
+    >
+    <h2>1、行内元素</h2>
+    <pre>text-align: center;</pre>
+    <div class="horizontal">
+      <div class="inline">
+        <a href="javascript:void(0)">One</a>
+        <a href="javascript:void(0)">Two</a>
+        <a href="javascript:void(0)">Three</a>
+        <a href="javascript:void(0)">Four</a>
+      </div>
+    </div>
+    <h2>2、块级元素</h2>
+    <pre>margin: 0 auto;</pre>
+    <div class="horizontal">
+      <div class="block">div</div>
+    </div>
+    <h2>3、多个块级元素</h2>
+    <pre>display: inline-block;</pre>
+    <div class="horizontal">
+      <div class="inline-block">
+        <div>div1</div>
+        <div>div2</div>
+        <div>div3</div>
+      </div>
+    </div>
+    <pre>
+{
+  display: flex;
+  justify-content: center;
+}
+  </pre
+    >
+    <div class="horizontal">
+      <div class="flexbox">
+        <div>div1</div>
+        <div>div2</div>
+        <div>div3</div>
+      </div>
+    </div>
+    <h1>二、垂直居中</h1>
+    <h2>1、行内元素</h2>
+    <h3>a、单行</h3>
+    <pre>
+{
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+    </pre>
+    <div class="vertical">
+      <div class="inline"><span>a</span><span>b</span><span>c</span></div>
+    </div>
+    <pre>
+{
+  height: 100px;
+  line-height: 100px;
+}
+    </pre>
+    <div class="vertical">
+      <div class="line-height">111</div>
+    </div>
+    <h3>b、多行</h3>
+    <pre>table</pre>
+    <div class="vertical">
+      <table>
+        <tr>
+          <td>
+            去吗 配吗 这褴褛的披风 战吗 战啊 以最卑微的梦 致那黑夜中的呜咽与怒吼
+          </td>
+        </tr>
+      </table>
+    </div>
+    <pre>
+{ 
+  display: table-cell; 
+  vertical-align: middle; 
+}</pre
+    >
+    <div class="vertical">
+      <div class="table">
+        去吗 配吗 这褴褛的披风 战吗 战啊 以最卑微的梦 致那黑夜中的呜咽与怒吼
+      </div>
+    </div>
+    <pre>
+{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+    </pre>
+    <div class="vertical">
+      <div class="flex">
+        <div class="border">
+          去吗 配吗 这褴褛的披风 战吗 战啊 以最卑微的梦 致那黑夜中的呜咽与怒吼
+        </div>
+      </div>
+    </div>
+    <pre>::before</pre>
+    <div class="vertical">
+      <div class="ghost-center">
+        <p>
+          去吗 配吗 这褴褛的披风 战吗 战啊 以最卑微的梦 致那黑夜中的呜咽与怒吼
+        </p>
+      </div>
+    </div>
+    <h2>2、块级元素</h2>
+    <h3>元素高度已知</h3>
+    <pre>postion、top</pre>
+    <div class="vertical">
+      <div class="block-h">
+        <div>ddd</div>
+      </div>
+    </div>
+    <h3>元素高度未知</h3>
+    <pre>postion、top、transform</pre>
+    <div class="vertical">
+      <div class="block-nh">
+        <div>ddd</div>
+      </div>
+    </div>
+    <h3>拉伸高度</h3>
+    <pre>
+{
+  display: table-cell;
+  vertical-align: middle
+}
+    </pre>
+    <div class="vertical">
+      <div class="block-table-cell">
+        <div>ddd</div>
+      </div>
+    </div>
+    <h3>flex</h3>
+    <pre>
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center
+}
+    </pre>
+    <div class="vertical">
+      <div class="block-flex">
+        <div>ddd</div>
+      </div>
+    </div>
+    <h1>三、水平且垂直居中</h1>
+    <h3>元素宽高已知</h3>
+    <pre>postion、top、left、margin</pre>
+    <div class="hv">
+      <div class="hv-wh">
+        <div>ddd</div>
+      </div>
+    </div>
+    <h3>元素宽高未知</h3>
+    <pre>postion、top、left、transform</pre>
+    <div class="hv">
+      <div class="hv-nwh">
+        <div>ddd</div>
+      </div>
+    </div>
+    <h3>flex</h3>
+    <pre>
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+    </pre>
+    <div class="hv">
+      <div class="hv-flex">
+        <div>ddd</div>
+      </div>
+    </div>
+    <h3>grid</h3>
+    <pre>
+{
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+    </pre>
+    <div class="hv">
+      <div class="hv-grid">
+        <div>ddd</div>
+      </div>
+    </div>
+    <script></script>
+  </body>
+</html>

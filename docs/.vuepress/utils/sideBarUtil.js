@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 
 module.exports.autoSideBar = navbar => {
-  const docsDir = path.resolve(__dirname, '../')
+  const docsDir = path.resolve(__dirname, '../../')
   const sidebar = {}
   navbar
     .filter(c => c.children)

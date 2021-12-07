@@ -1,5 +1,7 @@
-const { autoNavBar, fixNavBar } = require('./navBarUtil')
-const { autoSideBar } = require('./sideBarUtil')
+const fs = require('fs')
+const path = require('path')
+const { autoNavBar, fixNavBar } = require('./utils/navBarUtil')
+const { autoSideBar } = require('./utils/sideBarUtil')
 let navbar = autoNavBar()
 console.log('navbar', JSON.stringify(navbar, null, 2))
 //
