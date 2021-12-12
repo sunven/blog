@@ -92,7 +92,7 @@ setTimeout(() => {
   delete localStorage.b;
   ```
   
-  ### sessionStorage
+### sessionStorage
 
 - 提供跨会话存储机制
 
@@ -114,7 +114,7 @@ setTimeout(() => {
   delete sessionStorage.b;
   ```
   
-  ## IndexedDB
+## IndexedDB
   
   用于在客户端存储大量的结构化数据（也包括文件/二进制大型对象（blobs））。使用索引实现对数据的高性能搜索。可以存储大量的结构化数据
 

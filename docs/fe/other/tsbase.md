@@ -325,4 +325,3 @@ type PartialPoint = PartialPointX | PartialPointY;
 type Data = [number, string];
 
 ```
-

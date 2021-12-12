@@ -72,4 +72,4 @@ public sealed class Singleton2
 
 [C#设计模式之一单例模式（Singleton Pattern）【创建型】](http://www.cnblogs.com/PatrickLiu/p/8250985.html)
 
-[C#设计模式(1)——单例模式](http://www.cnblogs.com/zhili/p/SingletonPatterm.html) 
+[C#设计模式(1)——单例模式](http://www.cnblogs.com/zhili/p/SingletonPatterm.html)

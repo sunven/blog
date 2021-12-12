@@ -11,4 +11,3 @@ m3u8里面有ts文件列表，
 ```bash
 ffmpeg -allowed_extensions ALL -protocol_whitelist "file,http,crypto,tcp" -i a.m3u8 b.mp4
 ```
-

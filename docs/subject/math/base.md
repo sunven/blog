@@ -115,4 +115,3 @@ $$
 \lim (f(x))^n=(\lim f(x))^n \\
 若f(x) \geq g(x),或f(x)>f(x),则\lim f(x) \geq \lim g(x)
 $$
-
