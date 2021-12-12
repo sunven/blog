@@ -1,4 +1,4 @@
-# NuGet更改包及缓存目录
+# NuGet 更改包及缓存目录
 
 查看文件夹位置
 
@@ -15,19 +15,19 @@ dotnet nuget locals all --list
 </config>
 ```
 
-默认global‑packages位置
+默认 global‑packages 位置
 
 ```
 %userprofile%\.nuget\packages
 ```
 
-全局NuGet.Config位置
+全局 NuGet.Config 位置
 
 ```
 %APPDATA%\NuGet\NuGet.Config
 ```
 
-修改global‑packages路径
+修改 global‑packages 路径
 
 ```
 <configuration>

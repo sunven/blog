@@ -1,4 +1,4 @@
-# 审计日志中的AOP
+# 审计日志中的 AOP
 
 审计跟踪（也称为审核日志）是一个安全相关的时间顺序记录，记录这些记录的目的是为已经影响在任何时候的详细操作，提供程序运行的证明文件记录、源或事件
 
@@ -113,11 +113,11 @@ public class HomeController : Controller
 }
 ```
 
-访问home/index 日志记录如下：
+访问 home/index 日志记录如下：
 
 `2018-01-22 19:11:09耗时：342`
 
-访问home/about 日志记录如下：
+访问 home/about 日志记录如下：
 
 ![image](http://7xk2dp.com1.z0.glb.clouddn.com/AuditingMvcDemo01201801221918482115.png)
 
@@ -172,7 +172,7 @@ public class AuditFilter : IActionFilter
 }
 ```
 
-ValuesController代码如下
+ValuesController 代码如下
 
 ```csharp
 public class ValuesController : ApiController
@@ -199,15 +199,15 @@ public class ValuesController : ApiController
 }
 ```
 
-访问api/values 日志记录如下
+访问 api/values 日志记录如下
 
 `2018-01-22 19:23:27 ValuesController/Get/{}耗时：978`
 
-访问api/values/1 日志记录如下
+访问 api/values/1 日志记录如下
 
 `2018-01-22 19:24:21 ValuesController/Get/{"id":1}耗时：727`
 
-访问api/values/GetError 日志记录如下
+访问 api/values/GetError 日志记录如下
 
 ![image](http://7xk2dp.com1.z0.glb.clouddn.com/AuditingWebApiDemo01201801221930484522.png)
 
@@ -269,7 +269,7 @@ public interface IOrderService
 
 实现如下
 
-加上UnityAop标记
+加上 UnityAop 标记
 
 ```csharp
 [UnityAop]

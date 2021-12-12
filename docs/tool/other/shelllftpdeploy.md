@@ -1,4 +1,4 @@
-# 在shell脚本中利用lftp做自动部署
+# 在 shell 脚本中利用 lftp 做自动部署
 
 [LFTP](https://lftp.yar.ru/)
 

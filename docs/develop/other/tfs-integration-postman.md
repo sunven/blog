@@ -1,22 +1,22 @@
 # TFS 集成 Postman
 
-配置在TFS的【生成】中，有两种方案
+配置在 TFS 的【生成】中，有两种方案
 
 ## Newman the cli Companion for Postman
 
-用tsf的扩展实现
+用 tsf 的扩展实现
 
-### 每一次都安装Newman
+### 每一次都安装 Newman
 
 ![image](http://qiniu.llweb.top/Snipaste_20181219113619201812191136263588.png)
 
-> tfs中使用的install和外面的不一样，tfs有特有的windows用户去跑。
+> tfs 中使用的 install 和外面的不一样，tfs 有特有的 windows 用户去跑。
 
-### Newman配置
+### Newman 配置
 
 ![image](http://qiniu.llweb.top/Snipaste_20181219113932201812191139490737.png)
 
-主要是配置postman的脚本路径
+主要是配置 postman 的脚本路径
 
 ### 测试结果
 
@@ -34,21 +34,21 @@
 
 ![image](http://qiniu.llweb.top/Snipaste_20181219115839201812191158454877.png)
 
-用Newman the cli Companion for Postman跑完collection后有一个错误：`C:\Windows\ServiceProfiles\NetworkService\AppData\Roaming\npm\newman.cmd failed with return code: 1`
+用 Newman the cli Companion for Postman 跑完 collection 后有一个错误：`C:\Windows\ServiceProfiles\NetworkService\AppData\Roaming\npm\newman.cmd failed with return code: 1`
 
-在Newman配置中，勾上出错时继续
+在 Newman 配置中，勾上出错时继续
 
 ![image](http://qiniu.llweb.top/Snipaste_20181219122249201812191223208829.png)
 
 ## Gulp
 
-用gulp任务实现，Gulp是tfs里面有的功能
+用 gulp 任务实现，Gulp 是 tfs 里面有的功能
 
 ### 安装依赖
 
 ![image](http://qiniu.llweb.top/Snipaste_20181219115008201812191150189293.png)
 
-package.json如下：
+package.json 如下：
 
 ```json
 {
@@ -70,41 +70,44 @@ package.json如下：
 }
 ```
 
-### Gulp配置
+### Gulp 配置
 
 ![image](http://qiniu.llweb.top/Snipaste_20181219122512201812191225181735.png)
 
-gulpfile.js如下：
+gulpfile.js 如下：
 
 ```js
-var gulp = require('gulp');
-var fs = require('fs');
+var gulp = require('gulp')
+var fs = require('fs')
 
-gulp.task('default', function () {
-    const newman = require('newman');
+gulp.task('default', function() {
+  const newman = require('newman')
 
-    var collectionFile = '';
-    var environmentFile = '';
-    const files = fs.readdirSync(__dirname)
-    files.forEach(function (item, index) {
-        if (item.lastIndexOf('postman_collection.json') != -1) {
-            collectionFile = item;
-        }
-        if (item.lastIndexOf('postman_environment.json') != -1) {
-            environmentFile = item;
-        }
-    })
-    newman.run({
-        collection: collectionFile,
-        environment: environmentFile,
-        reporters: ['cli', 'junit']
-    }, function (err) {
-        if (err) {
-            throw err;
-        }
-        console.log('collection run complete!');
-    });
-});
+  var collectionFile = ''
+  var environmentFile = ''
+  const files = fs.readdirSync(__dirname)
+  files.forEach(function(item, index) {
+    if (item.lastIndexOf('postman_collection.json') != -1) {
+      collectionFile = item
+    }
+    if (item.lastIndexOf('postman_environment.json') != -1) {
+      environmentFile = item
+    }
+  })
+  newman.run(
+    {
+      collection: collectionFile,
+      environment: environmentFile,
+      reporters: ['cli', 'junit'],
+    },
+    function(err) {
+      if (err) {
+        throw err
+      }
+      console.log('collection run complete!')
+    }
+  )
+})
 ```
 
 ### 示例

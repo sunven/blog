@@ -1,6 +1,6 @@
 # ssh
 
-expect文件
+expect 文件
 
 ```shell
 #!/usr/bin/expect -f
@@ -18,8 +18,6 @@ expect文件
 
 ![](../../.images/Snipaste_2021-10-13_14-04-21.png)
 
-
-
 iterm2login.sh
 
 ```shell
@@ -36,11 +34,9 @@ expect {
 interact
 ```
 
-iTerm2配置
+iTerm2 配置
 
 ![](../../.images/Snipaste_2021-10-13_14-08-11.png)
-
-
 
 /bin/zsh
 

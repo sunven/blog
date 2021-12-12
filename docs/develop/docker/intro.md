@@ -2,15 +2,9 @@
 
 ## 安装
 
-
-
 ## 镜像加速
 
-
-
 ## 常用命令
-
-
 
 ### 帮助命令
 
@@ -22,10 +16,8 @@ docker 命令 --help  #帮助命令
 #例如：方便查看语法格式，可选参数等，十分爽到
 docker images --help
 docker search --help
-docker pull	--help
+docker pull --help
 ```
-
-
 
 ## 镜像命令
 
@@ -36,8 +28,6 @@ docker pull   #下载镜像
 docker rmi    #删除镜像
 ```
 
-
-
 ### 1. docker images
 
 ```bash
@@ -46,23 +36,21 @@ REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
 hello-world   latest    d1165f221234   3 months ago   13.3kB
 
 #1.解释
-#REPOSITORY			# 镜像的仓库源
-#TAG				    # 镜像的标签(版本)		---lastest 表示最新版本
-#IMAGE ID			  # 镜像的id
-#CREATED			  # 镜像的创建时间
-#SIZE				    # 镜像的大小
+#REPOSITORY   # 镜像的仓库源
+#TAG        # 镜像的标签(版本)  ---lastest 表示最新版本
+#IMAGE ID     # 镜像的id
+#CREATED     # 镜像的创建时间
+#SIZE        # 镜像的大小
 
 #2.可选项（常用的2个）
 Options:
   -a, --all         Show all images (default hides intermediate images) #列出所有镜像
   -q, --quiet       Only show numeric IDs # 只显示镜像的id
-  
+
 #3.示例
 # docker images -a  #列出所有镜像详细信息
 # docker images -aq #列出所有镜像的id
 ```
-
-
 
 ### 2. docker search
 
@@ -81,8 +69,6 @@ Options:
 # docker search mysql --filter=STARS=3000
 ```
 
-
-
 ### 3. docker pull
 
 ```bash
@@ -92,17 +78,17 @@ Options:
 Using default tag: latest           #下载的最新版
 latest: Pulling from library/mysql
 69692152171a: Pull complete         #分层下载： docker image 的核心 联合文件系统
-1651b0be3df3: Pull complete 
-951da7386bc8: Pull complete 
-0f86c95aa242: Pull complete 
-37ba2d8bd4fe: Pull complete 
-6d278bb05e94: Pull complete 
-497efbd93a3e: Pull complete 
-f7fddf10c2c2: Pull complete 
-16415d159dfb: Pull complete 
-0e530ffc6b73: Pull complete 
-b0a4a1a77178: Pull complete 
-cd90f92aa9ef: Pull complete 
+1651b0be3df3: Pull complete
+951da7386bc8: Pull complete
+0f86c95aa242: Pull complete
+37ba2d8bd4fe: Pull complete
+6d278bb05e94: Pull complete
+497efbd93a3e: Pull complete
+f7fddf10c2c2: Pull complete
+16415d159dfb: Pull complete
+0e530ffc6b73: Pull complete
+b0a4a1a77178: Pull complete
+cd90f92aa9ef: Pull complete
 Digest: sha256:d50098d7fcb25b1fcb24e2d3247cae3fc55815d64fec640dc395840f8fa80969 #签名，防伪标志
 Status: Downloaded newer image for mysql:latest
 docker.io/library/mysql:latest #真实地址
@@ -147,35 +133,33 @@ docker rmi -f $(docker images -aq) #删除全部的镜像
 docker commit -m="描述信息" -a="作者名字" 容器id 目标镜像名:[版本TAG]
 ```
 
-
-
 ## 容器命令
 
 ```bash
 docker run 镜像id     #新建容器并启动
 docker ps             #列出所有运行的容器 docker container list
 docker rm 容器id      #删除指定容器
-docker start 容器id	  #启动容器
+docker start 容器id   #启动容器
 docker restart 容器id #重启容器
-docker stop 容器id	  #停止当前正在运行的容器
-docker kill 容器id	  #强制停止当前容器
+docker stop 容器id   #停止当前正在运行的容器
+docker kill 容器id   #强制停止当前容器
 ```
 
 ### 1. 新建容器并启动
 
 ```bash
-docker run [可选参数] image | docker container run [可选参数] image 
+docker run [可选参数] image | docker container run [可选参数] image
 #参数说明
---name="Name"		#容器名字，比如：tomcat01 tomcat02 用来区分容器
--d					    #后台方式运行
--it 				    #使用交互方式运行，进入容器查看内容
--p					    #指定容器的端口，-p 8080(宿主机):8080(容器)
+--name="Name"  #容器名字，比如：tomcat01 tomcat02 用来区分容器
+-d         #后台方式运行
+-it         #使用交互方式运行，进入容器查看内容
+-p         #指定容器的端口，-p 8080(宿主机):8080(容器)
   #-p，这个是小写p。主要用法有几种：
-	#1.-p	主机端口：容器端口（常用）
-	#2.-p	容器端口
-	#3.容器端口
-	#4.-p	ip：主机端口：容器端口
--P					#大写P，随机指定端口
+ #1.-p 主机端口：容器端口（常用）
+ #2.-p 容器端口
+ #3.容器端口
+ #4.-p ip：主机端口：容器端口
+-P     #大写P，随机指定端口
 ```
 
 例子：
@@ -184,7 +168,7 @@ docker run [可选参数] image | docker container run [可选参数] image
 #1.使用命令运行并进入容器，通过的是bash命令
 # docker run -it centos bin/bash
 # ls
-bin  etc   lib	  lost+found  mnt  proc  run   srv  tmp  var
+bin  etc   lib   lost+found  mnt  proc  run   srv  tmp  var
 dev  home  lib64  media       opt  root  sbin  sys  usr
 #4.退出容器到主机
 # exit
@@ -193,8 +177,8 @@ dev  home  lib64  media       opt  root  sbin  sys  usr
 ### 2. 列出容器
 
 ```bash
-docker ps 命令  		 #列出当前正在运行的容器
-  -a, --all     	   #列出当前正在运行的容器 + 历史运行过的容器
+docker ps 命令     #列出当前正在运行的容器
+  -a, --all         #列出当前正在运行的容器 + 历史运行过的容器
   -n=?, --last int   #列出最近创建的?个容器 ?为1则只列出最近创建的一个容器,为2则列出2个
   -q, --quiet        #只列出容器的编号
 ```
@@ -202,15 +186,15 @@ docker ps 命令  		 #列出当前正在运行的容器
 ### 3. 退出容器
 
 ```bash
-exit 		    #容器直接退出
-ctrl +P +Q  #容器不停止退出 	---注意：这个很有用的操作
+exit       #容器直接退出
+ctrl +P +Q  #容器不停止退出  ---注意：这个很有用的操作
 ```
 
 ### 4. 删除容器
 
 ```bash
-docker rm 容器id   				        #删除指定的容器，不能删除正在运行的容器，如果要强制删除 rm -rf
-docker rm -f $(docker ps -aq)  	 #删除所有的容器，又是参数传递方式，搜出来的结果删
+docker rm 容器id               #删除指定的容器，不能删除正在运行的容器，如果要强制删除 rm -rf
+docker rm -f $(docker ps -aq)    #删除所有的容器，又是参数传递方式，搜出来的结果删
 docker ps -a -q|xargs docker rm  #删除所有的容器
 ```
 
@@ -237,23 +221,23 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 docker logs --help
 #可选项
 Options:
-      --details        Show extra details provided to logs 
+      --details        Show extra details provided to logs
   -f, --follow         Follow log output
       --since string   Show logs since timestamp (e.g. 2013-01-02T13:23:37) or relative (e.g. 42m for 42 minutes)
       --tail string    Number of lines to show from the end of the logs (default "all")
   -t, --timestamps     Show timestamps
       --until string   Show logs before a timestamp (e.g. 2013-01-02T13:23:37) or relative (e.g. 42m for 42 minutes)
-      
-# docker run -d centos /bin/sh -c "while true;do echo 6666;sleep 1;done" #模拟日志 
+
+# docker run -d centos /bin/sh -c "while true;do echo 6666;sleep 1;done" #模拟日志
 
 #2.显示日志
--tf		                         #显示日志信息（一直更新）
+-tf                           #显示日志信息（一直更新）
 --tail number                  #需要显示日志条数
 docker logs -t --tail n 容器id #查看n行日志
 docker logs -ft 容器id         #跟着日志
 ```
 
-### 7. 容器中进程信息ps
+### 7. 容器中进程信息 ps
 
 ```bash
 docker top 容器id
@@ -278,7 +262,7 @@ docker exec -it 容器id bashshell
 docker exec -it 0694e2e1032c bin/bash
 #进入容器之后我们想干嘛干嘛，比如使用ls命令查看东西之类
 ls
-bin  etc   lib	  lost+found  mnt  proc  run   srv  tmp  var
+bin  etc   lib   lost+found  mnt  proc  run   srv  tmp  var
 dev  home  lib64  media       opt  root  sbin  sys  usr
 
 #====================方式二====================
@@ -298,13 +282,11 @@ docker attach 0694e2e1032c
 #1.命令
 docker cp 容器id:容器内路径（文件名）  主机目的路径
 #2.测试
-docker cp 0694e2e1032c:/hello.java /home 
+docker cp 0694e2e1032c:/hello.java /home
 #将容器内部的/hello.java移动到主机的/home目录下，即使容器关闭了，也可以拷贝出来
 
 #拷贝是一个手动过程，未来我们使用-v卷的技术，可以实现自动同步
 ```
-
-
 
 ### 11. 其他
 
@@ -314,13 +296,9 @@ docker cp 0694e2e1032c:/hello.java /home
 docker run -d --name elasticsearch2 -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms64m -Xmx512m" elasticsearch:7.6.2
 ```
 
-
-
 ## 容器数据卷
 
 **容器的持久化和同步操作！容器间也是可以数据共享的！**
-
-
 
 ### 1. -v 挂载
 
@@ -338,9 +316,7 @@ docker run -it -v /home/ceshi:/home centos /bin/bash
 #具体看下图的Mounts部分，以后两个地址的内的数据可以相互同步的
 ```
 
-
-
-### 2. mysql数据持久化
+### 2. mysql 数据持久化
 
 ```shell
 #1. 获取mysql镜像
@@ -358,8 +334,6 @@ docker run -it -v /home/ceshi:/home centos /bin/bash
 #咱们走的是3310端口，3310端口映射了容器的3306端口，所以说我们本质还是访问到的容器
 ```
 
-
-
 ### 3. 具名匿名挂载
 
 ```shell
@@ -368,7 +342,7 @@ docker run -it -v /home/ceshi:/home centos /bin/bash
 #1-1. 使用命令匿名挂载
 docker run -d -P --name nginx01 -v /etc/nginx nginx
 
-#1-1. 查看所有volume（卷）的情况  
+#1-1. 查看所有volume（卷）的情况
 [root@iZ2vc28obhvfham8wewhh0Z data]# docker volume ls
 DRIVER    VOLUME NAME（卷名字，这个一串乱码其实是真实存在的目录）
 local     dd3decdb4e2533d16d216ba19d8797c2ad95b4a2a1b6a90f87eb98bbed3b3758
@@ -396,14 +370,12 @@ docker run -d -P --name nginx02 -v juming-nginx:/etc/nginx nginx
 ]
 ```
 
-
-
 **总结**
 
 ```shell
 # 三种挂载： 匿名挂载、具名挂载、指定路径挂载
--v 容器内路径			      #匿名挂载
--v 卷名：容器内路径		    #具名挂载
+-v 容器内路径         #匿名挂载
+-v 卷名：容器内路径      #具名挂载
 -v /宿主机路径：容器内路径 #指定路径挂载 docker volume ls 是查看不到的
 ```
 
@@ -419,45 +391,37 @@ $ docker run -d -P --name nginx05 -v juming:/etc/nginx:rw nginx
 # ro 只要看到ro就说明这个路径只能通过宿主机来操作，容器内部是无法操作！
 ```
 
-
-
 ### 4. 数据卷容器
 
-- 父容器：A去挂载B，那么B就是A的父容器
+- 父容器：A 去挂载 B，那么 B 就是 A 的父容器
 - 数据卷容器：被挂载的容器
 
 ```shell
 docker run -it --name docker02 --volumes-from docker01 centos
 ```
 
-
-
 容器之间的配置信息的传递，数据卷容器的生命周期一直持续到没有容器使用为止。
 
 但是一旦你持久化到了本地，这个时候，本地的数据是不会删除的！
 
-
-
 ## Dockerfile
 
-### Dockerfile指令
+### Dockerfile 指令
 
 ```shell
-FROM				 # from:基础镜像，一切从这里开始构建
+FROM     # from:基础镜像，一切从这里开始构建
 MAINTAINER  # maintainer:镜像是谁写的， 姓名+邮箱
-RUN					# run:镜像构建的时候需要运行的命令
-ADD					# add:步骤，tomcat镜像，这个tomcat压缩包！添加内容 添加同目录
-WORKDIR				# workdir:镜像的工作目录
-VOLUME				# volume:挂载的目录位置
-EXPOSE				# expose:暴露端口配置
-CMD					# cmd:指定这个容器启动的时候要运行的命令，只有最后一个会生效，可被替代
-ENTRYPOINT			# entrypoint:指定这个容器启动的时候要运行的命令，可以追加命令
-ONBUILD				# onbuild:当构建一个被继承DockerFile这个时候就会运行onbuild的指令，是触发指令
-COPY				# copy:类似ADD，将我们文件拷贝到镜像中
-ENV					# env:构建的时候设置环境变量！
+RUN     # run:镜像构建的时候需要运行的命令
+ADD     # add:步骤，tomcat镜像，这个tomcat压缩包！添加内容 添加同目录
+WORKDIR    # workdir:镜像的工作目录
+VOLUME    # volume:挂载的目录位置
+EXPOSE    # expose:暴露端口配置
+CMD     # cmd:指定这个容器启动的时候要运行的命令，只有最后一个会生效，可被替代
+ENTRYPOINT   # entrypoint:指定这个容器启动的时候要运行的命令，可以追加命令
+ONBUILD    # onbuild:当构建一个被继承DockerFile这个时候就会运行onbuild的指令，是触发指令
+COPY    # copy:类似ADD，将我们文件拷贝到镜像中
+ENV     # env:构建的时候设置环境变量！
 ```
-
-
 
 ```shell
 FROM centos
@@ -480,16 +444,14 @@ CMD /bin/bash
 docker build -f dockerfile-centos -t mycentos:0.1 .
 ```
 
-### CMD与ENTRYPOINT
+### CMD 与 ENTRYPOINT
 
 ```shell
-CMD					    # 指定这个容器启动的时候要运行的命令，只有最后一个会生效，可被替代。
-ENTRYPOINT			# 指定这个容器启动的时候要运行的命令，可以追加命令
+CMD         # 指定这个容器启动的时候要运行的命令，只有最后一个会生效，可被替代。
+ENTRYPOINT   # 指定这个容器启动的时候要运行的命令，可以追加命令
 ```
 
-
-
-##  Docker网络
+## Docker 网络
 
 ### 1. 原理
 
@@ -500,43 +462,35 @@ ENTRYPOINT			# 指定这个容器启动的时候要运行的命令，可以追�
 # OpenStac,Docker容器之间的连接，OVS的连接，都是使用evth-pair技术
 ```
 
-> *情况一：路由器可以直接去访问容器*
+> _情况一：路由器可以直接去访问容器_
 
 ![img](https://raw.githubusercontent.com/sunven/PicBed/master/20210704190642.png)
 
-> *情况二：容器之间的访问，比如Tomcat01去访问Tomcat02，路由器就是作为一个中间商*
+> _情况二：容器之间的访问，比如 Tomcat01 去访问 Tomcat02，路由器就是作为一个中间商_
 
 ![img](https://raw.githubusercontent.com/sunven/PicBed/master/20210704190804.png)
-
-
 
 ```shell
 #Tomcat01和Tomcat02是共用的一个路由器，docker0
 #所有的容器不指定网络的情况下，都是docker0路由的，docker会给我们的容器分配一个默认的可用ip
 ```
 
-
-
-Docker使用的是Linux的桥接，宿主机是一个Docker容器的网桥 docker0
+Docker 使用的是 Linux 的桥接，宿主机是一个 Docker 容器的网桥 docker0
 
 ![img](https://raw.githubusercontent.com/sunven/PicBed/master/20210704190858.png)
 
-
-
 ### 2. --link
 
-本质就是在hosts配置中添加映射，现在使用Docker已经不建议使用–-link了！
+本质就是在 hosts 配置中添加映射，现在使用 Docker 已经不建议使用–-link 了！
 
-###  3. 自定义网络
+### 3. 自定义网络
 
 **网络模式：**
 
-- **bridge ：桥接 docker（默认，自己创建也是用bridge模式）**
+- **bridge ：桥接 docker（默认，自己创建也是用 bridge 模式）**
 - none ：不配置网络，一般不用
 - host ：和宿主机共享网络
 - container ：容器网络连通（用得少！局限很大）
-
-
 
 ```shell
 # 我们直接启动的命令 --net bridge,而这个就是我们的docker0
@@ -570,8 +524,6 @@ docker exec -it tomcat-net-01 ping tomcat-net-02
 docker exec -it tomcat-net-01 ping 192.168.0.3
 ```
 
-
-
 ### 4. 网络联通
 
 ![img](https://raw.githubusercontent.com/sunven/PicBed/master/20210704191318.png)
@@ -593,8 +545,6 @@ docker network inspect mynet
 #4. 现在我们再ping一下
 [root@iZ2vc28obhvfham8wewhh0Z ~]# docker exec -it tomcat01 ping tomcat-net-02
 ```
-
-
 
 ### 5.测试
 
@@ -630,32 +580,24 @@ docker run -p 637${port}:6379 -p 1637${port}:16379 --name redis-${port} \
 -v /mydata/redis/node-${port}/conf/redis.conf:/etc/redis/redis.conf \
 -d --net redis --ip 172.38.0.1${port} redis:5.0.9-alpine3.11 redis-server /etc/redis/redis.conf; \
 #5. 然后依次运行
-docker exec -it redis-1 /bin/sh 
-docker exec -it redis-2 /bin/sh 
-docker exec -it redis-3 /bin/sh 
-docker exec -it redis-4 /bin/sh 
-docker exec -it redis-5 /bin/sh 
-docker exec -it redis-6 /bin/sh 
+docker exec -it redis-1 /bin/sh
+docker exec -it redis-2 /bin/sh
+docker exec -it redis-3 /bin/sh
+docker exec -it redis-4 /bin/sh
+docker exec -it redis-5 /bin/sh
+docker exec -it redis-6 /bin/sh
 
 #6. 创建集群
 redis-cli --cluster create 172.38.0.11:6379 172.38.0.12:6379 172.38.0.13:6379 172.38.0.14:6379 172.38.0.15:6379 172.38.0.16:6379  --cluster-replicas 1
 ```
 
-
-
 ## Docker Compose
 
 定义运行多个容器
 
+地址：<https://docs.docker.com/compose/gettingstarted/>
 
-
-地址：https://docs.docker.com/compose/gettingstarted/
-
-
-
-https://docs.docker.com/compose/wordpress/
-
-
+<https://docs.docker.com/compose/wordpress/>
 
 ```shell
 docker-compose down         # 关闭容器
@@ -663,13 +605,9 @@ docker-compose up --build   # 重新构建
 docker-compose up -d
 ```
 
-
-
 ## Docker Swarm
 
-4台机器，xshell同步操作
-
-
+4 台机器，xshell 同步操作
 
 ![img](https://docs.docker.com/engine/swarm/images/swarm-diagram.png)
 
@@ -682,13 +620,11 @@ docker-compose up -d
 
 可故障的管理节点数:(N-1)/2
 
-3个最多可以有一个故障
+3 个最多可以有一个故障
 
-5个最多可以有两个故障
+5 个最多可以有两个故障
 
-一个几圈最多简易有7个管理节点
-
-
+一个几圈最多简易有 7 个管理节点
 
 增加更多的管理者并不意味着可扩展性或更高的性能。一般来说，情况正好相反
 
@@ -696,25 +632,21 @@ docker-compose up -d
 
 - 执行容器
 
-
-
 ### 命令
 
 初始化
 
 ```shell
 docker swarm init --help
- 
+
 ip addr # 获取自己的ip（用内网的不要流量）
- 
+
 docker swarm init --advertise-addr 172.16.250.97
 Swarm initialized: current node (otdyxbk2ffbogdqq1kigysj1d) is now a manager.
 To add a worker to this swarm, run the following command:
     docker swarm join --token SWMTKN-1-3vovnwb5pkkno2i3u2a42yrxc1dk51zxvto5hrm4asgn37syfn-0xkrprkuyyhrx7cidg381pdir 172.16.250.97:2377
 To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
 ```
-
-
 
 ```shell
 # 获取令牌
@@ -728,14 +660,10 @@ docker swarm join --token SWMTKN-1-3vovnwb5pkkno2i3u2a42yrxc1dk51zxvto5hrm4asgn3
 docker swarm leave
 ```
 
-
-
 ```shell
 docker run     # 容器启动！ 不具有扩缩容器
 docker service # 服务！ 具有扩缩容器，滚动更新！
 ```
-
-
 
 ```shell
 # 查看服务列表
@@ -752,9 +680,7 @@ docker service scale my-nginx=5
 docker service rm
 ```
 
-
-
-### service如何工作
+### service 如何工作
 
 ![services diagram](https://docs.docker.com/engine/swarm/images/services-diagram.png)
 
@@ -766,9 +692,8 @@ docker service rm
 
 ![global vs replicated services](https://docs.docker.com/engine/swarm/images/replicated-vs-global.png)
 
-##  reference
+## reference
 
-[狂神Docker学习笔记_Lemonyuki的博客-CSDN博客](https://blog.csdn.net/GTX_WU/article/details/118370049)
+[狂神 Docker 学习笔记\_Lemonyuki 的博客-CSDN 博客](https://blog.csdn.net/GTX_WU/article/details/118370049)
 
-[Docker入门学习笔记(21h/2d 4.14-16) (u19900101.github.io)](https://u19900101.github.io/2021-04-16-Docker入门学习笔记_21h2d/)
-
+[Docker 入门学习笔记(21h/2d 4.14-16) (u19900101.github.io)](https://u19900101.github.io/2021-04-16-Docker入门学习笔记_21h2d/)

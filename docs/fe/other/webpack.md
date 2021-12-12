@@ -6,7 +6,7 @@
 
 Webpack 是一个开源的前端打包工具。Webpack 提供了前端开发缺乏的模块化开发方式，将各种静态资源视为模块，并从它生成优化过的代码
 
-Webpack可以从终端、或是更改 webpack.config.js 来设置各项功能
+Webpack 可以从终端、或是更改 webpack.config.js 来设置各项功能
 
 要使用 Webpack 前须先安装 Node.js。Webpack 其中一个特性是使用加载器来将资源转化成模块。开发者可以自定义加载器的顺序、格式来因应项目的需求
 
@@ -30,7 +30,7 @@ Webpack可以从终端、或是更改 webpack.config.js 来设置各项功能
 
 ## 使用
 
-### 全局安装webpack
+### 全局安装 webpack
 
 ```shell
 npm install -g webpack
@@ -68,7 +68,7 @@ webpack
 
 ### 配置 npm start
 
-修改 package.json文件
+修改 package.json 文件
 
 ```shell
 "scripts": {
@@ -84,12 +84,12 @@ module.exports = {
 };
 ```
 
-| devtool选项                    | 说明                                                                                                                                   |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| source-map                   | 在一个单独的文件中产生一个完整且功能完全的文件。这个文件具有最好的source map，但是它会减慢打包速度                                                                               |
-| cheap-module-source-map      | 在一个单独的文件中生成一个不带列映射的map，不带列映射提高了打包速度，但是也使得浏览器开发者工具只能对应到具体的行，不能对应到具体的列（符号），会对调试造成不便                                                    |
-| eval-source-map              | 使用eval打包源文件模块，在同一个文件中生成干净的完整的source map。这个选项可以在不影响构建速度的前提下生成完整的sourcemap，但是对打包后输出的JS文件的执行具有性能和安全的隐患。在开发阶段这是一个非常好的选项，在生产阶段则一定不要启用这个选项 |
-| cheap-module-eval-source-map | 这是在打包文件时最快的生成source map的方法，生成的Source Map 会和打包后的JavaScript文件同行显示，没有列映射，和eval-source-map选项具有相似的缺点                                      |
+| devtool 选项                 | 说明                                                                                                                                                                                                                                                  |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| source-map                   | 在一个单独的文件中产生一个完整且功能完全的文件。这个文件具有最好的 source map，但是它会减慢打包速度                                                                                                                                                   |
+| cheap-module-source-map      | 在一个单独的文件中生成一个不带列映射的 map，不带列映射提高了打包速度，但是也使得浏览器开发者工具只能对应到具体的行，不能对应到具体的列（符号），会对调试造成不便                                                                                      |
+| eval-source-map              | 使用 eval 打包源文件模块，在同一个文件中生成干净的完整的 source map。这个选项可以在不影响构建速度的前提下生成完整的 sourcemap，但是对打包后输出的 JS 文件的执行具有性能和安全的隐患。在开发阶段这是一个非常好的选项，在生产阶段则一定不要启用这个选项 |
+| cheap-module-eval-source-map | 这是在打包文件时最快的生成 source map 的方法，生成的 Source Map 会和打包后的 JavaScript 文件同行显示，没有列映射，和 eval-source-map 选项具有相似的缺点                                                                                               |
 
 ### 本地服务器
 
@@ -109,13 +109,13 @@ module.exports = {
 }
 ```
 
-**contentBase**：默认webpack-dev-server会为根文件夹提供本地服务器，如果想为另外一个目录下的文件提供本地服务器，应该在这里设置其所在目录（本例设置到“public"目录）
+**contentBase**：默认 webpack-dev-server 会为根文件夹提供本地服务器，如果想为另外一个目录下的文件提供本地服务器，应该在这里设置其所在目录（本例设置到“public"目录）
 
 **port**：设置默认监听端口，如果省略，默认为”8080“
 
 **inline**：inline
 
-**historyApiFallback**：在开发单页应用时非常有用，它依赖于HTML5 history API，如果设置为true，所有的跳转将指向index.html
+**historyApiFallback**：在开发单页应用时非常有用，它依赖于 HTML5 history API，如果设置为 true，所有的跳转将指向 index.html
 
 `package.json`增加
 
@@ -139,14 +139,11 @@ npm run server
 
 ```json
 {
-  module: {
-    rules: [
+  "module": {
+    "rules": [
       {
-        test: /\.css$/,
-        use: [
-          { loader: "style-loader" },
-          { loader: "css-loader" }
-        ]
+        "test": /\.css$/,
+        "use": [{ "loader": "style-loader" }, { "loader": "css-loader" }]
       }
     ]
   }
@@ -157,18 +154,21 @@ npm run server
 
 ```json
 {
-    module: {
-        rules: [{
-            test: /\.css$/,
-            use: [{
-                    loader: "style-loader/url"
-                },
-                {
-                    loader: "file-loader"
-                }
-            ]
-        }]
-    }
+  "module": {
+    "rules": [
+      {
+        "test": /\.css$/,
+        "use": [
+          {
+            "loader": "style-loader/url"
+          },
+          {
+            "loader": "file-loader"
+          }
+        ]
+      }
+    ]
+  }
 }
 ```
 
@@ -176,37 +176,40 @@ npm run server
 
 ```json
 {
-    module: {
-        rules: [{
-            test: /\.css$/,
-            use: [{
-                    loader: "style-loader/useable"
-                },
-                {
-                    loader: "css-loader"
-                },
-            ],
-        }]
-    }
+  "module": {
+    "rules": [
+      {
+        "test": /\.css$/,
+        "use": [
+          {
+            "loader": "style-loader/useable"
+          },
+          {
+            "loader": "css-loader"
+          }
+        ]
+      }
+    ]
+  }
 }
 ```
 
 ```js
 import filecss from './css/file.css'
-filecss.use();
-filecss.unuse();
+filecss.use()
+filecss.unuse()
 ```
 
 ### options
 
-| 名称                    | 类型       | 默认值      | 描述                                |
-| --------------------- | -------- | -------- | --------------------------------- |
-| base                  | Number   | true     | 设置模块 ID 基础 (DLLPlugin)            |
-| attrs                 | Object   | {}       | 添加自定义 attrs 到 `<style></style>`   |
-| transform             | Function | false    | 转换/条件加载 CSS，通过传递转换/条件函数           |
-| insertAt              | String   | bottom   | 在给定位置处插入 `<style></style>`        |
-| insertInto            | String   | `<head>` | 给定位置中插入 `<style></style>`         |
-| sourceMap             | Boolean  | false    | 启用/禁用 Sourcemap                   |
+| 名称                  | 类型     | 默认值   | 描述                                          |
+| --------------------- | -------- | -------- | --------------------------------------------- |
+| base                  | Number   | true     | 设置模块 ID 基础 (DLLPlugin)                  |
+| attrs                 | Object   | {}       | 添加自定义 attrs 到 `<style></style>`         |
+| transform             | Function | false    | 转换/条件加载 CSS，通过传递转换/条件函数      |
+| insertAt              | String   | bottom   | 在给定位置处插入 `<style></style>`            |
+| insertInto            | String   | `<head>` | 给定位置中插入 `<style></style>`              |
+| sourceMap             | Boolean  | false    | 启用/禁用 Sourcemap                           |
 | convertToAbsoluteUrls | Boolean  | false    | 启用 source map 后，将相对 URL 转换为绝对 URL |
 
 ### reference
@@ -219,34 +222,34 @@ filecss.unuse();
 
 ```json
 {
-    module: {
-        rules: [{
-            test: /\.css$/,
-            use: [
-                'css-loader'
-            ]
-        }]
-    }
+  "module": {
+    "rules": [
+      {
+        "test": /\.css$/,
+        "use": ["css-loader"]
+      }
+    ]
+  }
 }
 ```
 
 ```js
-const css = require('./css/file.css').toString();
-console.log(css);
+const css = require('./css/file.css').toString()
+console.log(css)
 ```
 
-| 名称             | 类型               | 默认值           | 描述                           |
-| -------------- | ---------------- | ------------- | ---------------------------- |
+| 名称           | 类型             | 默认值        | 描述                                        |
+| -------------- | ---------------- | ------------- | ------------------------------------------- |
 | root           | String           | /             | 解析 URL 的路径，以 / 开头的 URL 不会被转译 |
-| url            | Boolean          | true          | 启用/禁用 url() 处理               |
-| alias          | Object           | {}            | 创建别名更容易导入一些模块                |
-| import         | Boolean          | true          | 启用/禁用 @import 处理             |
-| modules        | Boolean          | false         | 启用/禁用 CSS 模块                 |
-| minimize       | Boolean \ Object | false         | 启用/禁用 压缩                     |
-| sourceMap      | Boolean          | false         | 启用/禁用 Sourcemap              |
-| camelCase      | Boolean \ String | false         | 以驼峰化式命名导出类名                  |
-| importLoaders  | Number           | 0             | 在 css-loader 前应用的 loader 的数量 |
-| localIdentName | String           | [hash:base64] | 配置生成的标识符(ident)              |
+| url            | Boolean          | true          | 启用/禁用 url() 处理                        |
+| alias          | Object           | {}            | 创建别名更容易导入一些模块                  |
+| import         | Boolean          | true          | 启用/禁用 @import 处理                      |
+| modules        | Boolean          | false         | 启用/禁用 CSS 模块                          |
+| minimize       | Boolean \ Object | false         | 启用/禁用 压缩                              |
+| sourceMap      | Boolean          | false         | 启用/禁用 Sourcemap                         |
+| camelCase      | Boolean \ String | false         | 以驼峰化式命名导出类名                      |
+| importLoaders  | Number           | 0             | 在 css-loader 前应用的 loader 的数量        |
+| localIdentName | String           | [hash:base64] | 配置生成的标识符(ident)                     |
 
 ### reference
 
@@ -271,7 +274,7 @@ npm install --save-dev babel-loader babel-core babel-preset-env webpack
 }
 ```
 
-- `/\.js$/`会匹配所有`node_modules`中的js导致很慢，所以需要配置`exclude`
+- `/\.js$/`会匹配所有`node_modules`中的 js 导致很慢，所以需要配置`exclude`
 - 配置`cacheDirectory`将转译的结果缓存到文件系统中以提速
 - babel 在每个文件都插入了辅助代码，使代码体积过大
 
@@ -316,4 +319,4 @@ npm install babel-runtime --save
 
 ### reference
 
-[webpack学习笔记-2-file-loader 和 url-loader](https://blog.csdn.net/qq_38652603/article/details/73835153)
+[webpack 学习笔记-2-file-loader 和 url-loader](https://blog.csdn.net/qq_38652603/article/details/73835153)

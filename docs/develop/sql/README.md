@@ -1,3 +1,3 @@
 # SQL
 
-[sql集锦](./sqlcollect.html)
+[sql 集锦](./sqlcollect.html)

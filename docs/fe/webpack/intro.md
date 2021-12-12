@@ -89,12 +89,10 @@ npm install url-loader --save-dev
 可以设置文件的 limit 当小于这个范围就会转为 base64,否则丢给 file-loader
 npm install image-webpack-loader --save-dev
 
-
-
 ## reference
 
-https://github.com/petehunt/webpack-howto
+<https://github.com/petehunt/webpack-howto>
 
-https://blog.zfanw.com/webpack-tutorial/
+<https://blog.zfanw.com/webpack-tutorial/>
 
-https://juejin.im/post/5badd0c5e51d450e4437f07a
+<https://juejin.im/post/5badd0c5e51d450e4437f07a>

@@ -2,11 +2,11 @@
 
 ## 单列布局
 
-header,content,footer统一设置width
+header,content,footer 统一设置 width
 
 <Jsfiddle>//jsfiddle.net/sunven/79c5k6nu/embed/html,result/</Jsfiddle>
 
-header,footer统一设置width
+header,footer 统一设置 width
 
 <Jsfiddle>//jsfiddle.net/sunven/zLa4yhbf/embed/html,result/</Jsfiddle>
 
@@ -40,7 +40,7 @@ header,footer统一设置width
 
 #### 缺点
 
-- center宽度小于left宽度，left会掉到下一行
+- center 宽度小于 left 宽度，left 会掉到下一行
 - 其中一列过高，其他两列不会自动拉高
 
 #### 伪等高布局
@@ -49,9 +49,9 @@ header,footer统一设置width
 
 <Jsfiddle>//jsfiddle.net/sunven/0tfq6hmn/embed/html,result/</Jsfiddle>
 
-- 利用padding-bottom把三列撑到相同“高度”
-- 利用margin-bottom把下边界还原到原处
-- 利用overflow:hidden隐藏“超出”部分
+- 利用 padding-bottom 把三列撑到相同“高度”
+- 利用 margin-bottom 把下边界还原到原处
+- 利用 overflow:hidden 隐藏“超出”部分
 
 ### 双飞翼布局
 
@@ -63,49 +63,47 @@ header,footer统一设置width
 
 ### 绝对定位布局
 
-- 利用position: absolute;布局
+- 利用 position: absolute;布局
 
 ```html
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Layout</title>
+    <style>
+      .layout > div {
+        position: absolute;
+        height: 100px;
+      }
 
-<head>
-  <meta charset="utf-8">
-  <title>Layout</title>
-  <style>
-    .layout>div {
-      position: absolute;
-      height: 100px;
-    }
+      .left {
+        left: 0;
+        width: 300px;
+        background: red;
+      }
 
-    .left {
-      left: 0;
-      width: 300px;
-      background: red;
-    }
+      .center {
+        right: 300px;
+        left: 300px;
+        background: yellow;
+      }
 
-    .center {
-      right: 300px;
-      left: 300px;
-      background: yellow;
-    }
+      .right {
+        right: 0;
+        width: 300px;
+        background: blue;
+      }
+    </style>
+  </head>
 
-    .right {
-      right: 0;
-      width: 300px;
-      background: blue;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="layout">
-    <div class="left">left</div>
-    <div class="center">center</div>
-    <div class="right">right</div>
-  </div>
-</body>
-
+  <body>
+    <div class="layout">
+      <div class="left">left</div>
+      <div class="center">center</div>
+      <div class="right">right</div>
+    </div>
+  </body>
 </html>
 ```
 
@@ -114,40 +112,38 @@ header,footer统一设置width
 ```html
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Layout</title>
+    <style>
+      .layout {
+        display: flex;
+      }
 
-<head>
-  <meta charset="utf-8">
-  <title>Layout</title>
-  <style>
-    .layout {
-      display: flex;
-    }
+      .left {
+        width: 300px;
+        background: red;
+      }
 
-    .left {
-      width: 300px;
-      background: red;
-    }
+      .center {
+        background: yellow;
+        flex: 1;
+      }
 
-    .center {
-      background: yellow;
-      flex: 1;
-    }
+      .right {
+        width: 300px;
+        background: blue;
+      }
+    </style>
+  </head>
 
-    .right {
-      width: 300px;
-      background: blue;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="layout">
-    <div class="left">left</div>
-    <div class="center">center</div>
-    <div class="right">right</div>
-  </div>
-</body>
-
+  <body>
+    <div class="layout">
+      <div class="left">left</div>
+      <div class="center">center</div>
+      <div class="right">right</div>
+    </div>
+  </body>
 </html>
 ```
 
@@ -156,45 +152,43 @@ header,footer统一设置width
 ```html
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Layout</title>
+    <style>
+      .layout {
+        display: table;
+        height: 150px;
+        width: 100%;
+      }
 
-<head>
-  <meta charset="utf-8">
-  <title>Layout</title>
-  <style>
-    .layout {
-      display: table;
-      height: 150px;
-      width: 100%;
-    }
+      .layout > div {
+        display: table-cell;
+      }
 
-    .layout>div {
-      display: table-cell;
-    }
+      .left {
+        width: 300px;
+        background: red;
+      }
 
-    .left {
-      width: 300px;
-      background: red;
-    }
+      .center {
+        background: yellow;
+      }
 
-    .center {
-      background: yellow;
-    }
+      .right {
+        width: 300px;
+        background: blue;
+      }
+    </style>
+  </head>
 
-    .right {
-      width: 300px;
-      background: blue;
-    }
-  </style>
-</head>
-
-<body>
-  <article class="layout">
-    <div class="left">left</div>
-    <div class="center">center</div>
-    <div class="right">right</div>
-  </article>
-</body>
-
+  <body>
+    <article class="layout">
+      <div class="left">left</div>
+      <div class="center">center</div>
+      <div class="right">right</div>
+    </article>
+  </body>
 </html>
 ```
 
@@ -203,46 +197,44 @@ header,footer统一设置width
 
 ### grid
 
-- grid-template-columns设置列的分布
-- grid-template-rows行高
+- grid-template-columns 设置列的分布
+- grid-template-rows 行高
 
 ```html
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Layout</title>
+    <style>
+      .layout {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 300px auto 300px;
+        grid-template-rows: 150px;
+      }
 
-<head>
-  <meta charset="utf-8">
-  <title>Layout</title>
-  <style>
-    .layout {
-      display: grid;
-      width: 100%;
-      grid-template-columns: 300px auto 300px;
-      grid-template-rows: 150px;
-    }
+      .left {
+        background: red;
+      }
 
-    .left {
-      background: red;
-    }
+      .center {
+        background: yellow;
+      }
 
-    .center {
-      background: yellow;
-    }
+      .right {
+        background: blue;
+      }
+    </style>
+  </head>
 
-    .right {
-      background: blue;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="layout">
-    <div class="left">left</div>
-    <div class="center">center</div>
-    <div class="right">right</div>
-  </div>
-</body>
-
+  <body>
+    <div class="layout">
+      <div class="left">left</div>
+      <div class="center">center</div>
+      <div class="right">right</div>
+    </div>
+  </body>
 </html>
 ```
 
@@ -250,187 +242,179 @@ header,footer统一设置width
 
 ### padding-bottom、margin-top
 
-- 利用margin-top来确定footer位置
-- 利用padding-bottom防止footer内容和main内容重合
+- 利用 margin-top 来确定 footer 位置
+- 利用 padding-bottom 防止 footer 内容和 main 内容重合
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Document</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
+      html,
+      body {
+        height: 100%;
+      }
 
-    html,
-    body {
-      height: 100%;
-    }
+      #wrap {
+        min-height: 100%;
+        background: pink;
+        text-align: center;
+        overflow: hidden;
+      }
 
-    #wrap {
-      min-height: 100%;
-      background: pink;
-      text-align: center;
-      overflow: hidden;
-    }
+      #wrap .main {
+        padding-bottom: 50px;
+      }
 
-    #wrap .main {
-      padding-bottom: 50px;
-    }
+      #footer {
+        height: 50px;
+        line-height: 50px;
+        background: deeppink;
+        text-align: center;
+        margin-top: -50px;
+      }
+    </style>
+  </head>
 
-    #footer {
-      height: 50px;
-      line-height: 50px;
-      background: deeppink;
-      text-align: center;
-      margin-top: -50px;
-    }
-  </style>
-</head>
-
-<body>
-  <div id="wrap">
-    <div class="main">
-      <p>1</p>
-      <p>2</p>
-      <p>3</p>
-      <p>4</p>
+  <body>
+    <div id="wrap">
+      <div class="main">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+      </div>
     </div>
-  </div>
-  <div id="footer">footer</div>
-</body>
-
+    <div id="footer">footer</div>
+  </body>
 </html>
 ```
 
 ### calc
 
-- 利用calc计算实际高度
+- 利用 calc 计算实际高度
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .content {
+        min-height: calc(100vh - 50px);
+        background-color: antiquewhite;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Document</title>
-  <style>
-    .content {
-      min-height: calc(100vh - 50px);
-      background-color:antiquewhite;
-    }
+      .footer {
+        height: 50px;
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
 
-    .footer {
-      height: 50px;
-      background-color:aquamarine
-    }
-  </style>
-</head>
-
-<body>
-  <div class="content">
-    content
-  </div>
-  <footer class="footer">footer</footer>
-</body>
-
+  <body>
+    <div class="content">
+      content
+    </div>
+    <footer class="footer">footer</footer>
+  </body>
 </html>
 ```
 
 ### flex
 
-- footer可以根据内容变化高度
+- footer 可以根据内容变化高度
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      html {
+        height: 100%;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Document</title>
-  <style>
-    html {
-      height: 100%;
-    }
+      body {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
 
-    body {
-      min-height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
+      .content {
+        flex: 1;
+        background-color: antiquewhite;
+      }
 
-    .content {
-      flex: 1;
-      background-color: antiquewhite;
-    }
+      .footer {
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
 
-    .footer {
-      background-color: aquamarine;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="content">
-    content
-  </div>
-  <footer class="footer">footer</footer>
-</body>
-
+  <body>
+    <div class="content">
+      content
+    </div>
+    <footer class="footer">footer</footer>
+  </body>
 </html>
 ```
 
 ### grid
 
-- grid-template-rows确定了footer的高度
+- grid-template-rows 确定了 footer 的高度
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      html {
+        height: 100%;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Document</title>
-  <style>
-    html {
-      height: 100%;
-    }
+      body {
+        display: grid;
+        grid-template-rows: 1fr auto;
+        min-height: 100vh;
+      }
 
-    body {
-      display: grid;
-      grid-template-rows: 1fr auto;
-      min-height: 100vh;
-    }
+      .content {
+        background-color: antiquewhite;
+      }
 
-    .content {
-      background-color: antiquewhite;
-    }
+      .footer {
+        background-color: aqua;
+      }
+    </style>
+  </head>
 
-    .footer {
-      background-color: aqua;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="content">
-    content
-  </div>
-  <footer class="footer">footer</footer>
-</body>
-
+  <body>
+    <div class="content">
+      content
+    </div>
+    <footer class="footer">footer</footer>
+  </body>
 </html>
 ```
 

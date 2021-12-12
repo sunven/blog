@@ -50,7 +50,7 @@
 
 ## 编辑类
 
-Ctrl+J 合并选中的多行代码为一行。举个栗子：将多行格式的CSS属性合并为一行。
+Ctrl+J 合并选中的多行代码为一行。举个栗子：将多行格式的 CSS 属性合并为一行。
 
 Ctrl+Shift+D 复制光标所在整行，插入到下一行。
 
@@ -108,19 +108,19 @@ Ctrl+PageDown 向左切换当前窗口的标签页。
 
 Ctrl+PageUp 向右切换当前窗口的标签页。
 
-Alt+Shift+1 窗口分屏，恢复默认1屏（非小键盘的数字）
+Alt+Shift+1 窗口分屏，恢复默认 1 屏（非小键盘的数字）
 
-Alt+Shift+2 左右分屏-2列
+Alt+Shift+2 左右分屏-2 列
 
-Alt+Shift+3 左右分屏-3列
+Alt+Shift+3 左右分屏-3 列
 
-Alt+Shift+4 左右分屏-4列
+Alt+Shift+4 左右分屏-4 列
 
-Alt+Shift+5 等分4屏
+Alt+Shift+5 等分 4 屏
 
-Alt+Shift+8 垂直分屏-2屏
+Alt+Shift+8 垂直分屏-2 屏
 
-Alt+Shift+9 垂直分屏-3屏
+Alt+Shift+9 垂直分屏-3 屏
 
 Ctrl+K+B 开启/关闭侧边栏。
 

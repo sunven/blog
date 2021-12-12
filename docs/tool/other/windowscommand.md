@@ -4,6 +4,6 @@
 
 `netstat -ano | findstr 3306`
 
-查看PID对应的进程
+查看 PID 对应的进程
 
 `tasklist|findstr "12448"`

@@ -1,18 +1,18 @@
 # ABP-Module
 
-## 什么是Module？
+## 什么是 Module？
 
-Module就是模块化的设计思想。开发人员可以将自定义的功能以模块的形式集成到项目中。具体的功能也可以设计成一个单独的模块
+Module 就是模块化的设计思想。开发人员可以将自定义的功能以模块的形式集成到项目中。具体的功能也可以设计成一个单独的模块
 
 ## AbpModule
 
-AbpModule是所有Module的基类。
+AbpModule 是所有 Module 的基类。
 
-## ABP如何发现Moudle
+## ABP 如何发现 Moudle
 
 ### 1. 程序入口调用：AbpBootstrapper.Initialize()
 
-### 2. 通过入口的Moudle获取到所有互相依赖的Moudle
+### 2. 通过入口的 Moudle 获取到所有互相依赖的 Moudle
 
 ```C#
 private static void AddModuleAndDependenciesRecursively(List<Type> modules, Type module)
@@ -64,22 +64,22 @@ public static List<Type> FindDependedModuleTypes(Type moduleType)
 }
 ```
 
-### 3. 注册所有Moudle
+### 3. 注册所有 Moudle
 
 ```C#
 RegisterModules(moduleTypes);
 ```
 
-### 4. 创建所有Module的描述信息
+### 4. 创建所有 Module 的描述信息
 
 ```C#
 CreateModules(moduleTypes, plugInModuleTypes);
 ```
 
-- AbpModule的基本信息放在AbpModuleInfo类中
-- 多个AbpModuleInfo放在AbpModuleCollection集合中
+- AbpModule 的基本信息放在 AbpModuleInfo 类中
+- 多个 AbpModuleInfo 放在 AbpModuleCollection 集合中
 
-### 5. 初始化所有Moudle
+### 5. 初始化所有 Moudle
 
 ```C#
 public virtual void StartModules()
@@ -92,16 +92,16 @@ public virtual void StartModules()
 ```
 
 > 由于模块有依赖关系存在，所以初始化之前确定好初始化顺序，即：被依赖的模块要在依赖的模块之前初始化
-至此所有Moudle都被Abp框架集成了
+> 至此所有 Moudle 都被 Abp 框架集成了
 
-## 如何把自己Moudle中的类和接口注册到abp框架中
+## 如何把自己 Moudle 中的类和接口注册到 abp 框架中
 
-比如AbpWebMvcModule这个模块，就是如何把Controller注册到Abp框架中
+比如 AbpWebMvcModule 这个模块，就是如何把 Controller 注册到 Abp 框架中
 
-每个模块都有PreInitialize 和 Initialize方法
+每个模块都有 PreInitialize 和 Initialize 方法
 
-1. 在PreInitialize添加依赖关系
-2. 在Initialize替换ControllerFactory
+1. 在 PreInitialize 添加依赖关系
+2. 在 Initialize 替换 ControllerFactory
 
 ```C#
 /// <summary>
@@ -133,7 +133,7 @@ public class AbpWebMvcModule : AbpModule
 }
 ```
 
-依赖关系表明：注册所有Controller
+依赖关系表明：注册所有 Controller
 
 ```C#
 /// <summary>
@@ -155,11 +155,11 @@ public class ControllerConventionalRegistrar : IConventionalDependencyRegistrar
 }
 ```
 
-WindsorControllerFactory将替代DefaultControllerFactory
+WindsorControllerFactory 将替代 DefaultControllerFactory
 
 ![20171216151343425120403.png](http://7xk2dp.com1.z0.glb.clouddn.com/20171216151343425120403.png)
 
-从IOC容器中解析出Controller
+从 IOC 容器中解析出 Controller
 
 ```C#
 /// <summary>
@@ -216,7 +216,7 @@ public class WindsorControllerFactory : DefaultControllerFactory
 
 ### 2. Initialize
 
-初始化：这个方法一般是用来依赖注入的，一般调用IocManager.RegisterAssemblyByConvention实现。
+初始化：这个方法一般是用来依赖注入的，一般调用 IocManager.RegisterAssemblyByConvention 实现。
 
 ### 3. PostInitialize
 
@@ -228,7 +228,7 @@ public class WindsorControllerFactory : DefaultControllerFactory
 
 ## 模块依赖
 
-Abp框架会自动解析模块之间的依赖关系
+Abp 框架会自动解析模块之间的依赖关系
 
 ```C#
 [DependsOn(typeof(AbpWebCommonModule))]
@@ -244,7 +244,7 @@ public class AbpWebModule : AbpModule
 
 ```
 
-AbpWebModule依赖于AbpWebCommonModule，AbpWebCommonModule会在AbpWebModule之前初始化
+AbpWebModule 依赖于 AbpWebCommonModule，AbpWebCommonModule 会在 AbpWebModule 之前初始化
 
 这两个模块启动的顺序为：
 
@@ -260,13 +260,13 @@ AbpWebModule.PostInitialize();
 
 ```
 
-> ABP先完成所有Module的PreInitialize，接着再执行所有Module的Initialize，最后执行PostInitialize。不是执行完一个Module的这三个方法，再去执行下一个Module的这三个方法
+> ABP 先完成所有 Module 的 PreInitialize，接着再执行所有 Module 的 Initialize，最后执行 PostInitialize。不是执行完一个 Module 的这三个方法，再去执行下一个 Module 的这三个方法
 
 ## 调用依赖模块
 
-### 在AbpWebModule中如何调用AbpWebCommonModule中的方法？
+### 在 AbpWebModule 中如何调用 AbpWebCommonModule 中的方法？
 
-在AbpWebModule中：
+在 AbpWebModule 中：
 
 ```C#
 private readonly abpWebCommonModule _abpWebCommonModule;
@@ -283,9 +283,9 @@ public override void PreInitialize()
 }
 ```
 
-## abp底层框架的一些功能模块如何注册？
+## abp 底层框架的一些功能模块如何注册？
 
-底层的模块都会依赖于AbpKernelModule，AbpKernelModule中主要初始化各种拦截器，如审计日志、多语言、工作单元拦截器等。
+底层的模块都会依赖于 AbpKernelModule，AbpKernelModule 中主要初始化各种拦截器，如审计日志、多语言、工作单元拦截器等。
 
 ```C#
 public override void PreInitialize()
@@ -306,4 +306,4 @@ public override void PreInitialize()
 
 ## Reference
 
-[ABP源码分析三：ABP Module](http://www.cnblogs.com/1zhk/p/5281458.html)
+[ABP 源码分析三：ABP Module](http://www.cnblogs.com/1zhk/p/5281458.html)

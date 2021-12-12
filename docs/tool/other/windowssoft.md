@@ -110,11 +110,7 @@
 
 [https://boostnote.io/](https://boostnote.io/)
 
-
-
 [PowerToys](https://github.com/microsoft/PowerToys)
-
-
 
 ## 七 破解激活
 
@@ -124,7 +120,7 @@
 
 ### CCleaner
 
-先下载CCleaner Pro 5.22.5724官方中文版，默认安装，断网，用下面激活码激活。
+先下载 CCleaner Pro 5.22.5724 官方中文版，默认安装，断网，用下面激活码激活。
 注册名任意，激活后要在设置中取消联网自动更新检查。
 [http://download.piriform.com/ccsetup522pro.exe](http://download.piriform.com/ccsetup522pro.exe)
 注册码：断网注册，输入注册码

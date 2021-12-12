@@ -1,6 +1,6 @@
 # Class 命名
 
-## 常见class关键词
+## 常见 class 关键词
 
 - 布局类：header, footer, container, main, content, aside, page, section
 - 包裹类：wrap, inner
@@ -25,9 +25,9 @@
 ## 制定简单规则
 
 - 以中划线连接，如.item-img
-- 使用两个中划线表示特殊化，如.item-img.item-img--small表示在.item-img的基础上特殊化
+- 使用两个中划线表示特殊化，如.item-img.item-img--small 表示在.item-img 的基础上特殊化
 - 状态类直接使用单词，参考上面的关键词，如.active, .checked
-- 图标以icon-为前缀（字体图标采用.icon-font.i-name方式命名）。
+- 图标以 icon-为前缀（字体图标采用.icon-font.i-name 方式命名）。
 - 模块采用关键词命名，如.slide, .modal, .tips, .tabs，特殊化采用上面两个中划线表，如.imgslide--full, .modal--pay, .tips--up, .tabs--simple
-- js操作的类统一加上js-前缀
-- 不要超过四个class组合使用，如.a.b.c.d
+- js 操作的类统一加上 js-前缀
+- 不要超过四个 class 组合使用，如.a.b.c.d

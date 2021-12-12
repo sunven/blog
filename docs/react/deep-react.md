@@ -1,15 +1,13 @@
-
-
-# 深入React
+# 深入 React
 
 ## requestIdleCallback
 
 ## JSX
 
-
-借bable将jsx转换为_createElement函数_
+借 bable 将 jsx 转换为*createElement 函数*
 `<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>`
-先看看bable将jsx转成了什么
+先看看 bable 将 jsx 转成了什么
+
 ```javascript
 <script type="text/babel">
   const element = ()=>(
@@ -20,20 +18,33 @@
 );
 console.log(element.toString());
 ```
+
 打印结果如下：
+
 ```javascript
 function element() {
-  return /*#__PURE__*/React.createElement("div", {
-    style: "background: yellowgreen"
-  }, /*#__PURE__*/React.createElement("h1", null, "Bable"), /*#__PURE__*/React.createElement("h2", {
-    style: "text-align:center"
-  }, "Yes"));
+  return /*#__PURE__*/ React.createElement(
+    'div',
+    {
+      style: 'background: yellowgreen',
+    },
+    /*#__PURE__*/ React.createElement('h1', null, 'Bable'),
+    /*#__PURE__*/ React.createElement(
+      'h2',
+      {
+        style: 'text-align:center',
+      },
+      'Yes'
+    )
+  )
 }
 ```
-React.createElement是我么熟悉的React中的方法。
-如果能替换React.createElement，就能自己定义如何从jsx生产dom节点了。
 
-定义createElement函数
+React.createElement 是我么熟悉的 React 中的方法。
+如果能替换 React.createElement，就能自己定义如何从 jsx 生产 dom 节点了。
+
+定义 createElement 函数
+
 ```javascript
 function createElement(type, props, ...children) {
   return {
@@ -41,80 +52,96 @@ function createElement(type, props, ...children) {
     props: {
       ...props,
       children: children.map(child =>
-        typeof child === "object" ? child : createTextElement(child)
-      )
-    }
-  };
+        typeof child === 'object' ? child : createTextElement(child)
+      ),
+    },
+  }
 }
 
 function createTextElement(text) {
   return {
-    type: "TEXT_ELEMENT",
+    type: 'TEXT_ELEMENT',
     props: {
       nodeValue: text,
-      children: []
-    }
-  };
+      children: [],
+    },
+  }
 }
 ```
-定义render函数
+
+定义 render 函数
+
 ```javascript
 function render(element, container) {
   const dom =
-    element.type == "TEXT_ELEMENT"
-      ? document.createTextNode("")
-      : document.createElement(element.type);
-  const isProperty = key => key !== "children";
+    element.type == 'TEXT_ELEMENT'
+      ? document.createTextNode('')
+      : document.createElement(element.type)
+  const isProperty = key => key !== 'children'
   Object.keys(element.props)
     .filter(isProperty)
     .forEach(name => {
-      dom[name] = element.props[name];
-    });
-  element.props.children.forEach(child => render(child, dom));
-  container.appendChild(dom);
+      dom[name] = element.props[name]
+    })
+  element.props.children.forEach(child => render(child, dom))
+  container.appendChild(dom)
 }
 ```
-如何将createElement替换自己实现的呢？
+
+如何将 createElement 替换自己实现的呢？
 注释标记
 `_/** @jsx Veact.createElement */_`
+
 ```javascript
 const Veact = {
   createElement,
-  render
+  render,
 }
 
 /** @jsx Veact.createElement */
-const element =()=> (
+const element = () => (
   <div style="background: yellowgreen">
     <h1>Bable</h1>
     <h2 style="text-align:center">Yes</h2>
   </div>
-);
-console.log(element.toString());
+)
+console.log(element.toString())
 ```
-这样解析element时，会自动调用Veact.createElement
+
+这样解析 element 时，会自动调用 Veact.createElement
 打印结果如下
+
 ```javascript
 function element() {
-  return Veact.createElement("div", {
-    style: "background: yellowgreen"
-  }, Veact.createElement("h1", null, "Bable"), Veact.createElement("h2", {
-    style: "text-align:center"
-  }, "Yes"));
+  return Veact.createElement(
+    'div',
+    {
+      style: 'background: yellowgreen',
+    },
+    Veact.createElement('h1', null, 'Bable'),
+    Veact.createElement(
+      'h2',
+      {
+        style: 'text-align:center',
+      },
+      'Yes'
+    )
+  )
 }
 ```
+
 测试：
+
 ```javascript
-const container = document.getElementById("app");
-Veact.render(element, container);
+const container = document.getElementById('app')
+Veact.render(element, container)
 ```
 
-
 ## Fiber
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/85676/1616687683512-79b744ca-c449-443c-9507-b908cb885bec.png)
-什么是fiber
-一种数据结构，为了使查找下一个工作单元变得容易。这就是为什么每个fiber都链接到其第一个子节点，下一个兄弟姐妹和父节点
 
+![image.png](https://cdn.nlark.com/yuque/0/2021/png/85676/1616687683512-79b744ca-c449-443c-9507-b908cb885bec.png)
+什么是 fiber
+一种数据结构，为了使查找下一个工作单元变得容易。这就是为什么每个 fiber 都链接到其第一个子节点，下一个兄弟姐妹和父节点
 
 ```javascript
 Didact.render(
@@ -129,33 +156,26 @@ Didact.render(
 )
 ```
 
+为每个元素创建一个 fiber
+每个 fiber 就是一个工作单元
 
-为每个元素创建一个fiber
-每个fiber就是一个工作单元
+在 render 中，我们将创建根 fiber 并将其设置为 nextUnitOfWork。剩下的工作将在 performUnitOfWork 功能上进行，我们将为每个 fiber 做三件事：
 
-
-在render中，我们将创建根fiber并将其设置为nextUnitOfWork。剩下的工作将在performUnitOfWork功能上进行，我们将为每个fiber做三件事：
-
-
-1. 将元素添加到DOM
-1. 为元素的子代创建fiber
+1. 将元素添加到 DOM
+1. 为元素的子代创建 fiber
 1. 选择下一个工作单元
 
-
-
-当我们完成对fiber的工作时，如果它有一个孩子，那么fiber将是下一个工作单元
+当我们完成对 fiber 的工作时，如果它有一个孩子，那么 fiber 将是下一个工作单元
 例如：当我们完成`div fiber`工作时，下一个工作单元将是`h1`fiber
 
+如果 fiber 没有 child，则将 sibling 用作下一个工作单元。
 
-如果fiber没有child，则将sibling用作下一个工作单元。
+例如，p 光纤没有，child 因此 a 在完成后我们将其移至 fiber
+如果 fiber 没有子节点和兄弟节点，我们转到“叔叔”：`sibling`的`parent`。像`a`和`h2`纤维一样的例子
 
-
-例如，p光纤没有，child因此a在完成后我们将其移至fiber
-如果fiber没有子节点和兄弟节点，我们转到“叔叔”：`sibling`的`parent`。像`a`和`h2`纤维一样的例子
-
-
-如果`parent`不含a `sibling`，我们将继续遍历`parent`，直到找到带有a的`sibling`或到达根为止。
+如果`parent`不含 a `sibling`，我们将继续遍历`parent`，直到找到带有 a 的`sibling`或到达根为止。
 如果我们已经扎根，则意味着我们已经完成了为此的所有工作`render`
+
 ```javascript
 <script type="text/babel">
   function createElement(type, props, ...children) {
@@ -323,7 +343,9 @@ Didact.render(
   Veact.render(element(), container);
 </script>
 ```
+
 ## 更新
+
 ```javascript
 <script type="text/babel">
   function createElement(type, props, ...children) {
@@ -619,19 +641,14 @@ Didact.render(
 </script>
 ```
 
-
-- 如果旧的光纤和新的元素具有相同的类型，我们可以保留DOM节点并仅使用新的道具进行更新
-- 如果类型不同并且有一个新元素，则意味着我们需要创建一个新的DOM节点
+- 如果旧的光纤和新的元素具有相同的类型，我们可以保留 DOM 节点并仅使用新的道具进行更新
+- 如果类型不同并且有一个新元素，则意味着我们需要创建一个新的 DOM 节点
 - 如果类型不同并且有旧光纤，我们需要删除旧节点
-
-
 
 ## 功能组件
 
-- 功能组件中的光纤没有DOM节点
+- 功能组件中的光纤没有 DOM 节点
 - 孩子们来自运行该功能，而不是直接从 props
-
-
 
 ```javascript
 <script type="text/babel">
@@ -1017,7 +1034,6 @@ Didact.render(
 
 ## reference
 
-[React技术揭秘](https://react.iamkasong.com/)
+[React 技术揭秘](https://react.iamkasong.com/)
 
 [Build your own React](https://pomb.us/build-your-own-react/)
-

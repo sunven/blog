@@ -1,16 +1,14 @@
-
-
 # Flutter
 
 ## env
 
 ```sh
-# 安装  
+# 安装
 mkdir ~/gitee && cd ~/gitee
 git clone https://gitee.com/mirrors/Flutter.git
 # git remote remove origin
-# git remote add origin https://github.com/flutter/flutter.git  
-  
+# git remote add origin https://github.com/flutter/flutter.git
+
 # 安装dart
 ./bin/dart --version
 
@@ -19,24 +17,20 @@ export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 export FLUTTER_HOME=~/gitee/Flutter
 export DART_HOME=$FLUTTER_HOME/cache/bin/cache/dart-sdk
-export PATH=$FLUTTER_HOME/bin:$DART_HOME/bin:$PATH      
-  
+export PATH=$FLUTTER_HOME/bin:$DART_HOME/bin:$PATH
+
 # 查看 dart & flutter 版本
-dart --version  
+dart --version
 flutter --version
-# 检查 flutter  
+# 检查 flutter
 flutter doctor
 # flutter 升级
 flutter upgrade
 ```
 
-
-
 环境变量：~/.bash_profile
 
 刷新环境变量：source ~/.bash_profile
-
-
 
 ## Building a web application with Flutter
 
@@ -46,21 +40,21 @@ flutter upgrade
 git clone https://github.com/flutter/flutter
 ```
 
-如果flutter项目不是master分支切换至master分支
+如果 flutter 项目不是 master 分支切换至 master 分支
 
 ```
 flutter channel
 ```
 
-或使用git切换分支
+或使用 git 切换分支
 
-### 更新sdk
+### 更新 sdk
 
 ```
 flutter upgrade
 ```
 
-### 启用web工具
+### 启用 web 工具
 
 ```
 flutter config --enable-web

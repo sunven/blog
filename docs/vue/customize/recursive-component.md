@@ -98,54 +98,54 @@ export default {
 ## data
 
 ```javascript
-[
+;[
   {
-    id: "00",
-    text: "中国",
+    id: '00',
+    text: '中国',
     children: [
       {
-        id: "01",
-        text: "湖北",
+        id: '01',
+        text: '湖北',
         children: [
           {
-            id: "0101",
-            text: "武汉",
+            id: '0101',
+            text: '武汉',
             children: [
-              { id: "010101", text: "光谷" },
-              { id: "010102", text: "江夏" }
-            ]
+              { id: '010101', text: '光谷' },
+              { id: '010102', text: '江夏' },
+            ],
           },
           {
-            id: "0102",
-            text: "宜昌",
+            id: '0102',
+            text: '宜昌',
             children: [
               {
-                id: "010201",
-                text: "远安",
-                children: [{ id: "01020101", text: "河口" }]
+                id: '010201',
+                text: '远安',
+                children: [{ id: '01020101', text: '河口' }],
               },
-              { id: "010202", text: "当阳" }
-            ]
-          }
-        ]
+              { id: '010202', text: '当阳' },
+            ],
+          },
+        ],
       },
       {
-        id: "02",
-        text: "上海",
+        id: '02',
+        text: '上海',
         children: [
-          { id: "0201", text: "黄埔" },
+          { id: '0201', text: '黄埔' },
           {
-            id: "0202",
-            text: "长宁",
+            id: '0202',
+            text: '长宁',
             children: [
-              { id: "020101", text: "金钟路" },
-              { id: "020202", text: "北新泾" }
-            ]
-          }
-        ]
+              { id: '020101', text: '金钟路' },
+              { id: '020202', text: '北新泾' },
+            ],
+          },
+        ],
       },
-      { id: "03", text: "北京" }
-    ]
-  }
+      { id: '03', text: '北京' },
+    ],
+  },
 ]
 ```

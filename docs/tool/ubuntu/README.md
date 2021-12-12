@@ -2,7 +2,7 @@
 
 [Ubuntu 常用命令](./basecommand.html)
 
-## 在ubuntu服务器上配置nodejs
+## 在 ubuntu 服务器上配置 nodejs
 
 ```
 curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -

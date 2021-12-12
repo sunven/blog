@@ -55,4 +55,4 @@
 
 示例：
 
-http://linxz.github.io/tianyizone/selector_tree.html
+<http://linxz.github.io/tianyizone/selector_tree.html>

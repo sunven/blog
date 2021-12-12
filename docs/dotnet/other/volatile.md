@@ -20,7 +20,7 @@ private static void Main()
 }
 ```
 
-**Release下编译**
+**Release 下编译**
 
 ## reference
 

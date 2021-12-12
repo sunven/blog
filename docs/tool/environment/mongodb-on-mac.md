@@ -2,14 +2,14 @@
 
 ## 下载
 
-https://www.mongodb.com/try/download/community
+<https://www.mongodb.com/try/download/community>
 
 ## 安装
 
 ```bash
 # 1. 解压安装包：
-tar -zxvf mongodb-macos-x86_64-4.4.3.tgz 
-# 2. 将解压后的文件放到指定路径： 
+tar -zxvf mongodb-macos-x86_64-4.4.3.tgz
+# 2. 将解压后的文件放到指定路径：
 mv mongodb-macos-x86_64-4.4.3 /usr/local/mongodb
 # 3. 创建数据存放路径
 mkdir -p /usr/local/var/mongodb
@@ -54,4 +54,4 @@ mongod --config /usr/local/etc/mongod.conf
 
 ## 可视化工具
 
-https://studio3t.com/
+<https://studio3t.com/>

@@ -18,6 +18,6 @@
 
 ## 使用技巧
 
-提高ReSharper和Visual Studio速度
+提高 ReSharper 和 Visual Studio 速度
 
 [Speeding up ReSharper (and Visual Studio)](https://www.jetbrains.com/help/resharper/Speeding_Up_ReSharper.html)

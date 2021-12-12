@@ -1,4 +1,4 @@
-#   高等数学（工本）
+# 高等数学（工本）
 
 ## 空间解析几何与向量代数
 
@@ -10,7 +10,7 @@ $$
 \end{align}
 $$
 
-### 加法 
+### 加法
 
 $$
 \begin{align}
@@ -34,8 +34,6 @@ $$
 \alpha \cdot \beta=|\alpha| |\beta| \cos\varphi \\
 若 \alpha 与 \beta垂直，则\alpha \cdot \beta=0
 $$
-
-
 
 #### 数量积的坐标表示
 
@@ -273,15 +271,11 @@ $$
 \mathop{\iint}_D(af(x,y) \pm bg(x,y))d\sigma=a\mathop{\iint}_Df(x,y)d\sigma \pm b\mathop{\iint}_Dg(x,y)d\sigma
 $$
 
-
-
 #### 性质三
 
 $$
 \mathop{\iint}_D f(x,y)d\sigma=\mathop{\iint}_{D_1}f(x,y)d\sigma+\mathop{\iint}_{D_2}f(x,y)d\sigma
 $$
-
-
 
 #### 性质四
 
@@ -294,8 +288,6 @@ $$
 |\mathop{\iint}_D f(x,y)d\sigma| \leq \mathop{\iint}_D |f(x,y)|d\sigma
 $$
 
-
-
 #### 性质五
 
 $$
@@ -303,16 +295,12 @@ $$
 则 m|D| \leq \mathop{\iint}_D f(x,y)d\sigma \leq M|D| \quad (|D|表示区域D的面积)
 $$
 
-
-
 #### 性质六
 
 $$
 \mathop{\iint}_D f(x,y)d\sigma = f(\xi,\eta)|D| \\
 当f(x,y)=1时，有\mathop{\iint}_D f(x,y)d\sigma=\mathop{\iint}_D 1d\sigma =\mathop{\iint}_D d\sigma = |D|
 $$
-
-
 
 #### 直角坐标下的二重积分
 
@@ -399,7 +387,7 @@ $$
 \int_Lf(x,y)\,ds=\int_{\alpha}^{\beta}f(\psi(t),\varphi(t))\sqrt{(\psi'(t))^2+\varphi'(t)}dt
 $$
 
-####  极坐标
+#### 极坐标
 
 $$
 L:r=r(\theta),\theta_0 \leq \theta \leq \theta_1 \\
@@ -410,8 +398,6 @@ y=r(\theta)\sin\theta
 ds=\sqrt{(x^{'}(\theta))^2+(y^{'}(\theta))^2}d\theta \\
 \int_Lf(x,y)ds=\int_{\theta_0}^{\theta_1}f(r(\theta)\cos\theta,r(\theta)\sin\theta)\sqrt{r^2(\theta)+(r^{'}(\theta))^2}d\theta
 $$
-
-
 
 ### 对坐标的曲线积分
 
@@ -473,8 +459,6 @@ u+x\frac{du}{dx}=\varphi(u) \\
 x\frac{du}{dx}=\varphi(u) -u \\
 $$
 
-
-
 #### 一阶线性微分方程
 
 $$
@@ -528,8 +512,6 @@ s_n=\sum_{k=1}^n u_k =u_1+u_2+u_3+\cdots+u_n \\
 若存在常数s使得:s=\lim_{}s_n，则称该级数收敛，否则发散
 $$
 
-
-
 ### 数项级数的基本性质
 
 #### 性质一
@@ -572,9 +554,7 @@ $$
 \sum_{n=1}^\infty \frac{1}{n} 发散
 $$
 
-
-
-#### P级数
+#### P 级数
 
 $$
 \sum_{n=1}^\infty \frac{1}{n^p} (p>0) \\
@@ -593,8 +573,6 @@ $$
 若\sum_{n=1}^\infty |u_n| 收敛，则称\sum_{n=1}^\infty u_n绝对收敛 \\
 若\sum_{n=1}^\infty u_n 收敛,而\sum_{n=1}^\infty |u_n| 发散，则称\sum_{n=1}^\infty u_n条件收敛
 $$
-
-
 
 ### 审敛法
 
@@ -649,12 +627,10 @@ $$
 若级数\sum_{n=1}^\infty u_n绝对收敛，则级数\sum_{n=1}^\infty u_n必收敛
 $$
 
-
-
 $$
 \begin{align}
 & 1 \\
-\end{align} 
+\end{align}
 $$
 
-​        
+​

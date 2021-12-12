@@ -4,9 +4,9 @@
 
 ### 1. 离线版
 
-[mingw-w64](https://sourceforge.net/projects/mingw-w64/files/Toolchains targetting Win64/Personal Builds/mingw-builds/8.1.0/threads-posix/sjlj/x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0.7z/download)
+[mingw-w64](<https://sourceforge.net/projects/mingw-w64/files/Toolchains> targetting Win64/Personal Builds/mingw-builds/8.1.0/threads-posix/sjlj/x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0.7z/download)
 
-### 2. 将bin添加到环境变量
+### 2. 将 bin 添加到环境变量
 
 ```
 setx path "%path%;D:\mingw64\bin"

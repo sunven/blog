@@ -4,34 +4,35 @@
 
 实现一个符合 Promises/A+ 规范的 Promise
 
-https://promisesaplus.com/
+<https://promisesaplus.com/>
 
 ## 设计思想
 
-- 需要做的事儿交给promise
-  - promise提供resolve，reject，用这两个函数告诉promise事情的结果
+- 需要做的事儿交给 promise
 
-- 做完后干什么交给promise.then
+  - promise 提供 resolve，reject，用这两个函数告诉 promise 事情的结果
+
+- 做完后干什么交给 promise.then
 
 ## 规范解读
 
-### Promise构造函数
+### Promise 构造函数
 
 Promise 必须处于以下三种状态之一：
 
 #### pending
 
-- 当处于pending状态时，可以转换到fulfilled或rejected状态
+- 当处于 pending 状态时，可以转换到 fulfilled 或 rejected 状态
 
-#### fulfilled 
+#### fulfilled
 
-- 当处于fulfilled状态时，不可以转换到其它任何状态
+- 当处于 fulfilled 状态时，不可以转换到其它任何状态
 
 - 必须有一个不能改变的值
 
 #### rejected
 
-- 当处于rejected状态时，不可以转换到其它任何状态
+- 当处于 rejected 状态时，不可以转换到其它任何状态
 - 必须有一个不能改变的理由
 
 #### 流程图
@@ -40,7 +41,7 @@ Promise 必须处于以下三种状态之一：
 
 ### then
 
-promise必须提供一个`then`方法来访问其完成的值或拒绝的原因。
+promise 必须提供一个`then`方法来访问其完成的值或拒绝的原因。
 
 一个 promise 的`then`方法接受两个参数：
 
@@ -70,17 +71,17 @@ promise.then(onFulfilled, onRejected)
 
   3. 它不能被多次调用。
 
-- `onFulfilled`或者`onRejected`在执行上下文堆栈仅包含平台代码之前不得调用。【注1】
+- `onFulfilled`或者`onRejected`在执行上下文堆栈仅包含平台代码之前不得调用。【注 1】
 
-- `onFulfilled`并且`onRejected`必须作为函数调用（即没有`this`值）。【注2】
+- `onFulfilled`并且`onRejected`必须作为函数调用（即没有`this`值）。【注 2】
 
-- `then`可以在同一个promise上多次调用。
+- `then`可以在同一个 promise 上多次调用。
 
   1. 如果`promise`完成，则所有相应的`onFulfilled`回调必须按照它们对的原始调用的顺序执行`then`。
 
   2. 如果`promise`被拒绝，则所有相应的`onRejected`回调必须按照它们对的原始调用的顺序执行`then`。
 
-- `then`必须返回一个承诺 。【注3】
+- `then`必须返回一个承诺 。【注 3】
 
   1. 如果`onFulfilled`或`onRejected`返回值`x`，则运行承诺解析程序`[[Resolve]](promise2, x)`。
 
@@ -89,7 +90,7 @@ promise.then(onFulfilled, onRejected)
   4. 如果`onRejected`不是函数并被`promise1`拒绝，则`promise2`必须以与相同的原因被拒绝`promise1`
 
   ```javascript
-  promise2 = promise1.then(onFulfilled, onRejected);
+  promise2 = promise1.then(onFulfilled, onRejected)
   ```
 
 #### 流程图
@@ -98,9 +99,9 @@ promise.then(onFulfilled, onRejected)
 
 ### Promise 解决程序
 
-then中onFulfilled或onRejected的返回值x，可能是promise,可能是个thenable,也可能是其他东西，就需要Promise 解决程序来处理具体情况，假设Promise 解决程序它叫`promiseResolutionProcedure`
+then 中 onFulfilled 或 onRejected 的返回值 x，可能是 promise,可能是个 thenable,也可能是其他东西，就需要 Promise 解决程序来处理具体情况，假设 Promise 解决程序它叫`promiseResolutionProcedure`
 
-- `thenable`是含有then方法的对象或函数
+- `thenable`是含有 then 方法的对象或函数
 
 ```javascript
 function promiseResolutionProcedure(promise, x, resolve, reject)
@@ -110,7 +111,7 @@ function promiseResolutionProcedure(promise, x, resolve, reject)
 
 - 如果`promise`和`x`引用同一个对象，`promise`则以 `TypeError`为理由拒绝。
 
-- 如果`x`是promise，则采用其状态 ：【注4】
+- 如果`x`是 promise，则采用其状态 ：【注 4】
 
   1. 如果`x`处于挂起状态，则`promise`必须保持挂起状态，直到`x`完成或被拒绝。
 
@@ -120,11 +121,11 @@ function promiseResolutionProcedure(promise, x, resolve, reject)
 
 - 如果`x`是一个对象或函数，
 
-  1. 取`then`为`x.then`。【注5】
+  1. 取`then`为`x.then`。【注 5】
 
   2. 如果检索属性`x.then`时抛出的异常`e`，则`promise`用`e`作为拒绝原因拒绝。
 
-  3. 如果`then`是一个函数，那么用x调用它，第一个参数为`resolvePromise`，第二个参数为`rejectPromise`，即：`then.call(x,resolvePromise,rejectPromise)`,其中：
+  3. 如果`then`是一个函数，那么用 x 调用它，第一个参数为`resolvePromise`，第二个参数为`rejectPromise`，即：`then.call(x,resolvePromise,rejectPromise)`,其中：
 
      1. 假设 `resolvePromise` 使用一个名为 y 的值来调用，则运行`promiseResolutionProcedure(promise2, y, resolve, reject)`
 
@@ -139,7 +140,7 @@ function promiseResolutionProcedure(promise, x, resolve, reject)
 
 - 如果`x`不是一个对象或函数，则`promise`用`x`作为最终值完成。
 
-如果一个promise 链式调用了多次then，promiseResolutionProcedure的递归的性质可能会再次调用promiseResolutionProcedure，导致无限递归。鼓励（但不是必需）实现检测这种递归，并以信息性的TypeError作为拒绝承诺的原因。【注6】
+如果一个 promise 链式调用了多次 then，promiseResolutionProcedure 的递归的性质可能会再次调用 promiseResolutionProcedure，导致无限递归。鼓励（但不是必需）实现检测这种递归，并以信息性的 TypeError 作为拒绝承诺的原因。【注 6】
 
 #### 流程图
 
@@ -147,12 +148,12 @@ function promiseResolutionProcedure(promise, x, resolve, reject)
 
 ### 注解
 
-1. 这里的“平台代码”是指引擎、环境和promise实现代码。在实践中，这个要求确保`onFulfilled`和`onRejected`异步执行，在`then`调用事件循环之后，并使用新的堆栈。这可以通过“宏任务”机制（例如[`setTimeout`](https://html.spec.whatwg.org/multipage/webappapis.html#timers)或[`setImmediate`](https://dvcs.w3.org/hg/webperf/raw-file/tip/specs/setImmediate/Overview.html#processingmodel)）或“微任务”机制（例如[`MutationObserver`](https://dom.spec.whatwg.org/#interface-mutationobserver)或 ）来实现[`process.nextTick`](https://nodejs.org/api/process.html#process_process_nexttick_callback)。由于promise实现被认为是平台代码，它本身可能包含一个任务调度队列或“trampoline”，在其中调用处理程序。
+1. 这里的“平台代码”是指引擎、环境和 promise 实现代码。在实践中，这个要求确保`onFulfilled`和`onRejected`异步执行，在`then`调用事件循环之后，并使用新的堆栈。这可以通过“宏任务”机制（例如[`setTimeout`](https://html.spec.whatwg.org/multipage/webappapis.html#timers)或[`setImmediate`](https://dvcs.w3.org/hg/webperf/raw-file/tip/specs/setImmediate/Overview.html#processingmodel)）或“微任务”机制（例如[`MutationObserver`](https://dom.spec.whatwg.org/#interface-mutationobserver)或 ）来实现[`process.nextTick`](https://nodejs.org/api/process.html#process_process_nexttick_callback)。由于 promise 实现被认为是平台代码，它本身可能包含一个任务调度队列或“trampoline”，在其中调用处理程序。
 2. 也就是说，在严格模式下`this`会是`undefined`；在非严格模式下，它将是全局对象。
 3. 实现可以允许`promise2 === promise1`，只要实现满足所有要求。每个实现都应该记录它是否可以产生`promise2 === promise1`以及在什么条件下产生。
 4. 一般来说，只有`x`当它来自当前的实现时，才会知道这是一个真正的承诺。该条款允许使用特定于实现的手段来采用已知符合承诺的状态。
 5. 这个首先存储对 的引用`x.then`，然后测试该引用，然后调用该引用的过程避免了对该`x.then`属性的多次访问。这些预防措施对于确保访问器属性的一致性很重要，访问器属性的值可能会在检索之间发生变化。
-6. 实现应*不*设置thenable链的深度任何限制，并假设超出任何限制递归将是无限的。只有真正的循环才会导致`TypeError`; 如果遇到无限的不同 thenable 链，则永远递归是正确的行为
+6. 实现应*不*设置 thenable 链的深度任何限制，并假设超出任何限制递归将是无限的。只有真正的循环才会导致`TypeError`; 如果遇到无限的不同 thenable 链，则永远递归是正确的行为
 
 ## 实现
 
@@ -172,7 +173,7 @@ function Promise(executor) {
 
   // 完成后，需要通过resolve通知promise
   function resolve(value) {
-    setTimeout(function () {
+    setTimeout(function() {
       if (self.state === 'pending') {
         self.state = 'fulfilled'
         // 完成时必须有一个值
@@ -187,7 +188,7 @@ function Promise(executor) {
 
   // 被拒绝后，需要通过reject通知promise
   function reject(reason) {
-    setTimeout(function () {
+    setTimeout(function() {
       if (self.state === 'pending') {
         self.state = 'rejected'
         // 被拒绝时，必须有一个原因
@@ -214,13 +215,13 @@ function Promise(executor) {
 ```javascript
 // onFulfilled：完成后需要做的事儿
 // onRejected：被拒绝后需要做的事儿
-Promise.prototype.then = function (onFulfilled, onRejected) {
+Promise.prototype.then = function(onFulfilled, onRejected) {
   const self = this
 
-  let promise2 = new Promise(function (resolve, reject) {
+  let promise2 = new Promise(function(resolve, reject) {
     if (self.state === 'fulfilled') {
       // 状态是已完成
-      setTimeout(function () {
+      setTimeout(function() {
         if (typeof onFulfilled === 'function') {
           // onFulfilled是函数
           try {
@@ -240,7 +241,7 @@ Promise.prototype.then = function (onFulfilled, onRejected) {
       })
     } else if (self.state === 'rejected') {
       // 状态是已拒绝
-      setTimeout(function () {
+      setTimeout(function() {
         if (typeof onRejected === 'function') {
           // onRejected是函数
           try {
@@ -262,7 +263,7 @@ Promise.prototype.then = function (onFulfilled, onRejected) {
       // promise还处于挂起状态，悬而未决
       // then可能被promise多次调用，那么onFulfilled或onRejected就应该放入各自callback队列中，等到真正完成或被拒绝时，callback中的函数会被依次执行
       // 1.把onFulfilled放入onFulfilledCallback
-      self.onFulfilledCallback.push(function (promise1Value) {
+      self.onFulfilledCallback.push(function(promise1Value) {
         if (typeof onFulfilled === 'function') {
           try {
             const x = onFulfilled(self.data)
@@ -275,7 +276,7 @@ Promise.prototype.then = function (onFulfilled, onRejected) {
         }
       })
       // 2.把onRejected放入onRejectedCallback
-      self.onRejectedCallback.push(function (promise1Reason) {
+      self.onRejectedCallback.push(function(promise1Reason) {
         if (typeof onRejected === 'function') {
           try {
             const x = onRejected(self.data)
@@ -310,7 +311,7 @@ function promiseResolutionProcedure(promise, x, resolve, reject) {
     // 如果 x 是一个 promise
     if (x.state === 'pending') {
       // 如果 x 的状态为 pending，promise 必须保持 pending 状态直到 x 的状态变为 fulfilled 或 rejected
-      x.then(function (value) {
+      x.then(function(value) {
         promiseResolutionProcedure(promise, value, resolve, reject)
       }, reject)
     } else if (x.state === 'fulfilled') {
@@ -370,22 +371,22 @@ function promiseResolutionProcedure(promise, x, resolve, reject) {
 
 ## thenable
 
-thenable理解
+thenable 理解
 
 ```javascript
-let p1 = new Promise(function (resolve, reject) {
-  setTimeout(function () {
+let p1 = new Promise(function(resolve, reject) {
+  setTimeout(function() {
     resolve('p 2000')
   }, 2000)
 })
-p1.then(function (v) {
+p1.then(function(v) {
   console.log('p1.then:', v)
-  let p2 = new Promise(function (resolve, reject) {
-    setTimeout(function () {
+  let p2 = new Promise(function(resolve, reject) {
+    setTimeout(function() {
       resolve('p2 2000')
     }, 2000)
   })
-  p2.then(function (v) {
+  p2.then(function(v) {
     console.log('p2.then:', v)
   })
   return p2
@@ -393,8 +394,8 @@ p1.then(function (v) {
   .then(v => {
     //thenable
     let thenable = {
-      then: function (onFulfilled, onRejected) {
-        setTimeout(function () {
+      then: function(onFulfilled, onRejected) {
+        setTimeout(function() {
           onFulfilled('thenable 2000')
         }, 2000)
       },
@@ -418,27 +419,27 @@ thenable 2000
 
 ## 测试
 
-https://github.com/promises-aplus/promises-tests
+<https://github.com/promises-aplus/promises-tests>
 
 ```javascript
 // test.js
 
 // 导入我们写好的 promise
-const Promise = require("./promise.js");
+const Promise = require('./promise.js')
 
 // 根据官方文档暴露一个 deferred 方法，返回一个包含 promise、resolve、reject 的对象
-Promise.deferred = function () {
-  const obj = {};
+Promise.deferred = function() {
+  const obj = {}
 
-  obj.promise = new Promise(function (resolve, reject) {
-    obj.resolve = resolve;
-    obj.reject = reject;
-  });
+  obj.promise = new Promise(function(resolve, reject) {
+    obj.resolve = resolve
+    obj.reject = reject
+  })
 
-  return obj;
-};
+  return obj
+}
 
-module.exports = Promise;
+module.exports = Promise
 ```
 
 运行
@@ -453,100 +454,99 @@ npx promises-aplus-tests test.js
 //resolve方法
 Promise.resolve = function(val) {
   return new Promise((resolve, reject) => {
-    resolve(val);
-  });
-};
+    resolve(val)
+  })
+}
 //reject方法
 Promise.reject = function(val) {
   return new Promise((resolve, reject) => {
-    reject(val);
-  });
-};
+    reject(val)
+  })
+}
 //race方法  方法返回一个 promise，一旦迭代器中的某个promise解决或拒绝，返回的 promise就会解决或拒绝
 Promise.race = function(promises) {
   return new Promise((resolve, reject) => {
     for (let i = 0; i < promises.length; i++) {
-      promises[i].then(resolve, reject);
+      promises[i].then(resolve, reject)
     }
-  });
-};
+  })
+}
 //all方法(获取所有的promise，都执行then，把结果放到数组，一起返回)
 Promise.all = function(promises) {
-  let arr = [];
-  let i = 0;
+  let arr = []
+  let i = 0
   function processData(index, data, resolve) {
-    arr[index] = data;
-    i++;
+    arr[index] = data
+    i++
     if (i == promises.length) {
       //debugger;
-      resolve(arr);
+      resolve(arr)
     }
   }
   return new Promise((resolve, reject) => {
     for (let i = 0; i < promises.length; i++) {
-      const promise = promises[i];
+      const promise = promises[i]
       if (promise instanceof Promise) {
         promise.then(data => {
-          processData(i, data, resolve);
-        }, reject);
+          processData(i, data, resolve)
+        }, reject)
       } else {
-        processData(i, promise, resolve);
+        processData(i, promise, resolve)
       }
     }
-  });
-};
+  })
+}
 
 //测试
 //resolve
 Promise.resolve(123).then(function(value) {
-  console.log(value);
-});
+  console.log(value)
+})
 
 //reject
-Promise.reject("Testing static reject").then(
+Promise.reject('Testing static reject').then(
   function(reason) {
     // 未被调用
   },
   function(reason) {
-    console.log(reason);
+    console.log(reason)
   }
-);
+)
 
-Promise.reject(new Error("fail")).then(
+Promise.reject(new Error('fail')).then(
   function(result) {
     // 未被调用
   },
   function(error) {
-    console.log(error);
+    console.log(error)
   }
-);
+)
 
 //race
 var promise1 = new Promise(function(resolve, reject) {
-  setTimeout(resolve, 500, "one");
-});
+  setTimeout(resolve, 500, 'one')
+})
 
 var promise2 = new Promise(function(resolve, reject) {
-  setTimeout(resolve, 100, "two");
-});
+  setTimeout(resolve, 100, 'two')
+})
 
 Promise.race([promise1, promise2]).then(function(value) {
-  console.log(value);
-});
+  console.log(value)
+})
 
 //all
-promise1 = Promise.resolve(3);
-promise2 = 42;
+promise1 = Promise.resolve(3)
+promise2 = 42
 var promise3 = new Promise(function(resolve, reject) {
-  setTimeout(resolve, 100, "foo");
-});
+  setTimeout(resolve, 100, 'foo')
+})
 
 Promise.all([promise1, promise2, promise3]).then(function(values) {
-  console.log(values);
-});
+  console.log(values)
+})
 ```
 
 ## reference
 
-https://febook.hzfe.org/awesome-interview/book1/coding-promise
-
+<https://febook.hzfe.org/awesome-interview/book1/coding-promise>

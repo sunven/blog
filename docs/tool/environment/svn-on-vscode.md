@@ -1,10 +1,10 @@
 # SVN On Mac VS Code
 
-## 安装svn
+## 安装 svn
 
 `brew install subversion`
 
-## 安装vscode
+## 安装 vscode
 
 ### 安装插件
 
@@ -22,4 +22,4 @@
 
 ### Repository UUID doesn't match expected
 
-如果uuid相同还报错，则重新checkout项目
+如果 uuid 相同还报错，则重新 checkout 项目

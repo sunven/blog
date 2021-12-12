@@ -1,4 +1,6 @@
-# 聊聊前端## /css/basics/
+# 聊聊前端
+
+## /css/basics/
 
 - [css-selector.html](/css/basics/css-selector.html)
 
@@ -225,7 +227,6 @@
 
 ## /reading/RTFSC/
 
-
 ## /reading/goodarticle/
 
 - [2019-01.html](/reading/goodarticle/2019-01.html)
@@ -329,7 +330,7 @@
 ## /vue/other/
 
 - [index.html](/vue/other/index.html)
-- [VUE组件通信.html](/vue/other/VUE组件通信.html)
+- [VUE 组件通信.html](/vue/other/VUE组件通信.html)
 - [publish-subscribe-mode-in-vue.html](/vue/other/publish-subscribe-mode-in-vue.html)
 - [vuecollect.html](/vue/other/vuecollect.html)
 - [vuex-modules-plugins.html](/vue/other/vuex-modules-plugins.html)
@@ -337,4 +338,3 @@
 ## /vue/rtfsc/
 
 - [diff.html](/vue/rtfsc/diff.html)
-

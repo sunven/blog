@@ -120,15 +120,13 @@ index.css:
 
 [GitHub - css-modules/css-modules: Documentation about css-modules](https://github.com/css-modules/css-modules)
 
-
-
 ## css in js
 
-用js写css
+用 js 写 css
 
 实现方式主要有两种
 
-- 唯一css选择器
+- 唯一 css 选择器
 - 内联样式
 
 ```js
@@ -149,7 +147,7 @@ const selectorName = cssinjs(`
 `)
 ```
 
-或者styleBlock也可以采用style属性对象写法
+或者 styleBlock 也可以采用 style 属性对象写法
 
 [https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference)
 
@@ -160,20 +158,18 @@ const style = {
 };
 ```
 
-- css in js没有统一标准
+- css in js 没有统一标准
 - 实现库很多[http://michelebertoli.github.io/css-in-js/](http://michelebertoli.github.io/css-in-js/)
-
-
 
 ## css preprocessor
 
-css预处理器一般具有的特征
+css 预处理器一般具有的特征
 
 - 变量
 - 嵌套
 - 混合（mixin）
 - 继承
-- 计算（+，-，*，/）
+- 计算（+，-，\*，/）
 
 ### sass
 

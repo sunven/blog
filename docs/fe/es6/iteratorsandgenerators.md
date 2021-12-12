@@ -17,8 +17,8 @@
 要成为可迭代对象， 一个对象必须实现 @@iterator 方法。这意味着对象（或者它原型链上的某个对象）必须有一个键为 @@iterator 的属性，可通过常量 Symbol.iterator 访问该属性
 
 ```javascript
-let someString = "hi";
-typeof someString[Symbol.iterator];          // "function"
+let someString = 'hi'
+typeof someString[Symbol.iterator] // "function"
 ```
 
 #### 迭代器协议
@@ -28,47 +28,47 @@ typeof someString[Symbol.iterator];          // "function"
 ```javascript
 var myIterator = {
   count: 5,
-  next: function () {
+  next: function() {
     if (this.count > 0) {
       return {
         value: this.count--,
-        done: false
+        done: false,
       }
     } else {
       return {
-        done: true
+        done: true,
       }
     }
-  }
+  },
 }
 ```
 
-迭代器中需要定一个next方法，返回对象中需要包含value和done两个属性。value为迭代返回的值，done表示迭代是否结束。可以理解为每一次的循环都会调用一次next方法，如果done为true，表示循环结束。
+迭代器中需要定一个 next 方法，返回对象中需要包含 value 和 done 两个属性。value 为迭代返回的值，done 表示迭代是否结束。可以理解为每一次的循环都会调用一次 next 方法，如果 done 为 true，表示循环结束。
 
 通常可迭代协议与迭代器协议会一起实现，如下：
 
 ```javascript
 var myIterator = {
   count: 5,
-  next: function () {
+  next: function() {
     if (this.count > 0) {
       return {
         value: this.count--,
-        done: false
+        done: false,
       }
     } else {
       return {
-        done: true
+        done: true,
       }
     }
   },
-  [Symbol.iterator]: function () {
+  [Symbol.iterator]: function() {
     return this
-  }
+  },
 }
 
-for(var a of myIterator){
-  console.log(a);
+for (var a of myIterator) {
+  console.log(a)
 }
 
 //5
@@ -77,8 +77,6 @@ for(var a of myIterator){
 //2
 //1
 ```
-
-
 
 ## Generators
 
@@ -117,10 +115,10 @@ step2
 2
 ```
 
-- 一般来说n个yield需要调用n+1次next()
-- 第一次调用next()的传值不会被使用，可以理解为第一次调用next()是为了执行生成器函数
+- 一般来说 n 个 yield 需要调用 n+1 次 next()
+- 第一次调用 next()的传值不会被使用，可以理解为第一次调用 next()是为了执行生成器函数
 
-- yield接收的参数是下一次next()传递的参数
+- yield 接收的参数是下一次 next()传递的参数
 
 ### next()的参数
 

@@ -22,11 +22,11 @@ Mounty for NTFS 完美实现 Mac 系统对 NTFS 磁盘格式的读写
 
 [http://paper.meiyuan.in/](http://paper.meiyuan.in/)
 
-#### 把Sublime添加到Mac右键菜单
+#### 把 Sublime 添加到 Mac 右键菜单
 
 [https://www.jianshu.com/p/e2f897933c56](https://www.jianshu.com/p/e2f897933c56)
 
-## 在Mac上安装consolas字体
+## 在 Mac 上安装 consolas 字体
 
 [install consolas on mac](https://gist.github.com/avalonalex/8125197)
 
@@ -38,9 +38,6 @@ Mounty for NTFS 完美实现 Mac 系统对 NTFS 磁盘格式的读写
 
 [eZip](http://ezip.awehunt.com/)
 
-
-
 ## 其它
 
 [SwitchHosts](https://github.com/oldj/SwitchHosts)
-

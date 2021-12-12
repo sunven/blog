@@ -1,21 +1,21 @@
 ## 1. 油猴扩展
+
 [tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
 
-
 ## 2. 百度网盘脚本
+
 [百度网盘简易下载助手（直链下载复活版）](https://greasyfork.org/zh-CN/scripts/418182-%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E7%AE%80%E6%98%93%E4%B8%8B%E8%BD%BD%E5%8A%A9%E6%89%8B-%E7%9B%B4%E9%93%BE%E4%B8%8B%E8%BD%BD%E5%A4%8D%E6%B4%BB%E7%89%88)
 
-
 ## 3. Aria2
+
 ### 安装
+
 `brew install aria2`
 
 ### 配置
 
 1. 建立目录 `/Users/seven/.aria2`
 1. `.aria2`目录中建立文件`aria2.conf`和`aria2.session`
-
-
 
 `aria2.conf`文件内容如下：
 
@@ -137,19 +137,22 @@ bt-seed-unverified=true
 # 保存磁力链接元数据为种子文件(.torrent文件), 默认:false
 bt-save-metadata=true
 ```
+
 ### 启动
+
 ```shell
 aria2c --conf-path="/Users/seven/.aria2/aria2.conf"
 aria2c --conf-path="/Users/seven/.aria2/aria2.conf" -D # 后台启动
 ```
 
-
 [Aria2 & YAAW 使用说明](http://aria2c.com/usage.html)
+
 ## 4. WebUI
+
 [http://aria2c.com](http://aria2c.com/)
 [https://ziahamza.github.io/webui-aria2](https://ziahamza.github.io/webui-aria2/)
 
-
 ## 5. Motrix
-自带Aria2
+
+自带 Aria2
 端口为：16800

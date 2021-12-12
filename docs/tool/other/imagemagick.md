@@ -23,4 +23,3 @@ convert +append img1.png img2.png img3.png output.png
 ```sh
 convert -append img1.png img2.png img3.png output.png
 ```
-

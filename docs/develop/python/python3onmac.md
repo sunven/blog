@@ -30,13 +30,14 @@ vs code
 ```
 "python.pythonPath": "/usr/local/bin/python3"
 ```
+
 安装 python3 自带安装 pip3
 
 ```
 pip3 -V
 ```
 
-## 更换pip源
+## 更换 pip 源
 
 ```
 cd ~/

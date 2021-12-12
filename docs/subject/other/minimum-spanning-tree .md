@@ -1,5 +1,3 @@
-
-
 # 最小生成树
 
 - 我们把构造连通网的最小代价生成树称为最小生成树
@@ -8,24 +6,20 @@
 **一棵树**
 
 1. 无回路
-2. N个顶点，一定有N-1条边
+2. N 个顶点，一定有 N-1 条边
 
 **生成树**
 
 1. 包含全部顶点
-2. N-1条边都在图中
+2. N-1 条边都在图中
 
 ## 普里姆算法
 
 ![img](./images/plm.png)
 
-
-
 参考
 
-https://www.cnblogs.com/ssyfj/p/9488723.html
-
-
+<https://www.cnblogs.com/ssyfj/p/9488723.html>
 
 ## 克鲁斯卡尔算法
 
@@ -35,12 +29,8 @@ https://www.cnblogs.com/ssyfj/p/9488723.html
 
 3、如果该边与前面所选的边无法构成回路，则选中该边，并标为已选；如果该边与前面所选的边构成了回路，则不选该边，并标为已选；
 
-4、重复2、3，直到所有点之间都有边相连；
-
-
+4、重复 2、3，直到所有点之间都有边相连；
 
 ![img](./images/klske.jpeg)
 
-
-
-参考：https://www.jianshu.com/p/0bcddbb4a112
+参考：<https://www.jianshu.com/p/0bcddbb4a112>
