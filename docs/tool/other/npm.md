@@ -60,6 +60,8 @@ npm install -g npm
 ### 持久使用
 
 > npm config set registry https://registry.npm.taobao.org 
+>
+> npm config set electron_mirror https://npm.taobao.org/mirrors/electron
 
 配置后可通过下面方式来验证是否成功 
 
@@ -72,6 +74,14 @@ npm install -g npm
 ### 通过cnpm使用
 
 > npm install -g cnpm –registry=https://registry.npm.taobao.org
+
+
+
+## 解释
+
+### peerDependencies
+
+`--legacy-peer-deps`:在安装时忽略所有*peerDependencies*
 
 
 

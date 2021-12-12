@@ -2,13 +2,13 @@
 
 它是一个只有块级盒子参与的独立块级渲染区域，它规定了内部的块级盒子如何布局，且与区域外部无关
 
-一个BFC区域包含创建该上下文元素的所有子元素，但是不包括创建了新的BFC的子元素的内部元素
+一个 BFC 区域包含创建该上下文元素的所有子元素，但是不包括创建了新的 BFC 的子元素的内部元素
 
-每一个BFC区域只包括其子元素，不包括其子元素的子元素。(这1点比较容易理解)
+每一个 BFC 区域只包括其子元素，不包括其子元素的子元素。(这 1 点比较容易理解)
 
-每一个BFC区域都是独立隔绝的,互不影响!(这点不太好理解，但是后续会使用代码验证)
+每一个 BFC 区域都是独立隔绝的,互不影响!(这点不太好理解，但是后续会使用代码验证)
 
-触发bfc
+触发 bfc
 
 - body 根元素
 - 浮动元素：float 除 none 以外的值
@@ -16,64 +16,46 @@
 - display 为 inline-block、table-cells、flex
 - overflow 除了 visible 以外的值 (hidden、auto、scroll)
 
-
-
 ## 解决问题
 
 ### 同一个 BFC 下外边距会发生折叠
 
 ```html
 <head>
-div{
-    width: 100px;
-    height: 100px;
-    background: lightblue;
-    margin: 100px;
-}
+  div{ width: 100px; height: 100px; background: lightblue; margin: 100px; }
 </head>
 <body>
-    <div></div>
-    <div></div>
+  <div></div>
+  <div></div>
 </body>
 ```
 
-触发bfc
+触发 bfc
 
 ```html
 <div class="container">
-    <p></p>
+  <p></p>
 </div>
 <div class="container">
-    <p></p>
+  <p></p>
 </div>
-.container {
-    overflow: hidden;
-}
-p {
-    width: 100px;
-    height: 100px;
-    background: lightblue;
-    margin: 100px;
-}
+.container { overflow: hidden; } p { width: 100px; height: 100px; background:
+lightblue; margin: 100px; }
 ```
 
-###  BFC 可以包含浮动的元素（清除浮动）
+### BFC 可以包含浮动的元素（清除浮动）
 
 ```html
 <div style="border: 1px solid #000; height: 20px">
-  <div
-    style="width: 100px; height: 100px; background: #eee; float: left"
-  ></div>
+  <div style="width: 100px; height: 100px; background: #eee; float: left"></div>
 </div>
 ```
 
-触发bfc
+触发 bfc
 
 ```html
 <div style="border: 1px solid #000; height: 20px; overflow: hidden">
-  <div
-    style="width: 100px; height: 100px; background: #eee; float: left"
-  ></div>
+  <div style="width: 100px; height: 100px; background: #eee; float: left"></div>
 </div>
 ```
 
@@ -89,7 +71,7 @@ p {
 </div>
 ```
 
-触发bfc
+触发 bfc
 
 ```html
 <div style="height: 100px; width: 100px; float: left; background: lightblue">
@@ -187,4 +169,3 @@ p {
   </body>
 </html>
 ```
-

@@ -1,6 +1,6 @@
 {
   "index_name": "blog",
-  "start_urls": ["https://sunven.github.io/blog/"],
+  "start_urls": ["https://llweb.top"],
   "stop_urls": [],
   "selectors": {
     "lvl0": {

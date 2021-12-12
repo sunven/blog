@@ -447,6 +447,105 @@ module.exports = Promise;
 npx promises-aplus-tests test.js
 ```
 
+## 其他方法
+
+```js
+//resolve方法
+Promise.resolve = function(val) {
+  return new Promise((resolve, reject) => {
+    resolve(val);
+  });
+};
+//reject方法
+Promise.reject = function(val) {
+  return new Promise((resolve, reject) => {
+    reject(val);
+  });
+};
+//race方法  方法返回一个 promise，一旦迭代器中的某个promise解决或拒绝，返回的 promise就会解决或拒绝
+Promise.race = function(promises) {
+  return new Promise((resolve, reject) => {
+    for (let i = 0; i < promises.length; i++) {
+      promises[i].then(resolve, reject);
+    }
+  });
+};
+//all方法(获取所有的promise，都执行then，把结果放到数组，一起返回)
+Promise.all = function(promises) {
+  let arr = [];
+  let i = 0;
+  function processData(index, data, resolve) {
+    arr[index] = data;
+    i++;
+    if (i == promises.length) {
+      //debugger;
+      resolve(arr);
+    }
+  }
+  return new Promise((resolve, reject) => {
+    for (let i = 0; i < promises.length; i++) {
+      const promise = promises[i];
+      if (promise instanceof Promise) {
+        promise.then(data => {
+          processData(i, data, resolve);
+        }, reject);
+      } else {
+        processData(i, promise, resolve);
+      }
+    }
+  });
+};
+
+//测试
+//resolve
+Promise.resolve(123).then(function(value) {
+  console.log(value);
+});
+
+//reject
+Promise.reject("Testing static reject").then(
+  function(reason) {
+    // 未被调用
+  },
+  function(reason) {
+    console.log(reason);
+  }
+);
+
+Promise.reject(new Error("fail")).then(
+  function(result) {
+    // 未被调用
+  },
+  function(error) {
+    console.log(error);
+  }
+);
+
+//race
+var promise1 = new Promise(function(resolve, reject) {
+  setTimeout(resolve, 500, "one");
+});
+
+var promise2 = new Promise(function(resolve, reject) {
+  setTimeout(resolve, 100, "two");
+});
+
+Promise.race([promise1, promise2]).then(function(value) {
+  console.log(value);
+});
+
+//all
+promise1 = Promise.resolve(3);
+promise2 = 42;
+var promise3 = new Promise(function(resolve, reject) {
+  setTimeout(resolve, 100, "foo");
+});
+
+Promise.all([promise1, promise2, promise3]).then(function(values) {
+  console.log(values);
+});
+```
+
 ## reference
 
 https://febook.hzfe.org/awesome-interview/book1/coding-promise

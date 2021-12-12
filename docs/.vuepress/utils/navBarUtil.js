@@ -1,26 +1,32 @@
 const path = require('path')
 const fs = require('fs')
+// 需要排除的文件夹
+const excludesDir = ['images']
+const filterFun = c => c.name[0] !== '.' && !excludesDir.includes(c.name)
 const autoNavBar = () => {
   const docsDir = path.resolve(__dirname, '../../')
   return (
     fs
       .readdirSync(docsDir, { withFileTypes: true })
-      .filter(c => c.name[0] !== '.')
+      .filter(filterFun)
       .sort((a, b) => b.isDirectory() - a.isDirectory())
       .map(item => {
         if (item.isDirectory()) {
-          //目录
+          //一级目录
           const children = fs
             .readdirSync(path.join(docsDir, item.name), { withFileTypes: true })
-            .filter(c => c.name[0] !== '.')
+            .filter(filterFun)
             .sort((a, b) => b.isDirectory() - a.isDirectory())
-            .map(c => ({
-              text: path.basename(c.name, path.extname(c.name)),
-              link: `/${item.name}/${c.name
-                .replace('.md', '.html')
-                .replace(/readme.html/i, 'index.html') +
-                (c.isDirectory() ? '/' : '')}`,
-            }))
+            .map(c => {
+              // 二级目录
+              return {
+                text: path.basename(c.name, path.extname(c.name)),
+                link: `/${item.name}/${c.name
+                  .replace('.md', '.html')
+                  .replace(/readme.html/i, 'index.html') +
+                  (c.isDirectory() ? '/' : '')}`,
+              }
+            })
           return {
             text: item.name,
             children: children,
