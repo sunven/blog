@@ -8,19 +8,19 @@
 
 ### 每一次都安装 Newman
 
-![image](http://qiniu.llweb.top/Snipaste_20181219113619201812191136263588.png)
+![image](./images/Snipaste_20181219113619201812191136263588.png)
 
 > tfs 中使用的 install 和外面的不一样，tfs 有特有的 windows 用户去跑。
 
 ### Newman 配置
 
-![image](http://qiniu.llweb.top/Snipaste_20181219113932201812191139490737.png)
+![image](./images/Snipaste_20181219113932201812191139490737.png)
 
 主要是配置 postman 的脚本路径
 
 ### 测试结果
 
-![image](http://qiniu.llweb.top/Snipaste_20181219114135201812191141432211.png)
+![image](./images/Snipaste_20181219114135201812191141432211.png)
 
 跑完后出可视化测试报告
 
@@ -28,17 +28,17 @@
 
 控制台
 
-![image](http://qiniu.llweb.top/Snipaste_20181219115404201812191154134402.png)
+![image](./images/Snipaste_20181219115404201812191154134402.png)
 
 报告
 
-![image](http://qiniu.llweb.top/Snipaste_20181219115839201812191158454877.png)
+![image](./images/Snipaste_20181219115839201812191158454877.png)
 
 用 Newman the cli Companion for Postman 跑完 collection 后有一个错误：`C:\Windows\ServiceProfiles\NetworkService\AppData\Roaming\npm\newman.cmd failed with return code: 1`
 
 在 Newman 配置中，勾上出错时继续
 
-![image](http://qiniu.llweb.top/Snipaste_20181219122249201812191223208829.png)
+![image](./images/Snipaste_20181219122249201812191223208829.png)
 
 ## Gulp
 
@@ -46,7 +46,7 @@
 
 ### 安装依赖
 
-![image](http://qiniu.llweb.top/Snipaste_20181219115008201812191150189293.png)
+![image](./images/Snipaste_20181219115008201812191150189293.png)
 
 package.json 如下：
 
@@ -72,28 +72,28 @@ package.json 如下：
 
 ### Gulp 配置
 
-![image](http://qiniu.llweb.top/Snipaste_20181219122512201812191225181735.png)
+![image](./images/Snipaste_20181219122512201812191225181735.png)
 
 gulpfile.js 如下：
 
 ```js
-var gulp = require('gulp')
-var fs = require('fs')
+var gulp = require('gulp');
+var fs = require('fs');
 
 gulp.task('default', function() {
-  const newman = require('newman')
+  const newman = require('newman');
 
-  var collectionFile = ''
-  var environmentFile = ''
-  const files = fs.readdirSync(__dirname)
+  var collectionFile = '';
+  var environmentFile = '';
+  const files = fs.readdirSync(__dirname);
   files.forEach(function(item, index) {
     if (item.lastIndexOf('postman_collection.json') != -1) {
-      collectionFile = item
+      collectionFile = item;
     }
     if (item.lastIndexOf('postman_environment.json') != -1) {
-      environmentFile = item
+      environmentFile = item;
     }
-  })
+  });
   newman.run(
     {
       collection: collectionFile,
@@ -102,18 +102,18 @@ gulp.task('default', function() {
     },
     function(err) {
       if (err) {
-        throw err
+        throw err;
       }
-      console.log('collection run complete!')
+      console.log('collection run complete!');
     }
-  )
-})
+  );
+});
 ```
 
 ### 示例
 
 控制台
 
-![image](http://qiniu.llweb.top/Snipaste_20181219123236201812191232409849.png)
+![image](./images/Snipaste_20181219123236201812191232409849.png)
 
 报告如上

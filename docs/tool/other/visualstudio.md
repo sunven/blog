@@ -4,7 +4,7 @@
 
 调试扩展
 
-![image](http://qiniu.llweb.top/Snipaste_2018-10-26_14-23-00.png)
+![image](./images/Snipaste_2018-10-26_14-23-00.png)
 
 `C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\devenv.exe`
 

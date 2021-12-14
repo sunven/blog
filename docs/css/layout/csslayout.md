@@ -36,7 +36,7 @@ header,footer 统一设置 width
 
 #### 流程图
 
-![image](http://qiniu.llweb.top/cssshengbei0201812071033430680.png)
+![image](./images/cssshengbei0201812071033430680.png)
 
 #### 缺点
 
