@@ -10,7 +10,7 @@
 
 ## 浅拷贝的实现
 
-#### Object.assign()
+### Object.assign()
 
 ```javascript
 var obj = { a: { a: 'kobe', b: 39 } }
@@ -34,7 +34,7 @@ arr2[2].username = 'wade'
 console.log(arr)
 ```
 
-#### Array.prototype.concat()
+### Array.prototype.concat()
 
 ```javascript
 let arr = [
@@ -49,7 +49,7 @@ arr2[2].username = 'wade'
 console.log(arr)
 ```
 
-#### Array.prototype.slice()
+### Array.prototype.slice()
 
 ```javascript
 let arr = [
@@ -66,7 +66,41 @@ console.log(arr)
 
 ## 深拷贝的实现
 
-#### JSON.parse(JSON.stringify())
+Notification,replaceState,MessageChannel不能序列化Symbol和函数
+
+### Notification
+
+```js
+function structuralClone(obj) {
+  return new Notification('', { data: obj, silent: true }).data;
+}
+```
+
+### replaceState
+
+```js
+function structuralClone(obj) {
+  const oldState = history.state;
+  history.replaceState(obj, document.title);
+  const copy = history.state;
+  history.replaceState(oldState, document.title);
+  return copy;
+}
+```
+
+### MessageChannel
+
+```js
+function structuralClone(obj) {
+  return new Promise(resolve => {
+    const { port1, port2 } = new MessageChannel();
+    port2.onmessage = ev => resolve(ev.data);
+    port1.postMessage(obj);
+  });
+}
+```
+
+### JSON.parse(JSON.stringify())
 
 ```javascript
 let arr = [
@@ -82,12 +116,12 @@ console.log(arr, arr4)
 ```
 
 - 会忽略 undefined
-- 会忽略 symbol
+- 会忽略 Symbol
 
 - 不能序列化函数
 - 不能解决循环引用的对象
 
-#### 递归
+### 递归
 
 ```javascript
 //定义检测数据类型的功能函数
@@ -125,7 +159,7 @@ function clone(target) {
 }
 ```
 
-#### lodash
+### lodash
 
 ```javascript
 var _ = require('lodash')
