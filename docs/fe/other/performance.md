@@ -9,6 +9,7 @@
   - js、css 合并
   - 减少库的使用（[You Might Not Need jQuery](https://github.com/HubSpot/YouMightNotNeedjQuery)）
 - 减少资源大小
+  - 减少 dom 数量
   - 图片选择
     - WebP
     - iconfont
@@ -39,5 +40,12 @@
   - requestAnimationFrame
   - web worker
 - css
-- 降低选择器的复杂性
-- BEM
+  - 降低选择器的复杂性
+  - BEM
+- 避免布局（重排）
+- 使用 flexbox 而不是较早的布局模型
+- 避免强制同步布局
+- 避免布局抖动(<https://github.com/wilsonpage/fastdom>)
+- 简化绘制的复杂度、减小绘制区域(<https://developers.google.com/web/fundamentals/performance/rendering/simplify-paint-complexity-and-reduce-paint-areas>)
+- 坚持仅合成器的属性和管理层计数 (<https://developers.google.com/web/fundamentals/performance/rendering/stick-to-compositor-only-properties-and-manage-layer-count>)
+- 使输入处理程序去除抖动(<https://developers.google.com/web/fundamentals/performance/rendering/debounce-your-input-handlers>)
