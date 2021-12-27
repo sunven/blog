@@ -1,14 +1,14 @@
-const path = require('path')
-const fs = require('fs')
-const { autoNavBar, fixNavBar } = require('./utils/navBarUtil')
-const { autoSideBar } = require('./utils/sideBarUtil')
-const { genIndex } = require('./utils/genIndexUtil')
-let navbar = autoNavBar()
+const path = require('path');
+const fs = require('fs');
+const { autoNavBar, fixNavBar } = require('./utils/navBarUtil');
+const { autoSideBar } = require('./utils/sideBarUtil');
+const { genIndex } = require('./utils/genIndexUtil');
+let navbar = autoNavBar();
 //
-const sidebar = autoSideBar(navbar)
-navbar = fixNavBar(navbar, sidebar)
+const sidebar = autoSideBar(navbar);
+navbar = fixNavBar(navbar, sidebar);
 
-genIndex(sidebar)
+genIndex(sidebar);
 
 //https://developer.mozilla.org/zh-CN/docs/Web/MathML/Element
 //var as=new Set();document.querySelectorAll('.main-page-content a[href*="MathML/Element"]').forEach(item=>{var a=item.innerText;a=a.replace('<','');a=a.replace('>','');a=a.replace('(en-US)','');a=a.trim(' ');as.add(a)});console.log(Array.from(as))
@@ -57,7 +57,7 @@ const mathml = [
   'annotation-xml',
   'mprescripts',
   'none',
-]
+];
 module.exports = {
   //base: '/blog/',
   lang: 'zh-CN',
@@ -76,8 +76,7 @@ module.exports = {
       'link',
       {
         rel: 'stylesheet',
-        href:
-          'https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css',
+        href: 'https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css',
       },
     ],
     ['link', { rel: 'icon', href: '/images/logo.png' }],
@@ -112,18 +111,18 @@ module.exports = {
     docsBranch: 'master',
     docsDir: 'docs',
   },
-  //clientAppEnhanceFiles: path.resolve(__dirname, './clientAppEnhance.js'),
-  extendsMarkdown: md => {
-    md.use(require('./plugins/markdown-it-katex'))
+  // clientAppEnhanceFiles: path.resolve(__dirname, './clientAppEnhance.js'),
+  extendsMarkdown: (md) => {
+    md.use(require('./plugins/markdown-it-katex'));
     //md.linkify.set({ fuzzyEmail: false })
   },
   bundlerConfig: {
     //webpack 打包配置
     vue: {
       compilerOptions: {
-        isCustomElement: tag => {
-          console.log(11)
-          return mathml.indexOf(tag) !== -1
+        isCustomElement: (tag) => {
+          console.log(11);
+          return mathml.indexOf(tag) !== -1;
         },
       },
     },
@@ -131,11 +130,11 @@ module.exports = {
     vuePluginOptions: {
       template: {
         compilerOptions: {
-          isCustomElement: tag => {
-            return mathml.indexOf(tag) !== -1
+          isCustomElement: (tag) => {
+            return mathml.indexOf(tag) !== -1;
           },
         },
       },
     },
   },
-}
+};
