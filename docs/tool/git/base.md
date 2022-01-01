@@ -4,7 +4,7 @@
 
 初始化：`git init`
 
-添加文件到Git仓库：
+添加文件到 Git 仓库：
 
 1. `git add <file>`：可反复多次使用，添加多个文件
 
@@ -37,14 +37,13 @@
 
 `git rm`：删除
 
-`$ ssh-keygen -t rsa -C "youremail@example.com"`：创建SSH Key
+`$ ssh-keygen -t rsa -C "youremail@example.com"`：创建 SSH Key
 
 ## 远程仓库
 
-关联一个远程库：
-1.`git remote add origin git@server-name:path/repo-name.git`
+关联一个远程库： 1.`git remote add origin git@server-name:path/repo-name.git`
 
-2.`git push -u origin master`：第一次推送master分支的所有内容；
+2.`git push -u origin master`：第一次推送 master 分支的所有内容；
 
 3.`git push origin master`：以后的推送修改
 
@@ -54,7 +53,7 @@
 
 ## 分支管理
 
-> Git鼓励大量使用分支
+> Git 鼓励大量使用分支
 
 ### 分支基本操作
 
@@ -74,10 +73,10 @@
 
 `git log --graph --pretty=oneline --abbrev-commit`：查看分支的合并情况
 
-`git merge --no-ff -m "merge with no-ff" dev`：禁用Fast forward
+`git merge --no-ff -m "merge with no-ff" dev`：禁用 Fast forward
 
-> 注意`--no-ff`参数，表示禁用Fast forward
-> 合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并
+> 注意`--no-ff`参数，表示禁用 Fast forward
+> 合并分支时，加上--no-ff 参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而 fast forward 合并就看不出来曾经做过合并
 
 `git checkout -b branch-name origin/branch-name`：在本地创建和远程分支对应的分支
 
@@ -93,15 +92,15 @@
 
 ## Bug
 
-修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除：
+修复 bug 时，我们会通过创建新的 bug 分支进行修复，然后合并，最后删除：
 
 1. `git stash`：存储工作现场
 
-2. `git stash pop`：恢复并删除stash内容
+2. `git stash pop`：恢复并删除 stash 内容
 
 `git stash apply`：恢复工作现场
 
-`git stash list`：查看stash内容
+`git stash list`：查看 stash 内容
 
 ## 冲突
 
@@ -119,11 +118,11 @@
 
 ### 本地
 
-`git tag <name>`：用于新建一个标签，默认为HEAD，也可以指定一个commit id
+`git tag <name>`：用于新建一个标签，默认为 HEAD，也可以指定一个 commit id
 
 `git tag -a <tagname> -m "qaq..."`：可以指定标签信息
 
-`git tag -s <tagname> -m "qaq..."`：可以用PGP签名标签
+`git tag -s <tagname> -m "qaq..."`：可以用 PGP 签名标签
 
 `git show <tagname>`：查看标签详细信息
 
@@ -141,15 +140,15 @@
 
 ## 补充
 
-- 在GitHub上，可以任意Fork开源仓库
+- 在 GitHub 上，可以任意 Fork 开源仓库
 
-- 自己拥有Fork后的仓库的读写权限
+- 自己拥有 Fork 后的仓库的读写权限
 
-- 可以推送pull request给官方仓库来贡献代码
+- 可以推送 pull request 给官方仓库来贡献代码
 
 - 忽略某些文件时，需要编写.gitignore
 
-- gitignore文件本身要放到版本库里，并且可以对.gitignore做版本管理
+- gitignore 文件本身要放到版本库里，并且可以对.gitignore 做版本管理
 
 ## 问题
 
@@ -159,23 +158,37 @@
 
 git pull --allow-unrelated-histories
 
-- Git fetch和git pull的区别
+- Git fetch 和 git pull 的区别
 
 [http://blog.csdn.net/hudashi/article/details/7664457](http://blog.csdn.net/hudashi/article/details/7664457)
 
 ### 多账号问题
 
 [
-一台电脑连接多个GitHub账号下的仓库](https://blog.csdn.net/kingsleytong/article/details/70176518)
+一台电脑连接多个 GitHub 账号下的仓库](https://blog.csdn.net/kingsleytong/article/details/70176518)
 
-[Git如何切换账户](https://blog.csdn.net/junloin/article/details/75197880)
+[Git 如何切换账户](https://blog.csdn.net/junloin/article/details/75197880)
 
-[解决 切换github账号后无法push的问题](https://www.jianshu.com/p/391a1e591eec)
+[解决 切换 github 账号后无法 push 的问题](https://www.jianshu.com/p/391a1e591eec)
 
 [Git 最著名报错 “ERROR: Permission to XXX.git denied to user”终极解决方案](https://www.jianshu.com/p/12badb7e6c10)
 
 [Git's famous “ERROR: Permission to .git denied to user”](https://stackoverflow.com/questions/5335197/gits-famous-error-permission-to-git-denied-to-user)
 
+### crlf
+
+```sh
+// 拒绝提交包含混合换行符的文件 （一般设置为true）
+git config --global core.safecrlf true
+
+// 允许提交包含混合换行符的文件
+git config --global core.safecrlf false
+
+// 提交包含混合换行符的文件时给出警告
+git config --global core.safecrlf warn
+
+```
+
 > ## references
 
-- [廖雪峰-Git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
+- [廖雪峰-Git 教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
