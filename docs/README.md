@@ -176,6 +176,7 @@
 - [index.html](/fe/other/index.html)
 - [articleinclusion.html](/fe/other/articleinclusion.html)
 - [client-storage.html](/fe/other/client-storage.html)
+- [html5.html](/fe/other/html5.html)
 - [optimize.html](/fe/other/optimize.html)
 - [performance.html](/fe/other/performance.html)
 - [serviceworkerbase.html](/fe/other/serviceworkerbase.html)

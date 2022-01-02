@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>transform</title>
+    <style type="text/css">
+      /*table {
+            background-color: #000;
+            margin:20px;
+        }
+
+            table tr {
+                background-color: #fff;
+            }
+*/
+      div {
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
+        background-color: lightyellow;
+        margin: 20px;
+      }
+
+      .div1 {
+        -moz-transition: transform 2s, background-color 2s;
+        -o-transition: transform 2s, background-color 2s;
+        -webkit-transition: transform 2s, background-color 2s;
+        transition: transform 2s, background-color 2s;
+        transform: rotate(45deg);
+      }
+
+      .div1:hover {
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+        background-color: green;
+      }
+
+      .div2 {
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+
+      .div3 {
+        -moz-transform: translate(10px, 20px);
+        -ms-transform: translate(10px, 20px);
+        -o-transform: translate(10px, 20px);
+        -webkit-transform: translate(10px, 20px);
+        transform: translate(10px, 20px);
+      }
+
+      .div4 {
+        -moz-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        -webkit-transform: scale(0.8);
+        transform: scale(0.8);
+      }
+
+      .div5 {
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+      }
+
+      .div6 {
+        -moz-transform: skew(30deg, 0);
+        -ms-transform: skew(30deg, 0);
+        -o-transform: skew(30deg, 0);
+        -webkit-transform: skew(30deg, 0);
+        transform: skew(30deg, 0);
+      }
+
+      .div7 {
+        -moz-transform: skew(0, 30deg);
+        -ms-transform: skew(0, 30deg);
+        -o-transform: skew(0, 30deg);
+        -webkit-transform: skew(0, 30deg);
+        transform: skew(0, 30deg);
+      }
+
+      .div8 {
+        -moz-transform: skew(30deg, 30deg);
+        -ms-transform: skew(30deg, 30deg);
+        -o-transform: skew(30deg, 30deg);
+        -webkit-transform: skew(30deg, 30deg);
+        transform: skew(30deg, 30deg);
+      }
+
+      .div9 {
+        /*旋转、缩放、移动以及倾斜*/
+        -moz-transform: matrix(30deg, 0, 0.8, 10deg, 10px, 10px);
+        -ms-transform: matrix(30deg, 0, 0.8, 10deg, 10px, 10px);
+        -o-transform: matrix(30deg, 0, 0.8, 10deg, 10px, 10px);
+        -webkit-transform: matrix(30deg, 0, 0.8, 10deg, 10px, 10px);
+        transform: matrix(30deg, 0, 0.8, 10deg, 10px, 10px);
+      }
+    </style>
+  </head>
+  <body style="margin: 50px">
+    <table>
+      <tr>
+        <td colspan="3">transform:rotate()旋转</td>
+      </tr>
+      <tr>
+        <td>
+          <div>原始对比</div>
+        </td>
+        <td>
+          <div class="div1">.div3顺时针45度</div>
+        </td>
+        <td>
+          <div class="div2">.div4逆时针45度</div>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td colspan="2">transform:translate()平移</td>
+      </tr>
+      <tr>
+        <td>
+          <div>原始对比</div>
+        </td>
+        <td>
+          <div class="div3">.div3</div>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td colspan="3">transform:scale()缩放</td>
+      </tr>
+      <tr>
+        <td>
+          <div>原始对比</div>
+        </td>
+        <td>
+          <div class="div4">.div4</div>
+        </td>
+        <td>
+          <div class="div5">.div5</div>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td colspan="4">transform:skew()倾斜</td>
+      </tr>
+      <tr>
+        <td>
+          <div>原始对比</div>
+        </td>
+        <td>
+          <div class="div6">.div6</div>
+        </td>
+        <td>
+          <div class="div7">.div7</div>
+        </td>
+        <td>
+          <div class="div8">.div8</div>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td colspan="2">transform:matrix()综合</td>
+      </tr>
+      <tr>
+        <td>
+          <div>原始对比</div>
+        </td>
+        <td>
+          <div class="div9">.div9</div>
+        </td>
+      </tr>
+    </table>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      $(function () {
+        //$("table").attr("cellspacing", "1");
+      });
+    </script>
+  </body>
+</html>
