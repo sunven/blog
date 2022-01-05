@@ -66,7 +66,7 @@ min-*初始值：auto
 -  src 
 - CSS content
 
-#### **content** 与替换元素关系
+#### content 与替换元素关系
 
 content 属性生成的内容都是替换元素
 
@@ -76,3 +76,23 @@ content 属性生成的内容都是替换元素
 - 不能左右:empty 伪类
 
 - content 动态生成值无法获取
+
+#### content生成计数
+
+- 辅助元素生成
+  - 两端对齐、弹性盒子
+- 字符内容生成
+  - 直接写入字符内容
+  - 图标字体
+- 图片生成
+  - 图片的尺寸不好控制
+- 开启闭合符号生成
+  - open-quote/close-quote
+-  **attr** 属性值内容生成
+  - content: attr(alt);
+- **content** 计数器
+  - counter-reset
+  - counter-increment
+  - counter()/counters()
+- 混合特性
+  - content: "(" attr(href) ")";
