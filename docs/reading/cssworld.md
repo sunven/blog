@@ -96,3 +96,7 @@ content 属性生成的内容都是替换元素
   - counter()/counters()
 - 混合特性
   - content: "(" attr(href) ")";
+
+### padding
+
+对于非替换元素的内联元素，不仅 padding 不会加入行盒高度的计算，margin和 border 也都是如此，都是不计算高度，但实际上在内联盒周围发生了渲染
