@@ -203,3 +203,22 @@ content 属性生成的内容都是替换元素
 ### border
 
 - 等高布局
+
+
+
+### ## 内联元素与流
+
+### line-height 
+
+#### 垂直居中
+
+- 只需要line-height 这一个属性就可以
+- line-height 可以让单行或多行元素近似垂直居中
+
+
+
+数值作为line-height 的属性值，那么所有的子元素继承的都是这个值；如果使用百分比值或者长度值作为属性值，那么所有的子元素继承的是最终的计算值
+
+### vertical-align
+
+凡是line-height 起作用的地方vertical-align 也一定起作用
