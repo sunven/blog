@@ -222,3 +222,68 @@ content 属性生成的内容都是替换元素
 ### vertical-align
 
 凡是line-height 起作用的地方vertical-align 也一定起作用
+
+只能应用于内联元素以及display 值为table-cell 的元素。
+
+换句话说，vertical-align 属性只能作用在display 计算值为inline、inlineblock，inline-table 或table-cell 的元素上
+
+> 浮动和绝对定位会让元素块状化
+
+vertical-align 的百分比值是相对于line-height 计算的
+
+
+
+#### 间隙
+
+产生的三大元凶就是“幽灵空白节点”、line-height 和vertical-align 属性
+
+清除间隙
+
+- 图片块状化
+
+- 容器line-height 足够小
+- 容器font-size 足够小
+- 图片设置其他vertical-align 属性值
+
+
+
+#### 20px 图标对齐的处理技巧
+
+- 图标高度和当前行高都是20px
+- 图标标签里面永远有字符
+- 图标CSS 不使用overflow:hidden 保证基线为里面字符的基线，但是要让里面潜在的字符不可见
+
+#### 水平垂直居中弹框
+
+```html
+<div class="container">
+	<div class="dialog"></dialog>
+</div>
+```
+
+```css
+.container {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: rgba(0,0,0,.5);
+  text-align: center;
+  font-size: 0;
+  white-space: nowrap;
+  overflow: auto;
+}
+.container:after {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.dialog {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  font-size: 14px;
+  white-space: normal;
+}
+```
+
+- 借助伪元素创建了一个和外部容器一样高的宽度为0 的inlineblock元素
