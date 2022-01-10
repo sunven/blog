@@ -353,3 +353,21 @@ float的特性
 }
 ```
 
+### clear
+
+元素盒子的边不能和前面的浮动元素相邻
+
+- 如果 clear:both 元素前面的元素就是 float 元素，则 margin-top 负值即使设 成-9999px，也不见任何效果。
+- clear:both 后面的元素依旧可能会发生文字环绕的现象
+
+### BFC
+
+如果一个元素具有 BFC，内部子元素再怎么翻江倒海、翻 云覆雨，都不会影响外部的元素
+
+那什么时候会触发 BFC
+
+- 根元素
+-  float 的值不为 none
+- overflow 的值为 auto、scroll 或 hidden
+- display 的值为 table-cell、table-caption 和 inline-block 中的任何一个
+- position 的值不为 relative 和 static
