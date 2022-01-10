@@ -371,3 +371,39 @@ float的特性
 - overflow 的值为 auto、scroll 或 hidden
 - display 的值为 table-cell、table-caption 和 inline-block 中的任何一个
 - position 的值不为 relative 和 static
+
+### absolute
+
+absolute 是非常独立的CSS 属性值，其样式和行为表现不依赖其他任何CSS 属性就可以完成
+
+#### 无依赖绝对定位
+
+- 图标定位
+
+- 表单
+
+- 下拉列表
+
+#### absolute 与text-align
+
+
+
+#### absolute 与overflow
+
+如果overflow 不是定位元素，同时绝对定位元素和overflow 容器之间也没有定位元素，则overflow 无法对absolute 元素进行剪裁
+
+
+
+### relative
+
+- 相对自身
+
+- 无侵入
+
+> 相对定位元素的left/top/right/bottom的百分比值是相对于包含块计算的，而不是自身
+
+
+
+### fixed
+
+“包含块”是根元素
