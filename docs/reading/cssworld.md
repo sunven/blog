@@ -287,3 +287,69 @@ vertical-align 的百分比值是相对于line-height 计算的
 ```
 
 - 借助伪元素创建了一个和外部容器一样高的宽度为0 的inlineblock元素
+
+## 流的破坏与保护
+
+文字环绕效果
+
+- 父级高度塌陷
+- 行框盒子区域限制
+
+float的特性
+
+- 包裹性
+  - 包裹
+  - 自适应性
+- 块状化并格式化上下文
+-  破坏文档流
+- 没有任何 margin 合并
+
+### float
+
+#### 两栏或多栏的自适应布局
+
+一侧定宽的两栏自适应
+
+```html
+<div class="father">
+ <img src="me.jpg">
+ <p class="animal">小猫 1，小猫 2，...</p>
+</div>
+```
+
+```css
+.father {
+ overflow: hidden;
+}
+.father > img {
+ width: 60px; height: 64px;
+ float: left;
+}
+.animal {
+ margin-left: 70px;
+}
+```
+
+多栏
+
+```html
+<div class="box">
+ <a href class="prev">&laquo; 上一章</a>
+ <a href class="next">下一章 &raquo;</a>
+ <h3 class="title">第 112 章 动物环绕</h3>
+</div>
+```
+
+```css
+.prev {
+ float: left;
+}
+.next {
+ float: right;
+}
+.title {
+ margin: 0 70px;
+ text-align: center;
+}
+```
+
