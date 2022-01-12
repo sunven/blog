@@ -13,7 +13,6 @@
     "@vue/component-compiler-utils": "^3.3.0",
     "@vuepress/plugin-docsearch": "^2.0.0-beta.32",
     "@vuepress/plugin-register-components": "^2.0.0-beta.32",
-    "@vuepress/shared-utils": "^1.9.5",
     "vuepress": "^2.0.0-beta.32"
   },
   "dependencies": {
