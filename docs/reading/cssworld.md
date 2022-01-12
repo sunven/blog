@@ -414,3 +414,120 @@ absolute 是非常独立的CSS 属性值，其样式和行为表现不依赖其�
 
 - 谁大谁上：当具有明显的层叠水平标识的时候，如生效的z-index 属性值，在同一个层叠上下文领域，层叠水平值大的那一个覆盖小的那一个
 - 后来居上：当元素的层叠水平一致、层叠顺序相同的时候，在DOM 流中处于后面的元素会覆盖前面的元素
+
+## 强大的文本处理能力
+
+垂直对齐
+
+```css
+p > img { 
+    width: 16px; height: 16px; 
+    vertical-align: .6ex; 
+	position: relative; 
+	top: 8px; 
+}
+```
+
+word-break: break-all;
+
+允许任意非 CJK（Chinese/Japanese/Korean）文本间的单词断行
+
+word-wrap: break-word; 
+
+一行单词中实在没有其他靠谱的换行点的时候换行
+
+### white-space
+
+应用
+
+- “包含块”尺寸过小处理
+- 单行文字溢出点点点效果
+- 水平列表切换效果
+
+### text-decoration
+
+问题：与文字重叠
+
+用border-bottom padding-bottom替换
+
+### text-transform
+
+- uppercase
+- lowercase
+
+场景：
+
+- 身份证输入
+- 验证码输入
+
+### ::first-letter
+
+生效前提
+
+- 元素的 display 计算值必须是 block、inline-block、list-item、tablecell 或者 table-caption
+- 不是所有的字符都能单独作为::first-letter 伪元素存在的
+
+## 元素的显示与隐藏
+
+- 如果希望元素不可见，同时不占据空间，辅助设备无法访问，同时不渲染，可以使用`<script>`标签隐藏
+
+```html
+<script type="text/html">
+	<img src="1.jpg"> 
+</script> 
+```
+
+此时，图片 1.jpg 是不会有请求的。
+
+- 如果希望元素不可见，同时不占据空间，辅助设备无法访问，但资源有加载，DOM 可访问，则可以直接使用 display:none 隐藏
+
+- 如果希望元素不可见，同时不占据空间，辅助设备无法访问，但显隐的时候可以有transition 淡入淡出效果
+
+```css
+.hidden {
+	position: absolute; 
+	visibility: hidden; 
+}
+```
+
+- 如果希望元素不可见，不能点击，辅助设备无法访问，但占据空间保留，则可以使用visibility:hidden 隐藏。
+
+- 如果希望元素不可见，不能点击，不占据空间，但键盘可访问，则可以使用 clip 剪裁隐藏。
+
+```css
+.clip {
+	position: absolute; 
+	clip: rect(0 0 0 0); 
+} 
+
+.out { 
+	position: relative; 
+	left: -999em; 
+} 
+```
+
+- 如果希望元素不可见，不能点击，但占据空间，且键盘可访问，则可以试试 relative隐藏。例如，如果条件允许，也就是和层叠上下文之间存在设置了背景色的父元素，则也可以使用更友好的 z-index 负值隐藏
+
+```css
+.lower {
+	position: relative; 
+	z-index: -1;
+} 
+```
+
+- 如果希望元素不可见，但可以点击，而且不占据空间，则可以使用透明度
+
+```css
+.opacity {
+	position: absolute; 
+	opacity: 0; 
+} 
+```
+
+- 如果单纯希望元素看不见，但位置保留，依然可以点可以选，则直接让透明度为 0
+
+```css
+.opacity {
+	opacity: 0; 
+}
+```
