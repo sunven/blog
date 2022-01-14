@@ -29,3 +29,115 @@
 ### 合理使用简写
 
 ### 我应该使用预处理器吗
+
+## 背景与边框
+
+### 半透明边框
+
+```css
+div{
+  border: 10px solid hsla(0,0%,100%,.5);
+  background: white;
+  background-clip: padding-box;
+}
+```
+
+### 多重边框
+
+```css
+div{
+  background: yellowgreen;
+  box-shadow: 0 0 0 10px #655,
+  						0 0 0 15px deeppink,
+  						0 2px 5px 15px rgba(0,0,0,.6);
+}
+```
+
+outline
+
+```css
+div{
+  background: yellowgreen;
+  border: 10px solid #655;
+  outline: 5px solid deeppink;
+}
+```
+
+### 灵活的背景定位
+
+#### background-position
+
+```css
+div{
+  background: url(code-pirate.svg)
+							no-repeat bottom right #58a;
+	background-position: right 20px bottom 10px;
+}
+```
+
+#### background-origin
+
+```css
+div{
+  padding: 10px;
+  background: url("code-pirate.svg") no-repeat #58a
+  						bottom right; /* 或 100% 100% */
+  background-origin: content-box;
+}
+```
+
+#### calc()
+
+```css
+div{
+  background: url("code-pirate.svg") no-repeat;
+	background-position: calc(100% - 20px) calc(100% - 10px);
+}
+```
+
+### 边框内圆角
+
+```html
+<div class="something-meaningful"><div>
+I have a nice subtle inner rounding,
+don't I look pretty?
+</div></div>
+```
+
+```css
+.something-meaningful {
+  background: #655;
+  padding: .8em;
+}
+.something-meaningful > div {
+  background: tan;
+  border-radius: .8em;
+  padding: 1em;
+}
+```
+
+### 条纹背景
+
+`background: linear-gradient(#fb3 20%, #58a 80%);`
+
+容器顶部的20% 区域被填充为#fb3 实色，而底部20% 区域被填充为#58a 实色。真正的渐变只出现在容器60% 的高度区域
+
+> 如果多个色标具有相同的位置，它们会产生一个无限小的过渡区域，过渡的起止色分别是第一个和最后一个指定值。从效果上看，颜色会在那个位置突然变化，而不是一个平滑的渐变过程
+
+```css
+div{
+  background: linear-gradient(#fb3 50%, #58a 50%);
+	background-size: 100% 30px;
+}
+```
+
+> 如果某个色标的位置值比整个列表中在它之前的色标的位置值都要小，则该色标的位置值会被设置为它前面所有色标位置值的最大值
+
+```css
+div{
+  background: linear-gradient(#fb3 30%, #58a 0);
+  /* background: linear-gradient(#fb3 30%, #58a 30%); */
+	background-size: 100% 30px;
+}
+```
+
