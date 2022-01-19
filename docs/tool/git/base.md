@@ -112,7 +112,8 @@
 
 4. 没有冲突或者解决掉冲突后，再用`git push origin branch-name`推送就能成功
 
-5. 如果`git pull`提示**no tracking information**，则说明本地分支和远程分支的链接关系没有创建，用命令`git branch --set-upstream branch-name origin/branch-name`
+5. 如果`git pull`提示**no tracking information**，则说明本地分支和远程分支的链接关系没有创建，
+   用命令`git branch --set-upstream branch-name origin/branch-name`
 
 ## 标签
 
@@ -138,17 +139,31 @@
 
 `git push origin :refs/tags/<tagname>`：删除一个远程标签
 
-## 补充
+## 其它
 
-- 在 GitHub 上，可以任意 Fork 开源仓库
+### 查看提交次数
 
-- 自己拥有 Fork 后的仓库的读写权限
+总提交次数：`git log --oneline | wc -l`
 
-- 可以推送 pull request 给官方仓库来贡献代码
+某个用户提交次数：`git log --author="用户名" --oneline | wc -l`
 
-- 忽略某些文件时，需要编写.gitignore
+每个用户提交次数：`git shortlog -s -n`
 
-- gitignore 文件本身要放到版本库里，并且可以对.gitignore 做版本管理
+某个用户时间范围内提交次数：`git log --author="用户名" --since="2014-07-01" --oneline | wc -l`
+
+### 代码量统计
+
+个人代码量：
+
+```sh
+git log --author="username" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -
+```
+
+每个人代码量
+
+```sh
+git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done
+```
 
 ## 问题
 
@@ -188,7 +203,3 @@ git config --global core.safecrlf false
 git config --global core.safecrlf warn
 
 ```
-
-> ## references
-
-- [廖雪峰-Git 教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
