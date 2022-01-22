@@ -141,3 +141,82 @@ div{
 }
 ```
 
+## 垂直居中
+
+### 基于绝对定位
+
+```css
+main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -3em; /* 6/2 = 3 */
+  margin-left: -9em; /* 18/2 = 9 */
+  width: 18em;
+  height: 6em;
+}
+```
+
+借助calc
+
+```css
+main {
+  position: absolute;
+  top: calc(50% - 3em);
+  left: calc(50% - 9em);
+  width: 18em;
+  height: 6em;
+}
+```
+
+> 局限在于它要求元素的宽高是固定的
+
+借助translate()
+
+```css
+main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+```
+
+- 如果需要居中的元素已经在高度上超过了视口，那它的顶部会被视口裁切掉
+
+### 基于视口单位
+
+```css
+main {
+  width: 18em;
+  padding: 1em 1.5em;
+  margin: 50vh auto 0;
+  transform: translateY(-50%);
+}
+```
+
+### 基于Flexbox
+
+```css
+body {
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+}
+main {
+	margin: auto;
+}
+```
+
+文本也居中
+
+```css
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18em;
+  height: 10em;
+}
+```
+
