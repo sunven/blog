@@ -8,7 +8,19 @@
 
 ### 使用
 
-`Cache-Control: max-age=<seconds>` 表示在 seconds 秒内再次访问该资源，均使用本地的缓存
+`Cache-Control: public, max-age=<seconds>` 表示在 seconds 秒内再次访问该资源，均使用本地的缓存
+
+- public
+  - 表明响应可以被任何对象（包括：发送请求的客户端，代理服务器，等等）缓存，即使是通常不可缓存的内容。（例如：1.该响应没有`max-age`指令或`Expires`消息头；2. 该响应对应的请求方法是 [POST](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST) 。）
+
+- private
+  - 表明响应只能被单个用户缓存，不能作为共享缓存（即代理服务器不能缓存它）。私有缓存可以缓存响应内容，比如：对应用户的本地浏览器。
+
+- no-cache
+  - 在发布缓存副本之前，强制要求缓存把请求提交给原始服务器进行验证(协商缓存验证)。
+
+- no-store
+  - 缓存不应存储有关客户端请求或服务器响应的任何内容，即不使用任何缓存
 
 > Expire 是 HTTP1.0 标准下的字段,可以忽略了
 
@@ -26,19 +38,23 @@ chrome 打开新标签页，输入网址回车，首页也会命中强缓存，�
 
 ## 协商缓存
 
-向服务器验证一下缓存的有效性来确定是否使用缓存
+向服务器验证一下缓存的有效性来确定是否使用缓存，两种方式
 
 ### Last-Modified
 
+可能文件内容没有什么变化，但修改时间变了，导致重新下载资源
+
 Response Headers：服务端告诉客户端资源的最后修改时间
 
-在此请求客户端携带以下参数到服务端
+再此请求客户端携带以下参数到服务端
 
-`if-Modified-Since` 是否文件被修改了
+`if-Modified-Since` 是否文件被修改了，带上服务器给的Last-Modified
 
-`if-Unmodified-Since` 是否文件没有被修改
+`if-Unmodified-Since` 是否文件没有被修改，带上服务器给的Last-Modified
 
 ### Etag
+
+算法服务器决定，hash，文件大小，等，过于复杂消耗服务器资源
 
 Response Headers：服务端告诉客户端资源的唯一标识
 
