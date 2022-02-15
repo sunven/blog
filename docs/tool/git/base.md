@@ -165,6 +165,34 @@ git log --author="username" --pretty=tformat: --numstat | awk '{ add += $1; subs
 git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done
 ```
 
+### 同步更新fork的仓库
+
+1. 添加一个将被同步给 fork 远程的上游仓库
+
+```sh
+git remote add upstream https://github.com/apache/flink.git
+```
+
+2. 从上游仓库 fetch 分支和提交点，传送到本地，并会被存储在一个本地分支 upstream/master
+
+```sh
+git fetch upstream
+```
+
+3. 在本地分支上，执行合并
+
+```sh
+git merge upstream/master
+```
+
+4. 推送到远程
+
+```sh
+git push origin master
+```
+
+
+
 ## 问题
 
 - [Please enter a commit message to explain why this merge is necessary](http://www.cnblogs.com/wei325/p/5278922.html)
