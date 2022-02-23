@@ -1,8 +1,8 @@
-# diff
+# 【vue3】深入理解diff
 
 当组件发生更新时，为了能最大程度的复用旧节点，就需要比较新旧节点。子节点的比较是diff中最核心的问题
 
-每一次新旧子节点的diff都会经过下面的5步，具体步骤如下
+每一次新旧子节点的diff都会经过下面5个步骤，具体步骤如下
 
 ## 一
 
@@ -44,7 +44,7 @@ newChildren: d e b c
 
 ### 流程解析：
 
-与第一步类似，只不过是从尾开始循环，循环结束时，e1为0，e2为1。
+与第一步类似，只不过是从尾开始循环，循环结束时，e1为0，e2为1。即b,c被处理了
 
 ### 说明
 
@@ -80,6 +80,8 @@ newChildren: c a b
 
 ### 例子说明
 
+c就是需要新增的
+
 例3在开始diff后，会经过步骤一，再进入步骤三，不会进入步骤二
 
 例4在开始diff后，会经过步骤二，在进入步骤三，不会进入步骤一
@@ -114,6 +116,8 @@ newChildren: b c
 
 ### 例子说明
 
+c就是需要删除的
+
 例5在开始diff后，会经过步骤一，再进入步骤四，不会进入步骤二
 
 例6在开始diff后，会经过步骤二，在进入步骤四，不会进入步骤一
@@ -147,13 +151,13 @@ newChildren：e d c h
 - **keyToNewIndexMap**：用于存储新子节点key与索引的对应关系，
 - **patched = 0**：表示已经patach的节点个数
 - **toBePatched = e2 - s2 + 1**：需要patch的节点个数，例7中，toBePatched 为 4，即`e d c h` 4个
-- **maxNewIndexSoFar = 0**：在旧子节点中找到新节点索引的最大值（类似react中的lastIndex），
+- **maxNewIndexSoFar = 0**：在旧子节点中找到的新节点索引的最大值（类似react diff中的lastIndex），
 - **moved = false**：表示是否需要移动节点，即新旧子节点位置发生了变化需要移动，
 - **newIndexToOldIndexMap**：是个数组，长度为toBePatched，默认每一项都是0，用来存储新子节点中的未遍历的节点在旧子节点中的位置，后面将会使用它计算出一个最长递增子序列，并用于 DOM 移动，例7中，开始为`[0,0,0,0]`
 
 ### 流程解析
 
-#### keyToNewIndexMap
+#### 建立keyToNewIndexMap
 
 - 这是为了之后在遍历旧子节点时，能够通过旧节点的key快速找到旧节点在新子节点中的位置。如果没有keyToNewIndexMap，那么在遍历旧子节点时时，只能再去遍历新子节点才能找到旧节点在新子节点中的位置，就会出现双层for循环。这就是算法优化中空间换时间的概念。例7中，keyToNewIndexMap形如：
 
@@ -172,7 +176,7 @@ newChildren：e d c h
 
 - 确定maxNewIndexSoFar 
 
-例7中，maxNewIndexSoFar 为 4，因为e在旧节点中的索引为4，d在纠结点中的索引为3，c在节点中的索引为2，f在旧节点中不存在。取最大即为4。
+例7中，maxNewIndexSoFar 为 4，因为e在旧节点中的索引为4，d在旧节点中的索引为3，c在旧节点中的索引为2，f在旧节点中不存在。取最大即为4。
 
 - 确定newIndexToOldIndexMap
 
@@ -180,9 +184,11 @@ newChildren：e d c h
 
 - 确定moved
 
-例7中，maxNewIndexSoFar 第一次就被设为了4，后面找到的索引 3,2都比4小，即说明有节点发生了位置交换，需要移动
+例7中，maxNewIndexSoFar 第一次就被设为了4，后面找到的索引 3,2都比4小，即说明有节点发生了位置交换，需要移动，moved设为true
 
 #### 确定最长递增子序列
+
+什么是最长递增子序列：
 
 <https://en.wikipedia.org/wiki/Longest_increasing_subsequence>
 
@@ -204,16 +210,63 @@ newChildren：e d c h
 
 这里不讨论求解最长递增子序列的算法。
 
+> vue的diff算法中求解最长递增子序列返回的是索引，而不是具体值
+>
+> 例如`[0, 2, 6, 9, 11, 15]`返回的应该是`[0,4,6,9,13,15]`
+
+在例7中，newIndexToOldIndexMap为`[5,4,3,0]`,它没有最长递增子序列，即得到的increasingNewIndexSequence为空
+
 #### 第二个for循环
 
-做移动或mount操作
+主要做移动或mount操作
 
 遍历toBePatched ，即需要path的节点，在例7中就是遍历`e d c h`
 
-如果对应节点索引在newIndexToOldIndexMap中为0，即为新节点表示需要mount
+如果对应节点索引在newIndexToOldIndexMap中为0，即为新节点表示需要mount，例7中，指h。
 
-没有最长递增子序列，或者不在最长递增子序列中的，表示需要move
+没有最长递增子序列，或者不在最长递增子序列中的，表示需要move，例7中，e，d，c都需要移动
+
+#### 有最长递增子序列？
+
+#### 例8
+
+```
+oldChildren：a b x y z f g
+newChildren：a b z x y h f g
+```
+
+例8中，a，b和f，g会在首尾遍历是处理。实际进入步骤五处理的为
+
+```
+oldChildren：x y z
+newChildren：z x y h
+```
+
+根据前面的解析逻辑我们可以得到如下变量数据：
+
+```
+toBePatched = 4
+maxNewIndexSoFar = 4
+moved = true
+newIndexToOldIndexMap = [4,2,3,0] 最大递增子序列为[2,3]
+increasingNewIndexSequence = [1,2]
+```
+
+步骤5里面第二个for循环过程如下：
+
+1. 从后向前遍历，即依次遍历h，y，x，z
+2. h在 newIndexToOldIndexMap中位置(索引3)的值为0，即表示h是新增的元素，做mount操作
+3. y的索引2等于increasingNewIndexSequence中倒数第一个值2，即表示y不需要移动
+4. x的索引1等于increasingNewIndexSequence中倒数第二个值1，即表示x不需要移动
+5. z的索引为1，但increasingNewIndexSequence中的值已经遍历完了，即表示z需要移动
+
+通过观察我们也能发现，确实只需要新增h，然后移动z到x前面就完成的dom的更新
 
 ## 总结
 
 - 在一次diff中，步骤一、二可以都经历，但步骤三、四、五只会经历一个
+- 最长递增子序列主要就是为了解决哪些节点需要移动的问题
+
+源码diif算法的注释：
+
+<https://github.com/sunven/core/blob/main/packages/runtime-core/src/renderer.ts#L1792-#L2074>
