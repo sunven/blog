@@ -17,6 +17,36 @@
 
 - [commonlyused.html](/develop/algorithm/commonlyused.html)
 - [index.html](/develop/algorithm/index.html)
+- [重学数据结构与算法.html](/develop/algorithm/重学数据结构与算法.html)
+
+## /develop/designpatterns/
+
+- [abstractfactory.html](/develop/designpatterns/abstractfactory.html)
+- [adapter.html](/develop/designpatterns/adapter.html)
+- [bridge.html](/develop/designpatterns/bridge.html)
+- [builder.html](/develop/designpatterns/builder.html)
+- [command.html](/develop/designpatterns/command.html)
+- [composite.html](/develop/designpatterns/composite.html)
+- [decorator.html](/develop/designpatterns/decorator.html)
+- [facade.html](/develop/designpatterns/facade.html)
+- [factory.html](/develop/designpatterns/factory.html)
+- [flyweight.html](/develop/designpatterns/flyweight.html)
+- [interpreter.html](/develop/designpatterns/interpreter.html)
+- [iterator.html](/develop/designpatterns/iterator.html)
+- [mediator.html](/develop/designpatterns/mediator.html)
+- [memento.html](/develop/designpatterns/memento.html)
+- [observer.html](/develop/designpatterns/observer.html)
+- [patterns.html](/develop/designpatterns/patterns.html)
+- [principles.html](/develop/designpatterns/principles.html)
+- [prototype.html](/develop/designpatterns/prototype.html)
+- [proxy.html](/develop/designpatterns/proxy.html)
+- [index.html](/develop/designpatterns/index.html)
+- [responsibility.html](/develop/designpatterns/responsibility.html)
+- [singleton.html](/develop/designpatterns/singleton.html)
+- [state.html](/develop/designpatterns/state.html)
+- [stragety.html](/develop/designpatterns/stragety.html)
+- [template.html](/develop/designpatterns/template.html)
+- [visitor.html](/develop/designpatterns/visitor.html)
 
 ## /develop/docker/
 
@@ -27,6 +57,28 @@
 - [mysqlondocker.html](/develop/docker/mysqlondocker.html)
 - [index.html](/develop/docker/index.html)
 
+## /develop/dotnet/
+
+- [abpmodule.html](/develop/dotnet/abpmodule.html)
+- [aopinaudit.html](/develop/dotnet/aopinaudit.html)
+- [base.html](/develop/dotnet/base.html)
+- [collect.html](/develop/dotnet/collect.html)
+- [concurrentqueue.html](/develop/dotnet/concurrentqueue.html)
+- [csharpcollect.html](/develop/dotnet/csharpcollect.html)
+- [csharpstackapplication.html](/develop/dotnet/csharpstackapplication.html)
+- [dynamicwebapi.html](/develop/dotnet/dynamicwebapi.html)
+- [ioc.html](/develop/dotnet/ioc.html)
+- [issueincoding.html](/develop/dotnet/issueincoding.html)
+- [jsonmediatypeformatter-swagger.html](/develop/dotnet/jsonmediatypeformatter-swagger.html)
+- [library.html](/develop/dotnet/library.html)
+- [ocelot.html](/develop/dotnet/ocelot.html)
+- [poco.html](/develop/dotnet/poco.html)
+- [razor.html](/develop/dotnet/razor.html)
+- [index.html](/develop/dotnet/index.html)
+- [swagger.html](/develop/dotnet/swagger.html)
+- [transparentproxy.html](/develop/dotnet/transparentproxy.html)
+- [volatile.html](/develop/dotnet/volatile.html)
+
 ## /develop/flutter/
 
 - [env.html](/develop/flutter/env.html)
@@ -34,6 +86,7 @@
 ## /develop/nodejs/
 
 - [koa.html](/develop/nodejs/koa.html)
+- [pnpm.html](/develop/nodejs/pnpm.html)
 
 ## /develop/other/
 
@@ -69,107 +122,12 @@
 - [index.html](/develop/sql/index.html)
 - [sqlcollect.html](/develop/sql/sqlcollect.html)
 
-## /dotnet/abp/
-
-- [abpmodule.html](/dotnet/abp/abpmodule.html)
-- [aopinaudit.html](/dotnet/abp/aopinaudit.html)
-- [dynamicwebapi.html](/dotnet/abp/dynamicwebapi.html)
-- [index.html](/dotnet/abp/index.html)
-- [transparentproxy.html](/dotnet/abp/transparentproxy.html)
-
-## /dotnet/ddd/
-
-- [base.html](/dotnet/ddd/base.html)
-- [collect.html](/dotnet/ddd/collect.html)
-- [poco.html](/dotnet/ddd/poco.html)
-- [index.html](/dotnet/ddd/index.html)
-
-## /dotnet/designpatterns/
-
-- [abstractfactory.html](/dotnet/designpatterns/abstractfactory.html)
-- [adapter.html](/dotnet/designpatterns/adapter.html)
-- [bridge.html](/dotnet/designpatterns/bridge.html)
-- [builder.html](/dotnet/designpatterns/builder.html)
-- [command.html](/dotnet/designpatterns/command.html)
-- [composite.html](/dotnet/designpatterns/composite.html)
-- [decorator.html](/dotnet/designpatterns/decorator.html)
-- [facade.html](/dotnet/designpatterns/facade.html)
-- [factory.html](/dotnet/designpatterns/factory.html)
-- [flyweight.html](/dotnet/designpatterns/flyweight.html)
-- [interpreter.html](/dotnet/designpatterns/interpreter.html)
-- [iterator.html](/dotnet/designpatterns/iterator.html)
-- [mediator.html](/dotnet/designpatterns/mediator.html)
-- [memento.html](/dotnet/designpatterns/memento.html)
-- [observer.html](/dotnet/designpatterns/observer.html)
-- [patterns.html](/dotnet/designpatterns/patterns.html)
-- [principles.html](/dotnet/designpatterns/principles.html)
-- [prototype.html](/dotnet/designpatterns/prototype.html)
-- [proxy.html](/dotnet/designpatterns/proxy.html)
-- [index.html](/dotnet/designpatterns/index.html)
-- [responsibility.html](/dotnet/designpatterns/responsibility.html)
-- [singleton.html](/dotnet/designpatterns/singleton.html)
-- [state.html](/dotnet/designpatterns/state.html)
-- [stragety.html](/dotnet/designpatterns/stragety.html)
-- [template.html](/dotnet/designpatterns/template.html)
-- [visitor.html](/dotnet/designpatterns/visitor.html)
-
-## /dotnet/microservice/
-
-- [ocelot.html](/dotnet/microservice/ocelot.html)
-- [index.html](/dotnet/microservice/index.html)
-
-## /dotnet/other/
-
-- [concurrentqueue.html](/dotnet/other/concurrentqueue.html)
-- [csharpcollect.html](/dotnet/other/csharpcollect.html)
-- [csharpstackapplication.html](/dotnet/other/csharpstackapplication.html)
-- [ioc.html](/dotnet/other/ioc.html)
-- [issueincoding.html](/dotnet/other/issueincoding.html)
-- [jsonmediatypeformatter-swagger.html](/dotnet/other/jsonmediatypeformatter-swagger.html)
-- [library.html](/dotnet/other/library.html)
-- [razor.html](/dotnet/other/razor.html)
-- [index.html](/dotnet/other/index.html)
-- [swagger.html](/dotnet/other/swagger.html)
-- [volatile.html](/dotnet/other/volatile.html)
-
 ## /fe/browser/
 
 - [event-loop.html](/fe/browser/event-loop.html)
 - [how-the-browser-renders-a-web-page.html](/fe/browser/how-the-browser-renders-a-web-page.html)
 - [page-communication.html](/fe/browser/page-communication.html)
 - [webcache.html](/fe/browser/webcache.html)
-
-## /fe/es6/
-
-- [es6base.html](/fe/es6/es6base.html)
-- [es6extend.html](/fe/es6/es6extend.html)
-- [iteratorsandgenerators.html](/fe/es6/iteratorsandgenerators.html)
-- [index.html](/fe/es6/index.html)
-- [symbol.html](/fe/es6/symbol.html)
-
-## /fe/js/
-
-- [array.html](/fe/js/array.html)
-- [backbonejs.html](/fe/js/backbonejs.html)
-- [canvas.html](/fe/js/canvas.html)
-- [classandmodule.html](/fe/js/classandmodule.html)
-- [component.html](/fe/js/component.html)
-- [equality-in-js.html](/fe/js/equality-in-js.html)
-- [function.html](/fe/js/function.html)
-- [html5api.html](/fe/js/html5api.html)
-- [inherit.html](/fe/js/inherit.html)
-- [issue.html](/fe/js/issue.html)
-- [js-modular-programming.html](/fe/js/js-modular-programming.html)
-- [js-skill.html](/fe/js/js-skill.html)
-- [js1.html](/fe/js/js1.html)
-- [jslib.html](/fe/js/jslib.html)
-- [Map、WeakMap、Set、WeakSet.html](/fe/js/Map、WeakMap、Set、WeakSet.html)
-- [modularization.html](/fe/js/modularization.html)
-- [proxy&reflect.html](/fe/js/proxy&reflect.html)
-- [index.html](/fe/js/index.html)
-- [regex.html](/fe/js/regex.html)
-- [regexcollect.html](/fe/js/regexcollect.html)
-- [requirejs.html](/fe/js/requirejs.html)
 
 ## /fe/other/
 
@@ -203,15 +161,49 @@
 
 ## /js/basics/
 
+- [array.html](/js/basics/array.html)
+- [backbonejs.html](/js/basics/backbonejs.html)
+- [canvas.html](/js/basics/canvas.html)
+- [classandmodule.html](/js/basics/classandmodule.html)
+- [component.html](/js/basics/component.html)
 - [data-type.html](/js/basics/data-type.html)
+- [equality-in-js.html](/js/basics/equality-in-js.html)
+- [function.html](/js/basics/function.html)
+- [html5api.html](/js/basics/html5api.html)
+- [inherit.html](/js/basics/inherit.html)
+- [issue.html](/js/basics/issue.html)
+- [js-modular-programming.html](/js/basics/js-modular-programming.html)
+- [js-skill.html](/js/basics/js-skill.html)
+- [js1.html](/js/basics/js1.html)
+- [jslib.html](/js/basics/jslib.html)
+- [Map、WeakMap、Set、WeakSet.html](/js/basics/Map、WeakMap、Set、WeakSet.html)
+- [modularization.html](/js/basics/modularization.html)
+- [proxy&reflect.html](/js/basics/proxy&reflect.html)
+- [index.html](/js/basics/index.html)
+- [regex.html](/js/basics/regex.html)
+- [regexcollect.html](/js/basics/regexcollect.html)
+- [requirejs.html](/js/basics/requirejs.html)
 - [scope-of-this.html](/js/basics/scope-of-this.html)
 - [with.html](/js/basics/with.html)
+
+## /js/es6/
+
+- [es6base.html](/js/es6/es6base.html)
+- [es6extend.html](/js/es6/es6extend.html)
+- [iteratorsandgenerators.html](/js/es6/iteratorsandgenerators.html)
+- [index.html](/js/es6/index.html)
+- [symbol.html](/js/es6/symbol.html)
+
+## /js/incomprehensible/
+
+- [array-prototype-tostring.html](/js/incomprehensible/array-prototype-tostring.html)
 
 ## /js/other/
 
 - [decimal-operation-problem.html](/js/other/decimal-operation-problem.html)
 - [execution-contexts.html](/js/other/execution-contexts.html)
 - [hoisting.html](/js/other/hoisting.html)
+- [sh.html](/js/other/sh.html)
 - [shallow-copy-and-deep-copy.html](/js/other/shallow-copy-and-deep-copy.html)
 - [小技巧.html](/js/other/小技巧.html)
 
@@ -335,4 +327,6 @@
 ## /vue/rtfsc/
 
 - [diff.html](/vue/rtfsc/diff.html)
+- [vue3-diff-in-deep.html](/vue/rtfsc/vue3-diff-in-deep.html)
+- [vue3-reactive-in-deep.html](/vue/rtfsc/vue3-reactive-in-deep.html)
 
