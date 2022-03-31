@@ -6,6 +6,35 @@
 - 除零取整法
 - 乘零取整法
 
+## Map,WeakMap
+
+> WeakMap：其中的键是弱引用的。其键必须是对象，而值可以是任意的
+
+`node --expose-gc server.js`
+
+```js
+global.gc()
+console.log('start:heapUsed', process.memoryUsage().heapUsed)
+
+let key = new Array(5 * 1024 * 1024).fill(1)
+console.log('array:heapUsed', process.memoryUsage().heapUsed)
+const map = new Map()
+
+map.set(key, 1)
+global.gc()
+console.log('map  :heapUsed', process.memoryUsage().heapUsed)
+
+key = null
+global.gc()
+console.log('null :heapUsed', process.memoryUsage().heapUsed)
+```
+
+![img](./images/stack.jpg)
+
+### 应用
+
+
+
 ## ieee 7
 
 $$
