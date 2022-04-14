@@ -145,6 +145,16 @@ launchctl start com.demo.plist
 launchctl stop com.demo.plist
 ```
 
+
+
+mysql
+
+```undefined
+brew services start mysql
+brew services stop mysql
+brew services restart mysql
+```
+
 ### references
 
 <https://ss64.com/osx/launchctl.html>
