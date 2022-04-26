@@ -61,3 +61,66 @@ default-character-set=utf8
 3. `flush privileges;`
 
 > Column length too big for column 'JobArgs' (max = 21845); use BLOB or TEXT instead
+
+
+
+## ubuntu
+
+查看有没有安装MySQL：
+
+`dpkg -l | grep mysql`
+
+安装MySQL：
+
+`apt-get install mysql-server`
+
+初始化
+
+mysql_secure_installation
+
+允许远程访问
+
+vim /etc/mysql/mysql.conf.d/mysqld.cnf
+
+注释掉bind-address     = 127.0.0.1
+
+mysql -u root -p
+
+mysql> grant all on *.* to root@'%' identified by '你的密码' with grant option;
+
+mysql> flush privileges;  # 刷新权限
+
+mysql> exit
+
+重启
+
+systemctl restart mysql
+
+### ower_case_table_names
+
+`lower_case_table_names` 是mysql设置大小写是否敏感的一个参数。
+
+`lower_case_table_names = 0` 表名存储为给定的大小和比较是区分大小写的
+`lower_case_table_names = 1` 表名存储在磁盘是小写的，但是比较的时候是不区分大小写
+`lower_case_table_names = 2` 表名存储为给定的大小写但是比较的时候是小写的
+
+- unix,linux下lower_case_table_names默认值为 0
+
+- Windows下默认值是 1
+
+- Mac OS X下默认值是 2
+
+**启动mysql：**
+方式一：`sudo /etc/init.d/mysql start`
+方式二：`sudo start mysql`
+方式三：`sudo service mysql start`
+
+**停止mysql：**
+方式一：`sudo /etc/init.d/mysql stop`
+方式二：`sudo stop mysql`
+方式san：`sudo service mysql stop`
+
+**重启mysql：**
+方式一：`sudo/etc/init.d/mysql restart`
+方式二：`sudo restart mysql`
+方式三：`sudo service mysql restart`
