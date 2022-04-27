@@ -191,8 +191,6 @@ git merge upstream/master
 git push origin master
 ```
 
-
-
 ## 问题
 
 - [Please enter a commit message to explain why this merge is necessary](http://www.cnblogs.com/wei325/p/5278922.html)
@@ -231,3 +229,14 @@ git config --global core.safecrlf false
 git config --global core.safecrlf warn
 
 ```
+
+### no matching host key type found. Their offer: ssh-rsa
+
+ 配置好公私钥之后，仍然无法直接用 git ssh的方式，下载代码
+
+解决：
+
+.ssh\config增加以下二项
+
+HostKeyAlgorithms ssh-rsa
+PubkeyAcceptedKeyTypes ssh-rsa
