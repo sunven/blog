@@ -181,7 +181,6 @@
 - [proxy&reflect.html](/js/basics/proxy&reflect.html)
 - [index.html](/js/basics/index.html)
 - [regex.html](/js/basics/regex.html)
-- [regexcollect.html](/js/basics/regexcollect.html)
 - [requirejs.html](/js/basics/requirejs.html)
 - [scope-of-this.html](/js/basics/scope-of-this.html)
 - [with.html](/js/basics/with.html)
@@ -197,6 +196,7 @@
 ## /js/incomprehensible/
 
 - [array-prototype-tostring.html](/js/incomprehensible/array-prototype-tostring.html)
+- [comma-operator.html](/js/incomprehensible/comma-operator.html)
 
 ## /js/other/
 
@@ -248,11 +248,6 @@
 - [principle-of-database-system.html](/subject/other/principle-of-database-system.html)
 - [shortest-path.html](/subject/other/shortest-path.html)
 - [tree-forest-and-binary-tree-transformation.html](/subject/other/tree-forest-and-binary-tree-transformation.html)
-
-## /tool/chrome/
-
-- [plugin.html](/tool/chrome/plugin.html)
-- [index.html](/tool/chrome/index.html)
 
 ## /tool/environment/
 

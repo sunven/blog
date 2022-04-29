@@ -103,6 +103,59 @@ constructor：构造函数
 3. 让*O*成为调用 ToObject(**this)**的结果.
 4. 让*class*成为*O*的内部属性[[Class]]的值.
 
-5. 返回三个字符串**"[object ",** _class_, 以及 **"]"**连接后的新字符串
+5. 返回三个字符串**"[object ",** *class*, 以及 **"]"**连接后的新字符串
 
 **Object.prototype.toString.call([]).slice(8, -1) === "Array";**
+
+## undefined与null
+
+<http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html>
+
+```js
+Number(null)
+// 0
+
+5 + null
+// 5
+
+Number(undefined)
+// NaN
+
+5 + undefined
+// NaN
+```
+
+### null表示"没有对象"，即该处不应该有值
+
+- 作为函数的参数，表示该函数的参数不是对象。
+
+- 作为对象原型链的终点。
+
+```js
+Object.getPrototypeOf(Object.prototype)
+// null
+```
+
+### undefined表示"缺少值"，就是此处应该有一个值，但是还没有定义
+
+- 变量被声明了，但没有赋值时，就等于undefined。
+
+- 调用函数时，应该提供的参数没有提供，该参数等于undefined。
+
+- 对象没有赋值的属性，该属性的值为undefined。
+
+- 函数没有返回值时，默认返回undefined。
+
+``` js
+var i;
+i // undefined
+
+function f(x){console.log(x)}
+f() // undefined
+
+var  o = new Object();
+o.p // undefined
+
+var x = f();
+x // undefined
+```

@@ -33,8 +33,6 @@ console.log('null :heapUsed', process.memoryUsage().heapUsed)
 
 ### 应用
 
-
-
 ### ieee 7
 
 $$
@@ -91,7 +89,7 @@ $$
 &= 1001110_2 \\
 &= 1.001110_2 \times 2^6
 \end{align}
-$$ {align}
+$$
 
 - sign为0，exponent为6+127=133=$10000101_2$，fraction为001110
 
@@ -143,24 +141,22 @@ $$
 
 ```js
 // 0.3
-      // 0.010011001100110011001100110011001100110011001100110011
-      // 0.0100110011001100110011001100110011001100110011001101
-      const str = '0.0100110011001100110011001100110011001100110011001101',
-        len = str.length
-      let e = 0,
-        expression = ''
-      for (let i = 0; i < len; i++) {
-        const element = str[i]
-        if (element === '.') {
-          continue
-        }
-        expression += element + ' * 2  ' + e-- + (i === len - 1 ? '' : ' + ')
-      }
-      console.log(expression)
-      console.log(eval(expression))
+// 0.010011001100110011001100110011001100110011001100110011
+// 0.0100110011001100110011001100110011001100110011001101
+const str = '0.0100110011001100110011001100110011001100110011001101',
+  len = str.length
+let e = 0,
+  expression = ''
+for (let i = 0; i < len; i++) {
+  const element = str[i]
+  if (element === '.') {
+    continue
+  }
+  expression += element + ' * 2  ' + e-- + (i === len - 1 ? '' : ' + ')
+}
+console.log(expression)
+console.log(eval(expression))
 ```
-
-
 
 #### reference
 
@@ -170,7 +166,7 @@ $$
 
 <https://devtool.tech/double-type>
 
-##  执上下文行栈
+## 执上下文行栈
 
 - 全局代码— 首次执行代码的默认环境。
 - 函数代码——每当执行流程进入函数体时。
@@ -184,23 +180,15 @@ $$
 
 ![img](./images/2019-03-19-01.png)
 
-# 面向对象的程序设计-继承
-
-
+## 面向对象的程序设计-继承
 
 基础的实现主要依靠原型链来实现
 
-
-
 ## 原型链
-
-
 
 原型链做为实现继承的主要方法。
 
 构造函数，原型，实例之间的关系：每个构造函数都有一个原型对象，原型对象都包含一个指向构造函数的指针，而实例都包含一个指向原型对象的内部指针。
-
-
 
 ```js
 
@@ -248,15 +236,9 @@ alert(instance.getSuperValue());  //true
 
 ```
 
-
-
 ![6-4.jpg](./images/6-4.jpg)
 
-
-
 调用getSuperValue方法会经历三个步骤：
-
-
 
 \1. 搜索实例
 
@@ -264,23 +246,13 @@ alert(instance.getSuperValue());  //true
 
 \3. 搜索SupperType.Prototype
 
-
-
 ### 默认原型
-
-
 
 所有函数的默认原型都是Object的实例，因此默认原型都会包含一个内部指针，指向Object。Prototype。
 
-
-
 ![6-5.jpg](./images/6-5.jpg)
 
-
-
 ### 确定原型和实例的关系
-
-
 
 ```js
 
@@ -300,15 +272,9 @@ alert(*SubType*.prototype.isPrototypeOf(instance));  //true
 
 ```
 
-
-
 ### 谨慎的定义方法
 
-
-
 给原型添加方法的代码一定要放在替换原型的语句之后。
-
-
 
 ```js
 
@@ -368,11 +334,7 @@ alert(instance.getSuperValue());  //false
 
 ```
 
-
-
 *> 通过原型链实现继承时，不是使用对象字面量创建原型方法，因为这样就会重写原型链。*
-
-
 
 ```js
 
@@ -434,15 +396,9 @@ alert(instance.getSuperValue());  //error!
 
 ```
 
-
-
 ### 4.原型链的问题
 
-
-
 #### 1.引用类型的问题
-
-
 
 ```js
 
@@ -480,23 +436,13 @@ alert(instance2.colors);   //"red,blue,green,black"
 
 ```
 
-
-
 #### 2.传参问题
-
-
 
 在创建子类实例是，不能向超类型的构造函数中传递参数。
 
-
-
 ## 借用构造函数
 
-
-
 函数只不过是特定环境中执行代码的对象，因为通过使用apply()和call()方法也可以在（将来）新创建的对象上执行构造函数
-
-
 
 ```js
 
@@ -532,11 +478,7 @@ alert(instance2.colors);   //"red,blue,green"
 
 ```
 
-
-
 ### 1.传递参数
-
-
 
 ```js
 
@@ -572,23 +514,13 @@ alert(instance.age);   //29
 
 ```
 
-
-
 ### 2.借用构造函数的问题
-
-
 
 方法都在构造函数中定义，函数无法复用。
 
-
-
 ## 组合继承
 
-
-
 将原型链和借用构造函数的方式组合在一起,这样，同在原型上定义方法实现了函数复用，又能保证每个实例都有它自己的属性。
-
-
 
 ```js
 
@@ -658,19 +590,11 @@ instance2.sayAge();    //27
 
 ```
 
-
-
-*> 组合继承是最常用的继承模式*
-
-
+> *组合继承是最常用的继承模式*
 
 ### 存在问题
 
-
-
 无论什么情况下，都会调用两次超类型构造函数，一次是在创建子类型原型的时候，另一次是在子类型构造函数内部。子类型包含父类型对象的全部实例属性，但不得不在调用子类型构造函数时重写这些属性。
-
-
 
 ```js
 
@@ -714,25 +638,15 @@ function SubType(*name*, *age*){
 
 ```
 
-
-
 第一次调用：SubType.prototype获得name和colors属性，来自SuperType的实例属性，位于SubType的原型中
 
 第二次调用：在新对象上创建了实例属性name和colors，屏蔽了原型中的同名属性
 
-
-
 ![6-6.jpg](./images/6-6.jpg)
-
-
 
 ## 原型式继承
 
-
-
 这种方法没有严格意义上的构造函数，借助原型可以基于已有的对象创建新对象，同时还不必因此创建自定义类型。
-
-
 
 ```js
 
@@ -778,21 +692,13 @@ alert(person.friends);  //"Shelby,Court,Van,Rob,Barbie"
 
 ```
 
-
-
 在object()函数内部，先创建一个临时构造函数，然后将传入的对象作为这个构造函数的原型，最后返回了这个临时类型的新实例。
 
-
-
 ### Object.create()
-
-
 
 ES5中新增Object.create()方法规范化了原型式继承。
 
 参数：一个用作新对象原型的对象和一个新对象定义额外属性的对象
-
-
 
 ```js
 
@@ -826,11 +732,7 @@ alert(person.friends);  //"Shelby,Court,Van,Rob,Barbie"
 
 ```
 
-
-
 Object.create()方法的第二个参数与Object.defineProperties()的第二参数格式相同
-
-
 
 ```js
 
@@ -860,15 +762,9 @@ alert(anotherPerson.name);  //"Greg"
 
 ```
 
-
-
 ## 寄生式继承
 
-
-
 创建一个仅用于封装继承过程的函数，该函数在内部以某种方式来增强对象，最后再像真地是它做了所有工作一样返回对象。
-
-
 
 ```js
 
@@ -910,21 +806,13 @@ anotherPerson.sayHi(); //"hi"
 
 ```
 
-
-
-*> 这种方式做不到函数复用而降低效率，类似构造函数模式*
-
-
+> *这种方式做不到函数复用而降低效率，类似构造函数模式*
 
 ## 寄生式组合继承
-
-
 
 借用构造函数来继承属性，通过原型链的混成形式来继承方法。
 
 基本思路：不必为了指定子类型的原型而调用父类型的构造函数。
-
-
 
 ```js
 
@@ -940,23 +828,15 @@ function inheritPrototype(*subType*, *superType*){
 
 ```
 
-
-
 inheritPrototype()函数接收两个参数：子类型构造函数和父类型构造函数。
 
-
-
 在函数内部：
-
-
 
 \1. 创建父类型原型的副本
 
 \2. 为创建副本添加constructor属性，从而弥补因重写原型失去默认的constructor属性
 
 \3. 将新创建的对象（即副本）赋值给予子类型的原型
-
-
 
 ```js
 
@@ -1026,14 +906,8 @@ instance2.sayAge();    //27
 
 ```
 
-
-
 这个例子高效体现了它只调用了一次SuperType构造函数，避免了在SubType.prototype上创建不必要的、多余的属性。原型链还能保持不变。
 
-
-
-*> 开发人员你认为寄生组合继承是引用类型最理想的继承范式*
-
-
+> *开发人员你认为寄生组合继承是引用类型最理想的继承范式*
 
 YUI的YAHOO.lang.extend()方法采用了寄生组合继承模式。
