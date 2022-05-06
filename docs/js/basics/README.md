@@ -6,8 +6,6 @@
 
 [正则表达式基础](./regex.html)
 
-[正则表达式集锦](./regexcollect.html)
-
 [backbonejs](./backbonejs.html)
 
 [函数](./function.md)

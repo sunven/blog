@@ -107,6 +107,122 @@ constructor：构造函数
 
 **Object.prototype.toString.call([]).slice(8, -1) === "Array";**
 
+
+
+## 判断类型
+
+#### 1. Object.prototype.toString.call()
+
+```js
+Object.prototype.toString.call('An') // "[object String]"
+Object.prototype.toString.call(1) // "[object Number]"
+Object.prototype.toString.call(Symbol(1)) // "[object Symbol]"
+Object.prototype.toString.call(null) // "[object Null]"
+Object.prototype.toString.call(undefined) // "[object Undefined]"
+Object.prototype.toString.call(function() {}) // "[object Function]"
+Object.prototype.toString.call({ name: 'An' }) // "[object Object]"
+```
+
+#### 2. instanceof
+
+```js
+;[] instanceof Array // true
+;[] instanceof Object // true
+```
+
+#### 3. Array.isArray()
+
+```js
+var iframe = document.createElement('iframe')
+document.body.appendChild(iframe)
+xArray = window.frames[window.frames.length - 1].Array
+var arr = new xArray(1, 2, 3) // [1,2,3]
+
+// Correctly checking for Array
+Array.isArray(arr) // true
+Object.prototype.toString.call(arr) // true
+// Considered harmful, because doesn't work though iframes
+arr instanceof Array // false
+```
+
+4. **typeof**
+
+```js
+console.log(typeof a) //'undefined'
+console.log(typeof true) //'boolean'
+console.log(typeof '123') //'string'
+console.log(typeof 123) //'number'
+console.log(typeof NaN) //'number'
+console.log(typeof null) //'object'
+var obj = new String()
+console.log(typeof obj) //'object'
+var fn = function() {}
+console.log(typeof fn) //'function'
+console.log(typeof class c {}) //'function'
+```
+
+## 相等
+
+<https://dorey.github.io/JavaScript-Equality-Table/>
+
+### 非严格相等  ==
+
+比较前，先隐式转换为相同类型，再比较两个值是否相等
+
+|           | Undefined | Null    | Number                | String                        | Boolean                         | Object                          |
+| :-------- | --------- | ------- | --------------------- | ----------------------------- | ------------------------------- | ------------------------------- |
+| Undefined | `true`    | `true`  | `false`               | `false`                       | `false`                         | `IsFalsy(B)`                    |
+| Null      | `true`    | `true`  | `false`               | `false`                       | `false`                         | `IsFalsy(B)`                    |
+| Number    | `false`   | `false` | `A === B`             | `A === ToNumber(B)`           | `A=== ToNumber(B)`              | `A== ToPrimitive(B)`            |
+| String    | `false`   | `false` | `ToNumber(A) === B`   | `A === B`                     | `ToNumber(A) === ToNumber(B)`   | `ToPrimitive(B) == A`           |
+| Boolean   | `false`   | `false` | `ToNumber(A) === B`   | `ToNumber(A) === ToNumber(B)` | `A === B`                       | `ToNumber(A) == ToPrimitive(B)` |
+| Object    | `false`   | `false` | `ToPrimitive(A) == B` | `ToPrimitive(A) == B`         | `ToPrimitive(A) == ToNumber(B)` | `A === B`                       |
+
+- ToNumber(A) 表示尝试在比较前将参数 A 转换为数字，与+A 效果相同
+- ToPrimitive(A)通过尝试调用 A 的 A.toString() 和 A.valueOf() 方法，将参数 A 转换为原始值
+-  // TODO
+
+#### 特例：document.all
+
+```js
+// Opera 中`document.attachEvent`(未验证)
+
+// for “modern” browsers
+typeof document.all  // 'undefined'
+document.all == undefined // true
+Object.prototype.toString.call(document.all) // '[object HTMLAllCollection]'
+
+// for ancient browsers eg ie <= 10
+typeof document.all  // 'object'
+document.all == undefined // false
+Object.prototype.toString.call(document.all) // '[object HTMLAllCollection]'
+
+if (document.all) {
+  // code that uses `document.all`, for ancient browsers
+} else if (document.getElementById) {
+  // code that uses `document.getElementById`, for “modern” browsers
+}
+```
+
+### 严格相等  ===
+
+不进行隐式转换，类型相同，值也相同，就是全等
+
+- 两个 NaN 不是全等的
+- +0 和-0 是全等的
+
+### 同值相等  Object.is
+
+与===不同
+
+- 两个 NaN 是相等的
+- +0 和-0 是不相等的
+
+### 零值相等
+Map，Set使用
+
+与同值相等类似，不过认为+0 和-0 是相等的
+
 ## undefined与null
 
 <http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html>

@@ -1,5 +1,33 @@
 # sh
 
+## type
+
+| type      | ToObject() | valueOf() |      |      |
+| --------- | ---------- | --------- | ---- | ---- |
+| Undefined |            | -         |      |      |
+| Null      |            | -         |      |      |
+| Boolean   |            | 布尔值    |      |      |
+| Number    |            | 数字值    |      |      |
+| String    |            | 字符串值  |      |      |
+| Symbol    |            |           |      |      |
+| BigInt    |            |           |      |      |
+| Object    |            |           |      |      |
+|           |            |           |      |      |
+
+Boolean、Number、String哪里用到
+
+vue props
+
+
+
+undefined null区别
+
+什么时候用null
+
+*Object*.create(null);
+
+Object.prototype.__proto__
+
 ## 一、类型
 
 - 零舍一入
@@ -165,6 +193,12 @@ console.log(eval(expression))
 <https://babbage.cs.qc.cuny.edu/IEEE-754/>
 
 <https://devtool.tech/double-type>
+
+## 解决方案
+
+<https://github.com/josdejong/mathjs>
+
+<https://github.com/nefe/number-precision>
 
 ## 执上下文行栈
 
