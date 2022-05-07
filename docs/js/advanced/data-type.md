@@ -21,6 +21,12 @@
 
 "",0,-0,NaN,null,undefined,false
 
+### undefined
+
+表示一个未初始化的值，也就是还没有被分配的值。我们之后再具体讨论变量，但有一点可以先简单说明一下，JavaScript 允许声明变量但不对其赋值，一个未被赋值的变量就是 `undefined` 类型。还有一点需要说明的是，`undefined` 实际上是一个不允许修改的常量
+
+- undefined不是保留字
+
 ## 二、类型检测
 
 ### typeof
