@@ -15,13 +15,13 @@
 
 堆内存：堆允许程序在运行时动态地申请某个大小的内存空间。
 
-### bool
+### 1、bool
 
 #### 假值
 
 "",0,-0,NaN,null,undefined,false
 
-### undefined
+### 2、undefined
 
 Undefined 类型只有一个值，称为 undefined。 任何没有被赋值的变量的值都是未定义的。
 
@@ -35,12 +35,12 @@ Undefined 类型只有一个值，称为 undefined。 任何没有被赋值的�
 
 - 对象上点一个不存在的属性，为什么时undefined
 
-### null
+### 3、null
 
 - 不是全局对象的一个属性 `'null' in window`
-- 表示缺少的标识，指示变量未指向任何对象
+- 表示缺少的标识，指示变量未指向任何对象，空对象的指针
 
-### undefined与null
+### 4、undefined与null
 
 ```js
 Number(null) // 0
@@ -81,9 +81,176 @@ var x = f();
 x // undefined
 ```
 
+### Number
+
+双精度64位浮点数
+
+标准：ieee 754 
+$$
+\begin{aligned}
+& 12.34 = 1 \times 10^1 + 2 \times 10^0 + 3 \times 10^{-1} + 4 \times 10^{-2} \\
+& 7.75 = 4 + 2 + 1 + 1 / 2 + 1 / 4 = 1 \times 2^2 + 1 \times 2^1 + 1 \times 2^0 + 1 \times 2^{-1} + 1 \times 2^{-2} = 111.11_2
+\end{aligned}
+$$
+
+- 对于十进制，小数点的左移右移相当于乘以10或除以10
+- 对于二进制，小数点的左移右移相当于乘以2或除以2
+
+科学计数法
+
+- 节省内存空间
+- 直观的确定大小
+
+---
+
+二进制科学计数法
+
+$$ {aligned}
+\alpha \times 2^n
+$$
+
+- 指数基数为2
+- $\mid a \mid >= 1 且 \mid a \mid < 2$
+- n为整数
+
+$$
+7.75 = 111.11_2 = 1.1111 \times 2^2
+$$
+
+#### IEEE 754定义
+
+<https://zh.wikipedia.org/zh-hans/IEEE_754>
+
+![img](./images/General_floating_point_frac.svg)
+
+- sign：0表示正数，1表示负数
+- exponent： 指数值加上一个偏移值，偏移值为：$2^{n-1}-1$，其中的n为存储指数的比特位长度
+- fraction：小数部分（最高位1规定不显示存储）
+
+32位单精度
+
+- 1位符号位，8位指数位，23位小数位；偏移值127
+- $n=(-1)^{sign} \times (1+小数) \times 2^{指数-127}$
+
+#### 举例
+
+$$
+\begin{align}
+78 &= 1 \times 2^6 +  0 \times 2^5 + 0 \times 2^4 + 1 \times 2^3 + 1 \times 2^2 +  1 \times 2^1 +  0 \times 2^0 \\
+&= 1001110_2 \\
+&= 1.001110_2 \times 2^6
+\end{align}
+$$
+
+- sign为0，exponent为6+127=133=$10000101_2$，fraction为001110
+
+- 0-10000101-00111000000000000000000
+
+$$
+-16 = -10000_2 = -1.0000 \times 2^4
+$$
+
+- sign为1，exponent为$4+127=131=10000011_2$，fraction为0000
+
+- 1-10000011-00000000000000000000000
+
+$$
+7.75 = 111.11_2 = 1.1111 \times 2^2
+$$
+
+- sign为0，exponent为$2+127=129=10000001_2$，fraction为0000
+
+- 0-10000001-11110000000000000000000
+
+还原
+
+#### 0.1+0.2
+
+![img](./images/88842336-589895844125a.webp)
+
+$0.1 = (0.0\dot0\dot0\dot1\dot1)_2=(-1)^0\times2^{-4}\times(1.\dot1\dot0\dot0\dot1)_2$
+
+- sign为0，exponent为$-4+127=123=01111011_2$，fraction为0000
+
+- 0-01111011-10011001100110011001101
+
+$0.2 = 0.1\times2^1=(-1)^0\times2^{-3}\times(1.\dot1\dot0\dot0\dot1)_2$
+
+- sign为0，exponent为$-3+127=124= 01111100_2$，fraction为0000
+
+- 0-01111100-10011001100110011001101
+
+先进行“对位”，将较小的指数化为较大的指数，并将小数部分相应右移
+$$
+\begin{align}
+0.1 &= (-1)^0\times2^{-3}\times(0.1100 1100 1100 1100 1100 110)_2 \\
+0.2 &= (-1)^0\times2^{-3}\times(1.1001 1001 1001 1001 1001 101)_2 \\
+0.1 + 0.2 &=(-1)^0\times2^{-3}\times(10.0110 0110 0110 0110 0110 011)_2 \\
+&= (-1)^0\times2^{-2}\times(1.0011 0011 0011 0011 0011 010)_2 \\
+\end{align}
+$$
+
+```js
+// 0.3
+// 0.010011001100110011001100110011001100110011001100110011
+// 0.0100110011001100110011001100110011001100110011001101
+const str = '0.0100110011001100110011001100110011001100110011001101',
+  len = str.length
+let e = 0,
+  expression = ''
+for (let i = 0; i < len; i++) {
+  const element = str[i]
+  if (element === '.') {
+    continue
+  }
+  expression += element + ' * 2  ' + e-- + (i === len - 1 ? '' : ' + ')
+}
+console.log(expression)
+console.log(eval(expression))
+```
+
+#### reference
+
+<https://segmentfault.com/a/1190000008268668>
+
+<https://babbage.cs.qc.cuny.edu/IEEE-754/>
+
+<https://devtool.tech/double-type>
+
+#### 解决方案
+
+<https://github.com/josdejong/mathjs>
+
+<https://github.com/nefe/number-precision>
+
+### Map,WeakMap
+
+> WeakMap：其中的键是弱引用的。其键必须是对象，而值可以是任意的
+
+`node --expose-gc server.js`
+
+```js
+global.gc()
+console.log('start:heapUsed', process.memoryUsage().heapUsed)
+
+let key = new Array(5 * 1024 * 1024).fill(1)
+console.log('array:heapUsed', process.memoryUsage().heapUsed)
+const map = new Map()
+
+map.set(key, 1)
+global.gc()
+console.log('map  :heapUsed', process.memoryUsage().heapUsed)
+
+key = null
+global.gc()
+console.log('null :heapUsed', process.memoryUsage().heapUsed)
+```
+
+![img](./images/stack.jpg)
+
 ## 二、类型检测
 
-### typeof
+### 1、typeof
 
 返回一个字符串，表示未经计算的操作数的类型
 
@@ -136,22 +303,21 @@ typeof Math.sin === 'function'
 ```
 
 - 除 Function 外的所有构造函数的类型都是'object'
-- 'object'typeof null === "object"
+- `typeof null === "object"`
 
-- typeof document.all === 'undefined';
+- `typeof document.all === 'undefined';`
 - 在其被声明之前对块中的 `let` 和 `const` 变量使用 `typeof` 会抛出一个 ReferenceError
 
-### instanceof
+### 2、instanceof
 
 用于检测构造函数的 `prototype` 属性是否出现在某个实例对象的原型链上。
 
-object instanceof constructor
+```js
+;[] instanceof Array // true
+;[] instanceof Object // true
+```
 
-object:实例
-
-constructor：构造函数
-
-### Object.prototype.toString()
+### 3、Object.prototype.toString()
 
 表示该对象的字符串
 
@@ -167,13 +333,7 @@ constructor：构造函数
 
 **Object.prototype.toString.call([]).slice(8, -1) === "Array";**
 
-
-
-## 判断类型
-
-#### 1. Object.prototype.toString.call()
-
-```js
+``` js
 Object.prototype.toString.call('An') // "[object String]"
 Object.prototype.toString.call(1) // "[object Number]"
 Object.prototype.toString.call(Symbol(1)) // "[object Symbol]"
@@ -183,14 +343,7 @@ Object.prototype.toString.call(function() {}) // "[object Function]"
 Object.prototype.toString.call({ name: 'An' }) // "[object Object]"
 ```
 
-#### 2. instanceof
-
-```js
-;[] instanceof Array // true
-;[] instanceof Object // true
-```
-
-#### 3. Array.isArray()
+### 4、 Array.isArray()
 
 ```js
 var iframe = document.createElement('iframe')
@@ -205,23 +358,9 @@ Object.prototype.toString.call(arr) // true
 arr instanceof Array // false
 ```
 
-4. **typeof**
 
-```js
-console.log(typeof a) //'undefined'
-console.log(typeof true) //'boolean'
-console.log(typeof '123') //'string'
-console.log(typeof 123) //'number'
-console.log(typeof NaN) //'number'
-console.log(typeof null) //'object'
-var obj = new String()
-console.log(typeof obj) //'object'
-var fn = function() {}
-console.log(typeof fn) //'function'
-console.log(typeof class c {}) //'function'
-```
 
-## 相等
+## 三、相等
 
 <https://dorey.github.io/JavaScript-Equality-Table/>
 
