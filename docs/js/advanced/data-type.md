@@ -4,7 +4,7 @@
 
 基本类型（值类型或者原始类型）：Number、Boolean、String、NULL、Undefined、Symbol(ES6)
 
-引用类型：Object、Array、Function、Date 等
+复杂类型（应用）：Object（Array、Function、Date 等）
 
 | 分类     | 类型                                                  | 内存中的位置 |
 | -------- | ----------------------------------------------------- | ------------ |
@@ -23,9 +23,63 @@
 
 ### undefined
 
-表示一个未初始化的值，也就是还没有被分配的值。我们之后再具体讨论变量，但有一点可以先简单说明一下，JavaScript 允许声明变量但不对其赋值，一个未被赋值的变量就是 `undefined` 类型。还有一点需要说明的是，`undefined` 实际上是一个不允许修改的常量
+Undefined 类型只有一个值，称为 undefined。 任何没有被赋值的变量的值都是未定义的。
 
+- **值**未定义
+- 全局对象的一个属性，实际上是一个不允许修改的常量  { [[Writable]]: false, [[Enumerable]]: false, [[Configurable]]: false } `'undefined' in window`
 - undefined不是保留字
+- void 0 === undefined
+- 值派生自null,undefined == null
+
+####  疑问
+
+- 对象上点一个不存在的属性，为什么时undefined
+
+### null
+
+- 不是全局对象的一个属性 `'null' in window`
+- 表示缺少的标识，指示变量未指向任何对象
+
+### undefined与null
+
+```js
+Number(null) // 0
+Number(undefined) // NaN
+```
+
+#### null表示对象不应该有值
+
+- 作为函数的参数，表示该函数的参数不是对象。
+- 作为对象原型链的终点。
+- 对象置为“空”应该赋值null，这样也契合`typeof null`
+
+```js
+Object.getPrototypeOf(Object.prototype)
+// null
+Object.create(null)
+```
+
+#### undefined表示变量应该有一个值，但是还没有定义
+
+- 变量被声明了，但没有赋值时，就等于undefined。
+- 调用函数时，应该提供的参数没有提供，该参数等于undefined。
+- 对象没有赋值的属性，该属性的值为undefined。
+- 函数没有返回值时，默认返回undefined。
+- 非对象置为“空”应该赋值undefined
+
+``` js
+var i;
+i // undefined
+
+function f(x){console.log(x)}
+f() // undefined
+
+var  o = new Object();
+o.p // undefined
+
+var x = f();
+x // undefined
+```
 
 ## 二、类型检测
 
@@ -229,55 +283,3 @@ Map，Set使用
 
 与同值相等类似，不过认为+0 和-0 是相等的
 
-## undefined与null
-
-<http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html>
-
-```js
-Number(null)
-// 0
-
-5 + null
-// 5
-
-Number(undefined)
-// NaN
-
-5 + undefined
-// NaN
-```
-
-### null表示"没有对象"，即该处不应该有值
-
-- 作为函数的参数，表示该函数的参数不是对象。
-
-- 作为对象原型链的终点。
-
-```js
-Object.getPrototypeOf(Object.prototype)
-// null
-```
-
-### undefined表示"缺少值"，就是此处应该有一个值，但是还没有定义
-
-- 变量被声明了，但没有赋值时，就等于undefined。
-
-- 调用函数时，应该提供的参数没有提供，该参数等于undefined。
-
-- 对象没有赋值的属性，该属性的值为undefined。
-
-- 函数没有返回值时，默认返回undefined。
-
-``` js
-var i;
-i // undefined
-
-function f(x){console.log(x)}
-f() // undefined
-
-var  o = new Object();
-o.p // undefined
-
-var x = f();
-x // undefined
-```
