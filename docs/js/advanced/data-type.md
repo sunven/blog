@@ -2,6 +2,8 @@
 
 ## 一、数据类型
 
+的变量是没有类型的，只有值才有。变量可以随时持有任何类型的值
+
 基本类型（值类型或者原始类型）：Number、Boolean、String、NULL、Undefined、Symbol(ES6)
 
 复杂类型（应用）：Object（Array、Function、Date 等）
@@ -23,7 +25,15 @@
 
 ### 2、undefined
 
+undeclared：未声明
+
 Undefined 类型只有一个值，称为 undefined。 任何没有被赋值的变量的值都是未定义的。
+
+``` js
+var a;
+a; // undefined
+b; // ReferenceError: b is not defined
+```
 
 - **值**未定义
 - 全局对象的一个属性，实际上是一个不允许修改的常量  { [[Writable]]: false, [[Enumerable]]: false, [[Configurable]]: false } `'undefined' in window`
@@ -31,7 +41,7 @@ Undefined 类型只有一个值，称为 undefined。 任何没有被赋值的�
 - void 0 === undefined
 - 值派生自null,undefined == null
 
-####  疑问
+#### 疑问
 
 - 对象上点一个不存在的属性，为什么时undefined
 
@@ -81,11 +91,31 @@ var x = f();
 x // undefined
 ```
 
+### 包装类型
+
+vue props  ，如何验证？
+
+``` js
+props: {
+  dicTid: {
+    type: String
+  },
+}
+
+// type:String,Number,Object,Array,自定义构造函数
+function assertType(value, type){
+  // ...
+}
+
+// 1、dicTid:'1'
+// 2、dicTid:new String('1')
+```
+
 ### Number
 
 双精度64位浮点数
 
-标准：ieee 754 
+标准：ieee 754
 $$
 \begin{aligned}
 & 12.34 = 1 \times 10^1 + 2 \times 10^0 + 3 \times 10^{-1} + 4 \times 10^{-2} \\
@@ -252,6 +282,8 @@ console.log('null :heapUsed', process.memoryUsage().heapUsed)
 
 ### 1、typeof
 
+安全：未声明的返回 undefined
+
 返回一个字符串，表示未经计算的操作数的类型
 
 ```javascript
@@ -333,6 +365,8 @@ typeof Math.sin === 'function'
 
 **Object.prototype.toString.call([]).slice(8, -1) === "Array";**
 
+自定义类型 返回 object
+
 ``` js
 Object.prototype.toString.call('An') // "[object String]"
 Object.prototype.toString.call(1) // "[object Number]"
@@ -358,7 +392,95 @@ Object.prototype.toString.call(arr) // true
 arr instanceof Array // false
 ```
 
+## 类型转换
 
+<https://tc39.es/ecma262/#sec-type-conversion>
+
+ECMAScript 语言会根据需要隐式执行自动类型转换。 为了阐明某些构造的语义，定义一组转换抽象操作很有用。 转换抽象操作是多态的； 它们可以接受任何 ECMAScript 语言类型的值。 但是这些操作没有使用其他规范类型。
+
+BigInt 类型在 ECMAScript 语言中没有隐式转换； 程序员必须显式调用 BigInt 来转换其他类型的值。
+
+抽象操作 ToPrimitive 接受参数输入（ECMAScript 语言值）和可选参数 preferredType（字符串或数字），并返回包含 ECMAScript 语言值的正常完成或抛出完成。 它将其输入参数转换为非对象类型。 如果一个对象能够转换为多个原始类型，它可以使用可选提示 preferredType 来支持该类型。 它在调用时执行以下步骤：
+
+todo 图
+
+转换算法是：
+
+调用 obj[Symbol.toPrimitive](hint) 如果这个方法存在，
+否则，如果 hint 是 "string"
+尝试调用 obj.toString() 或 obj.valueOf()，无论哪个存在。
+否则，如果 hint 是 "number" 或者 "default"
+尝试调用 obj.valueOf() 或 obj.toString()，无论哪个存在。
+
+hint
+
+- default
+- string
+- number
+
+Date 和 Symbol 覆盖了默认的 ToPrimitive
+
+- Symbol.prototype[Symbol.toPrimitive]
+- Date.prototype[Symbol.toPrimitive]
+
+```js
+new Date('2022-6-1') - new Date()
+new Date('2022-6-1') + new Date() // default
+```
+
+```js
+let user = {
+  name: 'John',
+  money: 1000,
+  [Symbol.toPrimitive](hint) {
+    console.log(`hint: ${hint}`);
+    return hint == 'string' ? `{name: "${this.name}"}` : this.money;
+  },
+};
+console.log(`${user}`); // hint: string -> {name: "John"}
+console.log(+user); // hint: number -> 1000
+console.log(user + 500); // hint: default -> 1500 //不确定是string还是number,hint就是default
+```
+
+- toString 方法返回一个字符串 "[object Object]"。
+- valueOf 方法返回对象自身
+
+```js
+let user = {
+  name: 'John',
+  money: 1000,
+  // 对于 hint="string"
+  toString() {
+    return `{name: "${this.name}"}`;
+  },
+  // 对于 hint="number" 或 "default"
+  valueOf() {
+    return this.money;
+  },
+};
+console.log(`${user}`); // toString -> {name: "John"}
+console.log(+user); // valueOf -> 1000
+console.log(user + 500); // valueOf -> 1500
+```
+
+必须返回一个原始值
+
+```js
+const b = new Boolean(false);
+console.log(b == b.valueOf());
+console.log(b === b.valueOf());
+```
+
+```js
+if (a == 1 && a == 2 && a == 3) {
+  //
+}
+```
+
+```js
+const a = +'1';
+const b = !!'0'
+```
 
 ## 三、相等
 
@@ -379,7 +501,7 @@ arr instanceof Array // false
 
 - ToNumber(A) 表示尝试在比较前将参数 A 转换为数字，与+A 效果相同
 - ToPrimitive(A)通过尝试调用 A 的 A.toString() 和 A.valueOf() 方法，将参数 A 转换为原始值
--  // TODO
+- // TODO
 
 #### 特例：document.all
 
@@ -418,7 +540,7 @@ if (document.all) {
 - +0 和-0 是不相等的
 
 ### 零值相等
+
 Map，Set使用
 
 与同值相等类似，不过认为+0 和-0 是相等的
-
