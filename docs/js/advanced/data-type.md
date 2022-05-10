@@ -278,6 +278,8 @@ console.log('null :heapUsed', process.memoryUsage().heapUsed)
 
 ![img](./images/stack.jpg)
 
+函数参数按值传递
+
 ## 二、类型检测
 
 ### 1、typeof
