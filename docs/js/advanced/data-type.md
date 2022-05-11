@@ -253,6 +253,162 @@ console.log(eval(expression))
 
 <https://github.com/nefe/number-precision>
 
+### 对象
+
+#### 数据属性
+
+- `Configurable`:表示能否通过 delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。默认值为`true`。
+- `Enumerable`:表示能否通过 for-in 循环返回属性，默认值`true`。
+- `Writable`:表示能否修改属性的值，默认值`true`。
+- `Value`:包含这个属性的数据值。读取属性的时候，从这个位置读，写入属性的时候，吧新值保存在这个位置。默认是为`undefined`。
+
+> 要修改属性的默认特性，必须使用 ES5 的 Object.defineProperty()方法，这个方法接受三个参数：属性所在的对象，属性的名字和一个描述符对象。
+
+##### 例子
+
+##### 1 writable,value
+
+```js
+var person = {}
+Object.defineProperty(person, 'name', {
+  writable: false,
+  value: 'Nicholas',
+})
+alert(person.name) //"Nicholas"
+person.name = 'Michael'
+alert(person.name) //"Nicholas"
+```
+
+##### 2 configurable
+
+```js
+var person = {};
+Object.defineProperty(person, "name", {
+    configurable: false,
+    value: "Nicholas"
+});
+alert(person.name);//"Nicholas"
+delete person.name;
+alert(person.name);//"Nicholas"
+
+var person = {};
+Object.defineProperty(person, "name", {
+    configurable: false,
+    value: "Nicholas"
+});
+//throws error
+Object.defineProperty(person, "name", {
+    configurable: true,
+    value: "Nicholas"
+});
+```
+
+> 一旦把属性定义为不可配置的，就不能再把它变回可配置了。
+
+#### 访问器属性
+
+- `Configurable`:表示能否通过 delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为数据属性。默认值为`true`。
+- `Enumerable`:表示能否通过 for-in 循环返回属性，默认值`true`。
+- `Get`:在读取属性时调用的函数，默认值`undefined`。
+- `Set`:在写入属性时调用的函数，默认值`undefined`。
+
+> 访问器属性必须使用`Object.defineProperty()`来定义
+
+##### 例子
+
+```js
+var book = {
+    _year: 2004,
+    edition: 1
+};
+Object.defineProperty(book, "year", {
+    get: function(){
+        return this._year;
+    },
+    set: function(newValue){
+        if (newValue > 2004) {
+            this._year = newValue;
+            this.edition += newValue - 2004;
+        }
+    }
+});
+book.year = 2005;
+alert(book.edition);   //2
+```
+
+- \_year 前面的下划线是一种常用的记号，用于表示只能通过对象方法访问的属性。
+
+- getter 和 setter 可以只指定一种，表示只读或者只写。
+
+#### 定义多个属性
+
+`Object.defineProperties()`
+
+##### 例子
+
+```js
+var book = {};
+Object.defineProperties(book, {
+    _year: {
+        value: 2004
+    },
+    edition: {
+        value: 1
+    },
+    year: {
+        get: function(){
+            return this._year;
+        },
+
+        set: function(newValue){
+            if (newValue > 2004) {
+                this._year = newValue;
+                this.edition += newValue - 2004;
+            }
+        }
+    }
+});
+book.year = 2005;
+alert(book.edition);   //2
+```
+
+两个数据属性（\_year 和 edition）和一个访问器属性（year）
+
+#### 读取属性的特性`Object.getOwnPropertyDescriptor`
+
+```js
+var book = {};
+Object.defineProperties(book, {
+    _year: {
+        value: 2004
+    },
+    edition: {
+        value: 1
+    },
+    year: {
+        get: function(){
+            return this._year;
+        },
+
+        set: function(newValue){
+            if (newValue > 2004) {
+                this._year = newValue;
+                this.edition += newValue - 2004;
+            }
+        }
+    }
+});
+var descriptor = Object.getOwnPropertyDescriptor(book, "_year");
+alert(descriptor.value);          //2004
+alert(descriptor.configurable);   //false
+alert(typeof descriptor.get);     //"undefined"
+
+var descriptor = Object.getOwnPropertyDescriptor(book, "year");
+alert(descriptor.value);          //undefined
+alert(descriptor.enumerable);     //false
+alert(typeof descriptor.get);     //"function"
+```
+
 ### Map,WeakMap
 
 > WeakMap：其中的键是弱引用的。其键必须是对象，而值可以是任意的

@@ -1,0 +1,4 @@
+- vue props
+- if(a==1)
+- vue 重写push
+- 根据类图  写 类

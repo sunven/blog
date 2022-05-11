@@ -201,7 +201,7 @@ console.log(a)
 - with
 - catch
 
-## hosting
+## hoisting
 
 ```js
 console.log(a)
