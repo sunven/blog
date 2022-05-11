@@ -160,9 +160,11 @@ alert(typeof descriptor.get);     //"function"
 
 ### 创建对象
 
+- 创建相似对象
+
 #### 工厂模式
 
-```
+``` js
 function createPerson(name, age, job){
     var o = new Object();
     o.name = name;
@@ -184,7 +186,7 @@ person2.sayName();   //"Greg"
 
 ### 构造函数模式
 
-```
+``` js
 function Person(name, age, job){
     this.name = name;
     this.age = age;
@@ -217,14 +219,14 @@ person2.sayName();   //"Greg"
 
 #### `constructor`属性
 
-```
+``` js
 alert(person1.constructor == Person);  //true
 alert(person2.constructor == Person);  //true
 ```
 
 constructor 属性最初是用来标识对象类型的。但是检测对象类型，还是 instanceof 操作符更可靠一些
 
-```
+``` js
 alert(person1 instanceof Object);  //true
 alert(person1 instanceof Person);  //true
 alert(person2 instanceof Object);  //true
@@ -237,7 +239,7 @@ alert(person2 instanceof Person);  //true
 
 构造函数与其他函数的唯一区别，就是调用他们的方式不同。任何函数，只要通过 new 操作符调用，就可以当做构造函数；不通过 new 操作符调用，那就和普通函数一样。
 
-```
+```js
 //当做构造函数使用
 var person = new Person("Nicholas", 29, "Software Engineer");
 person.sayName();   //"Nicholas"
@@ -258,7 +260,7 @@ o.sayName();    //"Kristen"
 
 每个方法都要在每个实例上重新创建一遍，每个实例上的同名方法是不相等的。
 
-```
+```js
 alert(person1.sayName == person2.sayName);  //false
 ```
 
@@ -266,7 +268,7 @@ alert(person1.sayName == person2.sayName);  //false
 
 把函数定义转义到构造函数外部
 
-```
+```js
 function Person(name, age, job){
     this.name = name;
     this.age = age;
