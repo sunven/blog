@@ -53,7 +53,7 @@ function throttle(method, delay, mustRunDelay) {
 ## new
 
 1. 创建一个空的对象
-2. 为步骤1新创建的对象添加属性**__proto__**，将该属性链接至构造函数的原型对象 
+2. 为步骤1新创建的对象添加属性**__proto__**，将该属性链接至构造函数的原型对象
 3. 使用指定的参数调用构造函数 ，并将 `this` 绑定到新创建的对象
 4. 如果该函数没有返回对象，则返回`this`
 
@@ -167,4 +167,3 @@ function isInstanceOf(instance, klass) {
   }
 }
 ```
-

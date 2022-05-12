@@ -2,11 +2,11 @@
 
 ## 一、数据类型
 
-的变量是没有类型的，只有值才有。变量可以随时持有任何类型的值
+变量是没有类型的，只有值才有。变量可以随时持有任何类型的值
 
-基本类型（值类型或者原始类型）：Number、Boolean、String、NULL、Undefined、Symbol(ES6)
+基本类型（值类型或者原始类型）：Number、Boolean、String、Null、Undefined、Symbol(ES6)
 
-复杂类型（应用）：Object（Array、Function、Date 等）
+复杂类型（引用类型）：Object（Array、Function、Date 等）
 
 | 分类     | 类型                                                  | 内存中的位置 |
 | -------- | ----------------------------------------------------- | ------------ |
@@ -25,9 +25,15 @@
 
 ### 2、undefined
 
-undeclared：未声明
+undefined 类型只有一个值，称为 undefined。 任何没有被赋值的变量的值都是未定义的。
 
-Undefined 类型只有一个值，称为 undefined。 任何没有被赋值的变量的值都是未定义的。
+- **值**未定义
+- 全局对象的一个属性，实际上是一个不允许修改的常量  { [[Writable]]: false, [[Enumerable]]: false, [[Configurable]]: false }
+- undefined不是保留字
+- void 0 === undefined
+- 值派生自null,undefined == null
+
+undeclared：未声明
 
 ``` js
 var a;
@@ -35,15 +41,10 @@ a; // undefined
 b; // ReferenceError: b is not defined
 ```
 
-- **值**未定义
-- 全局对象的一个属性，实际上是一个不允许修改的常量  { [[Writable]]: false, [[Enumerable]]: false, [[Configurable]]: false } `'undefined' in window`
-- undefined不是保留字
-- void 0 === undefined
-- 值派生自null,undefined == null
-
-#### 疑问
-
-- 对象上点一个不存在的属性，为什么时undefined
+```js
+'undefined' in window
+Object.getOwnPropertyDescriptor(window, 'undefined')
+```
 
 ### 3、null
 
@@ -93,29 +94,13 @@ x // undefined
 
 ### 包装类型
 
-vue props  ，如何验证？
-
-``` js
-props: {
-  dicTid: {
-    type: String
-  },
-}
-
-// type:String,Number,Object,Array,自定义构造函数
-function assertType(value, type){
-  // ...
-}
-
-// 1、dicTid:'1'
-// 2、dicTid:new String('1')
-```
+String Boolean Number
 
 ### Number
 
-双精度64位浮点数
+- 0 除以0会返回`NaN`，但是其他数除以0则不会返回`NaN`,返回(Infinity)
 
-标准：ieee 754
+双精度64位浮点数 ieee 754
 $$
 \begin{aligned}
 & 12.34 = 1 \times 10^1 + 2 \times 10^0 + 3 \times 10^{-1} + 4 \times 10^{-2} \\
@@ -253,162 +238,6 @@ console.log(eval(expression))
 
 <https://github.com/nefe/number-precision>
 
-### 对象
-
-#### 数据属性
-
-- `Configurable`:表示能否通过 delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。默认值为`true`。
-- `Enumerable`:表示能否通过 for-in 循环返回属性，默认值`true`。
-- `Writable`:表示能否修改属性的值，默认值`true`。
-- `Value`:包含这个属性的数据值。读取属性的时候，从这个位置读，写入属性的时候，吧新值保存在这个位置。默认是为`undefined`。
-
-> 要修改属性的默认特性，必须使用 ES5 的 Object.defineProperty()方法，这个方法接受三个参数：属性所在的对象，属性的名字和一个描述符对象。
-
-##### 例子
-
-##### 1 writable,value
-
-```js
-var person = {}
-Object.defineProperty(person, 'name', {
-  writable: false,
-  value: 'Nicholas',
-})
-alert(person.name) //"Nicholas"
-person.name = 'Michael'
-alert(person.name) //"Nicholas"
-```
-
-##### 2 configurable
-
-```js
-var person = {};
-Object.defineProperty(person, "name", {
-    configurable: false,
-    value: "Nicholas"
-});
-alert(person.name);//"Nicholas"
-delete person.name;
-alert(person.name);//"Nicholas"
-
-var person = {};
-Object.defineProperty(person, "name", {
-    configurable: false,
-    value: "Nicholas"
-});
-//throws error
-Object.defineProperty(person, "name", {
-    configurable: true,
-    value: "Nicholas"
-});
-```
-
-> 一旦把属性定义为不可配置的，就不能再把它变回可配置了。
-
-#### 访问器属性
-
-- `Configurable`:表示能否通过 delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为数据属性。默认值为`true`。
-- `Enumerable`:表示能否通过 for-in 循环返回属性，默认值`true`。
-- `Get`:在读取属性时调用的函数，默认值`undefined`。
-- `Set`:在写入属性时调用的函数，默认值`undefined`。
-
-> 访问器属性必须使用`Object.defineProperty()`来定义
-
-##### 例子
-
-```js
-var book = {
-    _year: 2004,
-    edition: 1
-};
-Object.defineProperty(book, "year", {
-    get: function(){
-        return this._year;
-    },
-    set: function(newValue){
-        if (newValue > 2004) {
-            this._year = newValue;
-            this.edition += newValue - 2004;
-        }
-    }
-});
-book.year = 2005;
-alert(book.edition);   //2
-```
-
-- \_year 前面的下划线是一种常用的记号，用于表示只能通过对象方法访问的属性。
-
-- getter 和 setter 可以只指定一种，表示只读或者只写。
-
-#### 定义多个属性
-
-`Object.defineProperties()`
-
-##### 例子
-
-```js
-var book = {};
-Object.defineProperties(book, {
-    _year: {
-        value: 2004
-    },
-    edition: {
-        value: 1
-    },
-    year: {
-        get: function(){
-            return this._year;
-        },
-
-        set: function(newValue){
-            if (newValue > 2004) {
-                this._year = newValue;
-                this.edition += newValue - 2004;
-            }
-        }
-    }
-});
-book.year = 2005;
-alert(book.edition);   //2
-```
-
-两个数据属性（\_year 和 edition）和一个访问器属性（year）
-
-#### 读取属性的特性`Object.getOwnPropertyDescriptor`
-
-```js
-var book = {};
-Object.defineProperties(book, {
-    _year: {
-        value: 2004
-    },
-    edition: {
-        value: 1
-    },
-    year: {
-        get: function(){
-            return this._year;
-        },
-
-        set: function(newValue){
-            if (newValue > 2004) {
-                this._year = newValue;
-                this.edition += newValue - 2004;
-            }
-        }
-    }
-});
-var descriptor = Object.getOwnPropertyDescriptor(book, "_year");
-alert(descriptor.value);          //2004
-alert(descriptor.configurable);   //false
-alert(typeof descriptor.get);     //"undefined"
-
-var descriptor = Object.getOwnPropertyDescriptor(book, "year");
-alert(descriptor.value);          //undefined
-alert(descriptor.enumerable);     //false
-alert(typeof descriptor.get);     //"function"
-```
-
 ### Map,WeakMap
 
 > WeakMap：其中的键是弱引用的。其键必须是对象，而值可以是任意的
@@ -535,6 +364,70 @@ Object.prototype.toString.call(function() {}) // "[object Function]"
 Object.prototype.toString.call({ name: 'An' }) // "[object Object]"
 ```
 
+#### Array.prototype.toString
+
+##### 问题来源
+
+为何`Array.prototype.toString.call({join(){ return 42 }})`返回`42`，不应该也是`[object Object]`吗？？？
+
+##### 探究
+
+首先有两点我们比较容易理解：
+
+- 数组的`toString()`实际调用了`join()`
+  - `[2, 3, 4].toString() == '2,3,4'`
+  - `[2, 3, 4].join() === '2,3,4'`
+  - 可以通过修改原型上的`join`方法，再调`toString`验证
+
+- `Array`的原型上实现了自己的`toString`方法，所以不会到`Object`的原型上去找`toString`
+
+那么问题肯定就出在`Array`的原型上`toString`方法的实现
+
+借助两大法宝：
+
+**ecma的规范**:
+
+<https://tc39.es/ecma262/#sec-array.prototype.tostring>
+
+**v8的实现**：
+
+```c++
+// https://tc39.github.io/ecma262/#sec-array.prototype.tostring
+transitioning javascript builtin ArrayPrototypeToString(
+    js-implicit context: NativeContext, receiver: JSAny)(...arguments): JSAny {
+  // 1. Let array be ? ToObject(this value).
+  const array: JSReceiver = ToObject_Inline(context, receiver);
+
+  // 2. Let func be ? Get(array, "join").
+  const prop: JSAny = GetProperty(array, 'join');
+  try {
+    // 3. If IsCallable(func) is false, let func be the intrinsic function
+    //    %ObjProto_toString%.
+    const func: Callable = Cast<Callable>(prop) otherwise NotCallable;
+
+    // 4. Return ? Call(func, array).
+    return Call(context, func, array);
+  } label NotCallable {
+    return ObjectToString(context, array);
+  }
+}
+```
+
+##### 解析
+
+借助规范和代码，可以得到`toString`的实现逻辑：
+
+1. 把`toString()`的参数转化为对象，例子中`{join(){ return 42 }}`就是一个对象，这一步得到的`array`就是`{join(){ return 42 }}`
+2. 获取`join`属性
+3. 把`join`转为方法
+4. `join`能转为方法，就调用这个方法并返回，`join`不能转为方法，就调用`Object.prototype.toString`返回
+
+至此真相大白，关键就在于获取了`join`
+
+联系到前面说的：数组的`toString()`实际调用了`join()`，也就理解`toString`为何这么设计了
+
+> 把`toString()`的参数转化为对象，也有转换逻辑，这里不做讨论
+
 ### 4、 Array.isArray()
 
 ```js
@@ -551,6 +444,8 @@ arr instanceof Array // false
 ```
 
 ## 类型转换
+
+ToString、ToNumber 和 ToBoolean，
 
 <https://tc39.es/ecma262/#sec-type-conversion>
 
@@ -621,18 +516,12 @@ console.log(+user); // valueOf -> 1000
 console.log(user + 500); // valueOf -> 1500
 ```
 
-必须返回一个原始值
+toString,valueOf必须返回一个原始值
 
 ```js
 const b = new Boolean(false);
 console.log(b == b.valueOf());
 console.log(b === b.valueOf());
-```
-
-```js
-if (a == 1 && a == 2 && a == 3) {
-  //
-}
 ```
 
 ```js
@@ -660,6 +549,18 @@ const b = !!'0'
 - ToNumber(A) 表示尝试在比较前将参数 A 转换为数字，与+A 效果相同
 - ToPrimitive(A)通过尝试调用 A 的 A.toString() 和 A.valueOf() 方法，将参数 A 转换为原始值
 - // TODO
+
+```js
+console.log(42 == [42])
+console.log('0' == false)
+console.log(false == 0)
+console.log(false == '')
+console.log(false == [])
+console.log('' == 0)
+console.log('' == [])
+console.log(0 == [])
+console.log([] == ![])
+```
 
 #### 特例：document.all
 

@@ -1,8 +1,8 @@
 # prototype
 
-“类”为了创建对象
-
 ## 一、创建对象
+
+---
 
 ### 1、工厂模式
 
@@ -26,6 +26,8 @@ person2.sayName();   //"Greg"
 ```
 
 > 工厂模式虽然解决了创建多个相似对象的问题，但却没有解决对象识别的问题（即怎样知道一个对象的类型）。
+
+---
 
 ### 2、构造函数模式
 
@@ -121,13 +123,9 @@ person1.sayName == person2.sayName;  //false
 
 4. 这个连接存在于实例与构造函数的原型对象之间，而不是存在于实例与构造函数之间。
 
-
-
 虽然无法访问到[[Prototype]]，但是可以通过 isPrototypeOf()方法来确定对象之间是否存在这种关系。
 
 ES5 中，有一个 Object.getProtoOf()方法，在所有支持的实现中，返回[[Prototype]]的值。
-
-
 
 ![img](./images/prototype-chains.png)
 
@@ -155,8 +153,6 @@ console.log(instance.getSuperValue());  //true
 ```
 
 ![6-4.jpg](./images/6-4.jpg)
-
-
 
 调用getSuperValue方法会经历三个步骤：
 

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/black.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown="./docs/js/advanced/prototype.md" data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:"></section>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/highlight.js"></script>
+    <script type="module">
+      import Reveal from 'https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.esm.js'
+      import Markdown from 'https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/markdown/markdown.esm.js'
+
+      let deck = new Reveal({
+        plugins: [Markdown],
+      })
+      deck.initialize()
+    </script>
+  </body>
+</html>

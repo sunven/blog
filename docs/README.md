@@ -159,6 +159,14 @@
 - [intro.html](/fe/webpack/intro.html)
 - [webpack.html](/fe/webpack/webpack.html)
 
+## /js/advanced/
+
+- [data-type.html](/js/advanced/data-type.html)
+- [demo.html](/js/advanced/demo.html)
+- [prototype.html](/js/advanced/prototype.html)
+- [question.html](/js/advanced/question.html)
+- [scope.html](/js/advanced/scope.html)
+
 ## /js/basics/
 
 - [array.html](/js/basics/array.html)
@@ -166,15 +174,10 @@
 - [canvas.html](/js/basics/canvas.html)
 - [classandmodule.html](/js/basics/classandmodule.html)
 - [component.html](/js/basics/component.html)
-- [data-type.html](/js/basics/data-type.html)
-- [equality-in-js.html](/js/basics/equality-in-js.html)
 - [function.html](/js/basics/function.html)
 - [html5api.html](/js/basics/html5api.html)
 - [inherit.html](/js/basics/inherit.html)
 - [issue.html](/js/basics/issue.html)
-- [js-modular-programming.html](/js/basics/js-modular-programming.html)
-- [js-skill.html](/js/basics/js-skill.html)
-- [js1.html](/js/basics/js1.html)
 - [jslib.html](/js/basics/jslib.html)
 - [Map、WeakMap、Set、WeakSet.html](/js/basics/Map、WeakMap、Set、WeakSet.html)
 - [modularization.html](/js/basics/modularization.html)
@@ -183,7 +186,6 @@
 - [regex.html](/js/basics/regex.html)
 - [requirejs.html](/js/basics/requirejs.html)
 - [scope-of-this.html](/js/basics/scope-of-this.html)
-- [with.html](/js/basics/with.html)
 
 ## /js/es6/
 
@@ -197,10 +199,10 @@
 
 - [array-prototype-tostring.html](/js/incomprehensible/array-prototype-tostring.html)
 - [comma-operator.html](/js/incomprehensible/comma-operator.html)
+- [confusing-special-case-behavior.html](/js/incomprehensible/confusing-special-case-behavior.html)
 
 ## /js/other/
 
-- [decimal-operation-problem.html](/js/other/decimal-operation-problem.html)
 - [execution-contexts.html](/js/other/execution-contexts.html)
 - [hoisting.html](/js/other/hoisting.html)
 - [sh.html](/js/other/sh.html)
@@ -289,12 +291,6 @@
 - [visualstudio.html](/tool/other/visualstudio.html)
 - [windowscommand.html](/tool/other/windowscommand.html)
 - [windowssoft.html](/tool/other/windowssoft.html)
-
-## /tool/sublimetext/
-
-- [hotkey.html](/tool/sublimetext/hotkey.html)
-- [plugin.html](/tool/sublimetext/plugin.html)
-- [index.html](/tool/sublimetext/index.html)
 
 ## /tool/ubuntu/
 
