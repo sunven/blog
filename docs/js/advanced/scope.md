@@ -87,18 +87,12 @@ foo(2)
 
 ### 总结
 
-ReferenceError
-The ReferenceError object represents an error when a variable that doesn't exist (or hasn't yet been initialized) in the current scope is referenced.
-
-> 中文有差异
+ReferenceError：The ReferenceError object represents an error when a variable that doesn't exist (or hasn't yet been initialized) in the current scope is referenced.
 
 - ReferenceError 同作用域判别失败相关
-
 - TypeError 则代表作用域判别成功了，但是对结果的操作是非法或不合理的
 
-The directive does not have the attribute value which is valid as LHS.
-
-ast
+哪里出现过：The directive does not have the attribute value which is valid as LHS.
 
 ## 词法作用域
 
@@ -106,13 +100,13 @@ ast
 
 词法作用域就是定义在词法阶段的作用域,换句话说，词法作用域是由你在写代码时将变量和块作用域写在哪里来决定的，因此当词法分析器处理代码时会保持作用域不变（大部分情况下是这样的）
 
-![img](./images//qp.png)
+![img](./images/qp.png)
 
 - 包含着整个全局作用域，其中只有一个标识符：foo
 - 包含着 foo 所创建的作用域，其中有三个标识符：a、bar 和 b
 - 包含着 bar 所创建的作用域，其中只有一个标识符
 
-### 欺骗词法
+### 例外情况
 
 #### eval
 
@@ -184,7 +178,7 @@ console.log(app.$options.render)
 
 属于这个函数的全部变量都可以在整个函数的范围内使用及复 用（事实上在嵌套的作用域中也可以使用）。这种设计方案是非常有用的，能充分利用 JavaScript 变量可以根据需要改变值类型的“动态”特性。
 
-参数作用域
+- 参数作用域
 
 - IIFE
 

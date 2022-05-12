@@ -17,6 +17,8 @@
 
 堆内存：堆允许程序在运行时动态地申请某个大小的内存空间。
 
+![img](./images/stack.jpg)
+
 ### 1、bool
 
 #### 假值
@@ -28,7 +30,7 @@
 undefined 类型只有一个值，称为 undefined。 任何没有被赋值的变量的值都是未定义的。
 
 - **值**未定义
-- 全局对象的一个属性，实际上是一个不允许修改的常量  { [[Writable]]: false, [[Enumerable]]: false, [[Configurable]]: false }
+- 全局对象的一个属性，实际上是一个不允许修改的常量  `{ [[Writable]]: false, [[Enumerable]]: false, [[Configurable]]: false }`
 - undefined不是保留字
 - void 0 === undefined
 - 值派生自null,undefined == null
@@ -65,8 +67,7 @@ Number(undefined) // NaN
 - 对象置为“空”应该赋值null，这样也契合`typeof null`
 
 ```js
-Object.getPrototypeOf(Object.prototype)
-// null
+Object.getPrototypeOf(Object.prototype) // null
 Object.create(null)
 ```
 
@@ -98,9 +99,9 @@ String Boolean Number
 
 ### Number
 
-- 0 除以0会返回`NaN`，但是其他数除以0则不会返回`NaN`,返回(Infinity)
+- 0 除以0会返回`NaN`，但是其他数除以0则不会返回`NaN`,返回`Infinity`
 
-双精度64位浮点数 ieee 754
+双精度64位浮点数 遵循ieee 754标准
 $$
 \begin{aligned}
 & 12.34 = 1 \times 10^1 + 2 \times 10^0 + 3 \times 10^{-1} + 4 \times 10^{-2} \\
@@ -147,6 +148,8 @@ $$
 - 1位符号位，8位指数位，23位小数位；偏移值127
 - $n=(-1)^{sign} \times (1+小数) \times 2^{指数-127}$
 
+64位：1 11 52
+
 #### 举例
 
 $$
@@ -177,9 +180,7 @@ $$
 
 - 0-10000001-11110000000000000000000
 
-还原
-
-#### 0.1+0.2
+#### 还原0.1+0.2
 
 ![img](./images/88842336-589895844125a.webp)
 
@@ -196,6 +197,9 @@ $0.2 = 0.1\times2^1=(-1)^0\times2^{-3}\times(1.\dot1\dot0\dot0\dot1)_2$
 - 0-01111100-10011001100110011001101
 
 先进行“对位”，将较小的指数化为较大的指数，并将小数部分相应右移
+
+- 零舍一入 
+
 $$
 \begin{align}
 0.1 &= (-1)^0\times2^{-3}\times(0.1100 1100 1100 1100 1100 110)_2 \\
@@ -206,9 +210,8 @@ $$
 $$
 
 ```js
-// 0.3
-// 0.010011001100110011001100110011001100110011001100110011
-// 0.0100110011001100110011001100110011001100110011001101
+// 0.3 64位 0.0100110011001100110011001100110011001100110011001101
+// 0.3 32位 0.0100110011001100110011010
 const str = '0.0100110011001100110011001100110011001100110011001101',
   len = str.length
 let e = 0,
@@ -218,7 +221,7 @@ for (let i = 0; i < len; i++) {
   if (element === '.') {
     continue
   }
-  expression += element + ' * 2  ' + e-- + (i === len - 1 ? '' : ' + ')
+  expression += element + ' * 2 ** ' + e-- + (i === len - 1 ? '' : ' + ')
 }
 console.log(expression)
 console.log(eval(expression))
@@ -261,17 +264,11 @@ global.gc()
 console.log('null :heapUsed', process.memoryUsage().heapUsed)
 ```
 
-![img](./images/stack.jpg)
-
-函数参数按值传递
-
 ## 二、类型检测
 
 ### 1、typeof
 
-安全：未声明的返回 undefined
-
-返回一个字符串，表示未经计算的操作数的类型
+安全：未声明的返回 undefined （TDZ）返回一个字符串，表示未经计算的操作数的类型
 
 ```javascript
 // 数值
@@ -321,10 +318,33 @@ typeof class C {} === 'function'
 typeof Math.sin === 'function'
 ```
 
-- 除 Function 外的所有构造函数的类型都是'object'
-- `typeof null === "object"`
+- 除 Function 外的所有构造函数的类型都是`object`
+  - `typeof new Object`
+  - `typeof new Function`
 
+- `typeof null === "object"`
 - `typeof document.all === 'undefined';`
+
+```js
+// Opera 中`document.attachEvent`(未验证)
+
+// for “modern” browsers
+typeof document.all  // 'undefined'
+document.all == undefined // true
+Object.prototype.toString.call(document.all) // '[object HTMLAllCollection]'
+
+// for ancient browsers eg ie <= 10
+typeof document.all  // 'object'
+document.all == undefined // false
+Object.prototype.toString.call(document.all) // '[object HTMLAllCollection]'
+
+if (document.all) {
+  // code that uses `document.all`, for ancient browsers
+} else if (document.getElementById) {
+  // code that uses `document.getElementById`, for “modern” browsers
+}
+```
+
 - 在其被声明之前对块中的 `let` 和 `const` 变量使用 `typeof` 会抛出一个 ReferenceError
 
 ### 2、instanceof
@@ -338,21 +358,15 @@ typeof Math.sin === 'function'
 
 ### 3、Object.prototype.toString()
 
-表示该对象的字符串
-
-在**toString**方法被调用时,会执行下面的操作步骤:
+表示该对象的字符串,在**toString**方法被调用时,会执行下面的操作步骤:
 
 1. 如果**this**的值为**undefined**,则返回`"[object Undefined]"`.
 2. 如果**this**的值为**null**,则返回`"[object Null]"`.
 
-3. 让*O*成为调用 ToObject(**this)**的结果.
+3. 让let *O*成为调用 ToObject(**this)**的结果.
 4. 让*class*成为*O*的内部属性[[Class]]的值.
 
-5. 返回三个字符串**"[object ",** *class*, 以及 **"]"**连接后的新字符串
-
-**Object.prototype.toString.call([]).slice(8, -1) === "Array";**
-
-自定义类型 返回 object
+5. 返回三个字符串**"[object , class ]**
 
 ``` js
 Object.prototype.toString.call('An') // "[object String]"
@@ -364,15 +378,17 @@ Object.prototype.toString.call(function() {}) // "[object Function]"
 Object.prototype.toString.call({ name: 'An' }) // "[object Object]"
 ```
 
+- **Object.prototype.toString.call([]).slice(8, -1) === "Array";**
+
+- 自定义类型 返回 object
+
 #### Array.prototype.toString
 
 ##### 问题来源
 
-为何`Array.prototype.toString.call({join(){ return 42 }})`返回`42`，不应该也是`[object Object]`吗？？？
+`Array.prototype.toString.call({join(){ return 42 }})`
 
 ##### 探究
-
-首先有两点我们比较容易理解：
 
 - 数组的`toString()`实际调用了`join()`
   - `[2, 3, 4].toString() == '2,3,4'`
@@ -426,8 +442,6 @@ transitioning javascript builtin ArrayPrototypeToString(
 
 联系到前面说的：数组的`toString()`实际调用了`join()`，也就理解`toString`为何这么设计了
 
-> 把`toString()`的参数转化为对象，也有转换逻辑，这里不做讨论
-
 ### 4、 Array.isArray()
 
 ```js
@@ -443,29 +457,25 @@ Object.prototype.toString.call(arr) // true
 arr instanceof Array // false
 ```
 
-## 类型转换
-
-ToString、ToNumber 和 ToBoolean，
+## 三、类型转换
 
 <https://tc39.es/ecma262/#sec-type-conversion>
 
+ToString、ToNumber 和 ToBoolean，ToPrimitive
+
+ToNumber 和 ToBoolean，没有暴露
+
 ECMAScript 语言会根据需要隐式执行自动类型转换。 为了阐明某些构造的语义，定义一组转换抽象操作很有用。 转换抽象操作是多态的； 它们可以接受任何 ECMAScript 语言类型的值。 但是这些操作没有使用其他规范类型。
 
-BigInt 类型在 ECMAScript 语言中没有隐式转换； 程序员必须显式调用 BigInt 来转换其他类型的值。
+- BigInt 类型在 ECMAScript 语言中没有隐式转换； 程序员必须显式调用 BigInt 来转换其他类型的值。
 
 抽象操作 ToPrimitive 接受参数输入（ECMAScript 语言值）和可选参数 preferredType（字符串或数字），并返回包含 ECMAScript 语言值的正常完成或抛出完成。 它将其输入参数转换为非对象类型。 如果一个对象能够转换为多个原始类型，它可以使用可选提示 preferredType 来支持该类型。 它在调用时执行以下步骤：
 
-todo 图
+- 调用 `obj[Symbol.toPrimitive](hint) `如果这个方法存在，
+- 否则，如果 hint 是 "string"尝试调用 obj.toString() 或 obj.valueOf()，无论哪个存在。
+- 否则，如果 hint 是 "number" 或者 "default"尝试调用 obj.valueOf() 或 obj.toString()，无论哪个存在。
 
-转换算法是：
-
-调用 obj[Symbol.toPrimitive](hint) 如果这个方法存在，
-否则，如果 hint 是 "string"
-尝试调用 obj.toString() 或 obj.valueOf()，无论哪个存在。
-否则，如果 hint 是 "number" 或者 "default"
-尝试调用 obj.valueOf() 或 obj.toString()，无论哪个存在。
-
-hint
+hint的三种值：
 
 - default
 - string
@@ -525,11 +535,11 @@ console.log(b === b.valueOf());
 ```
 
 ```js
-const a = +'1';
-const b = !!'0'
+const a = +'1'; //字符串转数字
+const b = !!'0' // 转布尔
 ```
 
-## 三、相等
+## 四、相等
 
 <https://dorey.github.io/JavaScript-Equality-Table/>
 
@@ -537,18 +547,19 @@ const b = !!'0'
 
 比较前，先隐式转换为相同类型，再比较两个值是否相等
 
-|           | Undefined | Null    | Number                | String                        | Boolean                         | Object                          |
-| :-------- | --------- | ------- | --------------------- | ----------------------------- | ------------------------------- | ------------------------------- |
-| Undefined | `true`    | `true`  | `false`               | `false`                       | `false`                         | `IsFalsy(B)`                    |
-| Null      | `true`    | `true`  | `false`               | `false`                       | `false`                         | `IsFalsy(B)`                    |
-| Number    | `false`   | `false` | `A === B`             | `A === ToNumber(B)`           | `A=== ToNumber(B)`              | `A== ToPrimitive(B)`            |
-| String    | `false`   | `false` | `ToNumber(A) === B`   | `A === B`                     | `ToNumber(A) === ToNumber(B)`   | `ToPrimitive(B) == A`           |
-| Boolean   | `false`   | `false` | `ToNumber(A) === B`   | `ToNumber(A) === ToNumber(B)` | `A === B`                       | `ToNumber(A) == ToPrimitive(B)` |
-| Object    | `false`   | `false` | `ToPrimitive(A) == B` | `ToPrimitive(A) == B`         | `ToPrimitive(A) == ToNumber(B)` | `A === B`                       |
+|               | **Undefined** | **Null** | **Number**            | **String**                    | **Boolean**                     | **Object**                      |
+| :------------ | ------------- | -------- | --------------------- | ----------------------------- | ------------------------------- | ------------------------------- |
+| **Undefined** | `true`        | `true`   | `false`               | `false`                       | `false`                         | `IsFalsy(B)`                    |
+| **Null**      | `true`        | `true`   | `false`               | `false`                       | `false`                         | `IsFalsy(B)`                    |
+| **Number**    | `false`       | `false`  | `A === B`             | `A === ToNumber(B)`           | `A=== ToNumber(B)`              | `A== ToPrimitive(B)`            |
+| **String**    | `false`       | `false`  | `ToNumber(A) === B`   | `A === B`                     | `ToNumber(A) === ToNumber(B)`   | `ToPrimitive(B) == A`           |
+| **Boolean**   | `false`       | `false`  | `ToNumber(A) === B`   | `ToNumber(A) === ToNumber(B)` | `A === B`                       | `ToNumber(A) == ToPrimitive(B)` |
+| **Object**    | `false`       | `false`  | `ToPrimitive(A) == B` | `ToPrimitive(A) == B`         | `ToPrimitive(A) == ToNumber(B)` | `A === B`                       |
 
 - ToNumber(A) 表示尝试在比较前将参数 A 转换为数字，与+A 效果相同
 - ToPrimitive(A)通过尝试调用 A 的 A.toString() 和 A.valueOf() 方法，将参数 A 转换为原始值
-- // TODO
+
+“看起来不符合预期”的情况：
 
 ```js
 console.log(42 == [42])
@@ -562,28 +573,6 @@ console.log(0 == [])
 console.log([] == ![])
 ```
 
-#### 特例：document.all
-
-```js
-// Opera 中`document.attachEvent`(未验证)
-
-// for “modern” browsers
-typeof document.all  // 'undefined'
-document.all == undefined // true
-Object.prototype.toString.call(document.all) // '[object HTMLAllCollection]'
-
-// for ancient browsers eg ie <= 10
-typeof document.all  // 'object'
-document.all == undefined // false
-Object.prototype.toString.call(document.all) // '[object HTMLAllCollection]'
-
-if (document.all) {
-  // code that uses `document.all`, for ancient browsers
-} else if (document.getElementById) {
-  // code that uses `document.getElementById`, for “modern” browsers
-}
-```
-
 ### 严格相等  ===
 
 不进行隐式转换，类型相同，值也相同，就是全等
@@ -593,13 +582,11 @@ if (document.all) {
 
 ### 同值相等  Object.is
 
-与===不同
+与===的不同
 
 - 两个 NaN 是相等的
 - +0 和-0 是不相等的
 
 ### 零值相等
 
-Map，Set使用
-
-与同值相等类似，不过认为+0 和-0 是相等的
+Map，Set使用，与同值相等类似，不过认为+0 和-0 是相等的

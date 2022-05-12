@@ -1,5 +1,7 @@
 # prototype
 
+---
+
 ## 一、创建对象
 
 ---
@@ -47,6 +49,8 @@ person1.sayName();   //"Nicholas"
 person2.sayName();   //"Greg"
 ```
 
+---
+
 #### constructor属性
 
 ``` js
@@ -64,6 +68,7 @@ alert(person2 instanceof Person);  //true
 ```
 
 > 创建自定义的构造函数意味着将来可以将它的实例标识为一种特定的类型；而这正式构造函数模式胜过工厂模式的地方
+---
 
 #### 将构造函数当做函数
 
