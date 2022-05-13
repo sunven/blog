@@ -30,3 +30,16 @@ if (a == 1 && a == 2 && a == 3) {
 ## 看图写类
 
 ![img](./images//question.webp)
+
+## 为什么
+
+```js
+var a = {n: 1};
+var b = a;
+a.x = a = {n: 2};
+alert(a.x); // --> undefined
+alert(b.x); // --> {n: 2}
+```
+
+
+
