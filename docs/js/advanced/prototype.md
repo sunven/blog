@@ -532,6 +532,35 @@ instance2.sayAge() //27
 
 > 寄生组合继承是引用类型最理想的继承范式
 
+## 抽象方法的实现？
+
+```js
+function Person() {
+  if (new.target === Person) {
+    throw new Error('抽象类')
+  }
+}
+Person.prototype.say = function () {
+  throw new Error('子类未实现 say')
+}
+function PersonChild() {
+  // 方式一
+  // this.say = function () {
+  //   console.log('PersonChild say')
+  // }
+}
+PersonChild.prototype = Object.create(Person.prototype)
+PersonChild.prototype.constructor = PersonChild
+// // 方式二
+// PersonChild.prototype.say = function () {
+//   console.log('PersonChild.prototype.say')
+// }
+const p = new PersonChild()
+p.say()
+```
+
+- `Function.prototype()`
+
 ## 八、应用
 
 Vue.extend()方法采用了寄生组合继承模式。

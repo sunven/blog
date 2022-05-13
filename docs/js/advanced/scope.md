@@ -180,6 +180,49 @@ console.log(app.$options.render)
 
 - 参数作用域
 
+```js
+function fun(x, f) {
+  // debugger
+  var x;
+  var y = x;
+  f = () => x
+  x = 2;
+  console.log(x, y, f())
+}
+fun(1)
+```
+
+```js
+var x // 没有右值，只有静态语音，没有运行时语义
+var x = undefined // 都有
+```
+
+```js
+function fun(x, f = () => x) {
+  var x;
+  var y = x;
+  x = 2;
+  console.log(x, y, f())
+}
+fun(1)
+```
+
+- 两层作用域，参数作用域的x,函数作用域的x
+- 函数作用域的x初始值复制外层(参数作用域)的x
+
+```js
+function fun(x, f = () => x) {
+  // var x;
+  var y = 'a';
+  x = 2;
+  z = 'z'
+  console.log(x, y, f())
+}
+fun(1)
+```
+
+x 在 参数作用域找到了，不会挂到window
+
 - IIFE
 
 ## 块级作用域
@@ -200,6 +243,15 @@ console.log(a)
 - with
 - catch
 
+```js
+try {
+  console.log(a)
+} catch (e) {
+  console.log('catch', e)
+}
+console.log('out', e)
+```
+
 ## hoisting
 
 ```js
@@ -208,7 +260,25 @@ console.log(a)
 var a = 1
 ```
 
-let TDZ  提升吗
+```js
+var a;
+console.log(a)
+//...
+a = 1
+```
+
+let 提升吗
+
+```js
+console.log(a)
+let a;
+```
+
+### 总结
+
+1. let 的「声明」过程被提升了，但是初始化没有提升。
+2. var 的「声明」和「初始化」都被提升了。
+3. function 的「创建」「初始化」和「赋值」都被提升了。
 
 ## 执行上下文
 

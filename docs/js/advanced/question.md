@@ -1,4 +1,7 @@
-- vue props
+
+# 习题
+
+## 类型验证
 
 ```js
 function assertProp(type, value) {
@@ -12,14 +15,18 @@ function Person() {}
 assertProp(Person, new Person())
 ```
 
-- if(a==1)
+## if (a == 1 && a == 2 && a == 3)
 
 ```js
+// ...
 // ...
 if (a == 1 && a == 2 && a == 3) {
   // go here
 }
 ```
 
-- vue 重写push
-- 根据类图  写 类
+## 为数组的push方法加一个日志
+
+## 看图写类
+
+![img](./images//question.webp)
