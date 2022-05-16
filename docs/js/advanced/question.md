@@ -1,12 +1,13 @@
 
 # 习题
 
-## 类型验证
+## 1、完成assertProp方法，准确的判断出value的类型是type
 
 ```js
 function assertProp(type, value) {
   // ...
 }
+// 以下用例应该返回 true
 assertProp(String, 'a')
 assertProp(String, new String('a'))
 assertProp(Array, [1, 2, 3])
@@ -15,31 +16,19 @@ function Person() {}
 assertProp(Person, new Person())
 ```
 
-## if (a == 1 && a == 2 && a == 3)
+## 2、补充代码，使得进入if (a == 1 && a == 2 && a == 3)
 
 ```js
 // ...
+// if 前补充代码
 // ...
 if (a == 1 && a == 2 && a == 3) {
   // go here
 }
 ```
 
-## 为数组的push方法加一个日志
+## 3、实现一个判断零值相等的方法，即：满足同值相等，且+0 和-0 是相等的
 
-## 看图写类
+## 4、箭头函数与普通函数有什么区别？写一个例子来体现将普通函数替换成箭头函数后调用得到的结果不同
 
-![img](./images//question.webp)
-
-## 为什么
-
-```js
-var a = {n: 1};
-var b = a;
-a.x = a = {n: 2};
-alert(a.x); // --> undefined
-alert(b.x); // --> {n: 2}
-```
-
-
-
+## 5、举例你在使用call(apply),bind的场景
