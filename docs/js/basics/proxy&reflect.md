@@ -1,6 +1,6 @@
 # Proxy & Reflec
 
-## Proxy
+## 一、Proxy
 
 参考：[MDN Proxy](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
 定义一个属性的 get set
@@ -24,7 +24,7 @@ console.log(obj.age) // I'm NaN years old
 问题：
 
 - 每个属性都要写对应的 getter、setter。
-- 需要额外属性存储真实值（\_age）。
+- 需要额外属性存储真实值（_age）。
 
 用 Proxy 如何实现？
 
@@ -47,7 +47,38 @@ console.log(target.age, proxy.age) // 19,          age : 19
 console.log(target.name, proxy.name) // Tom, name: Tom
 ```
 
-### **解决对象属性为 undefined 的问题**
+### 参数receiver
+
+Proxy或者继承Proxy的对象
+
+```js
+const parent = {
+  name: 'parent'
+};
+const handle = {
+  get(target, key, receiver) {
+    console.log('proxy get', key)
+    console.log(this === handle) // true
+    console.log(receiver === proxy); // false
+    console.log(receiver === child); // true
+    console.log(target === parent); // true
+    return target[key];
+  },
+}
+const proxy = new Proxy(parent, handle);
+const child = {
+  age: 18,
+};
+// child继承与parent的代理对象proxy
+Object.setPrototypeOf(child, proxy);
+child.name;
+child.age
+```
+
+- this是handle
+- receiver是真正的调用者
+
+### 解决对象属性为 undefined 的问题
 
 ```javascript
 let target = {}
@@ -67,7 +98,7 @@ proxy.a.b.c = 'hello'
 console.log(target.a.b.c) // hello
 ```
 
-### **普通函数拦截**
+### 普通函数拦截
 
 **apply：**函数调用操作的捕捉器
 
@@ -106,7 +137,6 @@ new proxy(1, 2) // throw an error
 ```
 
 在 construct 中抛出异常，不允许采用构造函数调用
-\*\*
 
 ### Proxy 的不足
 
@@ -184,11 +214,11 @@ Proxy 代理整个对象，可以监听所有属性变化，包括新增属性�
 
 `Proxy` 的性能比 `Promise` 还差，但也就是毫秒级别的影响，在非极致性能要求下，可以忽略。
 
-## Proxy 实践案例
+### Proxy 实践案例
 
 [腾讯基于 Proxy 的代码执行监听上报实践](https://www.infoq.cn/article/6eKiic82aQu3uqaYvvfV)
 
-## Reflect
+## 二、Reflect
 
 参考：[MDN Reflect](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect)
 
@@ -214,3 +244,53 @@ console.log(Reflect.ownKeys(o)) // ["a", Symbol(sy)]
 ```
 
 `Reflect.ownKeys(o)`=`Object.getOwnPropertyNames()`+`Object.getOwnPropertySymbols()`
+
+### 参数receiver
+
+如果target对象中指定了getter，receiver则为getter调用时的this值。
+
+```js
+const parent = {
+  name: 'parent',
+  get value() {
+    return this.name
+  }
+};
+const child = {
+  name: 'child'
+};
+// child继承与parent
+Object.setPrototypeOf(child, parent);
+console.log(child.value) //child
+```
+
+value是child是符合预期的
+
+```js
+const parent = {
+  name: 'parent',
+  get value() {
+    return this.name
+  }
+};
+const handle = {
+  get(target, key, receiver) {
+    console.log(target === parent); // true
+    console.log(Reflect.get(target, key)) // parent
+    console.log('receiver', Reflect.get(target, key, receiver)) // child
+    // return target[key];
+    return Reflect.get(target, key, receiver);
+  },
+}
+const proxy = new Proxy(parent, handle);
+const child = {
+  name: 'child'
+};
+// child继承与parent的代理对象proxy
+Object.setPrototypeOf(child, proxy);
+console.log(child.value) //child
+```
+
+- Reflect.get不传receiver取到了parent上的name，不是预期的
+- Reflect.get传receiver取到了child上的name，是预期的
+- target是parent,receiver是调用者（this)
