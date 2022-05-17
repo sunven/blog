@@ -151,3 +151,7 @@ npm ls --global --depth 0
 ```
 
 ### npm link 如何实时更新？？？
+
+## 修改npm包
+
+<https://www.npmjs.com/package/patch-package>
