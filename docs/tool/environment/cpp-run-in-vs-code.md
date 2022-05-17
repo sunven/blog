@@ -1,12 +1,25 @@
-# c++ run in vs code of win
+# c++ run in vs code
 
-## 安装编译器
+## mac os
 
-### 1. 离线版
+### reference
+
+[Using Clang in Visual Studio Code](https://code.visualstudio.com/docs/cpp/config-clang-mac)
+
+1. 先 Tasks: Run Build Task
+2. 后运行或 debug
+
+3. 运行时会唤起 mac 的终端
+
+## windows
+
+### 安装编译器
+
+#### 1. 离线版
 
 [mingw-w64](<https://sourceforge.net/projects/mingw-w64/files/Toolchains> targetting Win64/Personal Builds/mingw-builds/8.1.0/threads-posix/sjlj/x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0.7z/download)
 
-### 2. 将 bin 添加到环境变量
+#### 2. 将 bin 添加到环境变量
 
 ```
 setx path "%path%;D:\mingw64\bin"
@@ -14,17 +27,17 @@ setx path "%path%;D:\mingw64\bin"
 
 或手动添加环境变量
 
-### 3.验证
+#### 3.验证
 
 ```
 gcc -v
 ```
 
-## vs code 配置
+### vs code 配置
 
 参考 [Using Mingw-w64 in VS Code](https://code.visualstudio.com/docs/cpp/config-mingw)
 
-## 错误
+### 错误
 
 格式化时报错
 
