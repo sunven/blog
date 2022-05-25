@@ -139,6 +139,37 @@
 
 `git push origin :refs/tags/<tagname>`：删除一个远程标签
 
+## 代理
+
+ssh
+
+`~/.ssh/config`文件
+
+Socks 代理
+
+```sh
+Host github.com
+HostName github.com
+ProxyCommand nc -v -x 127.0.0.1:1086 %h %p
+
+```
+
+http
+
+指定github.com
+
+```sh
+git config --global http.https://github.com.proxy http://127.0.0.1:8080
+git config --global https.https://github.com.proxy http://127.0.0.1:8080
+```
+
+取消
+
+```sh
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
+
 ## 其它
 
 ### 查看提交次数
@@ -240,3 +271,21 @@ git config --global core.safecrlf warn
 
 HostKeyAlgorithms ssh-rsa
 PubkeyAcceptedKeyTypes ssh-rsa
+
+### fatal: early EOF fatal: fetch-pack: invalid index-pack output
+
+<https://stackoverflow.com/questions/21277806/fatal-early-eof-fatal-index-pack-failed>
+
+```sh
+# Git 服务器的内存不够了，导致压缩传输数据失败，服务器直接挂了
+# 整数 -1..9，表示默认压缩级别。 -1 是 zlib 默认值。0 表示不压缩，9 是最慢的。
+# 关闭压缩
+git config --global core.compression=0
+# 下载最近一次提交
+git clone --depth 1 <repo_URI>
+# 拉取剩余部分
+git fetch --unshallow 
+# 常规拉取
+git pull --all
+```
+
