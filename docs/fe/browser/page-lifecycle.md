@@ -1,6 +1,6 @@
 # 页面生命周期
 
-![img](./images//page-lifecycle.png)
+![img](./images/page-lifecycle.png)
 
 ## 刷新一个页面
 
