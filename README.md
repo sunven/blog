@@ -44,3 +44,14 @@ winpty docker run -it --env-file=F:\\github\\blog\\.env -e "CONFIG=$(cat F:\\git
 ```
 
 markdown-it-katex 貌似不支持行内的katex 有 < 符号
+
+vitepress
+
+- 不识别的语言报错
+- c# > csharp
+- c++ > cpp
+
+其他
+
+- 文件名含有&
+- 文件名含有空格

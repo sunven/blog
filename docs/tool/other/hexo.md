@@ -11,7 +11,7 @@
 4. `hexo server`：启动 hexo
 
    - `hexo server --debug`：debug 模式
-   - 默认：<http://localhost:4000/>
+   - 默认：`http://localhost:4000/`
    - `Ctrl+C`停止
 
 5. `hexo new "My Page"`：新建文章
@@ -25,7 +25,7 @@
 
 7. 修改`_config.yml`文件
 
-# Deployment
+## Deployment
 
 ## Docs: <http://hexo.io/docs/deployment.html>
 

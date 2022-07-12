@@ -2,11 +2,11 @@
 
 ## 软件提示已损坏，需要移到废纸篓的解决方法
 
-```empty
+```
 sudo spctl --master-disable
 ```
 
-```empty
+```
 xattr -r -d com.apple.quarantine <path>
 ```
 
@@ -145,11 +145,9 @@ launchctl start com.demo.plist
 launchctl stop com.demo.plist
 ```
 
-
-
 mysql
 
-```undefined
+```shell
 brew services start mysql
 brew services stop mysql
 brew services restart mysql

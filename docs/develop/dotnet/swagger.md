@@ -89,8 +89,6 @@ public class CachingSwaggerProvider : ISwaggerProvider
 }
 ```
 
-[webapi文档描述-swagger](webapi文档描述-swagger)
-
 ## DocumentFilter
 
 ```csharp

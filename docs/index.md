@@ -93,7 +93,6 @@
 
 - [dns](/develop/other/dns.md)
 - [htmlgenpdf](/develop/other/htmlgenpdf.md)
-- [index](/develop/other/index.md)
 - [osi](/develop/other/osi.md)
 - [other](/develop/other/other.md)
 - [postmanencrypt](/develop/other/postmanencrypt.md)
@@ -113,7 +112,6 @@
 
 ## develop/safe
 
-- [index](/develop/safe/index.md)
 - [前端安全](/develop/safe/前端安全.md)
 
 ## develop/sql
@@ -136,7 +134,6 @@
 - [client-storage](/fe/other/client-storage.md)
 - [drag-and-drop](/fe/other/drag-and-drop.md)
 - [html5](/fe/other/html5.md)
-- [index](/fe/other/index.md)
 - [optimize](/fe/other/optimize.md)
 - [performance](/fe/other/performance.md)
 - [serviceworkerbase](/fe/other/serviceworkerbase.md)
@@ -179,13 +176,12 @@
 - [component](/js/basics/component.md)
 - [function](/js/basics/function.md)
 - [html5api](/js/basics/html5api.md)
-- [index](/js/basics/index.md)
 - [inherit](/js/basics/inherit.md)
 - [issue](/js/basics/issue.md)
 - [jslib](/js/basics/jslib.md)
 - [Map、WeakMap、Set、WeakSet](/js/basics/Map、WeakMap、Set、WeakSet.md)
 - [modularization](/js/basics/modularization.md)
-- [proxy&reflect](/js/basics/proxy&reflect.md)
+- [proxy-and-reflect](/js/basics/proxy-and-reflect.md)
 - [regex](/js/basics/regex.md)
 - [requirejs](/js/basics/requirejs.md)
 
@@ -250,7 +246,7 @@
 
 - [cpp-self-test](/subject/other/cpp-self-test.md)
 - [hash-table](/subject/other/hash-table.md)
-- [minimum-spanning-tree ](/subject/other/minimum-spanning-tree .md)
+- [minimum-spanning-tree](/subject/other/minimum-spanning-tree.md)
 - [principle-of-database-system](/subject/other/principle-of-database-system.md)
 - [shortest-path](/subject/other/shortest-path.md)
 - [tree-forest-and-binary-tree-transformation](/subject/other/tree-forest-and-binary-tree-transformation.md)
@@ -272,7 +268,6 @@
 ## tool/mac
 
 - [command](/tool/mac/command.md)
-- [index](/tool/mac/index.md)
 - [on-my-zsh](/tool/mac/on-my-zsh.md)
 - [soft](/tool/mac/soft.md)
 - [ssh](/tool/mac/ssh.md)
@@ -284,7 +279,6 @@
 - [ffmpeg](/tool/other/ffmpeg.md)
 - [hexo](/tool/other/hexo.md)
 - [imagemagick](/tool/other/imagemagick.md)
-- [index](/tool/other/index.md)
 - [linuxcommand](/tool/other/linuxcommand.md)
 - [npm](/tool/other/npm.md)
 - [playground](/tool/other/playground.md)
@@ -303,7 +297,6 @@
 ## tool/vscode
 
 - [create-vscode-theme](/tool/vscode/create-vscode-theme.md)
-- [index](/tool/vscode/index.md)
 
 ## vue/customize
 

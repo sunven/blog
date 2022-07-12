@@ -76,7 +76,7 @@ public class Startup
 
 ### 请求分析
 
-<http://localhost:8080/apiservice/Order/GetOrderDetail?s=1111>
+`http://localhost:8080/apiservice/Order/GetOrderDetail?s=1111`
 
 - Order是Controller，也对应IOrderService这个Service
 - GetOrderDetail是Action,也对应IOrderService中的GetOrderDetail方

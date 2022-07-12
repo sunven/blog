@@ -14,7 +14,7 @@ AbpModule 是所有 Module 的基类。
 
 ### 2. 通过入口的 Moudle 获取到所有互相依赖的 Moudle
 
-```C#
+```csharp
 private static void AddModuleAndDependenciesRecursively(List<Type> modules, Type module)
 {
     if (!IsAbpModule(module))
@@ -66,13 +66,13 @@ public static List<Type> FindDependedModuleTypes(Type moduleType)
 
 ### 3. 注册所有 Moudle
 
-```C#
+```csharp
 RegisterModules(moduleTypes);
 ```
 
 ### 4. 创建所有 Module 的描述信息
 
-```C#
+```csharp
 CreateModules(moduleTypes, plugInModuleTypes);
 ```
 
@@ -81,7 +81,7 @@ CreateModules(moduleTypes, plugInModuleTypes);
 
 ### 5. 初始化所有 Moudle
 
-```C#
+```csharp
 public virtual void StartModules()
 {
     var sortedModules = _modules.GetSortedModuleListByDependency();
@@ -103,7 +103,7 @@ public virtual void StartModules()
 1. 在 PreInitialize 添加依赖关系
 2. 在 Initialize 替换 ControllerFactory
 
-```C#
+```csharp
 /// <summary>
 /// This module is used to build ASP.NET MVC web sites using Abp.
 /// </summary>
@@ -135,7 +135,7 @@ public class AbpWebMvcModule : AbpModule
 
 依赖关系表明：注册所有 Controller
 
-```C#
+```csharp
 /// <summary>
 /// Registers all MVC Controllers derived from <see cref="Controller"/>.
 /// </summary>
@@ -161,7 +161,7 @@ WindsorControllerFactory 将替代 DefaultControllerFactory
 
 从 IOC 容器中解析出 Controller
 
-```C#
+```csharp
 /// <summary>
 /// This class is used to allow MVC to use dependency injection system while creating MVC controllers.
 /// </summary>
@@ -230,7 +230,7 @@ public class WindsorControllerFactory : DefaultControllerFactory
 
 Abp 框架会自动解析模块之间的依赖关系
 
-```C#
+```csharp
 [DependsOn(typeof(AbpWebCommonModule))]
 public class AbpWebModule : AbpModule
 {
@@ -248,7 +248,7 @@ AbpWebModule 依赖于 AbpWebCommonModule，AbpWebCommonModule 会在 AbpWebModu
 
 这两个模块启动的顺序为：
 
-```C#
+```csharp
 AbpWebCommonModule.PreInitialize();
 AbpWebModule.PreInitialize();
 
@@ -268,7 +268,7 @@ AbpWebModule.PostInitialize();
 
 在 AbpWebModule 中：
 
-```C#
+```csharp
 private readonly abpWebCommonModule _abpWebCommonModule;
 
 public AbpWebModule(AbpWebCommonModule abpWebCommonModule)
@@ -287,7 +287,7 @@ public override void PreInitialize()
 
 底层的模块都会依赖于 AbpKernelModule，AbpKernelModule 中主要初始化各种拦截器，如审计日志、多语言、工作单元拦截器等。
 
-```C#
+```csharp
 public override void PreInitialize()
 {
     IocManager.AddConventionalRegistrar(new BasicConventionalRegistrar());

@@ -407,7 +407,7 @@ Object.prototype.toString.call({ name: 'An' }) // "[object Object]"
 
 **v8的实现**：
 
-```js
+```cpp
 // https://tc39.github.io/ecma262/#sec-array.prototype.tostring
 transitioning javascript builtin ArrayPrototypeToString(
     js-implicit context: NativeContext, receiver: JSAny)(...arguments): JSAny {

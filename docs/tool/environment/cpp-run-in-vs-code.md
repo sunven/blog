@@ -41,7 +41,7 @@ gcc -v
 
 格式化时报错
 
-```plain
+```
 Formatting failed:
 "c:\Users\admin\.vscode\extensions\ms-vscode.cpptools-0.25.1/bin/../LLVM/bin/clang-format.exe" -style="file" -fallback-style="LLVM" -assume-filename="c:\Users\admin\Desktop\cppdemo\helloworld.cpp"
   Error reading c:\Users\admin\.clang-format: Invalid argument

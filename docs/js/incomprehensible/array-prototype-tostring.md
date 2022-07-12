@@ -31,7 +31,7 @@
 
 **v8的实现**：
 
-```c++
+```cpp
 // https://tc39.github.io/ecma262/#sec-array.prototype.tostring
 transitioning javascript builtin ArrayPrototypeToString(
     js-implicit context: NativeContext, receiver: JSAny)(...arguments): JSAny {
