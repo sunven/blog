@@ -4,16 +4,16 @@
   "stop_urls": [],
   "selectors": {
     "lvl0": {
-      "selector": ".sidebar-heading.active",
+      "selector": ".VPLink.link.active",
       "global": true,
       "default_value": "Documentation"
     },
-    "lvl1": ".theme-default-content h1",
-    "lvl2": ".theme-default-content h2",
-    "lvl3": ".theme-default-content h3",
-    "lvl4": ".theme-default-content h4",
-    "lvl5": ".theme-default-content h5",
-    "text": ".theme-default-content p, .theme-default-content li",
+    "lvl1": ".content-container h1",
+    "lvl2": ".content-container h2",
+    "lvl3": ".content-container h3",
+    "lvl4": ".content-container h4",
+    "lvl5": ".content-container h5",
+    "text": ".content-container p, .content-container li",
     "lang": {
       "selector": "/html/@lang",
       "type": "xpath",
