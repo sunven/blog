@@ -42,3 +42,5 @@ docker run -it --env-file=F:\\github\\blog\\.env -e "CONFIG=$(cat F:\\github\\bl
 ```shell
 winpty docker run -it --env-file=F:\\github\\blog\\.env -e "CONFIG=$(cat F:\\github\\blog\\docsearch.config.json | jq -r tostring)" algolia/docsearch-scraper
 ```
+
+markdown-it-katex 貌似不支持行内的katex 有 < 符号

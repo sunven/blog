@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style type="text/css">
+        h1, hr {
+            clear: both;
+        }
+
+        .ul-click {
+            height: 40px;
+        }
+
+            .ul-click li {
+                list-style-type: none;
+                float: left;
+                margin-right: 10px;
+                padding: 4px;
+                cursor: pointer;
+                border: 1px solid green;
+            }
+
+                .ul-click li:hover {
+                    background-color: lightgreen;
+                }
+
+            .ul-click .sel {
+                background-color: lightgreen;
+            }
+
+        .warp {
+            width: 1000px;
+            height: 300px;
+            border: 1px solid red;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: flex-start;
+            align-content: flex-start;
+            flex-grow: 0;
+            flex-shrink: 1;
+        }
+
+            .warp div {
+                margin: 10px;
+                width: 80px;
+                height: 60px;
+                border: 1px solid blue;
+            }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $(".ul-click li").click(function () {
+                var _this = $(this);
+                var _parent = _this.parent();
+                if (_parent.hasClass("no-click")) {
+                    return;
+                }
+                var cssA = _parent.attr("tag");
+                var dest = _parent.attr("dest");
+                _parent.find("li").removeClass("sel");
+                $(this).addClass("sel");
+                $("#" + dest).css(cssA, $(this).html());
+            });
+
+            //order
+            $("#ul_order li").click(function () {
+                var _this = $(this);
+                var _parent = _this.parent();
+                _parent.find("li").removeClass("sel");
+                $(this).addClass("sel");
+                var arr = _this.html().split(',');
+                for (var i = 0; i < arr.length; i++) {
+                    $("#warp6 div").eq(i).css("order", arr[i]).html("我在html中的顺序是：" + (i + 1));
+                }
+            });
+            //flex-grow
+            $("#ul_flex_grow li").click(function () {
+                var _this = $(this);
+                var _parent = _this.parent();
+                _parent.find("li").removeClass("sel");
+                $(this).addClass("sel");
+                $("#warp7 div").css("flex-grow", _this.html());
+            });
+            //flex-shrink
+            $("#warp8").css("flex-wrap", "nowrap");
+            $("#ul_flex_shrink li").click(function () {
+                var _this = $(this);
+                var _parent = _this.parent();
+                _parent.find("li").removeClass("sel");
+                $(this).addClass("sel");
+                $("#warp8 div").css("flex-shrink", _this.html());
+            });
+            //align-self
+            $("#ul_align_self li").click(function () {
+                var _this = $(this);
+                var _parent = _this.parent();
+                _parent.find("li").removeClass("sel");
+                $(this).addClass("sel");
+                $("#warp10 div:first").css("align-self", _this.html());
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>一 容器的属性</h1>
+    <h2>1 flex-direction</h2>
+    <div id="warp1" class="warp">
+        <div>1</div>
+        <div>22</div>
+        <div>333</div>
+    </div>
+    <div>
+        flex-direction的值:
+        <ul class="ul-click" dest="warp1" tag="flex-direction">
+            <li class="sel">row</li>
+            <li>row-reverse</li>
+            <li>column</li>
+            <li>column-reverse</li>
+        </ul>
+    </div>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <h2>2 flex-wrap</h2>
+    <div id="warp2" class="warp">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+        <div>12</div>
+        <div>12</div>
+        <div>13</div>
+        <div>14</div>
+        <div>15</div>
+        <div>16</div>
+        <div>17</div>
+        <div>18</div>
+        <div>19</div>
+        <div>20</div>
+        <div>21</div>
+    </div>
+    <div>
+        flex-wrap的属性值:
+        <ul class="ul-click" dest="warp2" tag="flex-wrap">
+            <li>nowrap</li>
+            <li class="sel">wrap</li>
+            <li>wrap-reverse</li>
+        </ul>
+    </div>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <h2>3 justify-content</h2>
+    <div id="warp3" class="warp">
+        <div>1</div>
+        <div style="width: 200px;">2</div>
+        <div style="width: 300px;">3</div>
+    </div>
+    <div>
+        justify-content的属性值:
+        <ul class="ul-click" dest="warp3" tag="justify-content">
+            <li class="sel">flex-start</li>
+            <li>flex-end</li>
+            <li>center</li>
+            <li>space-between</li>
+            <li>space-aroundspace-between</li>
+        </ul>
+    </div>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <h2>4 align-items</h2>
+    <div id="warp4" class="warp">
+        <div style="padding: 20px;">1</div>
+        <div style="height: 200px;">2</div>
+        <div style="height: 120px;">3</div>
+    </div>
+    <div>
+        align-items的属性值:
+        <ul class="ul-click" dest="warp4" tag="align-items">
+            <li class="sel">flex-start</li>
+            <li>flex-end</li>
+            <li>center</li>
+            <li>baseline</li>
+            <li>stretch</li>
+        </ul>
+    </div>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <h2>5 align-content</h2>
+    <div id="warp5" class="warp">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+        <div>12</div>
+        <div>12</div>
+        <div>13</div>
+        <div>14</div>
+        <div>15</div>
+        <div>16</div>
+        <div>17</div>
+        <div>18</div>
+        <div>19</div>
+        <div>20</div>
+        <div>21</div>
+    </div>
+    <div>
+        align-content的属性值:
+        <ul class="ul-click" dest="warp5" tag="align-content">
+            <li class="sel">flex-start</li>
+            <li>flex-end</li>
+            <li>center</li>
+            <li>space-between</li>
+            <li>space-around</li>
+            <li>stretch</li>
+        </ul>
+    </div>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <hr />
+    <h1>二 项目的属性</h1>
+    <h2>1 order</h2>
+    <div id="warp6" class="warp">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <div>
+        order的属性值:
+        <ul id="ul_order" class="ul-click no-click">
+            <li class="sel">1,2,3</li>
+            <li>1,3,2</li>
+            <li>2,1,3</li>
+            <li>2,3,1</li>
+            <li>3,1,2</li>
+            <li>3,2,1</li>
+        </ul>
+    </div>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <h2>2 flex-grow</h2>
+    <div id="warp7" class="warp">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <div>
+        flex-grow的属性值:
+        <ul id="ul_flex_grow" class="ul-click no-click">
+            <li class="sel">0</li>
+            <li>1</li>
+        </ul>
+    </div>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <h2>3 flex-shrink</h2>
+    <div id="warp8" class="warp">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+        <div>12</div>
+        <div>12</div>
+        <div>13</div>
+        <div>14</div>
+        <div>15</div>
+        <div>16</div>
+        <div>17</div>
+        <div>18</div>
+        <div>19</div>
+        <div>20</div>
+        <div>21</div>
+    </div>
+    <div>
+        flex-shrink的属性值:
+        <ul id="ul_flex_shrink" class="ul-click no-click">
+            <li class="sel">1</li>
+            <li>0</li>
+        </ul>
+    </div>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <h2>4 align-self</h2>
+    <div id="warp10" class="warp">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <div>
+        只设置第一个div的align-self<br />
+        align-self的属性值:
+        <ul id="ul_align_self" class="ul-click no-click">
+            <li class="sel">auto</li>
+            <li>flex-start</li>
+            <li>flex-end</li>
+            <li>center</li>
+            <li>baseline</li>
+            <li>stretch</li>
+        </ul>
+    </div>
+</body>
+</html>

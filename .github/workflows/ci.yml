@@ -16,7 +16,7 @@
 #         uses: JamesIves/github-pages-deploy-action@4.1.4
 #         with:
 #           branch: gh-pages # The branch the action should deploy to.
-#           folder: docs/.vuepress/dist # The folder the action should deploy.
+#           folder: docs/.vitepress/dist # The folder the action should deploy.
 
 name: docs
 
@@ -72,7 +72,7 @@ jobs:
       #     # 部署到 gh-pages 分支
       #     target_branch: gh-pages
       #     # 部署目录为 VuePress 的默认输出目录
-      #     build_dir: docs/.vuepress/dist
+      #     build_dir: docs/.vitepress/dist
       #   env:
       #     # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -82,7 +82,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: "-avzr --delete"
-          SOURCE: "docs/.vuepress/dist/"
+          SOURCE: "docs/.vitepress/dist/"
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: "root"
           TARGET: "/home/blog"

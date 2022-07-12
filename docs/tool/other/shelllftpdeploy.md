@@ -15,7 +15,7 @@ USER=******
 #密码
 PASSWORD=******
 #待上传文件根目录
-SRCDIR=./docs/.vuepress/dist
+SRCDIR=./docs/.vitepress/dist
 #FTP目录
 DESDIR=/home/llweb.top
 #IP
@@ -46,8 +46,8 @@ EOF
 set sftp:auto-confirm "yes"
 open sftp://username:pwd@site
 # rm -rf /home/llweb.top
-mirror -R --delete --ignore-time --only-newer --exclude-glob *.html --verbose --use-pget-n=8 -p -c ./docs/.vuepress/dist /home/llweb.top
-mirror -R --delete --only-newer --include-glob *.html --verbose --use-pget-n=8 -p -c ./docs/.vuepress/dist /home/llweb.top
+mirror -R --delete --ignore-time --only-newer --exclude-glob *.html --verbose --use-pget-n=8 -p -c ./docs/.vitepress/dist /home/llweb.top
+mirror -R --delete --only-newer --include-glob *.html --verbose --use-pget-n=8 -p -c ./docs/.vitepress/dist /home/llweb.top
 # chmod 644 /home/llweb.top/*
 ```
 

@@ -198,7 +198,7 @@ $0.2 = 0.1\times2^1=(-1)^0\times2^{-3}\times(1.\dot1\dot0\dot0\dot1)_2$
 
 先进行“对位”，将较小的指数化为较大的指数，并将小数部分相应右移
 
-- 零舍一入 
+- 零舍一入
 
 $$
 \begin{align}
@@ -407,7 +407,7 @@ Object.prototype.toString.call({ name: 'An' }) // "[object Object]"
 
 **v8的实现**：
 
-```c++
+```js
 // https://tc39.github.io/ecma262/#sec-array.prototype.tostring
 transitioning javascript builtin ArrayPrototypeToString(
     js-implicit context: NativeContext, receiver: JSAny)(...arguments): JSAny {
@@ -471,7 +471,7 @@ ECMAScript 语言会根据需要隐式执行自动类型转换。 为了阐明�
 
 抽象操作 ToPrimitive 接受参数输入（ECMAScript 语言值）和可选参数 preferredType（字符串或数字），并返回包含 ECMAScript 语言值的正常完成或抛出完成。 它将其输入参数转换为非对象类型。 如果一个对象能够转换为多个原始类型，它可以使用可选提示 preferredType 来支持该类型。 它在调用时执行以下步骤：
 
-- 调用 `obj[Symbol.toPrimitive](hint) `如果这个方法存在，
+- 调用 `obj[Symbol.toPrimitive](hint)`如果这个方法存在，
 - 否则，如果 hint 是 "string"尝试调用 obj.toString() 或 obj.valueOf()，无论哪个存在。
 - 否则，如果 hint 是 "number" 或者 "default"尝试调用 obj.valueOf() 或 obj.toString()，无论哪个存在。
 

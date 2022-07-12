@@ -1,14 +1,15 @@
-const path = require('path');
-const fs = require('fs');
-const { autoNavBar, fixNavBar } = require('./utils/navBarUtil');
-const { autoSideBar } = require('./utils/sideBarUtil');
-const { genIndex } = require('./utils/genIndexUtil');
-let navbar = autoNavBar();
-//
-const sidebar = autoSideBar(navbar);
-navbar = fixNavBar(navbar, sidebar);
-
-genIndex(sidebar);
+const path = require('path')
+const { autoNavBar, fixNavBar } = require('./utils/navBarUtil')
+const { autoSideBar } = require('./utils/sideBarUtil')
+const { genIndex } = require('./utils/genIndexUtil')
+// 生成nav
+let nav = autoNavBar()
+// 生成sidebar
+const sidebar = autoSideBar(nav)
+// 修复nav上的链接,
+nav = fixNavBar(nav, sidebar)
+// 生成首页
+genIndex(sidebar)
 
 //https://developer.mozilla.org/zh-CN/docs/Web/MathML/Element
 //var as=new Set();document.querySelectorAll('.main-page-content a[href*="MathML/Element"]').forEach(item=>{var a=item.innerText;a=a.replace('<','');a=a.replace('>','');a=a.replace('(en-US)','');a=a.trim(' ');as.add(a)});console.log(Array.from(as))
@@ -57,12 +58,12 @@ const mathml = [
   'annotation-xml',
   'mprescripts',
   'none',
-];
+]
 module.exports = {
   //base: '/blog/',
   lang: 'zh-CN',
   //debug: true,
-  title: '聊聊前端',
+  title: 'LLWEB',
   description: '笔记、博客、awesome',
   head: [
     [
@@ -105,36 +106,33 @@ module.exports = {
   theme: path.resolve(__dirname, './theme'),
   themeConfig: {
     logo: '/images/logo.png',
-    navbar,
+    nav,
     sidebar,
     repo: 'sunven/blog',
     docsBranch: 'master',
     docsDir: 'docs',
+    socialLinks: [{ icon: 'github', link: 'https://github.com/sunven/blog' }],
+    editLink: {
+      pattern: 'https://github.com/sunven/blog/edit/main/docs/:path',
+      text: 'Edit this page on GitHub',
+    },
+    algolia: {
+      appId: 'MFM87Q4KVR',
+      apiKey: 'f32cb77f611a2ed31fa6ba7fe0716f5b',
+      indexName: 'blog',
+    },
   },
-  // clientAppEnhanceFiles: path.resolve(__dirname, './clientAppEnhance.js'),
-  extendsMarkdown: (md) => {
-    md.use(require('./plugins/markdown-it-katex'));
-    //md.linkify.set({ fuzzyEmail: false })
-  },
-  bundlerConfig: {
-    //webpack 打包配置
-    vue: {
+  vue: {
+    template: {
       compilerOptions: {
-        isCustomElement: (tag) => {
-          console.log(11);
-          return mathml.indexOf(tag) !== -1;
-        },
-      },
-    },
-    //vite 打包配置
-    vuePluginOptions: {
-      template: {
-        compilerOptions: {
-          isCustomElement: (tag) => {
-            return mathml.indexOf(tag) !== -1;
-          },
-        },
+        isCustomElement: tag => mathml.includes(tag),
       },
     },
   },
-};
+  markdown: {
+    config: md => {
+      md.use(require('./plugins/markdown-it-katex'))
+      // md.use(require('markdown-it-katex')) // 不支持行内 katex 中有 < 符号
+    },
+  },
+}
