@@ -204,19 +204,19 @@ git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git l
 git remote add upstream https://github.com/apache/flink.git
 ```
 
-2. 从上游仓库 fetch 分支和提交点，传送到本地，并会被存储在一个本地分支 upstream/master
+2.从上游仓库 fetch 分支和提交点，传送到本地，并会被存储在一个本地分支 upstream/master
 
 ```sh
 git fetch upstream
 ```
 
-3. 在本地分支上，执行合并
+3.在本地分支上，执行合并
 
 ```sh
 git merge upstream/master
 ```
 
-4. 推送到远程
+4.推送到远程
 
 ```sh
 git push origin master
@@ -269,8 +269,10 @@ git config --global core.safecrlf warn
 
 .ssh\config增加以下二项
 
+```
 HostKeyAlgorithms ssh-rsa
 PubkeyAcceptedKeyTypes ssh-rsa
+```
 
 ### fatal: early EOF fatal: fetch-pack: invalid index-pack output
 
@@ -288,4 +290,3 @@ git fetch --unshallow
 # 常规拉取
 git pull --all
 ```
-
