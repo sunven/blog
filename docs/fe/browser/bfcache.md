@@ -84,3 +84,7 @@ setInterval(() => {
 ```
 
 a页面进入b页面后, setInterval不再继续执行
+
+## reference
+
+<https://web.dev/bfcache/>
