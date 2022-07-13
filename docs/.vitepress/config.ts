@@ -1,7 +1,9 @@
-const path = require('path')
-const { autoNavBar, fixNavBar } = require('./utils/navBarUtil')
-const { autoSideBar } = require('./utils/sideBarUtil')
-const { genIndex } = require('./utils/genIndexUtil')
+// import fs from 'fs'
+import path from 'path'
+import { defineConfig } from 'vitepress'
+import { autoNavBar, fixNavBar } from './utils/navBarUtil'
+import { autoSideBar } from './utils/sideBarUtil'
+import { genIndex } from './utils/genIndexUtil'
 // 生成nav
 let nav = autoNavBar()
 // 生成sidebar
@@ -59,7 +61,7 @@ const mathml = [
   'mprescripts',
   'none',
 ]
-module.exports = {
+export default defineConfig({
   //base: '/blog/',
   lang: 'zh-CN',
   //debug: true,
@@ -82,35 +84,10 @@ module.exports = {
     ],
     ['link', { rel: 'icon', href: '/images/logo.png' }],
   ],
-  plugins: [
-    [
-      '@vuepress/register-components',
-      {
-        componentsDir: path.resolve(__dirname, './components'),
-      },
-    ],
-    [
-      '@vuepress/plugin-docsearch',
-      {
-        appId: 'MFM87Q4KVR',
-        apiKey: 'a778f10a7918c72287c9bf7a9db85e07',
-        indexName: 'blog',
-        locales: {
-          '/': {
-            placeholder: '搜索文档',
-          },
-        },
-      },
-    ],
-  ],
-  theme: path.resolve(__dirname, './theme'),
   themeConfig: {
     logo: '/images/logo.png',
     nav,
     sidebar,
-    repo: 'sunven/blog',
-    docsBranch: 'master',
-    docsDir: 'docs',
     socialLinks: [{ icon: 'github', link: 'https://github.com/sunven/blog' }],
     editLink: {
       pattern: 'https://github.com/sunven/blog/edit/main/docs/:path',
@@ -135,4 +112,4 @@ module.exports = {
       // md.use(require('markdown-it-katex')) // 不支持行内 katex 中有 < 符号
     },
   },
-}
+})

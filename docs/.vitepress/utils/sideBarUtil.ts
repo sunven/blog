@@ -1,13 +1,13 @@
-const fs = require('fs')
-const path = require('path')
+import fs from 'fs'
+import path from 'path'
+import { DefaultTheme } from 'vitepress'
 
-module.exports.autoSideBar = navbar => {
+export function autoSideBar(navbar: DefaultTheme.NavItemWithChildren[]) {
   const docsDir = path.resolve(__dirname, '../../')
-  const sidebar = {}
+  const sidebar: DefaultTheme.SidebarMulti = {}
   const reg = /(#\s*(.*))/
   navbar
-    .filter(c => c.items)
-    .reduce((acc, cur) => acc.concat(cur.items.filter(c => path.extname(c.link) === '').map(c => c.link)), [])
+    .reduce((acc: string[], cur) => acc.concat(cur.items.filter(c => 'link' in c).map(c => (c as DefaultTheme.NavItemWithLink).link)), [])
     .forEach(link => {
       sidebar[link] = [
         {
