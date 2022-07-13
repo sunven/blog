@@ -1,11 +1,11 @@
 # 聊聊前端## css/basics
 
-- [css-selector](/css/basics/css-selector.md)
+- [css 选择器](/css/basics/css-selector.md)
 
 ## css/layout
 
-- [center-in-css](/css/layout/center-in-css.md)
-- [csslayout](/css/layout/csslayout.md)
+- [居中](/css/layout/center-in-css.md)
+- [CSS 布局](/css/layout/csslayout.md)
 - [flex](/css/layout/flex.md)
 - [移动端布局](/css/layout/移动端布局.md)
 
@@ -15,100 +15,100 @@
 
 ## develop/algorithm
 
-- [commonlyused](/develop/algorithm/commonlyused.md)
-- [index](/develop/algorithm/index.md)
+- [常用算法](/develop/algorithm/commonlyused.md)
+- [算法](/develop/algorithm/index.md)
 - [重学数据结构与算法](/develop/algorithm/重学数据结构与算法.md)
 
 ## develop/designpatterns
 
-- [abstractfactory](/develop/designpatterns/abstractfactory.md)
-- [adapter](/develop/designpatterns/adapter.md)
-- [bridge](/develop/designpatterns/bridge.md)
-- [builder](/develop/designpatterns/builder.md)
-- [command](/develop/designpatterns/command.md)
-- [composite](/develop/designpatterns/composite.md)
-- [decorator](/develop/designpatterns/decorator.md)
-- [facade](/develop/designpatterns/facade.md)
-- [factory](/develop/designpatterns/factory.md)
-- [flyweight](/develop/designpatterns/flyweight.md)
-- [index](/develop/designpatterns/index.md)
-- [interpreter](/develop/designpatterns/interpreter.md)
-- [iterator](/develop/designpatterns/iterator.md)
-- [mediator](/develop/designpatterns/mediator.md)
-- [memento](/develop/designpatterns/memento.md)
-- [observer](/develop/designpatterns/observer.md)
-- [patterns](/develop/designpatterns/patterns.md)
-- [principles](/develop/designpatterns/principles.md)
-- [prototype](/develop/designpatterns/prototype.md)
-- [proxy](/develop/designpatterns/proxy.md)
-- [responsibility](/develop/designpatterns/responsibility.md)
-- [singleton](/develop/designpatterns/singleton.md)
-- [state](/develop/designpatterns/state.md)
-- [stragety](/develop/designpatterns/stragety.md)
-- [template](/develop/designpatterns/template.md)
-- [visitor](/develop/designpatterns/visitor.md)
+- [抽象工厂模式](/develop/designpatterns/abstractfactory.md)
+- [适配器模式](/develop/designpatterns/adapter.md)
+- [桥接模式](/develop/designpatterns/bridge.md)
+- [建造者模式](/develop/designpatterns/builder.md)
+- [命令模式](/develop/designpatterns/command.md)
+- [组合模式](/develop/designpatterns/composite.md)
+- [装饰者模式](/develop/designpatterns/decorator.md)
+- [外观模式](/develop/designpatterns/facade.md)
+- [简单工厂模式](/develop/designpatterns/factory.md)
+- [享元模式](/develop/designpatterns/flyweight.md)
+- [设计模式](/develop/designpatterns/index.md)
+- [解释器模式](/develop/designpatterns/interpreter.md)
+- [迭代器模式](/develop/designpatterns/iterator.md)
+- [中介者模式](/develop/designpatterns/mediator.md)
+- [备忘录模式](/develop/designpatterns/memento.md)
+- [观察者模式](/develop/designpatterns/observer.md)
+- [设计模式](/develop/designpatterns/patterns.md)
+- [设计原则](/develop/designpatterns/principles.md)
+- [原型模式](/develop/designpatterns/prototype.md)
+- [代理模式](/develop/designpatterns/proxy.md)
+- [责任链模式](/develop/designpatterns/responsibility.md)
+- [单例模式](/develop/designpatterns/singleton.md)
+- [状态模式](/develop/designpatterns/state.md)
+- [策略模式](/develop/designpatterns/stragety.md)
+- [模板方法模式](/develop/designpatterns/template.md)
+- [访问者模式](/develop/designpatterns/visitor.md)
 
 ## develop/docker
 
-- [docker-command](/develop/docker/docker-command.md)
-- [dockercollect](/develop/docker/dockercollect.md)
-- [dotnetcoreonwindocker](/develop/docker/dotnetcoreonwindocker.md)
-- [index](/develop/docker/index.md)
-- [intro](/develop/docker/intro.md)
-- [mysqlondocker](/develop/docker/mysqlondocker.md)
+- [Docker 常用命令](/develop/docker/docker-command.md)
+- [docker 相关文章收录](/develop/docker/dockercollect.md)
+- [windows 下 docker 与.net core 的简单示例](/develop/docker/dotnetcoreonwindocker.md)
+- [Docker](/develop/docker/index.md)
+- [Docker](/develop/docker/intro.md)
+- [mysql on docker](/develop/docker/mysqlondocker.md)
 
 ## develop/dotnet
 
-- [abpmodule](/develop/dotnet/abpmodule.md)
-- [aopinaudit](/develop/dotnet/aopinaudit.md)
-- [base](/develop/dotnet/base.md)
-- [collect](/develop/dotnet/collect.md)
-- [concurrentqueue](/develop/dotnet/concurrentqueue.md)
-- [csharpcollect](/develop/dotnet/csharpcollect.md)
-- [csharpstackapplication](/develop/dotnet/csharpstackapplication.md)
-- [dynamicwebapi](/develop/dotnet/dynamicwebapi.md)
-- [index](/develop/dotnet/index.md)
-- [ioc](/develop/dotnet/ioc.md)
-- [issueincoding](/develop/dotnet/issueincoding.md)
-- [jsonmediatypeformatter-swagger](/develop/dotnet/jsonmediatypeformatter-swagger.md)
-- [library](/develop/dotnet/library.md)
-- [nuget](/develop/dotnet/nuget.md)
-- [ocelot](/develop/dotnet/ocelot.md)
-- [poco](/develop/dotnet/poco.md)
-- [razor](/develop/dotnet/razor.md)
-- [swagger](/develop/dotnet/swagger.md)
-- [transparentproxy](/develop/dotnet/transparentproxy.md)
+- [ABP-Module](/develop/dotnet/abpmodule.md)
+- [审计日志中的 AOP](/develop/dotnet/aopinaudit.md)
+- [基础](/develop/dotnet/base.md)
+- [DDD 相关文章收录](/develop/dotnet/collect.md)
+- [ConcurrentQueue](/develop/dotnet/concurrentqueue.md)
+- [C#知识点相关文章收录](/develop/dotnet/csharpcollect.md)
+- [C# 栈的应用](/develop/dotnet/csharpstackapplication.md)
+- [动态api](/develop/dotnet/dynamicwebapi.md)
+- [其它](/develop/dotnet/index.md)
+- [IOC](/develop/dotnet/ioc.md)
+- [开发中遇到的问题](/develop/dotnet/issueincoding.md)
+- [JsonMediaTypeFormatter 和 Swagger](/develop/dotnet/jsonmediatypeformatter-swagger.md)
+- [.net 类库](/develop/dotnet/library.md)
+- [NuGet 更改包及缓存目录](/develop/dotnet/nuget.md)
+- [Ocelot](/develop/dotnet/ocelot.md)
+- [POCO](/develop/dotnet/poco.md)
+- [Razor](/develop/dotnet/razor.md)
+- [Swagger的简单使用](/develop/dotnet/swagger.md)
+- [透明代理基础](/develop/dotnet/transparentproxy.md)
 - [volatile](/develop/dotnet/volatile.md)
 
 ## develop/flutter
 
-- [env](/develop/flutter/env.md)
+- [Flutter](/develop/flutter/env.md)
 
 ## develop/nodejs
 
-- [koa](/develop/nodejs/koa.md)
+- [Koa](/develop/nodejs/koa.md)
 - [pnpm](/develop/nodejs/pnpm.md)
 
 ## develop/other
 
-- [dns](/develop/other/dns.md)
-- [htmlgenpdf](/develop/other/htmlgenpdf.md)
-- [osi](/develop/other/osi.md)
-- [other](/develop/other/other.md)
-- [postmanencrypt](/develop/other/postmanencrypt.md)
-- [principle-of-base64](/develop/other/principle-of-base64.md)
-- [scaling-webapps](/develop/other/scaling-webapps.md)
-- [tfs-integration-postman](/develop/other/tfs-integration-postman.md)
+- [DNS](/develop/other/dns.md)
+- [爬取 html 生成 pdf](/develop/other/htmlgenpdf.md)
+- [OSI 模型](/develop/other/osi.md)
+- [其它](/develop/other/other.md)
+- [Postman 请求加密加签，结果验签解密](/develop/other/postmanencrypt.md)
+- [base64 原理](/develop/other/principle-of-base64.md)
+- [Scaling webapps](/develop/other/scaling-webapps.md)
+- [TFS 集成 Postman](/develop/other/tfs-integration-postman.md)
 
 ## develop/packages
 
-- [npm](/develop/packages/npm.md)
+- [npm package](/develop/packages/npm.md)
 
 ## develop/python
 
-- [index](/develop/python/index.md)
-- [python3onmac](/develop/python/python3onmac.md)
-- [python3onwindows](/develop/python/python3onwindows.md)
+- [Python](/develop/python/index.md)
+- [python3 on mac](/develop/python/python3onmac.md)
+- [python3 on windows](/develop/python/python3onwindows.md)
 
 ## develop/safe
 
@@ -116,206 +116,206 @@
 
 ## develop/sql
 
-- [index](/develop/sql/index.md)
-- [sqlcollect](/develop/sql/sqlcollect.md)
+- [SQL](/develop/sql/index.md)
+- [SQL 集锦](/develop/sql/sqlcollect.md)
 
 ## fe/browser
 
 - [bfcache](/fe/browser/bfcache.md)
-- [event-loop](/fe/browser/event-loop.md)
+- [Event Loop](/fe/browser/event-loop.md)
 - [how-the-browser-renders-a-web-page](/fe/browser/how-the-browser-renders-a-web-page.md)
-- [page-communication](/fe/browser/page-communication.md)
-- [page-lifecycle](/fe/browser/page-lifecycle.md)
-- [webcache](/fe/browser/webcache.md)
+- [页面通信](/fe/browser/page-communication.md)
+- [页面生命周期](/fe/browser/page-lifecycle.md)
+- [前端缓存](/fe/browser/webcache.md)
 
 ## fe/other
 
-- [articleinclusion](/fe/other/articleinclusion.md)
-- [client-storage](/fe/other/client-storage.md)
-- [drag-and-drop](/fe/other/drag-and-drop.md)
+- [文章收录](/fe/other/articleinclusion.md)
+- [客户端存储](/fe/other/client-storage.md)
+- [拖放](/fe/other/drag-and-drop.md)
 - [html5](/fe/other/html5.md)
-- [optimize](/fe/other/optimize.md)
+- [# 加载](/fe/other/optimize.md)
 - [performance](/fe/other/performance.md)
-- [serviceworkerbase](/fe/other/serviceworkerbase.md)
-- [stateful-vs-stateless](/fe/other/stateful-vs-stateless.md)
-- [tsbase](/fe/other/tsbase.md)
-- [uilib](/fe/other/uilib.md)
-- [vidoe](/fe/other/vidoe.md)
+- [Service Worker 基础](/fe/other/serviceworkerbase.md)
+- [组件：有状态(stateful) vs 无状态(stateless)](/fe/other/stateful-vs-stateless.md)
+- [TypeScript](/fe/other/tsbase.md)
+- [UI 库](/fe/other/uilib.md)
+- [video](/fe/other/vidoe.md)
 - [vite](/fe/other/vite.md)
-- [weboptimization](/fe/other/weboptimization.md)
-- [webpack](/fe/other/webpack.md)
-- [yarncommand](/fe/other/yarncommand.md)
+- [Web 优化](/fe/other/weboptimization.md)
+- [webpack 基础](/fe/other/webpack.md)
+- [yarn常用命令](/fe/other/yarncommand.md)
 
 ## fe/question
 
-- [what-does-this-code-print](/fe/question/what-does-this-code-print.md)
+- [这段代码打印什么](/fe/question/what-does-this-code-print.md)
 
 ## fe/webapi
 
-- [whatever-sizing](/fe/webapi/whatever-sizing.md)
+- [各种尺寸](/fe/webapi/whatever-sizing.md)
 
 ## fe/webpack
 
-- [intro](/fe/webpack/intro.md)
+- [webpack](/fe/webpack/intro.md)
 - [webpack](/fe/webpack/webpack.md)
 
 ## js/advanced
 
-- [data-type](/js/advanced/data-type.md)
-- [expression-operating](/js/advanced/expression-operating.md)
+- [JavaScript 数据类型](/js/advanced/data-type.md)
+- [表达式与操作符](/js/advanced/expression-operating.md)
 - [prototype](/js/advanced/prototype.md)
-- [question](/js/advanced/question.md)
-- [scope](/js/advanced/scope.md)
+- [习题](/js/advanced/question.md)
+- [作用域](/js/advanced/scope.md)
 
 ## js/basics
 
-- [array](/js/basics/array.md)
+- [Array](/js/basics/array.md)
 - [backbonejs](/js/basics/backbonejs.md)
 - [canvas](/js/basics/canvas.md)
-- [classandmodule](/js/basics/classandmodule.md)
-- [component](/js/basics/component.md)
-- [function](/js/basics/function.md)
-- [html5api](/js/basics/html5api.md)
-- [inherit](/js/basics/inherit.md)
-- [issue](/js/basics/issue.md)
-- [jslib](/js/basics/jslib.md)
+- [类和模块](/js/basics/classandmodule.md)
+- [组件](/js/basics/component.md)
+- [函数](/js/basics/function.md)
+- [HTML5 API](/js/basics/html5api.md)
+- [面向对象的程序设计-继承](/js/basics/inherit.md)
+- [ISSUE](/js/basics/issue.md)
+- [js 类库及插件收集](/js/basics/jslib.md)
 - [Map、WeakMap、Set、WeakSet](/js/basics/Map、WeakMap、Set、WeakSet.md)
-- [modularization](/js/basics/modularization.md)
-- [proxy-and-reflect](/js/basics/proxy-and-reflect.md)
-- [regex](/js/basics/regex.md)
-- [requirejs](/js/basics/requirejs.md)
+- [模块化](/js/basics/modularization.md)
+- [Proxy & Reflec](/js/basics/proxy-and-reflect.md)
+- [正则表达式](/js/basics/regex.md)
+- [requirejs 基础](/js/basics/requirejs.md)
 
 ## js/es6
 
-- [es6base](/js/es6/es6base.md)
-- [es6extend](/js/es6/es6extend.md)
-- [index](/js/es6/index.md)
-- [iteratorsandgenerators](/js/es6/iteratorsandgenerators.md)
-- [symbol](/js/es6/symbol.md)
+- [ES6 基础](/js/es6/es6base.md)
+- [ES6 扩展](/js/es6/es6extend.md)
+- [es6](/js/es6/index.md)
+- [迭代器和生成器](/js/es6/iteratorsandgenerators.md)
+- [Symbol](/js/es6/symbol.md)
 
 ## js/handwriting
 
-- [common-method-implementation](/js/handwriting/common-method-implementation.md)
-- [promise](/js/handwriting/promise.md)
+- [常见方法实现](/js/handwriting/common-method-implementation.md)
+- [Promise](/js/handwriting/promise.md)
 
 ## js/incomprehensible
 
-- [array-prototype-tostring](/js/incomprehensible/array-prototype-tostring.md)
+- [【难以理解的js】Array.prototype.toString](/js/incomprehensible/array-prototype-tostring.md)
 
 ## js/other
 
-- [execution-contexts](/js/other/execution-contexts.md)
+- [Execution Contexts](/js/other/execution-contexts.md)
 - [hoisting](/js/other/hoisting.md)
 - [sh](/js/other/sh.md)
-- [shallow-copy-and-deep-copy](/js/other/shallow-copy-and-deep-copy.md)
+- [shallow copy and deep copy](/js/other/shallow-copy-and-deep-copy.md)
 - [小技巧](/js/other/小技巧.md)
 
 ## react/customize
 
-- [combineReducers](/react/customize/combineReducers.md)
+- [Redux combineReducers](/react/customize/combineReducers.md)
 
 ## react/other
 
-- [flux](/react/other/flux.md)
+- [Flux](/react/other/flux.md)
 
 ## reading/goodarticle
 
 - [2019-01](/reading/goodarticle/2019-01.md)
-- [index](/reading/goodarticle/index.md)
+- [好文要读](/reading/goodarticle/index.md)
 
 ## reading/jsdesignpattern
 
-- [sheet1](/reading/jsdesignpattern/sheet1.md)
-- [sheet2](/reading/jsdesignpattern/sheet2.md)
-- [sheet3](/reading/jsdesignpattern/sheet3.md)
-- [sheet4](/reading/jsdesignpattern/sheet4.md)
-- [sheet5](/reading/jsdesignpattern/sheet5.md)
+- [《JavaScript设计模式》面向对象编程](/reading/jsdesignpattern/sheet1.md)
+- [《JavaScript 设计模式》创建型设计模式](/reading/jsdesignpattern/sheet2.md)
+- [《JavaScript设计模式》结构型设计模式](/reading/jsdesignpattern/sheet3.md)
+- [《JavaScript设计模式》行为型设计模式](/reading/jsdesignpattern/sheet4.md)
+- [《JavaScript设计模式》技巧型设计模式](/reading/jsdesignpattern/sheet5.md)
 
 ## reading/jsdpanddp
 
-- [jsdpanddp-base](/reading/jsdpanddp/jsdpanddp-base.md)
-- [jsdpanddp-designpattern](/reading/jsdpanddp/jsdpanddp-designpattern.md)
-- [jsdpanddp-principles](/reading/jsdpanddp/jsdpanddp-principles.md)
+- [《JavaScript 设计模式与开发实践》读书笔记-基础知识](/reading/jsdpanddp/jsdpanddp-base.md)
+- [《JavaScript 设计模式与开发实践》读书笔记-设计模式](/reading/jsdpanddp/jsdpanddp-designpattern.md)
+- [《JavaScript设计模式与开发实践》读书笔记-设计原则](/reading/jsdpanddp/jsdpanddp-principles.md)
 
 ## subject/math
 
-- [advanced-mathematics-production-based](/subject/math/advanced-mathematics-production-based.md)
-- [base](/subject/math/base.md)
+- [高等数学（工本）](/subject/math/advanced-mathematics-production-based.md)
+- [基本运算](/subject/math/base.md)
 
 ## subject/other
 
-- [cpp-self-test](/subject/other/cpp-self-test.md)
-- [hash-table](/subject/other/hash-table.md)
-- [minimum-spanning-tree](/subject/other/minimum-spanning-tree.md)
-- [principle-of-database-system](/subject/other/principle-of-database-system.md)
-- [shortest-path](/subject/other/shortest-path.md)
-- [tree-forest-and-binary-tree-transformation](/subject/other/tree-forest-and-binary-tree-transformation.md)
+- [c++ self-test](/subject/other/cpp-self-test.md)
+- [散列表](/subject/other/hash-table.md)
+- [最小生成树](/subject/other/minimum-spanning-tree.md)
+- [数据库系统原理](/subject/other/principle-of-database-system.md)
+- [最短路径](/subject/other/shortest-path.md)
+- [树、森林和二叉树的转换](/subject/other/tree-forest-and-binary-tree-transformation.md)
 
 ## tool/environment
 
-- [cpp-run-in-vs-code](/tool/environment/cpp-run-in-vs-code.md)
-- [js-run-in-dotnetcore](/tool/environment/js-run-in-dotnetcore.md)
-- [mongodb-on-mac](/tool/environment/mongodb-on-mac.md)
-- [mysql-win-install](/tool/environment/mysql-win-install.md)
-- [running-python-in-vscoe](/tool/environment/running-python-in-vscoe.md)
-- [svn-on-vscode](/tool/environment/svn-on-vscode.md)
+- [c++ run in vs code](/tool/environment/cpp-run-in-vs-code.md)
+- [在 .NET Core 中运行 JavaScript](/tool/environment/js-run-in-dotnetcore.md)
+- [mongodb on mac](/tool/environment/mongodb-on-mac.md)
+- [mysql（解压缩版）在windows下的安装](/tool/environment/mysql-win-install.md)
+- [VS Code Python配置](/tool/environment/running-python-in-vscoe.md)
+- [SVN On Mac VS Code](/tool/environment/svn-on-vscode.md)
 
 ## tool/git
 
-- [base](/tool/git/base.md)
-- [index](/tool/git/index.md)
+- [git 基础](/tool/git/base.md)
+- [git](/tool/git/index.md)
 
 ## tool/mac
 
-- [command](/tool/mac/command.md)
+- [Mac 常用命令](/tool/mac/command.md)
 - [on-my-zsh](/tool/mac/on-my-zsh.md)
-- [soft](/tool/mac/soft.md)
+- [Mac 常用软件](/tool/mac/soft.md)
 - [ssh](/tool/mac/ssh.md)
-- [装机清单](/tool/mac/装机清单.md)
+- [# Homebrew](/tool/mac/装机清单.md)
 
 ## tool/other
 
-- [addrightclickmenu](/tool/other/addrightclickmenu.md)
+- [添加右键菜单](/tool/other/addrightclickmenu.md)
 - [ffmpeg](/tool/other/ffmpeg.md)
-- [hexo](/tool/other/hexo.md)
-- [imagemagick](/tool/other/imagemagick.md)
-- [linuxcommand](/tool/other/linuxcommand.md)
+- [Hexo 基本使用](/tool/other/hexo.md)
+- [ImageMagick](/tool/other/imagemagick.md)
+- [Linux 命令](/tool/other/linuxcommand.md)
 - [npm](/tool/other/npm.md)
-- [playground](/tool/other/playground.md)
-- [postman](/tool/other/postman.md)
-- [scoop](/tool/other/scoop.md)
-- [shelllftpdeploy](/tool/other/shelllftpdeploy.md)
-- [visualstudio](/tool/other/visualstudio.md)
-- [windowscommand](/tool/other/windowscommand.md)
-- [windowssoft](/tool/other/windowssoft.md)
+- [Playground](/tool/other/playground.md)
+- [Postman](/tool/other/postman.md)
+- [Scoop](/tool/other/scoop.md)
+- [在 shell 脚本中利用 lftp 做自动部署](/tool/other/shelllftpdeploy.md)
+- [Visual Studio 相关](/tool/other/visualstudio.md)
+- [windows 命令](/tool/other/windowscommand.md)
+- [Windows 常用软件](/tool/other/windowssoft.md)
 
 ## tool/ubuntu
 
-- [basecommand](/tool/ubuntu/basecommand.md)
-- [index](/tool/ubuntu/index.md)
+- [Ubuntu 常用命令](/tool/ubuntu/basecommand.md)
+- [Ubuntu](/tool/ubuntu/index.md)
 
 ## tool/vscode
 
-- [create-vscode-theme](/tool/vscode/create-vscode-theme.md)
+- [如何打造一款属于自己的 Visual Studio Code 颜色主题](/tool/vscode/create-vscode-theme.md)
 
 ## vue/customize
 
-- [recursive-component](/vue/customize/recursive-component.md)
-- [vue-router](/vue/customize/vue-router.md)
+- [递归组件](/vue/customize/recursive-component.md)
+- [vue-router 简单实现](/vue/customize/vue-router.md)
 
 ## vue/other
 
-- [index](/vue/other/index.md)
-- [life-cycle](/vue/other/life-cycle.md)
-- [publish-subscribe-mode-in-vue](/vue/other/publish-subscribe-mode-in-vue.md)
-- [vuecollect](/vue/other/vuecollect.md)
-- [vuex-modules-plugins](/vue/other/vuex-modules-plugins.md)
-- [VUE组件通信](/vue/other/VUE组件通信.md)
+- [VUE](/vue/other/index.md)
+- [生命周期](/vue/other/life-cycle.md)
+- [vue 中的发布/订阅模式模式](/vue/other/publish-subscribe-mode-in-vue.md)
+- [VUE 文章收录](/vue/other/vuecollect.md)
+- [Vuex 中 modules 和 plugins](/vue/other/vuex-modules-plugins.md)
+- [VUE 组件通信](/vue/other/VUE组件通信.md)
 
 ## vue/rtfsc
 
 - [compiler](/vue/rtfsc/compiler.md)
 - [diff](/vue/rtfsc/diff.md)
-- [vue3-diff-in-deep](/vue/rtfsc/vue3-diff-in-deep.md)
-- [vue3-reactive-in-deep](/vue/rtfsc/vue3-reactive-in-deep.md)
+- [【vue3】深入理解diff](/vue/rtfsc/vue3-diff-in-deep.md)
+- [reactive](/vue/rtfsc/vue3-reactive-in-deep.md)
 
