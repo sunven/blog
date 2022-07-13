@@ -43,17 +43,13 @@ docker run -it --env-file=F:\\github\\blog\\.env -e "CONFIG=$(cat F:\\github\\bl
 winpty docker run -it --env-file=F:\\github\\blog\\.env -e "CONFIG=$(cat F:\\github\\blog\\docsearch.config.json | jq -r tostring)" algolia/docsearch-scraper
 ```
 
-markdown-it-katex 貌似不支持行内的katex 有 < 符号
+markdown-it-katex 貌似不支持行内的katex 有 < 符号,需要重新学一个
 
-vitepress
+## vuepress > vitepress
 
 - 不识别的语言报错
 - c# > csharp
 - c++ > cpp
-
-其他
-
-- 文件名含有&
-- 文件名含有空格
-
-## vuepress > vitepress
+- build: 文件名含有&或空格报错
+- tsconfig.json:
+  - include: `"docs/**/*"` 识别不到 docs 中的 .vitepress , 需要新增一个 `"docs/.vitepress/**/*"`
