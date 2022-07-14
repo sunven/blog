@@ -1,9 +1,9 @@
 // import fs from 'fs'
-import path from 'path'
 import { defineConfig } from 'vitepress'
 import { autoNavBar, fixNavBar } from './utils/navBarUtil'
 import { autoSideBar } from './utils/sideBarUtil'
 import { genIndex } from './utils/genIndexUtil'
+import mathPlugin from './plugins/markdown-it-katex'
 // 生成nav
 let nav = autoNavBar()
 // 生成sidebar
@@ -108,7 +108,7 @@ export default defineConfig({
   },
   markdown: {
     config: md => {
-      md.use(require('./plugins/markdown-it-katex'))
+      md.use(mathPlugin)
       // md.use(require('markdown-it-katex')) // 不支持行内 katex 中有 < 符号
     },
   },

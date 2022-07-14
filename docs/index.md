@@ -170,7 +170,6 @@
 
 ## js/basics
 
-- [Map、WeakMap、Set、WeakSet](/js/basics/Map、WeakMap、Set、WeakSet.md)
 - [Array](/js/basics/array.md)
 - [backbonejs](/js/basics/backbonejs.md)
 - [canvas](/js/basics/canvas.md)
@@ -181,6 +180,7 @@
 - [面向对象的程序设计-继承](/js/basics/inherit.md)
 - [ISSUE](/js/basics/issue.md)
 - [js 类库及插件收集](/js/basics/jslib.md)
+- [Map、WeakMap、Set、WeakSet](/js/basics/Map、WeakMap、Set、WeakSet.md)
 - [模块化](/js/basics/modularization.md)
 - [Proxy & Reflec](/js/basics/proxy-and-reflect.md)
 - [正则表达式](/js/basics/regex.md)
@@ -218,9 +218,6 @@
 ## react/other
 
 - [Flux](/react/other/flux.md)
-
-## reading/RTFSC
-
 
 ## reading/goodarticle
 
@@ -309,12 +306,12 @@
 
 ## vue/other
 
-- [VUE 组件通信](/vue/other/VUE组件通信.md)
 - [VUE](/vue/other/index.md)
 - [生命周期](/vue/other/life-cycle.md)
 - [vue 中的发布/订阅模式模式](/vue/other/publish-subscribe-mode-in-vue.md)
 - [VUE 文章收录](/vue/other/vuecollect.md)
 - [Vuex 中 modules 和 plugins](/vue/other/vuex-modules-plugins.md)
+- [VUE 组件通信](/vue/other/VUE组件通信.md)
 
 ## vue/rtfsc
 

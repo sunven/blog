@@ -11,5 +11,5 @@
     "jsx": "preserve",
     "baseUrl": "."
   },
-  "include": ["docs/**/*", "docs/.vitepress/**/*"]
+  "include": ["env.d.ts", "docs/**/*", "docs/.vitepress/**/*"]
 }

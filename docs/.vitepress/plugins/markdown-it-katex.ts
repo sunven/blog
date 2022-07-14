@@ -10,11 +10,15 @@ for rendering output.
 /*jslint node: true */
 'use strict'
 
-var katex = require('katex')
+import katex, { KatexOptions } from 'katex'
+import MarkdownIt from 'markdown-it'
+import StateBlock from 'markdown-it/lib/rules_block/state_block'
+import StateInline from 'markdown-it/lib/rules_inline/state_inline'
+import Token from 'markdown-it/lib/token'
 
 // Test if potential opening or closing delimieter
 // Assumes that there is a "$" at state.src[pos]
-function isValidDelim(state, pos) {
+function isValidDelim(state: StateInline, pos: number) {
   var prevChar,
     nextChar,
     max = state.posMax,
@@ -26,11 +30,7 @@ function isValidDelim(state, pos) {
 
   // Check non-whitespace conditions for opening and closing, and
   // check that closing delimeter isn't followed by a number
-  if (
-    prevChar === 0x20 /* " " */ ||
-    prevChar === 0x09 /* \t */ ||
-    (nextChar >= 0x30 /* "0" */ && nextChar <= 0x39) /* "9" */
-  ) {
+  if (prevChar === 0x20 /* " " */ || prevChar === 0x09 /* \t */ || (nextChar >= 0x30 /* "0" */ && nextChar <= 0x39) /* "9" */) {
     can_close = false
   }
   if (nextChar === 0x20 /* " " */ || nextChar === 0x09 /* \t */) {
@@ -43,7 +43,7 @@ function isValidDelim(state, pos) {
   }
 }
 
-function math_inline(state, silent) {
+function math_inline(state: StateInline, silent: boolean) {
   var start, match, token, res, pos, esc_count
 
   if (state.src[state.pos] !== '$') {
@@ -118,7 +118,7 @@ function math_inline(state, silent) {
   return true
 }
 
-function math_block(state, start, end, silent) {
+function math_block(state: StateBlock, start: number, end: number, silent: boolean) {
   var firstLine,
     lastLine,
     next,
@@ -162,12 +162,7 @@ function math_block(state, start, end, silent) {
       break
     }
 
-    if (
-      state.src
-        .slice(pos, max)
-        .trim()
-        .slice(-2) === '$$'
-    ) {
+    if (state.src.slice(pos, max).trim().slice(-2) === '$$') {
       lastPos = state.src.slice(0, max).lastIndexOf('$$')
       lastLine = state.src.slice(pos, lastPos)
       found = true
@@ -187,13 +182,13 @@ function math_block(state, start, end, silent) {
   return true
 }
 
-module.exports = function math_plugin(md, options) {
+export default function math_plugin(md: MarkdownIt, options: KatexOptions) {
   // Default options
   // https://katex.org/docs/options.html
   options = options || { strict: false }
 
   // set KaTeX as the renderer for markdown-it-simplemath
-  var katexInline = function(latex) {
+  var katexInline = function (latex: string) {
     options.displayMode = false
     try {
       return katex.renderToString(latex, options)
@@ -205,11 +200,11 @@ module.exports = function math_plugin(md, options) {
     }
   }
 
-  var inlineRenderer = function(tokens, idx) {
+  var inlineRenderer = function (tokens: Token[], idx: number) {
     return katexInline(tokens[idx].content)
   }
 
-  var katexBlock = function(latex) {
+  var katexBlock = function (latex: string) {
     options.displayMode = true
     try {
       return '<p>' + katex.renderToString(latex, options) + '</p>'
@@ -221,7 +216,7 @@ module.exports = function math_plugin(md, options) {
     }
   }
 
-  var blockRenderer = function(tokens, idx) {
+  var blockRenderer = function (tokens: Token[], idx: number) {
     return katexBlock(tokens[idx].content) + '\n'
   }
 
