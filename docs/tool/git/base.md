@@ -39,6 +39,15 @@
 
 `$ ssh-keygen -t rsa -C "youremail@example.com"`：创建 SSH Key
 
+```shell
+# 项目配置
+git config --local -l
+# 用户配置
+git config --global -l
+# 系统配置
+git config --system -l
+```
+
 ## 远程仓库
 
 关联一个远程库： 1.`git remote add origin git@server-name:path/repo-name.git`
@@ -253,12 +262,8 @@ git pull --allow-unrelated-histories
 // 拒绝提交包含混合换行符的文件 （一般设置为true）
 git config --global core.safecrlf true
 
-// 允许提交包含混合换行符的文件
-git config --global core.safecrlf false
-
-// 提交包含混合换行符的文件时给出警告
-git config --global core.safecrlf warn
-
+// 提交检出均不转换
+git config --global core.autocrlf false
 ```
 
 ### no matching host key type found. Their offer: ssh-rsa
