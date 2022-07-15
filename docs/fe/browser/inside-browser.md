@@ -82,3 +82,87 @@ new DOMParser().parseFromString('<h1>1</h1>',"text/html")
 默认样式
 
 <https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/html/resources/html.css>
+
+### Layout
+
+形状
+
+x,y,w,h
+
+
+
+![img](./images/0JqiVwHxNab2YL6qWHbS.png)
+
+###  Paint
+
+顺序 z-index
+
+![img](./images/4x9etJ64cg0x4a6Ktt5T.png)
+
+### 成本
+
+![img](./images/b3nyw5eLlDIM7rl9bxFC.png)
+
+![img](./images/FryonpF90Ei9JYYGi1UI.png)
+
+![img](./images/ypzLFiu34WCuhNHm7F0B.png)
+
+- requestAnimationFrame
+- web workers
+
+### Compositing
+
+#### 如何绘制页面
+
+rasterizing 光栅化
+
+dom结构 + 样式 + 几何形状位置大小 + 顺序 > 像素
+
+<video autoplay="" controls="" loop="" muted="" playsinline="" src="./images/AiIny83Lk4rTzsM8bxSn.mp4"></video>
+
+- 先绘制视口内的部分
+- 如果页面滚动，视口内的内容变化，在通过光栅化补充
+
+#### 什么是合成
+
+- 分为图层，分别光栅化
+- 在合成器线程中合成为页面
+- 如果发生滚动，合成一个新的帧。 
+- 动画可以通过移动图层并合成新帧以相同的方式实现
+
+开发者工具  > 图层
+
+<video autoplay="" controls="" loop="" muted="" playsinline="" src="./images/Aggd8YLFPckZrBjEj74H.mp4"></video>
+
+#### 分层
+
+找出哪些元素需要在哪些层中
+
+![img](./images/V667Geh9MtTviJjDkGZq.png)
+
+- will-change
+
+#### 主线程的光栅与合成
+
+![img](./images/SL4KO5UsGgBNLrOwb0wC.png)
+
+- 合成器线程然后光栅化每一层。一个层可能像一页的整个长度一样大
+- 合成器线程将它们分成小块并将每个小块发送到光栅线程
+- 光栅线程光栅化每个图块并将它们存储在 GPU 内存中
+- 合成器线程可以优先考虑不同的光栅线程，以便可以首先对视口（或附近）内的事物进行光栅化
+- 一个图层还具有针对不同分辨率的多个平铺，以处理诸如放大操作之类的事情
+- 一旦瓦片被光栅化，合成器线程收集称为**绘制四边形**的瓦片信息以创建**合成器框架**
+  - 绘制四边形	考虑到页面合成，包含诸如图块在内存中的位置以及在页面中绘制图块的位置等信息
+  - 合成器框架	代表页面框架的绘制四边形集合
+
+
+
+![img](./images/tG4AzFeS3IdfTSawnFL6.png)
+
+- IPC 将合成器框架提交给浏览器进程
+-  UI 线程添加另一个合成器框架以更改浏览器 UI
+- 如果出现滚动事件，合成器线程会创建另一个合成器帧以发送到 GPU
+
+
+
+合成的好处是它是在不涉及主线程的情况下完成的。合成器线程不需要等待样式计算或 JavaScript 执行。这就是为什么[只合成动画](https://www.html5rocks.com/en/tutorials/speed/high-performance-animations/)被认为是流畅性能的最佳选择。如果需要再次计算布局或绘制，则必须涉及主线程
