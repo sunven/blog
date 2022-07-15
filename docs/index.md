@@ -11,6 +11,10 @@
 
 ## css/other
 
+- [BFC](/css/other/bfc.md)
+- [Class 命名](/css/other/classname.md)
+- [css](/css/other/index.md)
+- [层叠上下文](/css/other/stackingcontext.md)
 - [小技巧](/css/other/小技巧.md)
 
 ## develop/algorithm
@@ -84,6 +88,10 @@
 
 - [Flutter](/develop/flutter/env.md)
 
+## develop/get-start
+
+- [node typescript](/develop/get-start/node-typescript.md)
+
 ## develop/nodejs
 
 - [Koa](/develop/nodejs/koa.md)
@@ -134,11 +142,13 @@
 
 - [文章收录](/fe/other/articleinclusion.md)
 - [客户端存储](/fe/other/client-storage.md)
+- [demo](/fe/other/demo.md)
 - [拖放](/fe/other/drag-and-drop.md)
 - [html5](/fe/other/html5.md)
 - [# 加载](/fe/other/optimize.md)
 - [performance](/fe/other/performance.md)
 - [Service Worker 基础](/fe/other/serviceworkerbase.md)
+- [规范](/fe/other/standard.md)
 - [组件：有状态(stateful) vs 无状态(stateless)](/fe/other/stateful-vs-stateless.md)
 - [TypeScript](/fe/other/tsbase.md)
 - [UI 库](/fe/other/uilib.md)
@@ -171,7 +181,6 @@
 
 ## js/basics
 
-- [Map、WeakMap、Set、WeakSet](/js/basics/Map、WeakMap、Set、WeakSet.md)
 - [Array](/js/basics/array.md)
 - [backbonejs](/js/basics/backbonejs.md)
 - [canvas](/js/basics/canvas.md)
@@ -182,6 +191,7 @@
 - [面向对象的程序设计-继承](/js/basics/inherit.md)
 - [ISSUE](/js/basics/issue.md)
 - [js 类库及插件收集](/js/basics/jslib.md)
+- [Map、WeakMap、Set、WeakSet](/js/basics/Map、WeakMap、Set、WeakSet.md)
 - [模块化](/js/basics/modularization.md)
 - [Proxy & Reflec](/js/basics/proxy-and-reflect.md)
 - [正则表达式](/js/basics/regex.md)
@@ -218,10 +228,11 @@
 
 ## react/other
 
+- [React文章收录](/react/other/collect.md)
+- [深入 React](/react/other/deep-react.md)
 - [Flux](/react/other/flux.md)
-
-## reading/RTFSC
-
+- [React 高阶组件](/react/other/react-hoc.md)
+- [redux reselect](/react/other/redux-reselect.md)
 
 ## reading/goodarticle
 
@@ -241,6 +252,14 @@
 - [《JavaScript 设计模式与开发实践》读书笔记-基础知识](/reading/jsdpanddp/jsdpanddp-base.md)
 - [《JavaScript 设计模式与开发实践》读书笔记-设计模式](/reading/jsdpanddp/jsdpanddp-designpattern.md)
 - [《JavaScript设计模式与开发实践》读书笔记-设计原则](/reading/jsdpanddp/jsdpanddp-principles.md)
+
+## reading/other
+
+- [Book](/reading/other/book.md)
+- [CSS 揭秘](/reading/other/css-secrets.md)
+- [css 世界](/reading/other/cssworld.md)
+- [大型分布式网站架构设计与实践](/reading/other/distributed.md)
+- [HTML5与CSS3权威指南](/reading/other/html5css3.md)
 
 ## subject/math
 
@@ -281,6 +300,8 @@
 ## tool/other
 
 - [添加右键菜单](/tool/other/addrightclickmenu.md)
+- [# 1. 油猴扩展](/tool/other/Aria2.md)
+- [awesome](/tool/other/awesome.md)
 - [ffmpeg](/tool/other/ffmpeg.md)
 - [Hexo 基本使用](/tool/other/hexo.md)
 - [ImageMagick](/tool/other/imagemagick.md)
@@ -310,12 +331,12 @@
 
 ## vue/other
 
-- [VUE 组件通信](/vue/other/VUE组件通信.md)
 - [VUE](/vue/other/index.md)
 - [生命周期](/vue/other/life-cycle.md)
 - [vue 中的发布/订阅模式模式](/vue/other/publish-subscribe-mode-in-vue.md)
 - [VUE 文章收录](/vue/other/vuecollect.md)
 - [Vuex 中 modules 和 plugins](/vue/other/vuex-modules-plugins.md)
+- [VUE 组件通信](/vue/other/VUE组件通信.md)
 
 ## vue/rtfsc
 
