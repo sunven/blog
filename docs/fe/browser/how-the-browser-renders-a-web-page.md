@@ -1,26 +1,34 @@
 # how-the-browser-renders-a-web-page
 
-### 浏览器的高层结构
+## 浏览器的高层结构
 
-1. **用户界面** - 包括地址栏、前进/后退按钮、书签菜单等。除了浏览器主窗口显示的您请求的页面外，其他显示的各个部分都属于用户界面。
-2. **浏览器引擎** - 在用户界面和呈现引擎之间传送指令。
-3. **呈现引擎** - 负责显示请求的内容。如果请求的内容是 HTML，它就负责解析 HTML 和 CSS 内容，并将解析后的内容显示在屏幕上。
-4. **网络** - 用于网络调用，比如 HTTP 请求。其接口与平台无关，并为所有平台提供底层实现。
-5. **用户界面后端** - 用于绘制基本的窗口小部件，比如组合框和窗口。其公开了与平台无关的通用接口，而在底层使用操作系统的用户界面方法。
-6. **JavaScript 解释器**。用于解析和执行 JavaScript 代码。
-7. **数据存储**。这是持久层。浏览器需要在硬盘上保存各种数据，例如 Cookie。新的 HTML 规范 (HTML5) 定义了“网络数据库”，这是一个完整（但是轻便）的浏览器内数据库
+|                   |                                                              |
+| ----------------- | ------------------------------------------------------------ |
+| 用户界面          | 这包括地址栏、后退/前进按钮、书签菜单等。除了您看到请求页面的窗口之外，浏览器的每个部分都会显示 |
+| 浏览器引擎        | 在 UI 和渲染引擎之间编组动作                                 |
+| 渲染引擎          | 负责显示请求的内容。例如，如果请求的内容是 HTML，则渲染引擎会解析 HTML 和 CSS，并将解析后的内容显示在屏幕上，每个选项卡一个。每个选项卡在单独的进程中运行 |
+| Networking        | 对于HTTP请求等网络调用，在一个独立于平台的接口后面使用不同平台的不同实现 |
+| UI 后端           | 用于绘制基本小部件，如组合框和窗口。此后端公开了一个非平台特定的通用接口。在它下面使用操作系统用户界面方法 |
+| JavaScript 解释器 | 用于解析和执行 JavaScript 代码                               |
+| 数据存储          | 这是一个持久层。浏览器可能需要在本地保存各种数据，例如 cookie。浏览器还支持 localStorage、IndexedDB、WebSQL 和 FileSystem 等存储机制 |
 
-![img](https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/layers.png)
+![img](./images/PgPX6ZMyKSwF6kB8zIhB.png)
+
+## 主流程
+
+webkit
+
+![img](./images/S9TJhnMX1cu1vrYuQRqM.png)
+
+gecko(mozilla)
+
+![img](./images/Tbif2mUJCUVyPdyXntZk.jpeg)
 
 关键渲染路径
 
 <https://developer.mozilla.org/zh-CN/docs/Web/Performance/Critical_rendering_path>
 
 ![img](https://miro.medium.com/max/1000/1*yQJkz12sPxS-kJoMDqzbEQ.png)
-
-主流程
-
-![img](https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/webkitflow.png)
 
 1. 解析 HTML，构建 DOM 树
 2. 解析 CSS，生成 CSS 规则树
@@ -29,19 +37,13 @@
 5. 绘制 render 树（paint），绘制页面像素信息
 6. 浏览器会将各层的信息发送给 GPU，GPU 会将各层合成（composite），显示在屏幕上
 
-渲染
 
-```javascript
-1. 计算CSS样式
 
-2. 构建渲染树
+## 解析
 
-3. 布局，主要定位坐标和大小，是否换行，各种position overflow z-index属性
+词法分析和语法分析
 
-4. 绘制，将图像绘制出来
-```
-
-解析
+![img](./images/TfY1qPDNbZS8iBnlAO4b.png)
 
 DOMParser
 
@@ -113,6 +115,6 @@ window.addEventListener('load', function(e) {
 
 <https://github.com/skyline75489/what-happens-when-zh_CN>
 
-<https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/>
+<https://web.dev/howbrowserswork/>
 
 <https://medium.com/jspoint/how-the-browser-renders-a-web-page-dom-cssom-and-rendering-df10531c9969>
