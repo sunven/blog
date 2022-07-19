@@ -6,31 +6,33 @@ export function autoSideBar(navbar: DefaultTheme.NavItemWithChildren[]) {
   const docsDir = path.resolve(__dirname, '../../')
   const sidebar: DefaultTheme.SidebarMulti = {}
   const reg = /(#\s*(.*))/
-  navbar
-    .reduce((acc: string[], cur) => acc.concat(cur.items.filter(c => 'link' in c).map(c => (c as DefaultTheme.NavItemWithLink).link)), [])
-    .forEach(link => {
-      sidebar[link] = [
-        {
-          text: link.slice(1, -1),
-          items: fs
-            .readdirSync(path.join(docsDir, link), { withFileTypes: true })
-            .filter(c => c.isFile() && c.name[0] !== '.')
-            .map(c => {
-              const fileData = fs.readFileSync(path.join(docsDir, link, c.name)).toString()
-              const res = fileData.match(reg)
-              let text = ''
-              if (res) {
-                text = res[2]
-              } else {
-                text = path.parse(c.name).name
-              }
-              return {
-                text,
-                link: link + c.name,
-              }
-            }),
-        },
-      ]
+  navbar.forEach(nav => {
+    const text = '/' + nav.text + '/'
+    sidebar[text] = nav.items.map(item => {
+      const link = (item as DefaultTheme.NavItemWithLink).link
+      const items = fs
+        .readdirSync(path.join(docsDir, link), { withFileTypes: true })
+        .filter(c => c.isFile() && c.name[0] !== '.')
+        .map(c => {
+          const fileData = fs.readFileSync(path.join(docsDir, link, c.name)).toString()
+          const res = fileData.match(reg)
+          let text = ''
+          if (res) {
+            text = res[2]
+          } else {
+            text = path.parse(c.name).name
+          }
+          return {
+            text,
+            link: link + c.name,
+          }
+        })
+      return {
+        text: item.text,
+        collapsible: true,
+        items,
+      }
     })
+  })
   return sidebar
 }

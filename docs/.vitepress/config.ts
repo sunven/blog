@@ -90,7 +90,7 @@ export default defineConfig({
     sidebar,
     socialLinks: [{ icon: 'github', link: 'https://github.com/sunven/blog' }],
     editLink: {
-      pattern: 'https://github.com/sunven/blog/edit/main/docs/:path',
+      pattern: 'https://github.com/sunven/blog/edit/master/docs/:path',
       text: 'Edit this page on GitHub',
     },
     algolia: {

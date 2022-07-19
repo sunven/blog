@@ -35,17 +35,15 @@ export function autoNavBar(): DefaultTheme.NavItemWithChildren[] {
 }
 export function fixNavBar(navbar: DefaultTheme.NavItemWithChildren[], sidebar: DefaultTheme.SidebarMulti) {
   navbar.forEach(c => {
-    c.items
-      .filter(x => 'link' in x)
-      .forEach(x => {
-        const bar = sidebar[(x as DefaultTheme.NavItemWithLink).link]
-        if (bar && bar.length > 0) {
-          const links = bar[0].items
-          if (links && links.length > 0) {
-            ;(x as DefaultTheme.NavItemWithLink).link = links[0].link
-          }
+    c.items.forEach(x => {
+      const bar = sidebar['/' + (c as DefaultTheme.NavItemChildren).text + '/']
+      if (bar && bar.length > 0) {
+        const links = bar[0].items
+        if (links && links.length > 0) {
+          ;(x as DefaultTheme.NavItemWithLink).link = links[0].link
         }
-      })
+      }
+    })
   })
   return navbar
 }
