@@ -20,6 +20,8 @@ webkit
 
 ![img](./images/S9TJhnMX1cu1vrYuQRqM.png)
 
+DOM解析和CSS解析是两个并行的进程
+
 gecko(mozilla)
 
 ![img](./images/Tbif2mUJCUVyPdyXntZk.jpeg)
@@ -37,23 +39,50 @@ gecko(mozilla)
 5. 绘制 render 树（paint），绘制页面像素信息
 6. 浏览器会将各层的信息发送给 GPU，GPU 会将各层合成（composite），显示在屏幕上
 
-
-
 ## 解析
 
-词法分析和语法分析
+每种格式都必须具有由词汇和语法规则组成的确定性语法
+
+-词法分析: 输入分解为标记的过程,标记是语言词汇表：有效构建块的集合。在人类语言中，它将由该语言词典中出现的所有单词组成
+-语法分析: 构建树的过程,语言语法规则的应用
+-解析过程是迭代
 
 ![img](./images/TfY1qPDNbZS8iBnlAO4b.png)
 
-DOMParser
+### 解析器的类型
+
+- 自顶向下解析器: 检查语法的高级结构并尝试找到规则匹配。
+- 自底向上解析器: 从输入开始，逐渐将其转换为语法规则，从低级规则开始，直到满足高级规则
+
+### 自动生成解析器
+
+提供你的语言的语法——它的词汇和语法规则——然后他们生成一个工作解析器
+
+WebKit 使用两个众所周知的解析器生成器：用于创建词法分析器的Flex和用于创建解析器的Bison
+
+## HTML 解析器
+
+传统的解析器主题都不适用于 HTML
+
+- 它允许您省略某些标记（然后隐式添加），或者有时省略开始或结束标记
+- 解析过程是可重入的 `document.write()`
+
+浏览器会创建自定义解析器来解析 HTML
+
+### 解析完成时的操作
+
+dom解析完：document.readyState为interactive
+
+- 开始解析执行defer脚本
+- 触发DOMContentLoaded（图像，样式表等未加载完继续加载）
+- 都加载完，然后将文档状态设置为“完成” document.readyState为complete
+- 触发load事件
+
+### DOMParser
 
 将原始 HTML 文本（_代码_）解析为 DOM 树
 
 ![img](https://miro.medium.com/max/700/1*DTO0PBRawrEdZakWloQVjg.png)
-
-script 阻塞解析，async defer
-
-preload
 
 ### 脚本阻塞解析
 
@@ -65,7 +94,37 @@ document.addEventListener(' DOMContentLoaded ', function(e) {
 })
 ```
 
-### Css 阻塞渲染
+- async
+- defer
+
+## CSS 解析
+
+![img](./images/vBMlouM57RHDG29Ukzhi.png)
+
+查看: document.styleSheets
+
+## 构造渲染树
+
+dom tree + style rules = render tree
+
+该树是按显示顺序排列的视觉元素。它是文档的可视化表示。此树的目的是使内容能够以正确的顺序绘制
+
+非可视 DOM 元素不会插入到渲染树中
+
+- head element
+- display:none
+
+## Layout
+
+渲染器被创建并添加到树中时，它没有位置和大小。计算这些值称为布局或回流
+
+坐标系是相对于根框架的。使用顶部和左侧坐标
+
+根渲染器的位置是 0,0，它的尺寸是视口 - 浏览器窗口的可见部分。
+
+所有渲染器都有一个“布局”或“回流”方法，每个渲染器调用其需要布局的子级的布局方法
+
+## CSS 阻塞渲染
 
 <https://cloud.tencent.com/developer/article/1370715>
 
@@ -73,17 +132,17 @@ DOM 树的生成是**增量的**
 
 CSSOM 树的构建[**不是增量式的**](https://developer.mozilla.org/en-US/docs/Web/Performance/Critical_rendering_path#CSS_Object_Model)
 
-css 不阻塞 dom 解析，则塞渲染
+### css 不阻塞 dom 解析，阻塞渲染
 
-这种机制为什么？
+渲染依赖render tree, render tree依赖 CSSOM tree,CSS资源加载完成,才会生成CSSOM tree
 
-css 加载会阻塞后面 js 语句的执行
+### css会阻塞后面js的执行
 
-```js
-window.addEventListener('load', function(e) {
-  console.log('页面已完全加载！')
-})
-```
+由于js可能会操作之前的Dom节点和css样式，因此浏览器会维持html中css和js的顺序。因此，样式表会在后面的js执行前先加载执行完毕
+
+### DOMContentLoaded
+
+css会阻塞Dom渲染和后面js执行，而js会阻塞Dom解析，那么如果css后面有js,css会阻塞dom解析,DomContentLoaded必须等到css和js都加载完毕才触发
 
 ## 重排重绘
 
