@@ -1,4 +1,4 @@
-# how-the-browser-renders-a-web-page
+# 浏览器如何渲染一个页面
 
 ## 浏览器的高层结构
 
@@ -105,6 +105,8 @@ document.addEventListener(' DOMContentLoaded ', function(e) {
 
 ## 构造渲染树
 
+计算所有可见内容的样式
+
 dom tree + style rules = render tree
 
 该树是按显示顺序排列的视觉元素。它是文档的可视化表示。此树的目的是使内容能够以正确的顺序绘制
@@ -116,6 +118,8 @@ dom tree + style rules = render tree
 
 ## Layout
 
+定义所有渲染树元素的位置和大小
+
 渲染器被创建并添加到树中时，它没有位置和大小。计算这些值称为布局或回流
 
 坐标系是相对于根框架的。使用顶部和左侧坐标
@@ -124,13 +128,17 @@ dom tree + style rules = render tree
 
 所有渲染器都有一个“布局”或“回流”方法，每个渲染器调用其需要布局的子级的布局方法
 
+布局性能受 DOM 影响——节点数量越多，布局所需的时间越长
+
+每当修改渲染树时，例如通过添加节点、更改内容或更新节点上的框模型样式，都会发生布局
+
+## Paint
+
+一旦创建了渲染树并进行了布局，就可以将像素绘制到屏幕上。加载时，整个屏幕都被绘制。之后，只会重新绘制屏幕的受影响区域，因为浏览器已优化为重新绘制所需的最小区域
+
 ## CSS 阻塞渲染
 
-<https://cloud.tencent.com/developer/article/1370715>
-
-DOM 树的生成是**增量的**
-
-CSSOM 树的构建[**不是增量式的**](https://developer.mozilla.org/en-US/docs/Web/Performance/Critical_rendering_path#CSS_Object_Model)
+css规则可以被覆盖，所以在 CSSOM 完成之前无法渲染内容
 
 ### css 不阻塞 dom 解析，阻塞渲染
 
@@ -146,7 +154,7 @@ css会阻塞Dom渲染和后面js执行，而js会阻塞Dom解析，那么如果c
 
 ## 重排重绘
 
-### 引起重排/重绘的常见操作[#](https://febook.hzfe.org/awesome-interview/book1/browser-repain-reflow#引起重排重绘的常见操作)
+### 引起重排/重绘的常见操作
 
 1. 外观有变化时，会导致**重绘**。相关的样式属性如 `color` `opacity` 等。
 2. 布局结构或节点内容变化时，会导致重排。相关的样式属性如 height、float、position 等。
@@ -170,6 +178,8 @@ css会阻塞Dom渲染和后面js执行，而js会阻塞Dom解析，那么如果c
 
 ## reference
 
+<https://cloud.tencent.com/developer/article/1370715>
+
 <https://github.com/abcrun/abcrun.github.com/issues/17>
 
 <https://github.com/skyline75489/what-happens-when-zh_CN>
@@ -177,3 +187,7 @@ css会阻塞Dom渲染和后面js执行，而js会阻塞Dom解析，那么如果c
 <https://web.dev/howbrowserswork/>
 
 <https://medium.com/jspoint/how-the-browser-renders-a-web-page-dom-cssom-and-rendering-df10531c9969>
+
+<https://developer.mozilla.org/en-US/docs/Web/Performance/Critical_rendering_path>
+
+<https://febook.hzfe.org/awesome-interview/book1/browser-repain-reflow>
