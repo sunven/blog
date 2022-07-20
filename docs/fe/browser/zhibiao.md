@@ -35,4 +35,9 @@ new PerformanceObserver((entryList) => {
 
 ## 优化
 
+- 避免多个页面重定向
+
 - prefetch
+- HSTS <https://hstspreload.org/>
+- http/2 http/3
+- ssg > ssr
