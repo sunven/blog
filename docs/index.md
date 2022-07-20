@@ -96,6 +96,10 @@
 
 - [node typescript](/develop/get-start/node-typescript.md)
 
+### network
+
+- [HTTP](/develop/network/http.md)
+
 ### nodejs
 
 - [Koa](/develop/nodejs/koa.md)
@@ -135,7 +139,7 @@
 
 ### browser
 
-- [bfcache](/fe/browser/bfcache.md)
+- [后退前进缓存](/fe/browser/bfcache.md)
 - [Event Loop](/fe/browser/event-loop.md)
 - [浏览器如何渲染一个页面](/fe/browser/how-the-browser-renders-a-web-page.md)
 - [深入了解浏览器](/fe/browser/inside-browser.md)

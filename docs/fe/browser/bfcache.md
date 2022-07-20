@@ -1,8 +1,6 @@
-# bfcache
+# 后退前进缓存
 
 Back-Forward Cache: 内存缓存, 快照(包括js堆)
-
-
 
 ## 以下情况不能进入bfcache
 
