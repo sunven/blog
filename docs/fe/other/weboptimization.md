@@ -26,7 +26,15 @@
 
 ### prefetch
 
-是为了提示浏览器，用户未来的浏览有可能需要加载目标资源，所以浏览器有可能通过事先获取和缓存对应资源，优化用户体验
+<https://web.dev/link-prefetch/>
+
+<https://developer.mozilla.org/en-US/docs/Web/HTTP/Link_prefetching_FAQ>
+
+- 提示浏览器，用户未来的浏览有可能需要加载的资源，浏览器有可能通过事先获取和缓存对应资源
+- 预取发生在“最低”优先级，因此预取的资源不会与当前页面所需的资源竞争带宽。
+- 预取文件存储在HTTP Cache或内存缓存中（取决于资源是否可缓存），时间长短因浏览器而异。例如，在 Chrome 中，资源会保留大约五分钟
+
+![img](./images/djLGrbmj5eovwa6qhlm1.png)
 
 ```html
 <link
@@ -39,6 +47,35 @@
 ```
 
 - `as`:`rel="preload"` 或者 `rel="prefetch"` 时才能使用，加载的内容的类型
+
+预取请求标识
+
+```
+X-moz: prefetch (firefox)
+Purpose: prefetch (chrome)
+```
+
+#### 举例
+
+a 页面预取 axios
+
+```html
+<link rel="prefetch" href="https://cdn.jsdelivr.net/npm/axios@0.27.2/dist/axios.min.js">
+```
+
+b 页面要用 axios
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/axios@0.27.2/dist/axios.min.js"></script>
+```
+
+进入a 页面时
+
+![img](./images/prefetch-1.png)
+
+a 页面跳转到 b页面时
+
+![img](./images/prefetch-2.png)
 
 ### preload
 
