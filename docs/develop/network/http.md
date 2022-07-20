@@ -6,4 +6,4 @@ keep-alive: 允许单个 TCP 连接发送和接收多个 HTTP 请求/响应，�
 
 <https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Redirections>
 
-![img](./images/httpredirect)
+![img](./images/httpredirect.png)
