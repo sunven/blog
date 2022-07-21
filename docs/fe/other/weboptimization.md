@@ -4,7 +4,7 @@
 
 ### dns-prefetch
 
-是尝试在请求资源之前解析域名。这可能是后面要加载的文件，也可能是用户尝试打开的链接目标
+是尝试在请求资源之前解析域名。仅负责 DNS 查找
 
 ```html
 <link rel="dns-prefetch" href="//example.com" />
@@ -25,6 +25,8 @@
 - `crossorigin`:加载相关资源时是否必须使用 CORS
 
 ### prefetch
+
+未来的页面需要用的资源
 
 <https://web.dev/link-prefetch/>
 
@@ -79,9 +81,33 @@ a 页面跳转到 b页面时
 
 ### preload
 
-表示用户十分有可能需要在当前浏览中加载目标资源，所以浏览器必须预先获取和缓存对应资源
+<https://web.dev/uses-rel-preload/>
+
+当前的页面需要用的资源
 
 - preload 并不属于 w3c 的 resource hint
+
+#### 举个例子
+
+```
+index.html
+|--app.js
+   |--styles.css
+   |--ui.js
+```
+
+![img](./images/OiT1gArpZxNliikhBgx7.png)
+
+```html
+<head>
+  ...
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" href="ui.js" as="script">
+  ...
+</head>
+```
+
+![img](./images/tJLJXH2qXcrDBUfsSAK5.png)
 
 ### subresource
 
