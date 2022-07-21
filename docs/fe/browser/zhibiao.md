@@ -31,7 +31,7 @@ new PerformanceObserver((entryList) => {
 
 ## LCP
 
-Largest contentful paint 最大内容绘制 <ttps://web.dev/lcp/>
+Largest contentful paint 最大内容绘制 <https://web.dev/lcp/>
 
 测量页面从开始加载到最大文本块或图像元素在屏幕上完成渲染的时间
 
