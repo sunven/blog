@@ -16,7 +16,7 @@ expect 文件
   interact
 ```
 
-![](../../.images/Snipaste_2021-10-13_14-04-21.png)
+![img](../../.images/Snipaste_2021-10-13_14-04-21.png)
 
 iterm2login.sh
 
