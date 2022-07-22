@@ -290,7 +290,7 @@ ESM 加载模块的方式同样取决于所处的环境，Node.js 同步加载�
 
 ![img](./images/async-defer.svg)
 
-模块脚本默认是延迟的。因此，无需添加defer到您的<script type="module">标签！不仅主模块的下载与 HTML 解析并行发生，所有依赖模块也是如此！
+模块脚本默认是延迟的。因此，无需添加defer到您的`<script type="module">`标签！不仅主模块的下载与 HTML 解析并行发生，所有依赖模块也是如此！
 
 ### export
 
