@@ -31,3 +31,20 @@
 - optional: 就像fallback，这​​个值告诉浏览器最初隐藏文本，然后转换到备用字体，直到自定义字体可用。但是，此值还允许浏览器确定是否使用了自定义字体，使用用户的连接速度作为一个决定因素，其中较慢的连接不太可能接收自定义字体
 
 :::
+
+::: tip globalThis
+
+提供了一个标准的方式来获取不同环境下的全局 this 对象（也就是全局对象自身）
+
+```js
+var getGlobal = function () {
+  if (typeof self !== 'undefined') { return self; } // web worker
+  if (typeof window !== 'undefined') { return window; } // browser
+  if (typeof global !== 'undefined') { return global; } // nodejs
+  throw new Error('unable to locate global object');
+};
+
+var globals = getGlobal();
+```
+
+:::
