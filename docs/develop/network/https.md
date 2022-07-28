@@ -17,8 +17,6 @@
 
 ![img](./images/Snipaste_2022-07-26_22-44-30.jpg)
 
-
-
 如何保证公开秘钥？
 
 ### RSA秘钥协商
@@ -26,8 +24,6 @@
 ![img](./images/Snipaste_2022-07-26_22-55-39.jpg)
 
 > 证书证明了服务端身份
-
-
 
 1. 浏览器内部植入CA的公钥
 2. 服务器向CA提出公钥申请
@@ -38,14 +34,14 @@
 7. 客户端用服务器的公钥加密一个对称加密的秘钥给服务端
 8. 后续回话内容都用对称秘钥加解密
 
-
+aaa
 
 1. Client Hello（Random，支持的密码套件、压缩方法，tls版本等）
 2. Server Hello（Random，确定的密码套件、压缩方法，tls版本等）
 3. 服务端发送证书给客户端
 4. 客户端验证证书，得到公钥
 5. 客户端生成一个随机数 pre master secret 用公钥加密，发给服务端
-6. 服务端用私钥解密，得到pre master secret 
+6. 服务端用私钥解密，得到pre master secret
 7. 客户端、服务端都可以用三个随机数 生成 对话密码  后续的对称加密用的秘钥
 
 缺点
@@ -61,8 +57,6 @@
 前向安全性
 
 长期使用的主密钥泄漏不会导致过去的会话密钥泄漏
-
-
 
 ### ECDHE
 
@@ -88,13 +82,11 @@ SHA256  散列（摘要）算法 消息认证码算法
 9. Change Cipher Spec 服务端发：改变加密规范  用对称加密
 10. Encrypted Handshake Message 服务端发：第四次握手完毕
 
-
+![img](./images/tls_20220728141101.png)
 
 <https://www.cnblogs.com/Netsharp/p/15926871.html>
 
 <https://blog.csdn.net/weixin_60297362/article/details/123056506>
-
-
 
 ## reference
 
