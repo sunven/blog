@@ -48,3 +48,11 @@ var globals = getGlobal();
 ```
 
 :::
+
+<https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Video_codecs>
+<https://en.wikipedia.org/wiki/HTML5_video>
+<https://juejin.cn/post/7018373086072766472#heading-17>
+<https://juejin.cn/post/6850037275579121671#heading-21>
+<https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Audio_codecs>
+<https://mozilla.github.io/pdf.js/web/viewer.html>
+<https://mozilla.github.io/pdf.js/examples/>
