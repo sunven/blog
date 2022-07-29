@@ -108,3 +108,17 @@ Windows Registry Editor Version 5.00
 [-HKEY_CLASSES_ROOT\Directory\shell\PowerShell]
 [-HKEY_CLASSES_ROOT\Directory\Background\shell\PowerShell]
 ```
+
+### Windows Terminal
+
+```
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\directory\background\shell\wt]
+@="在终端中打开"
+"Icon"="C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe"
+
+[HKEY_CLASSES_ROOT\directory\background\shell\wt\command]
+@="C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe -d ."
+
+```
