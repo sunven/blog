@@ -1,4 +1,8 @@
-# python3 on mac
+# python-install
+
+python3
+
+## mac
 
 通过以下命令安装
 
@@ -37,7 +41,7 @@ vs code
 pip3 -V
 ```
 
-## 更换 pip 源
+### 更换 pip 源
 
 ```
 cd ~/
@@ -56,3 +60,13 @@ index-url = http://mirrors.aliyun.com/pypi/simple/
 
 trusted-host=mirrors.aliyun.com
 ```
+
+## windows
+
+### error: command 'cl.exe' failed: No such file or directory
+
+[Microsoft Visual C++ 14.0 is required. Get it with "Microsoft Visual C++ Build Tools"](https://blog.csdn.net/liuzemeeting/article/details/79363981)
+
+### Python3.7 scrapy 遇到 async 报错
+
+[Python3.7 scrapy 遇到 async 报错](https://blog.csdn.net/dvivily/article/details/81326792)
