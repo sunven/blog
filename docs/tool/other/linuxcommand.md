@@ -15,3 +15,9 @@ mv /home/soft/nginx/html/fastdfs-file/9feaf0aa5a6391304c9d9ebd02ce51d0 /home/sof
 ```
 chmod 644 /home/soft/nginx/html/fastdfs-file/*
 ```
+
+| command                   | remark                   |
+| ------------------------- | ------------------------ |
+| du -h /home --max-depth=1 | 列出文件夹及子文件夹大小 |
+|                           |                          |
+|                           |                          |
