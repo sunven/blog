@@ -2,7 +2,7 @@
 
 ### basics
 
-- [css 选择器](/css/basics/css-selector.md)
+- [基础](/css/basics/css-selector.md)
 
 ### layout
 
@@ -14,7 +14,6 @@
 ### other
 
 - [BFC](/css/other/bfc.md)
-- [Class 命名](/css/other/classname.md)
 - [css](/css/other/index.md)
 - [层叠上下文](/css/other/stackingcontext.md)
 - [小技巧](/css/other/小技巧.md)
@@ -88,10 +87,6 @@
 - [透明代理基础](/develop/dotnet/transparentproxy.md)
 - [volatile](/develop/dotnet/volatile.md)
 
-### flutter
-
-- [Flutter](/develop/flutter/env.md)
-
 ### get-start
 
 - [node typescript](/develop/get-start/node-typescript.md)
@@ -99,6 +94,7 @@
 ### network
 
 - [HTTP](/develop/network/http.md)
+- [HTTPS](/develop/network/https.md)
 
 ### nodejs
 
@@ -108,6 +104,7 @@
 ### other
 
 - [DNS](/develop/other/dns.md)
+- [git 基础](/develop/other/git.md)
 - [爬取 html 生成 pdf](/develop/other/htmlgenpdf.md)
 - [OSI 模型](/develop/other/osi.md)
 - [其它](/develop/other/other.md)
@@ -119,12 +116,6 @@
 ### packages
 
 - [npm package](/develop/packages/npm.md)
-
-### python
-
-- [Python](/develop/python/index.md)
-- [python3 on mac](/develop/python/python3onmac.md)
-- [python3 on windows](/develop/python/python3onwindows.md)
 
 ### safe
 
@@ -161,7 +152,6 @@
 - [规范](/fe/other/standard.md)
 - [组件：有状态(stateful) vs 无状态(stateless)](/fe/other/stateful-vs-stateless.md)
 - [TypeScript](/fe/other/tsbase.md)
-- [UI 库](/fe/other/uilib.md)
 - [video](/fe/other/vidoe.md)
 - [vite](/fe/other/vite.md)
 - [Web 优化](/fe/other/weboptimization.md)
@@ -178,7 +168,6 @@
 
 ### webpack
 
-- [webpack](/fe/webpack/intro.md)
 - [webpack](/fe/webpack/webpack.md)
 
 ## js
@@ -203,7 +192,6 @@
 - [HTML5 API](/js/basics/html5api.md)
 - [面向对象的程序设计-继承](/js/basics/inherit.md)
 - [ISSUE](/js/basics/issue.md)
-- [js 类库及插件收集](/js/basics/jslib.md)
 - [模块化](/js/basics/modularization.md)
 - [Proxy & Reflec](/js/basics/proxy-and-reflect.md)
 - [正则表达式](/js/basics/regex.md)
@@ -230,6 +218,7 @@
 
 - [Execution Contexts](/js/other/execution-contexts.md)
 - [hoisting](/js/other/hoisting.md)
+- [js 类库及插件收集](/js/other/jslib.md)
 - [sh](/js/other/sh.md)
 - [shallow copy and deep copy](/js/other/shallow-copy-and-deep-copy.md)
 - [小技巧](/js/other/小技巧.md)
@@ -301,16 +290,13 @@
 ### environment
 
 - [c++ run in vs code](/tool/environment/cpp-run-in-vs-code.md)
+- [Flutter](/tool/environment/flutter.md)
 - [在 .NET Core 中运行 JavaScript](/tool/environment/js-run-in-dotnetcore.md)
 - [mongodb on mac](/tool/environment/mongodb-on-mac.md)
 - [mysql（解压缩版）在windows下的安装](/tool/environment/mysql-win-install.md)
+- [python-install](/tool/environment/python-install.md)
 - [VS Code Python配置](/tool/environment/running-python-in-vscoe.md)
 - [SVN On Mac VS Code](/tool/environment/svn-on-vscode.md)
-
-### git
-
-- [git 基础](/tool/git/base.md)
-- [git](/tool/git/index.md)
 
 ### mac
 
@@ -318,11 +304,11 @@
 - [on-my-zsh](/tool/mac/on-my-zsh.md)
 - [Mac 常用软件](/tool/mac/soft.md)
 - [ssh](/tool/mac/ssh.md)
-- [# Homebrew](/tool/mac/装机清单.md)
+- [装机清单](/tool/mac/装机清单.md)
 
 ### other
 
-- [# 1. 油猴扩展](/tool/other/Aria2.md)
+- [Aria2](/tool/other/Aria2.md)
 - [添加右键菜单](/tool/other/addrightclickmenu.md)
 - [awesome](/tool/other/awesome.md)
 - [ffmpeg](/tool/other/ffmpeg.md)
