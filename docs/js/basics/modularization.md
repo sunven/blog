@@ -367,3 +367,49 @@ console.log(a, b, c, fn())
 依赖于 ES2015 中的 [import](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import) 和 [export](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/export) 语句，用来检测代码模块是否被导出、导入，且被 JavaScript 文件使用
 
 在现代 JavaScript 应用程序中，我们使用模块打包(如[webpack](https://webpack.js.org/)或[Rollup](https://github.com/rollup/rollup))将多个 JavaScript 文件打包为单个文件时自动删除未引用的代码。这对于准备预备发布代码的工作非常重要，这样可以使最终文件具有简洁的结构和最小化大小
+
+main.js
+
+```js
+import { getA, getB } from './util'
+console.log(getA, getB)
+```
+
+util.js
+
+```js
+export const getA = () => genA()
+export const genA = () => 'a'
+export const getB = () => genB()
+function genB() {
+  return 'b'
+}
+export const getC = () => 'c'
+function genC() {
+  return 'c'
+}
+```
+
+执行`rollup main.js --format iife --file bundle.js`
+
+bundle.js
+
+```js
+(function () {
+  'use strict';
+
+  const getA = () => genA();
+  const genA = () => 'a';
+  const getB = () => genB();
+  function genB() {
+    return 'b'
+  }
+
+  console.log(getA, getB);
+
+})();
+```
+
+不是esmodule, 无法分析哪些方法被使用，因为库一般作为一个全局变量引入，rollup打包可能有已下警告：
+
+`Use output.globals to specify browser global variable names corresponding to external modules`
