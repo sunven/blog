@@ -106,7 +106,7 @@ index.css:
 }
 ```
 
-![demo](./image/Snipaste_2021-12-11_12-45-01.png)
+![demo](./images/Snipaste_2021-12-11_12-45-01.png)
 
 ### 解决了什么问题
 

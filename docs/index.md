@@ -1,24 +1,4 @@
-# LLWEB## css
-
-### basics
-
-- [基础](/css/basics/css-selector.md)
-
-### layout
-
-- [居中](/css/layout/center-in-css.md)
-- [CSS 布局](/css/layout/csslayout.md)
-- [flex](/css/layout/flex.md)
-- [移动端布局](/css/layout/移动端布局.md)
-
-### other
-
-- [BFC](/css/other/bfc.md)
-- [css](/css/other/index.md)
-- [层叠上下文](/css/other/stackingcontext.md)
-- [小技巧](/css/other/小技巧.md)
-
-## develop
+# LLWEB## develop
 
 ### algorithm
 
@@ -138,6 +118,18 @@
 - [页面生命周期](/fe/browser/page-lifecycle.md)
 - [前端缓存](/fe/browser/webcache.md)
 - [指标](/fe/browser/zhibiao.md)
+
+### css
+
+- [BFC](/fe/css/bfc.md)
+- [居中](/fe/css/center-in-css.md)
+- [基础](/fe/css/css-selector.md)
+- [CSS 布局](/fe/css/csslayout.md)
+- [flex](/fe/css/flex.md)
+- [css](/fe/css/index.md)
+- [层叠上下文](/fe/css/stackingcontext.md)
+- [小技巧](/fe/css/小技巧.md)
+- [移动端布局](/fe/css/移动端布局.md)
 
 ### other
 
