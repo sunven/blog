@@ -19,6 +19,14 @@
 
 ![img](./images/stack.jpg)
 
+BUILTIN_OBJECT
+
+`Function`, `RegExp`, `Date`, `Error`, `CanvasGradient`, `CanvasPattern`, `Image`, `Canvas`
+
+TYPED_ARRAY
+
+`Int8Array`, `Uint8Array`, `Uint8ClampedArray`, `Int16Array`, `Uint16Array`, `Int32Array`, `Uint32Array`, `Float32Array`, `Float64Array`
+
 ### 1、bool
 
 #### 假值
