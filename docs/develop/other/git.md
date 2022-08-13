@@ -6,7 +6,7 @@
 
 | command                                          | remark                                                  |
 | ------------------------------------------------ | ------------------------------------------------------- |
-| git add <file>                                   | 可反复多次使用，添加多个文件                            |
+| git add `<file>`                                   | 可反复多次使用，添加多个文件                            |
 | git commit                                       | 提交                                                    |
 | git status                                       | 工作区的状态                                            |
 | git diff                                         | 查看修改内容                                            |
@@ -19,11 +19,11 @@
 | **分支**😊                                        |                                                         |
 | git branch -a                                    | 查看远程分支                                            |
 | git branch                                       | 查看分支                                                |
-| git branch <name>                                | 创建分支                                                |
-| git checkout <name>                              | 切换分支                                                |
-| git checkout -b <name>                            | 创建+切换分支                                           |
-| git merge <name>                                 | 合并某分支到当前分支                                    |
-| git branch -d <name>                             | 删除分支                                                |
+| git branch `<name>`                                | 创建分支                                                |
+| git checkout `<name>`                              | 切换分支                                                |
+| git checkout -b `<name>`                            | 创建+切换分支                                           |
+| git merge `<name>`                                 | 合并某分支到当前分支                                    |
+| git branch -d `<name>`                             | 删除分支                                                |
 | git log --graph --pretty=oneline --abbrev-commit | 查看分支的合并情况                                      |
 | git merge --abort                                | 终止merge                                               |
 | git checkout -b branch-name origin/branch-name   | 在本地创建和远程分支对应的分支                          |
@@ -31,15 +31,15 @@
 | git pull                                         | 更新分支 从远程获取最新版本并merge到本地                |
 | git push origin test                             | 把分支推到远程分支                                      |
 | **tag**😊                                         |                                                         |
-| git tag <name>                                   | 用于新建一个标签，默认为 HEAD，也可以指定一个 commit id |
-| git tag -a <tagname> -m "qaq..."                 | 指定标签信息                                            |
-| git tag -s <tagname> -m "qaq..."                 | 用 PGP 签名标签                                         |
-| git show <tagname>                               | 查看标签详细信息                                        |
+| git tag `<name>`                                   | 用于新建一个标签，默认为 HEAD，也可以指定一个 commit id |
+| git tag -a `<tagname>` -m "qaq..."                 | 指定标签信息                                            |
+| git tag -s `<tagname>` -m "qaq..."                 | 用 PGP 签名标签                                         |
+| git show `<tagname>`                               | 查看标签详细信息                                        |
 | git tag                                          | 可以查看所有标签                                        |
-| git push origin <tagname>                        | 推送一个本地标签                                        |
+| git push origin `<tagname>`                        | 推送一个本地标签                                        |
 | git push origin --tags                           | 推送全部未推送过的本地标签                              |
-| git tag -d <tagname>                             | 删除一个本地标签                                        |
-| git push origin :refs/tags/<tagname>             | 删除一个远程标签                                        |
+| git tag -d `<tagname>`                             | 删除一个本地标签                                        |
+| git push origin :refs/tags/`<tagname>`             | 删除一个远程标签                                        |
 
 ## no-fast-forward
 
@@ -195,7 +195,7 @@ Host x.x.com
 
 ## fatal: early EOF fatal: fetch-pack: invalid index-pack output
 
-<https://stackoverflow.com/questions/21277806/fatal-early-eof-fatal-index-pack-failed>
+`<https://stackoverflow.com/questions/21277806/fatal-early-eof-fatal-index-pack-failed>`
 
 ```sh
 # Git 服务器的内存不够了，导致压缩传输数据失败，服务器直接挂了
@@ -203,7 +203,7 @@ Host x.x.com
 # 关闭压缩
 git config --global core.compression=0
 # 下载最近一次提交
-git clone --depth 1 <repo_URI>
+git clone --depth 1 `<repo_URI>`
 # 拉取剩余部分
 git fetch --unshallow 
 # 常规拉取

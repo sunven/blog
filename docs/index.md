@@ -84,7 +84,7 @@
 ### other
 
 - [DNS](/develop/other/dns.md)
-- [git 基础](/develop/other/git.md)
+- [GIT](/develop/other/git.md)
 - [爬取 html 生成 pdf](/develop/other/htmlgenpdf.md)
 - [OSI 模型](/develop/other/osi.md)
 - [其它](/develop/other/other.md)
@@ -128,6 +128,7 @@
 - [flex](/fe/css/flex.md)
 - [css](/fe/css/index.md)
 - [层叠上下文](/fe/css/stackingcontext.md)
+- [theme](/fe/css/theme.md)
 - [小技巧](/fe/css/小技巧.md)
 - [移动端布局](/fe/css/移动端布局.md)
 
@@ -174,7 +175,6 @@
 
 ### basics
 
-- [Map、WeakMap、Set、WeakSet](/js/basics/Map、WeakMap、Set、WeakSet.md)
 - [Array](/js/basics/array.md)
 - [backbonejs](/js/basics/backbonejs.md)
 - [canvas](/js/basics/canvas.md)
@@ -184,6 +184,7 @@
 - [HTML5 API](/js/basics/html5api.md)
 - [面向对象的程序设计-继承](/js/basics/inherit.md)
 - [ISSUE](/js/basics/issue.md)
+- [Map、WeakMap、Set、WeakSet](/js/basics/Map、WeakMap、Set、WeakSet.md)
 - [模块化](/js/basics/modularization.md)
 - [Proxy & Reflec](/js/basics/proxy-and-reflect.md)
 - [正则表达式](/js/basics/regex.md)
@@ -230,9 +231,6 @@
 - [redux reselect](/react/other/redux-reselect.md)
 
 ## reading
-
-### RTFSC
-
 
 ### goodarticle
 
@@ -300,8 +298,8 @@
 
 ### other
 
-- [Aria2](/tool/other/Aria2.md)
 - [添加右键菜单](/tool/other/addrightclickmenu.md)
+- [Aria2](/tool/other/Aria2.md)
 - [awesome](/tool/other/awesome.md)
 - [ffmpeg](/tool/other/ffmpeg.md)
 - [Hexo 基本使用](/tool/other/hexo.md)
@@ -334,12 +332,12 @@
 
 ### other
 
-- [VUE 组件通信](/vue/other/VUE组件通信.md)
 - [VUE](/vue/other/index.md)
 - [生命周期](/vue/other/life-cycle.md)
 - [vue 中的发布/订阅模式模式](/vue/other/publish-subscribe-mode-in-vue.md)
 - [VUE 文章收录](/vue/other/vuecollect.md)
 - [Vuex 中 modules 和 plugins](/vue/other/vuex-modules-plugins.md)
+- [VUE 组件通信](/vue/other/VUE组件通信.md)
 
 ### rtfsc
 
