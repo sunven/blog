@@ -21,3 +21,5 @@ ex 是 CSS 中的一个相对单位，指的是小写字母 x 的高度，就是
 
 - 行距 = 行高 − em-box
 - 行距 = line-height - font-size
+
+![img](./images/eb99806862cf45e0b1bd742faa2224b5.png)

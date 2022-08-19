@@ -6,7 +6,8 @@
 
 | command                                          | remark                                                  |
 | ------------------------------------------------ | ------------------------------------------------------- |
-| git add `<file>`                                   | 可反复多次使用，添加多个文件                            |
+| git clone -b `<branch name>` `<url>`             | 克隆指定分支                                            |
+| git add `<file>`                                 | 可反复多次使用，添加多个文件                            |
 | git commit                                       | 提交                                                    |
 | git status                                       | 工作区的状态                                            |
 | git diff                                         | 查看修改内容                                            |
@@ -19,11 +20,11 @@
 | **分支**😊                                        |                                                         |
 | git branch -a                                    | 查看远程分支                                            |
 | git branch                                       | 查看分支                                                |
-| git branch `<name>`                                | 创建分支                                                |
-| git checkout `<name>`                              | 切换分支                                                |
-| git checkout -b `<name>`                            | 创建+切换分支                                           |
-| git merge `<name>`                                 | 合并某分支到当前分支                                    |
-| git branch -d `<name>`                             | 删除分支                                                |
+| git branch `<name>`                              | 创建分支                                                |
+| git checkout `<name>`                            | 切换分支                                                |
+| git checkout -b `<name>`                         | 创建+切换分支                                           |
+| git merge `<name>`                               | 合并某分支到当前分支                                    |
+| git branch -d `<name>`                           | 删除分支                                                |
 | git log --graph --pretty=oneline --abbrev-commit | 查看分支的合并情况                                      |
 | git merge --abort                                | 终止merge                                               |
 | git checkout -b branch-name origin/branch-name   | 在本地创建和远程分支对应的分支                          |
@@ -31,15 +32,15 @@
 | git pull                                         | 更新分支 从远程获取最新版本并merge到本地                |
 | git push origin test                             | 把分支推到远程分支                                      |
 | **tag**😊                                         |                                                         |
-| git tag `<name>`                                   | 用于新建一个标签，默认为 HEAD，也可以指定一个 commit id |
-| git tag -a `<tagname>` -m "qaq..."                 | 指定标签信息                                            |
-| git tag -s `<tagname>` -m "qaq..."                 | 用 PGP 签名标签                                         |
-| git show `<tagname>`                               | 查看标签详细信息                                        |
+| git tag `<name>`                                 | 用于新建一个标签，默认为 HEAD，也可以指定一个 commit id |
+| git tag -a `<tagname>` -m "qaq..."               | 指定标签信息                                            |
+| git tag -s `<tagname>` -m "qaq..."               | 用 PGP 签名标签                                         |
+| git show `<tagname>`                             | 查看标签详细信息                                        |
 | git tag                                          | 可以查看所有标签                                        |
-| git push origin `<tagname>`                        | 推送一个本地标签                                        |
+| git push origin `<tagname>`                      | 推送一个本地标签                                        |
 | git push origin --tags                           | 推送全部未推送过的本地标签                              |
-| git tag -d `<tagname>`                             | 删除一个本地标签                                        |
-| git push origin :refs/tags/`<tagname>`             | 删除一个远程标签                                        |
+| git tag -d `<tagname>`                           | 删除一个本地标签                                        |
+| git push origin :refs/tags/`<tagname>`           | 删除一个远程标签                                        |
 
 ## no-fast-forward
 
@@ -209,3 +210,22 @@ git fetch --unshallow
 # 常规拉取
 git pull --all
 ```
+
+## git flow
+
+<https://nvie.com/posts/a-successful-git-branching-model/>
+
+release 分支理解为 提测分支。来自 develop
+
+如果测试有bug，在release1.2 分支修复，合并回develop，有冲突解决
+
+测试完成要发布了，分别合并回develop 和 master
+
+问题：
+1、从master拉分支，分支名：bugfix/xxxxxx   feature/xxxxx
+2、开发自测完将新拉分支合到dev，开发环境自测一波
+3、开发环境自测没问题，将新拉分支合到test，用test发预发环境
+4、测试发现bug/需求调整等，重复2，3步骤
+5、测试通过，将此次拉的分支合到master，如需发正式，从master发
+
+![img](./images/git-model.png)
