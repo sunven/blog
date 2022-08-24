@@ -36,6 +36,8 @@ Arial 字体为例 2048 对应 font-size 100px 1em的值，也是标准行高
 
 line-height = content-area + 行距 = win上深 + win下深 + 行距
 
+行距 = line-height - font-size
+
 - 上深 1638
 - 下深 410
   - 1638 + 410 = 2048
@@ -87,3 +89,22 @@ content-area 100 / 2048 * (1854 + 434) =112px
 ![img](./images/snipaste_20220824234221.png)
 
 <https://blog.csdn.net/qq_15601471/article/details/119903856>
+
+## IFC
+
+- 内容区域（content area）。可以把文本选中的背景色区域作为内容区域，比背景颜色区域高
+
+- 内联盒子（inline box）
+
+  - 内联盒子
+  - 匿名内联盒子
+
+- 行框盒子（line box）
+
+- 每一行就是一个“行框盒子”（实线框标注），每个“行框盒子”又是由一个一个“内联盒子”
+
+  组成的
+
+- 幽灵空白节点
+
+line-height > 0   <0   =0
