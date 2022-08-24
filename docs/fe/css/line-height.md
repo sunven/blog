@@ -71,3 +71,19 @@ x = 115
 capital Height ： 100 / 2048 *1467= 71.630859375 ≈ 72px
 x的高度就是 100 / 2048* 1106 = 51.85546875 ≈ 52px，这也是1ex的值（ex可以用来做居中对齐，真居中对齐）；
 线距 100 / 2048 * 67 = 3.271484375 ≈ 3
+
+content-area 100 / 2048 * (1854 + 434) =112px
+
+![img](./images/snipaste_20220824211929.png)
+
+11
+
+![img](./images/snipaste_20220824212028.png)
+
+行距
+
+大概上行距1px 下行距2px  总共3px
+
+![img](./images/snipaste_20220824234221.png)
+
+<https://blog.csdn.net/qq_15601471/article/details/119903856>
