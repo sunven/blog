@@ -108,3 +108,21 @@ content-area 100 / 2048 * (1854 + 434) =112px
 - 幽灵空白节点
 
 line-height > 0   <0   =0
+
+确定 baseline
+
+- inline-table table 第一行的 baseline
+- 父元素line box 最后一个inline-box 的 baseline
+- 纯文本：字符 x 的baseline
+- 替换元素：替换元素的下边缘
+- inline-block
+  - 内部没有内联元素，或者 overflow 不为 visible，baseline 为 margin 底边缘
+  - 内部有内联元素 baseline 是最后一个内联元素的 baseline
+
+vertical-align: middle 元素的中部与父元素的基线加上父元素 x-height（译注：x 高度）的一半对齐
+
+- 会改变元素基线
+- 不是父元素的绝对中线
+
+- 内联元素：基线往上 1/2 x-height 高度 略低于中线
+- table-cell：单元格盒子相对于外面的表格行居中对齐
