@@ -94,35 +94,72 @@ content-area 100 / 2048 * (1854 + 434) =112px
 
 - 内容区域（content area）。可以把文本选中的背景色区域作为内容区域，比背景颜色区域高
 
-- 内联盒子（inline box）
-
-  - 内联盒子
-  - 匿名内联盒子
-
-- 行框盒子（line box）
-
-- 每一行就是一个“行框盒子”（实线框标注），每个“行框盒子”又是由一个一个“内联盒子”
-
-  组成的
-
-- 幽灵空白节点
-
 line-height > 0   <0   =0
 
 确定 baseline
 
 - inline-table table 第一行的 baseline
-- 父元素line box 最后一个inline-box 的 baseline
+- 父元素line box：最后一个inline-box 的 baseline
 - 纯文本：字符 x 的baseline
 - 替换元素：替换元素的下边缘
 - inline-block
   - 内部没有内联元素，或者 overflow 不为 visible，baseline 为 margin 底边缘
   - 内部有内联元素 baseline 是最后一个内联元素的 baseline
 
-vertical-align: middle 元素的中部与父元素的基线加上父元素 x-height（译注：x 高度）的一半对齐
+- baseline: 使元素的基线与父元素的基线对齐
+- sub: 使元素的基线与父元素的下标基线对齐
+- super: 使元素的基线与父元素的上标基线对齐
+- text-top: 使元素的顶部与父元素的字体顶部对齐
+- text-bottom: 使元素的底部与父元素的字体底部对齐
+- middle: 元素的中部与父元素的基线加上父元素 x-height 的一半对齐
 
 - 会改变元素基线
 - 不是父元素的绝对中线
 
 - 内联元素：基线往上 1/2 x-height 高度 略低于中线
 - table-cell：单元格盒子相对于外面的表格行居中对齐
+
+![img](./images/snipaste_20220829173742.png)
+
+- 默认 vertical-align: baseline
+- 第1、2个div baseline 为 margin 底边缘
+- 第3个div baseline 为 x 的 baseline
+
+![img](./images/snipaste_20220829183026.png)
+
+- x-height 参考父元素（40px），而不是自己(80px)，
+
+## IFC
+
+创建：
+
+- 块级元素中仅包含内联级别元素
+- 当IFC中有块级元素插入时，会产生两个匿名块将父元素分割开来，产生两个IFC
+
+包含一根线的框
+
+内联盒子（inline box）
+
+- 内联元素生成内联盒子
+- 纯文本生成匿名内联盒子
+
+- 元素水平方向横向排列
+- 如果没有足够的水平空间将所有元素放入一行，则在第一个行框下方创建另一个行框，然后可以跨行拆分单个内联元素
+- 当一个内联框被分割成多行时，它在逻辑上仍然是一个单独的框。这意味着任何水平padding、border或margin仅应用于框占用的第一行的开头和最后一行的结尾
+- 子元素只会计算横向样式空间(padding、border、margin),垂直方向样式空间不会被计算
+  - margin 在垂直方向没有表现
+  - padding、border 在垂直方向可以体现，但没有增加高度,不会推开其上方或下方的元素
+- 在垂直方向上，子元素会以不同形式来对齐（vertical-align）
+- 能把在一行上的框都完全包含进去的一个矩形区域，被称为该行的行框（line box）。行框的宽度是由包含块（containing box）和与其中的浮动来决定。
+- line box 一般左右边贴紧其包含块，但float元素会优先排列。
+- line box 高度由 CSS 行高计算规则来确定，同个IFC下的多个line box高度可能会不同。
+- 当 inline-level boxes的总宽度少于包含它们的line box时，其水平渲染规则由 text-align 属性值来决定。
+- 当一个 inline box 超过父元素的宽度时，它会被分割成多个boxes，这些 boxes 分布在多个“line box”中。如果子元素未设置强制换行的情况下，“inline box”将不可被分割，将会溢出父元素
+
+幽灵空白节点 strut
+
+是一个存在于每个“行框盒子”前面，同时具有该元素的字体和行高属性的0宽度的内联盒
+
+line-height > baseline > line box > block box > block
+
+![img](./images/snipaste_20220829165147.png)
