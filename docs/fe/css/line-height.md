@@ -113,9 +113,6 @@ line-height > 0   <0   =0
 - text-bottom: 使元素的底部与父元素的字体底部对齐
 - middle: 元素的中部与父元素的基线加上父元素 x-height 的一半对齐
 
-- 会改变元素基线
-- 不是父元素的绝对中线
-
 - 内联元素：基线往上 1/2 x-height 高度 略低于中线
 - table-cell：单元格盒子相对于外面的表格行居中对齐
 
@@ -128,6 +125,64 @@ line-height > 0   <0   =0
 ![img](./images/snipaste_20220829183026.png)
 
 - x-height 参考父元素（40px），而不是自己(80px)，
+
+![img](./images/snipaste_20220829224900.jpg)
+
+- after 的高度100%，baseline 在底部
+- vertical-align: middle;使得父元素的baseline到了一半的高度
+
+```html
+<html>
+  <style>
+    body {
+      padding: 32px;
+    }
+    .flexdiv {
+      display: flex;
+    }
+    .p {
+      width: 400px;
+      height: 300px;
+      font-size: 40px;
+      border: 1px solid lightpink;
+    }
+    .p::after {
+      content: '';
+      display: inline-block;
+      height: 100%;
+    }
+    .p2::after {
+      vertical-align: middle;
+    }
+    .c {
+      display: inline-block;
+      width: 50px;
+      height: 100px;
+      margin: 0 10px;
+      border: 1px solid red;
+      font-size: 80px;
+    }
+    .c2 {
+      background: linear-gradient(to bottom, #abc, 50%, #fff 0);
+    }
+  </style>
+
+  <body>
+    <div class="flexdiv">
+      <div class="p">
+        <div class="c"></div>
+        <div class="c c2"></div>
+        <div class="c">x</div>
+      </div>
+      <div class="p p2">
+        <div class="c"></div>
+        <div class="c c2 c22"></div>
+        <div class="c">x</div>
+      </div>
+    </div>
+  </body>
+</html>
+```
 
 ## IFC
 
