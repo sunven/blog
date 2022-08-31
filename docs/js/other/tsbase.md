@@ -328,6 +328,14 @@ type Data = [number, string];
 
 ## type-challenges
 
+Equal
+
+- 捏造一个T
+
+```ts
+export type Equal<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2 ? true : false;
+```
+
 Pick
 
 ```ts
@@ -368,6 +376,83 @@ If
 type If<C extends boolean, T, F> = C extends true ? T : F
 ```
 
+Includes
+
+```ts
+type Includes<T extends readonly any[], U> = T extends [infer F, ...infer R]
+  ? Equal<F, U> extends true
+    ? true
+    : Includes<R, U>
+  : false;
+```
+
+MyParameters
+
+```ts
+type MyParameters<T extends (...args: any) => any> = T extends (...args: infer X) => any ? X : never;
+```
+
+MyReturnType
+
+```ts
+type MyReturnType<T extends (...args: any) => any> = T extends (...args: any) => infer X ? X : never
+```
+
+MyOmit
+
+```ts
+type MyOmit<T, K extends keyof T> = {
+  [P in Exclude<keyof T, K>]: T[P]
+}
+```
+
+MyReadonly2
+
+```ts
+type MyReadonly2<T, K extends keyof T = keyof T> = {
+  readonly [P in K]: T[P]
+} & { [P in Exclude<keyof T, K>]: T[P] }
+```
+
+DeepReadonly
+
+```ts
+type DeepReadonly<T> = {
+  readonly [K in keyof T]: T[K] extends Function
+    ? T[K]
+    : T[K] extends object
+      ? DeepReadonly<T[K]>
+      : T[K]
+}
+```
+
+TupleToUnion
+
+```ts
+type TupleToUnion<T extends any[]> = T[number]
+```
+
+Chainable
+
+```ts
+type Chainable<T = {}> = {
+  option<K extends string, P>(
+    key: K extends keyof T
+      ? (Equal<P, T[K]> extends true ? never : K)
+      : K,
+    value: P
+  ): Chainable<Omit<T, K> & Record<K, P>>
+  get(): T
+}
+```
+
+- T = {} 来作为默认值 用来存储
+- K必须要，要判断重复的key
+- key 重复，且value类型形同，则never
+- Omit 排除同名key,即同名key的覆盖
+
 ## TODO
 
 - as const
+- infer
+- : 与 extends
