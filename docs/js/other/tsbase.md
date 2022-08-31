@@ -1,27 +1,6 @@
 # TypeScript
 
-## 基础类型
-
-```ts
-//
-let x: [string, number] = ["hello", 10];
-console.log(x[0] + x[1]); // hello10
-//
-enum Color {
-  red,
-  blue,
-  green
-}
-let c1: Color = Color.red;
-console.log(c1); // 0
-let c2: string = Color[2];
-console.log(c2); // green
-//
-
-
-```
-
-### 枚举
+## 枚举
 
 本质
 
