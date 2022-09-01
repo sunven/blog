@@ -1,5 +1,38 @@
 # TypeScript
 
+类型注解：`:TypeAnnotation`
+
+泛型 约束类型一致，而不是约定某种类型，例如输入输出一致
+
+联合类型 `string | number`
+
+交叉类型 `T & U`
+
+元组 `:[typeofmember1, typeofmember2]`
+
+类型别名 `type SomeName = someValidTypeAnnotation`
+
+## declare
+
+```ts
+interface ReturnString {
+  (): string;
+  new (): string;
+}
+
+// 'const' declarations must be initialized
+const foo1: ReturnString;
+
+// 'ReturnString' only refers to a type, but is being used as a value here
+const foo2: ReturnString = ReturnString();
+
+declare const foo: ReturnString;
+const bar = foo(); // bar 被推断为一个字符串。
+
+declare const Two: ReturnString;
+const two = new Two(); // two 被推断为 string 类
+```
+
 ## 枚举
 
 本质
@@ -72,21 +105,39 @@ function controlFlowAnalysisWithNever(foo: Foo) {
 
 在else中，foo就是boolean类型，编译就会报错
 
-## 类型断言
-
-### <>
+## 类型断言 `<>` as
 
 ```typescript
 let someValue: any = "this is a string";
 let strLength: number = (<string>someValue).length;
+// let strLength: number = (someValue as string).length;
 ```
 
-### as
+```ts
+// 适合使用
+function handler(event: Event) {
+  const mouseEvent = event as MouseEvent;
+}
 
-```typescript
-let someValue: any = "this is a string";
-let strLength: number = (someValue as string).length;
+interface Foo {
+  bar: number;
+  bas: string;
+}
+
+// 无法提示错误
+const foo = {
+  bar: 1,
+} as Foo;
+
+// Property 'bas' is missing in type '{ bar: number; }' but required in type 'Foo'.
+const foo1: Foo = {
+  bar: 1,
+};
 ```
+
+- `<>` 与 JSX 的语法存在歧义, 建议 as
+- 编译时语法，不是类型转换
+- 应避免使用类型断言
 
 ### 忽略undefined和null
 
@@ -438,3 +489,8 @@ type Chainable<T = {}> = {
 - as const
 - infer
 - : 与 extends
+- declare
+- d.ts
+- implements 与 extends
+
+- 接口主要强调结构
