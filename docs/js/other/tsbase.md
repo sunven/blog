@@ -33,6 +33,13 @@ declare const Two: ReturnString;
 const two = new Two(); // two 被推断为 string 类
 ```
 
+参数做参数，不约束
+
+```ts
+type F = (err: Error, data: any) => void
+let a: F = function (a) { } // 参数数量可以少
+```
+
 ## 枚举
 
 本质
@@ -82,9 +89,38 @@ var Enum;
 })(Enum || (Enum = {}));
 ```
 
+### 字面量类型
+
+```ts
+// let 不行，如果是let foo类型是number
+const foo = 123;
+let bar: typeof foo; // 'bar' 类型与 'foo' 类型相同（在这里是： 123）
+
+bar = 123; // ok
+bar = 789; // Type '789' is not assignable to type '123'
+```
+
 ### never
 
-表示永不存在的值的类型
+- void 表示没有任何类型
+- never 表示永远不存在的值的类型
+
+```ts
+function fn(): never {
+  // 如果是个死循环，则应该是个 never
+  while (true) { }
+}
+
+function fn1() {
+  throw new Error();
+}
+
+const fn2 = () => { throw new Error() }
+
+let a: never = fn();
+a = fn1() // 函数声明不能识别为 never
+a = fn2() // 函数表达式（字面量） 可以识别为 never
+```
 
 ```typescript
 type Foo = string | number;
@@ -104,6 +140,108 @@ function controlFlowAnalysisWithNever(foo: Foo) {
 如果Foo变为`type Foo = string | number | boolean;`
 
 在else中，foo就是boolean类型，编译就会报错
+
+## 索引签名
+
+- 属性和索引签名不要同时使用，如果需要应该使用嵌套
+
+```ts
+interface Bar {
+  [key: string]: number;
+  x: number;
+  y: string; // Error: y 属性必须为 number 类型
+}
+
+type Index = "a" | "b" | "c";
+type FromIndex = { [k in Index]?: number };
+
+type FromSomeIndex<K extends string> = { [key in K]: number };
+
+// 同时拥有 string 和 number 类型的索引签名
+interface ArrStr {
+  [key: string]: string | number; // 必须包括所用成员类型
+  [index: number]: string; // 字符串索引类型的子级
+
+  // example
+  length: number;
+}
+```
+
+```ts
+type FieldState = {
+  value: string;
+};
+
+type FormState = { isValid: boolean } & { [fieldName: string]: FieldState };
+
+// type FromState = {
+//   isValid: boolean; // Error: 不符合索引签名
+//   [filedName: string]: FieldState;
+// };
+
+// 将它用于从某些地方获取的 JavaScript 对象
+declare const foo: FormState;
+
+const isValidBool = foo.isValid;
+const somethingFieldState = foo["something"];
+
+// 使用它来创建一个对象时，将不会工作
+const bar: FormState = {
+  // 'isValid' 不能赋值给 'FieldState'
+  isValid: false, // 这里的isValid 要么符合属性，要么符合签名，不能都符合，所以报错
+  // isValid: { value: "" },
+};
+
+```
+
+### 捕获键的名称 keyof
+
+```ts
+const colors = {
+  red: 'red',
+  blue: 'blue'
+};
+
+type Colors = keyof typeof colors;
+
+let color: Colors; // color 的类型是 'red' | 'blue'
+color = 'red'; // ok
+color = 'blue'; // ok
+color = 'anythingElse'; // Error
+```
+
+### 混合
+
+```ts
+// 所有 mixins 都需要
+type Constructor<T = {}> = new (...args: any[]) => T;
+
+// 添加属性的混合例子
+function Timestamped<TBase extends Constructor>(Base: TBase) {
+  return class extends Base {
+    timestamp = Date.now();
+  };
+}
+
+class User {
+  name = "";
+}
+
+// 添加 Timestamped 的 User
+const TimestampedUser = Timestamped(User);
+
+// 这里可以实现相功能，但 User 是写死的
+// TimestampedUser 中的 TBase 是活的
+// 多个类型需要增加属性时，混合的优势就出来的
+class TimestampedUser1 extends User {
+  timestamp = Date.now();
+}
+
+const timestampedUserExample = new TimestampedUser();
+console.log(timestampedUserExample.timestamp);
+const timestampedUserExample1 = new TimestampedUser1();
+console.log(timestampedUserExample1.timestamp);
+```
 
 ## 类型断言 `<>` as
 
@@ -494,3 +632,4 @@ type Chainable<T = {}> = {
 - implements 与 extends
 
 - 接口主要强调结构
+- 泛型提供约束

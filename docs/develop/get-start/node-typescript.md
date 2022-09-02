@@ -3,7 +3,7 @@
 ## 安装依赖
 
 ```sh
-node install -D typescript ts-node nodemon eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin @types/node
+npm install -D typescript ts-node nodemon eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin @types/node
 ```
 
 ## 创建 tsconfig.js
@@ -93,4 +93,3 @@ dist
   }
 }
 ```
-

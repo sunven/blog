@@ -22,3 +22,16 @@ $env:TestVar1="This is my environment variable"
 ## 删除某个环境变量
 del env:windir
 ```
+
+## win11 右键菜单
+
+```sh
+# 经典
+reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve
+
+# 默认
+reg.exe delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /va /f
+
+# 重启
+taskkill /f /im explorer.exe & start explorer.exe
+```
