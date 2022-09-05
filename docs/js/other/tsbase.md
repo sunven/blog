@@ -440,6 +440,44 @@ type Data = [number, string];
 
 ```
 
+## 装饰器
+
+```ts
+@sealed
+class BugReport {
+  type = "report";
+  title: string;
+
+  constructor(title: string) {
+    this.title = title;
+  }
+
+  @enumerable(true)
+  greet() {
+    return "Hello, " + this.title;
+  }
+}
+
+function sealed(constructor: Function) {
+  Object.seal(constructor);
+  Object.seal(constructor.prototype);
+}
+
+function enumerable(value: boolean) {
+  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    // enumerable 默认为false 不可迭代
+    descriptor.enumerable = value;
+  };
+}
+
+// Cannot add property title, object is not extensible 
+// BugReport.prototype.title = 'title';
+const br = new BugReport('title');
+for (const a in br) {
+  console.log(a)
+}
+```
+
 ## type-challenges
 
 Equal
