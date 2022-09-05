@@ -88,3 +88,23 @@
 - 模块采用关键词命名，如.slide, .modal, .tips, .tabs，特殊化采用上面两个中划线表，如.imgslide--full, .modal--pay, .tips--up, .tabs--simple
 - js 操作的类统一加上 js-前缀
 - 不要超过四个 class 组合使用，如.a.b.c.d
+
+## 样式优先级
+
+优先级 从高到底
+
+- 用户代理 !important
+  - 浏览器内置
+- 用户设置 !important
+  - 浏览器插件注入
+- @layer !important
+- 开发者设置 !important
+- 开发者设置
+  - 通配符选择器
+  - 标签选择器
+  - 类、属性选择器
+  - id 选择器
+  - 内联
+- @layer
+- 用户设置
+- 用户代理
