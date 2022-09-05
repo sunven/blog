@@ -1,6 +1,6 @@
 # TypeScript
 
-类型注解：`:TypeAnnotation`
+类型注解`:TypeAnnotation`
 
 泛型 约束类型一致，而不是约定某种类型，例如输入输出一致
 
@@ -33,7 +33,7 @@ declare const Two: ReturnString;
 const two = new Two(); // two 被推断为 string 类
 ```
 
-参数做参数，不约束
+函数做参数，函数参数个数不约束
 
 ```ts
 type F = (err: Error, data: any) => void
@@ -89,7 +89,7 @@ var Enum;
 })(Enum || (Enum = {}));
 ```
 
-### 字面量类型
+## 字面量类型
 
 ```ts
 // let 不行，如果是let foo类型是number
@@ -100,7 +100,7 @@ bar = 123; // ok
 bar = 789; // Type '789' is not assignable to type '123'
 ```
 
-### never
+## never
 
 - void 表示没有任何类型
 - never 表示永远不存在的值的类型
@@ -194,7 +194,7 @@ const bar: FormState = {
 
 ```
 
-### 捕获键的名称 keyof
+## 捕获键的名称 keyof
 
 ```ts
 const colors = {
@@ -210,7 +210,7 @@ color = 'blue'; // ok
 color = 'anythingElse'; // Error
 ```
 
-### 混合
+## 混合
 
 ```ts
 // 所有 mixins 都需要
@@ -276,21 +276,6 @@ const foo1: Foo = {
 - `<>` 与 JSX 的语法存在歧义, 建议 as
 - 编译时语法，不是类型转换
 - 应避免使用类型断言
-
-### 忽略undefined和null
-
-```typescript
-function myFunc(maybeString: string | undefined | null) {
-  // Type 'string | null | undefined' is not assignable to type 'string'.
-  // Type 'undefined' is not assignable to type 'string'. 
-  const onlyString: string = maybeString; // Error
-  const ignoreUndefinedAndNull: string = maybeString!; // Ok
-}
-```
-
-### 确定赋值
-
-`let x: number`表示x在使用前一定会被赋值
 
 ## 类型守卫
 
@@ -398,48 +383,6 @@ function area(s: Shape) {
 ```
 
 kind就为该类型的辨识
-
-## 交叉类型
-
-```typescript
-type PartialPointX = { x: number; };
-type Point = PartialPointX & { y: number; };
-
-let point: Point = {
-  x: 1,
-  y: 1
-}
-```
-
-```typescript
-interface D { d: boolean; }
-interface E { e: string; }
-interface F { f: number; }
-
-interface A { x: D; }
-interface B { x: E; }
-interface C { x: F; }
-
-type ABC = A & B & C;
-
-let abc: ABC = {
-  x: {
-    d: true,
-    e: 'semlinker',
-    f: 666
-  }
-};
-
-
-```
-
-## 函数
-
-### 箭头函数
-
-```typescript
-let fun: (a: string, b: string) => string = (a: string, b: string) => a + b
-```
 
 ## 接口
 
