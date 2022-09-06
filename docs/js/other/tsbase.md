@@ -442,19 +442,45 @@ type Data = [number, string];
 
 ## 装饰器
 
+### 类装饰器
+
 ```ts
+import "reflect-metadata";
+
+const formatMetadataKey = Symbol("format");
+
 @sealed
 class BugReport {
-  type = "report";
+  @format("Hello world, %s")
+  private _x: string;
   title: string;
 
+  @Prop()
+  public Aprop!: string;
+
   constructor(title: string) {
+    this._x = title;
     this.title = title;
+  }
+
+  @configurable(true)
+  get x() {
+    return 'get,' + this._x;
   }
 
   @enumerable(true)
   greet() {
     return "Hello, " + this.title;
+  }
+
+  @Metadata1()
+  metadataFun(a: number, b: number): number {
+    return a + b;
+  }
+
+  greetFormat() {
+    let formatString = getFormat(this, "_x");
+    return formatString.replace("%s", this._x);
   }
 }
 
@@ -465,17 +491,93 @@ function sealed(constructor: Function) {
 
 function enumerable(value: boolean) {
   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-    // enumerable 默认为false 不可迭代
+    // 类中方法 enumerable 默认为false 不可枚举
     descriptor.enumerable = value;
   };
 }
 
+function configurable(value: boolean) {
+  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    descriptor.configurable = value;
+  };
+}
+
+function format(formatString: string) {
+  return Reflect.metadata(formatMetadataKey, formatString);
+}
+function getFormat(target: any, propertyKey: string) {
+  return Reflect.getMetadata(formatMetadataKey, target, propertyKey);
+}
+function Prop() {
+  return (target: any, key: string) => {
+    const type = Reflect.getMetadata('design:type', target, key);
+    console.log(`${key} type: ${type.name}`);
+  };
+}
+
+function Metadata1() {
+  return (target: any, key: string) => {
+    const type = Reflect.getMetadata('design:type', target, key);
+    const paramtypes = Reflect.getMetadata('design:paramtypes', target, key);
+    const returntype = Reflect.getMetadata('design:returntype', target, key);
+    console.log(key, type.name, paramtypes.map((c: any) => c.name), returntype.name);
+  };
+}
+
+const br = new BugReport('title');
+
+// test @sealed
 // Cannot add property title, object is not extensible 
 // BugReport.prototype.title = 'title';
-const br = new BugReport('title');
-for (const a in br) {
-  console.log(a)
+
+// test @configurable
+// 与 @sealed 有冲突
+// console.log('delete x before', br.x);
+// // delete 操作只会在自身的属性上起作用,即 delete br.x 无效
+// delete BugReport.prototype.x
+// console.log('delete x after', br.x)
+
+// test @enumerable
+// for (const a in br) {
+//   console.log(a)
+// }
+
+console.log(br.greetFormat())
+```
+
+控制反转 依赖注入
+
+```ts
+import "reflect-metadata";
+
+type Constructor<T = any> = new (...args: any[]) => T;
+
+// 相当于一个空的类装饰器
+// 用于标记一下 TestService
+const Injectable = (): ClassDecorator => target => { };
+
+class OtherService {
+  a = 1;
 }
+
+@Injectable()
+class TestService {
+  constructor(public readonly otherService: OtherService) { }
+
+  testMethod() {
+    console.log(this.otherService.a);
+  }
+}
+
+function Factory<T>(target: Constructor<T>):T{
+  // 获取所有注入的服务
+  const providers = Reflect.getMetadata('design:paramtypes', target); // [OtherService]
+  console.log(providers)
+  const args = providers.map((provider: Constructor) => new provider());
+  return new target(...args);
+}
+
+Factory(TestService).testMethod(); // 1
 ```
 
 ## type-challenges
