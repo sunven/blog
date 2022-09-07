@@ -51,6 +51,8 @@
 | p:nth-child(even)     | 偶数行                                                                                                             |
 | p:nth-child(3n+4)     | 3n+4，第 4 行开始，隔 3 行换色                                                                                     |
 
+![img](./images/snipaste_20220907105313.png)
+
 参考：<http://lab.tianyizone.com/selectors/>
 
 示例：<http://linxz.github.io/tianyizone/selector_tree.html>
