@@ -580,6 +580,67 @@ function Factory<T>(target: Constructor<T>):T{
 Factory(TestService).testMethod(); // 1
 ```
 
+### covariance and contravariance
+
+```ts
+class Animal {
+  hx() {
+    console.log('呼吸')
+  }
+}
+
+class Dog extends Animal {
+  gj() {
+    console.log('狗叫')
+  }
+}
+
+class Greyhound extends Dog {
+  color = "grey"
+}
+
+class GermanShepherd extends Dog {
+  name = 'GermanShepherd'
+}
+
+type G = (dog: Dog) => Dog
+
+function fun(g: G) {
+  const r = g(new Dog())
+  r.gj()
+}
+
+function greyhoundToGreyhound(greyhound: Greyhound) {
+  return greyhound
+}
+
+function greyhoundToAnimal(greyhound: Greyhound) {
+  return greyhound as Animal
+}
+
+function animalToAnimal(an: Animal) {
+  return an
+}
+
+function animalToGreyhound(an: Animal) {
+  return an as Greyhound
+}
+
+// Property 'color' is missing in type 'Dog' but required in type 'Greyhound'.
+fun(greyhoundToGreyhound)
+// Type 'Dog' is not assignable to type 'Greyhound'.
+fun(greyhoundToAnimal)
+// Property 'gj' is missing in type 'Animal' but required in type 'Dog'.
+fun(animalToAnimal)
+// ok
+fun(animalToGreyhound)
+```
+
+<https://www.stephanboyer.com/post/132/what-are-covariance-and-contravariance>
+
+- 返回值类型是协变的 `A ≼ B 就意味着 (T → A) ≼ (T → B)`
+- 而参数类型是逆变的 `A ≼ B 就意味着 (B → T) ≼ (A → T)`
+
 ## type-challenges
 
 Equal
