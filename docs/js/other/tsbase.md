@@ -685,12 +685,14 @@ type TupleToObject<T extends readonly any[]> = {
 }
 ```
 
-First
+### First & Last & Pop
 
 - infer
 
 ```ts
 type First<T extends any[]> = T extends [infer F, ...any] ? F : never
+type Last<T extends any[]> = T extends [...any, infer Y] ? Y : never
+type Pop<T extends any[]> = T extends [...infer X, any] ? X : never
 ```
 
 Exclude
