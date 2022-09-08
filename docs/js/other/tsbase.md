@@ -1,5 +1,7 @@
 # TypeScript
 
+<https://jkchao.github.io/typescript-book-chinese/>
+
 类型注解`:TypeAnnotation`
 
 泛型 约束类型一致，而不是约定某种类型，例如输入输出一致
@@ -440,6 +442,24 @@ type Data = [number, string];
 
 ```
 
+## infer
+
+表示在 extends 条件语句中待推断的类型变量。
+
+- 用于提取函数类型的返回值类型
+- 用于提取构造函数中参数（实例）类型
+
+```ts
+type ParamType<T> = T extends (arg: infer P) => any ? P : T;
+
+type Func = (a: string) => void;
+type Func1 = (a: string, b: number) => void;
+
+type Param = ParamType<Func>; // Param = string
+type Param1 = ParamType<Func1>; // Param1 =  (a: string, b: number) => void
+type Param2 = ParamType<string>; // Param2 = string
+```
+
 ## 装饰器
 
 ### 类装饰器
@@ -545,7 +565,7 @@ const br = new BugReport('title');
 console.log(br.greetFormat())
 ```
 
-控制反转 依赖注入
+### 控制反转 依赖注入
 
 ```ts
 import "reflect-metadata";
@@ -769,8 +789,6 @@ type Chainable<T = {}> = {
 ## TODO
 
 - as const
-- infer
-- : 与 extends
 - declare
 - d.ts
 - implements 与 extends
