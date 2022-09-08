@@ -788,6 +788,14 @@ type Chainable<T = {}> = {
 - key 重复，且value类型形同，则never
 - Omit 排除同名key,即同名key的覆盖
 
+PromiseAll
+
+```ts
+declare function PromiseAll<T extends any[]>(
+  value: readonly [...T]
+): Promise<{ [P in keyof T]: T[P] extends Promise<infer R> ? R : T[P] }>
+```
+
 ## TODO
 
 - as const
