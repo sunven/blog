@@ -796,6 +796,91 @@ declare function PromiseAll<T extends any[]>(
 ): Promise<{ [P in keyof T]: T[P] extends Promise<infer R> ? R : T[P] }>
 ```
 
+TrimLeft Trim
+
+```ts
+type Blank = ' ' | '\n' | '\t';
+type TrimLeft<S extends string> = S extends `${Blank}${infer Tail}` ? TrimLeft<Tail> : S
+type Trim<S extends string> = S extends `${Blank}${infer Tail}` ? Trim<Tail> : S extends `${infer Tail}${Blank}` ? Trim<Tail> : S
+```
+
+MyCapitalize
+
+```ts
+type MyCapitalize<S extends string> = S extends `${infer F}${infer Rest}` ? `${Uppercase<F>}${Rest}` : S;
+```
+
+### Replace & ReplaceAll
+
+```ts
+type Replace<S extends string, From extends string, To extends string> = S extends `${infer L}${From}${infer R}` ? `${L}${From extends '' ? '' : To}${R}` : S
+
+type ReplaceAll<S extends string, From extends string, To extends string> = From extends ''
+  ? S
+  : S extends `${infer L}${From}${infer R}`
+  ? `${ReplaceAll<L, From, To>}${To}${ReplaceAll<R, From, To>}`
+  : S;
+```
+
+### AppendArgument
+
+```ts
+type AppendArgument<Fn, A> = Fn extends (...args: infer P) => infer R ? (...args: [...P, A]) => R : never
+```
+
+### Permutation
+
+```ts
+// T extends U中的T如果是一个联合类型,如：A | B | C，则这个表达式会被展开成
+// (A extends U ? X : Y) | (B extends U ? X : Y) | (C extends U ? X : Y)
+// [U] extends [never] 而不是 U extends never 因为  U是联合类型 条件类型会走分配得到的是一个联合类型  不符合期望
+type Permutation<T, U = T> = [U] extends [never] ? [] : (T extends U  ? [T, ...Permutation<Exclude<U, T>>] : [])
+```
+
+### LengthOfString
+
+```ts
+type LengthOfString<S extends string, A extends any[] = []> =
+  S extends `${infer R}${infer U}`
+  ? LengthOfString<U, [...A, R]>
+  : A['length']
+```
+
+### Flatten
+
+```ts
+type Flatten<T> = T extends [infer F, ...infer Rest] ? [...(F extends unknown[] ? Flatten<F> : [F]), ...Flatten<Rest>] : []
+```
+
+### AppendToObject
+
+```ts
+type AppendToObject<T, U extends string | number | symbol, V> = {
+  [K in keyof T | U]: K extends keyof T ? T[K] : V;
+}
+```
+
+### Absolute
+
+```ts
+type Absolute<T extends number | string | bigint> = `${T}` extends `-${infer R}` ? `${R}` : `${T}`
+```
+
+### StringToUnion
+
+```ts
+type StringToUnion<T extends string> = T extends `${infer F}${infer R}` ? F | StringToUnion<R> : never
+```
+
+### Merge
+
+```ts
+type Merge<F, S> = {
+  [K in keyof (S & F)]: K extends keyof S ? S[K] : K extends keyof F ? F[K] : never
+}
+
+```
+
 ## TODO
 
 - as const
