@@ -153,6 +153,8 @@ document.getElementById('file1').onchange = function (e, a) {
 
 ## 类型转换
 
+![img](./images/无标题-2022-09-14-2308.excalidraw.svg)
+
 ### String -> TypedArray
 
 ```js
@@ -177,7 +179,5 @@ const binstr = encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (_, p1) => {
 console.log(new Uint8Array(binstr.split('').map(x => x.charCodeAt(0))))
 ```
 
-<https://zhuanlan.zhihu.com/p/461151285>
 <https://zh.javascript.info/binary>
 <https://shanyue.tech/post/binary-in-frontend/#%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9B%B8%E5%85%B3%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B>
-<https://juejin.cn/post/6990980826452197407>
