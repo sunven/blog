@@ -85,7 +85,7 @@ blob:<origin>/<uuid>
 ```
 
 - 浏览器内部为每个通过 URL.createObjectURL 生成的 URL 存储了一个 URL → Blob 映射。因此，此类 URL 很短，但可以访问 Blob。
-- 生成的 URL（即其链接）仅在当前文档打开的状态下才有效。它允许引用 <img>、<a> 中的 Blob，以及基本上任何其他期望 URL 的对象。
+- 生成的 URL（即其链接）仅在当前文档打开的状态下才有效。它允许引用 `<img>`、`<a>` 中的 Blob，以及基本上任何其他期望 URL 的对象。
 - Blob 本身只保存在内存中的。浏览器无法释放它。在文档退出时（unload），该映射会被自动清除，因此 Blob 也相应被释放了。
 - 手动释放 URL.revokeObjectURL()
 
