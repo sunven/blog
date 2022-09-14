@@ -153,7 +153,7 @@ document.getElementById('file1').onchange = function (e, a) {
 
 ## 类型转换
 
-![img](./images/无标题-2022-09-14-2308.excalidraw.svg)
+![img](./images/binary-data.excalidraw.svg)
 
 ### String -> TypedArray
 
