@@ -151,6 +151,32 @@ document.getElementById('file1').onchange = function (e, a) {
 }
 ```
 
+## 类型转换
+
+### String -> TypedArray
+
+```js
+const str = 'abc'
+// 1 String -> Blob -> ArrayBuffer -> TypedArray
+const reader = new FileReader()
+reader.readAsArrayBuffer(new Blob(str.split('')))
+reader.onload = function (e) {
+  console.log(new Uint8Array(e.target.result))
+}
+// 2 String -> ArrayBuffer -> TypedArray
+new Response(str)
+  .arrayBuffer()
+  .then(buffer => new Uint8Array(buffer))
+  .then(console.log)
+// 3 TextEncoder
+console.log(new TextEncoder().encode(str))
+// 4
+const binstr = encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (_, p1) => {
+  return String.fromCharCode('0x' + p1)
+})
+console.log(new Uint8Array(binstr.split('').map(x => x.charCodeAt(0))))
+```
+
 <https://zhuanlan.zhihu.com/p/461151285>
 <https://zh.javascript.info/binary>
 <https://shanyue.tech/post/binary-in-frontend/#%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9B%B8%E5%85%B3%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B>
