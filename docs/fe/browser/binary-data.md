@@ -33,16 +33,12 @@ for (let i = 0; i < view.length; i++) {
 - 字节数组,固定长度的原始二进制数据缓冲区
 - 不能直接操作 ArrayBuffer 的内容,要操作需要视图
 - 视图分为 TypedArray 或 DataView
-  - TypedArray 类型化的数组 Int8Array, Uint8Array, Uint8ClampedArray, Int16Array, Uint16Array, Int32Array, Uint32Array, Float32Array, Float64Array BigInt64Array BigUint64Array
-  - DataView：特殊的超灵活“未类型化”视图
+  - TypedArray 类型化的数组 Int8Array等
+  - DataView 未类型化视图 不用考虑不同平台的字节序问题
 - ArrayBufferView 是所有视图的总称
 - BufferSource 是 ArrayBuffer 或 ArrayBufferView 的总称
 
-``` text
-Object > ArrayBuffer
-       > ArrayBufferView > TypedArray > Int8Array, Uint8Array, Uint8ClampedArray, Int16Array, Uint16Array, Int32Array, Uint32Array, Float32Array, Float64Array
-                         > DataView
-```
+![img](./images/binary-data.drawio.png)
 
 ArrayBufferView 抽象类 ArrayBuffer 上“视图”之一的实例的基类，
 
@@ -53,6 +49,86 @@ DataView 一个可以从 二进制ArrayBuffer 对象中读写多种数值类型�
 9499938 十六进制 90f522
 大端字节序：90f522 》10010000 11110101 00100010
 小端字节序：22f590 》11110101 00100010 10010000
+
+## Blob
+
+Blob 由一个可选的字符串 type（通常是 MIME 类型）和 blobParts 组成 —— 一系列其他 Blob 对象，字符串和 BufferSource
+
+- Blob 对象是不可改变的
+- slice 获取片段（分片）
+
+![img](./images/blob.svg)
+
+## file
+
+- 继承自Blob, 多了name, lastModified等属性
+- `<input type="file">`
+
+## FileReader
+
+读取Blob中的数据
+
+- readAsArrayBuffer(blob) —— 转换为 ArrayBuffer，
+- readAsText(blob, [encoding]) —— 转换为字符串（TextDecoder 的一个替代方案），
+- readAsDataURL(blob) —— 转换为 base64 的 data url。
+
+## Data URL
+
+```text
+data:[<mediatype>][;base64],<data>
+```
+
+## Object URL
+
+```text
+blob:<origin>/<uuid>
+```
+
+- 浏览器内部为每个通过 URL.createObjectURL 生成的 URL 存储了一个 URL → Blob 映射。因此，此类 URL 很短，但可以访问 Blob。
+- 生成的 URL（即其链接）仅在当前文档打开的状态下才有效。它允许引用 <img>、<a> 中的 Blob，以及基本上任何其他期望 URL 的对象。
+- Blob 本身只保存在内存中的。浏览器无法释放它。在文档退出时（unload），该映射会被自动清除，因此 Blob 也相应被释放了。
+- 手动释放 URL.revokeObjectURL()
+
+## ReadableStream
+
+```js
+fetch('https://fetch-progress.anthum.com/30kbps/images/sunrise-baseline.jpg')
+.then(response => {
+  const contentEncoding = response.headers.get('content-encoding')
+  const contentLength = response.headers.get(contentEncoding ? 'x-file-size' : 'content-length')
+  const total = parseInt(contentLength, 10)
+  let loaded = 0
+  return new Response(
+    new ReadableStream({
+      start(controller) {
+        const reader = response.body.getReader()
+        read()
+        function read() {
+          reader.read().then(({ done, value }) => {
+            if (done) {
+              controller.close()
+              return
+            }
+            loaded += value.byteLength
+            console.log(Math.round((loaded / total) * 100) + '%')
+            controller.enqueue(value)
+            read()
+          })
+        }
+      },
+    })
+  )
+})
+.then(response => response.blob())
+.then(data => {
+  // 下载完成
+  // document.getElementById('img').src = URL.createObjectURL(data)
+})
+```
+
+## 下载
+
+利用a标签href,将 Data URL 或 Object URL 赋值给href,触发click事件
 
 ## 怎么产生
 
@@ -78,3 +154,4 @@ document.getElementById('file1').onchange = function (e, a) {
 <https://zhuanlan.zhihu.com/p/461151285>
 <https://zh.javascript.info/binary>
 <https://shanyue.tech/post/binary-in-frontend/#%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9B%B8%E5%85%B3%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B>
+<https://juejin.cn/post/6990980826452197407>
