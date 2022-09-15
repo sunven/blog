@@ -881,6 +881,18 @@ type Merge<F, S> = {
 
 ```
 
+### KebabCase
+
+```ts
+// Uncapitalize:第一个字符转换为小写字母
+type KebabCase<T extends string> = T extends `${infer First}${infer Rest}`
+  ? Rest extends Uncapitalize<Rest>
+    ? `${Lowercase<First>}${KebabCase<Rest>}`
+    : `${Lowercase<First>}-${KebabCase<Rest>}`
+  : T;
+// KebabCase<'FooBarBaz'> -> 'foo-bar-baz'
+```
+
 ## TODO
 
 - as const

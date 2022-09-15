@@ -6,8 +6,6 @@ Blob File...
 
 ![img](./images/arraybuffer-view-buffersource.svg)
 
-![img](./images/arraybuffer-views.svg)
-
 ![img](./images/8bit-integer-256.svg)
 
 ![img](./images/8bit-integer-257.svg)
