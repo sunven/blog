@@ -872,13 +872,14 @@ type Absolute<T extends number | string | bigint> = `${T}` extends `-${infer R}`
 type StringToUnion<T extends string> = T extends `${infer F}${infer R}` ? F | StringToUnion<R> : never
 ```
 
-### Merge
+### Merge Diff
 
 ```ts
 type Merge<F, S> = {
   [K in keyof (S & F)]: K extends keyof S ? S[K] : K extends keyof F ? F[K] : never
 }
 
+type Diff<F, S> = Omit<F & S, keyof F & keyof S>
 ```
 
 ### KebabCase
