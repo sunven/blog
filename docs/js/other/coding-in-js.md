@@ -1,8 +1,5 @@
 # code in js
 
-<https://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html>
-<https://www.51cto.com/article/661981.html>
-
 ## 编码
 
 ### ASCII
@@ -28,6 +25,8 @@
 - 变长的编码方式。它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度
 - UTF-16 也是一种变长字符编码, 这种编码方式比较特殊, 它将字符编码成 2 字节 或者 4 字节
 - 对于英语字母，UTF-8 编码和 ASCII 码是相同的
+
+<https://asecuritysite.com/coding/asc2>
 
 规则
 
@@ -69,12 +68,69 @@
 // 严的 Unicode 是4E25 4E25 转十进制就是20005
 ```
 
-- String.fromCharCode(0)
-- decodeURIComponent
-- 转义
+### String.fromCharCode
+
+返回由指定的 UTF-16 代码单元序列创建的字符串，范围介于 `0` 到 `65535`（`0xFFFF`）之间
+
+```js
+String.fromCharCode(65, 66, 67);   // 返回 "ABC"
+String.fromCharCode(0x2014);       // 返回 "—"
+String.fromCharCode(0x12014);      // 也是返回 "—"; 数字 1 被剔除并忽略
+String.fromCharCode(8212);         // 也是返回 "—"; 8212 是 0x2014 的十进制表示
+```
+
+### String.fromCodePoint
+
+返回使用指定的代码点序列创建的字符串
+
+```js
+String.fromCodePoint(42);       // "*"
+String.fromCodePoint(65, 90);   // "AZ"
+```
+
+- codePointAt 是 charCodeAt 的加强
+- fromCodePoint 是 fromCharCode 的加强
+- charCodeAt 与 fromCharCode 互反
+- codePointAt 与 fromCodePoint 互反
+
+### escape & unescape
+
+生成新的由十六进制转义序列替换的字符串
+
+排除：ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@*_+-./
+
+当该值小于等于 0xFF 时，用一个 2 位转义序列: `%xx` 表示。大于的话则使用 4 位序列：%**u**xxxx 表示
+
+```js
+escape("abc123");     // "abc123"
+escape('严') // '%u4E25'
+```
+
+### encodeURI & decodeURI
+
+对应的 Unicode 的 UTF-8 编码的十六进制格式
+
+排除：
+
+- 字母数字
+- ;,/?:@&=+$
+- -_.!~*'()
+- `#`
+
+```js
+// 严 > 4E25 > E4B8A5 > %E4%B8%A5
+encodeURI('严') //'%E4%B8%A5'
+```
+
+因为 "&", "+", 和 "=" 不会被编码，然而在 GET 和 POST 请求中它们是特殊字符
+
+### encodeURIComponent & decodeURIComponent
+
+排除：
+
+- 字母数字
+- -_.!~*'()
 
 ### 实践
 
 - js 如何base64编码（兼容中文）
-
-<https://tc39.es/ecma262/multipage/additional-ecmascript-features-for-web-browsers.html#sec-escape-string>
