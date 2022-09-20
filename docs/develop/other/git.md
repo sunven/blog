@@ -41,6 +41,9 @@
 | git push origin --tags                           | 推送全部未推送过的本地标签                              |
 | git tag -d `<tagname>`                           | 删除一个本地标签                                        |
 | git push origin :refs/tags/`<tagname>`           | 删除一个远程标签                                        |
+| **other**😊                                       |                                                         |
+| ssh-keygen -R github.com                         | 删除known_hosts配置                                     |
+| ssh -T git@github.com                            | 测试连接                                                |
 
 ## no-fast-forward
 
