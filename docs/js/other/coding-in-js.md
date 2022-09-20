@@ -26,6 +26,13 @@
 
 - Unicode 的实现方式之一
 - 变长的编码方式。它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度
+- UTF-16 也是一种变长字符编码, 这种编码方式比较特殊, 它将字符编码成 2 字节 或者 4 字节
+- 对于英语字母，UTF-8 编码和 ASCII 码是相同的
+
+规则
+
+- 对于单字节的符号，字节的第一位设为0
+- 对于n字节的符号（n > 1），第一个字节的前n位都设为1，第n + 1位设为0，后面字节的前两位一律设为10
 
 |Unicode符号范围 (十六进制)     |        UTF-8编码方式（二进制）|
 |------------------- |------------------------------------|
@@ -34,6 +41,12 @@
 |0000 0800-0000 FFFF | 1110xxxx 10xxxxxx 10xxxxxx         |
 |0001 0000-0010 FFFF | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx|
 
+- 严的 Unicode 是4E25（100111000100101）
+- 范围：0000 0800 - 0000 FFFF
+- 格式是1110xxxx 10xxxxxx 10xxxxxx
+- 从后向前的顺序依次填入格式中的 x 字符，多出的二进制补为 0
+- UTF-8 编码是11100100 10111000 10100101，转换成十六进制就是E4B8A5
+
 ## method
 
 ### btoa & atob
@@ -41,8 +54,7 @@
 - btoa base64编码
 - atob base64解码
 - 范围：U+0000 到 U+00FF (没有汉字)
-- a ascii
-- b binary
+- a > ascii b > binary
 
 ### String.prototype.charCodeAt
 
@@ -51,6 +63,11 @@
 ### String.prototype.codePointAt
 
 返回 一个 Unicode 编码点值的非负整数
+
+```js
+'严'.codePointAt(0)  // 20005
+// 严的 Unicode 是4E25 4E25 转十进制就是20005
+```
 
 - String.fromCharCode(0)
 - decodeURIComponent
