@@ -894,6 +894,12 @@ type KebabCase<T extends string> = T extends `${infer First}${infer Rest}`
 // KebabCase<'FooBarBaz'> -> 'foo-bar-baz'
 ```
 
+### IsNever
+
+```ts
+type IsNever<T> = [T] extends [never] ? true : false
+```
+
 ## TODO
 
 - as const
