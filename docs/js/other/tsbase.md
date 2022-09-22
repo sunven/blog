@@ -894,6 +894,12 @@ type KebabCase<T extends string> = T extends `${infer First}${infer Rest}`
 // KebabCase<'FooBarBaz'> -> 'foo-bar-baz'
 ```
 
+### AnyOf
+
+```ts
+type AnyOf<T extends readonly any[]> = T extends Array<0 | '' | false | [] | Record<string, never>> ? false : true
+```
+
 ### IsNever
 
 ```ts
