@@ -906,6 +906,20 @@ type AnyOf<T extends readonly any[]> = T extends Array<0 | '' | false | [] | Rec
 type IsNever<T> = [T] extends [never] ? true : false
 ```
 
+### IsUnion
+
+- 泛型为联合类型时进行分发处理
+
+todo: 为何要copy B
+
+```ts
+type IsUnion<A, B = A> = [A] extends [never] ? false : (
+  A extends A ? (
+    [B] extends [A] ? false : true
+  ) : false
+)
+```
+
 ## TODO
 
 - as const
