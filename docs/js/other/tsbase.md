@@ -920,6 +920,14 @@ type IsUnion<A, B = A> = [A] extends [never] ? false : (
 )
 ```
 
+### ReplaceKeys
+
+```ts
+type ReplaceKeys<U, T, Y> = {
+  [K in keyof U]: K extends T ? K extends keyof Y ? Y[K] : never : U[K]
+}
+```
+
 ## TODO
 
 - as const
