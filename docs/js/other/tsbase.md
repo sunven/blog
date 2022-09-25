@@ -928,6 +928,15 @@ type ReplaceKeys<U, T, Y> = {
 }
 ```
 
+### RemoveIndexSignature
+
+```ts
+type RemoveIndexSignature<T> = {
+  // 排除 number symbol number
+  [K in keyof T as (number extends K ? never : symbol extends K ? never : string extends K ? never : K)]: T[K]
+}
+```
+
 ## TODO
 
 - as const
