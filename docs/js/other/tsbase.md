@@ -920,6 +920,15 @@ type IsUnion<A, B = A> = [A] extends [never] ? false : (
 )
 ```
 
+### PercentageParser
+
+```ts
+type Parser1<A> = A extends `${infer F}${string}` ? F extends '+' | '-' ? F : '' : ''
+type Parser2<A> = A extends `${string}%` ? '%' : ''
+type Parser3<A> = A extends `${Parser1<A>}${infer M}${Parser2<A>}` ? M : ''
+type PercentageParser<A> = [Parser1<A>, Parser3<A>, Parser2<A>]
+```
+
 ## TODO
 
 - as const
