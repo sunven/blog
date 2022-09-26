@@ -920,6 +920,23 @@ type IsUnion<A, B = A> = [A] extends [never] ? false : (
 )
 ```
 
+### ReplaceKeys
+
+```ts
+type ReplaceKeys<U, T, Y> = {
+  [K in keyof U]: K extends T ? K extends keyof Y ? Y[K] : never : U[K]
+}
+```
+
+### RemoveIndexSignature
+
+```ts
+type RemoveIndexSignature<T> = {
+  // 排除 number symbol number
+  [K in keyof T as (number extends K ? never : symbol extends K ? never : string extends K ? never : K)]: T[K]
+}
+```
+
 ### PercentageParser
 
 ```ts
