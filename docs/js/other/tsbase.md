@@ -946,6 +946,12 @@ type Parser3<A> = A extends `${Parser1<A>}${infer M}${Parser2<A>}` ? M : ''
 type PercentageParser<A> = [Parser1<A>, Parser3<A>, Parser2<A>]
 ```
 
+### DropChar
+
+```ts
+type DropChar<S, C> = S extends `${infer F}${infer R}` ? `${F extends C ? '' : F}${DropChar<R, C>}` : S;
+```
+
 ## TODO
 
 - as const
