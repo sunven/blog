@@ -952,6 +952,16 @@ type PercentageParser<A> = [Parser1<A>, Parser3<A>, Parser2<A>]
 type DropChar<S, C> = S extends `${infer F}${infer R}` ? `${F extends C ? '' : F}${DropChar<R, C>}` : S;
 ```
 
+### MinusOne
+
+```ts
+type MinusOne<T extends number, C extends any[] = []> = [1, ...C]['length'] extends T
+  ? C['length']
+  : [1, 1, ...C]['length'] extends T // reduce recurtion depth
+  ? [1, ...C]['length']
+  : MinusOne<T, [1, 1, ...C]>;
+```
+
 ## TODO
 
 - as const
