@@ -970,6 +970,13 @@ type PickByType<T, U> = {
 }
 ```
 
+### StartsWith & EndsWith
+
+```ts
+type StartsWith<T extends string, U extends string> = T extends `${U}${string}` ? true : false
+type EndsWith<T extends string, U extends string> = T extends `${string}${U}` ? true : false
+```
+
 ## TODO
 
 - as const
