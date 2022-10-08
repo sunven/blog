@@ -977,11 +977,20 @@ type StartsWith<T extends string, U extends string> = T extends `${U}${string}` 
 type EndsWith<T extends string, U extends string> = T extends `${string}${U}` ? true : false
 ```
 
-### PartialByKeys
+### PartialByKeys & RequiredByKeys
+
+- -? 必选项
+- +? 可选项
 
 ```ts
 type PartialByKeys<T, K = any> = Merge<{
   [P in keyof T as P extends K ? P : never]?: T[P];
+} & {
+    [P in keyof T as P extends K ? never : P]: T[P];
+  }>;
+
+type RequiredByKeys<T, K = any> = Merge<{
+  [P in keyof T as P extends K ? P : never]-?: T[P];
 } & {
     [P in keyof T as P extends K ? never : P]: T[P];
   }>;
