@@ -962,11 +962,15 @@ type MinusOne<T extends number, C extends any[] = []> = [1, ...C]['length'] exte
   : MinusOne<T, [1, 1, ...C]>;
 ```
 
-### PickByType
+### PickByType & OmitByType
 
 ```ts
 type PickByType<T, U> = {
   [K in keyof T as T[K] extends U ? K : never]: T[K]
+}
+
+type OmitByType<T, U> = {
+  [K in keyof T as T[K] extends U ? never : K]: T[K]
 }
 ```
 
