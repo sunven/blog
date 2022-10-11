@@ -1015,6 +1015,7 @@ type Mutable<T> = {
 ### ObjectEntries
 
 ```ts
+// https://github.com/type-challenges/type-challenges/issues/15350
 type NeverToUndefined<T> = [T] extends [never] ? undefined : T
 type ObjectEntries<T, S extends keyof T = keyof T> = S extends S ? [S, NeverToUndefined<Required<T>[S]>] : never
 ```
