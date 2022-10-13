@@ -1026,6 +1026,17 @@ type ObjectEntries<T, S extends keyof T = keyof T> = S extends S ? [S, NeverToUn
 type Shift<T> = T extends [infer _, ...infer R] ? R : T
 ```
 
+### TupleToNestedObject
+
+```ts
+type TupleToNestedObject<T, U> = T extends [
+  infer F extends PropertyKey,
+  ...infer R
+]
+  ? Record<F, TupleToNestedObject<R, U>>
+  : U;
+```
+
 ## TODO
 
 - as const
