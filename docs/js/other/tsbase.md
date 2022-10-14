@@ -1037,6 +1037,12 @@ type TupleToNestedObject<T, U> = T extends [
   : U;
 ```
 
+### Reverse
+
+```ts
+type Reverse<T> = T extends [...infer F, infer E] ? [E, ...Reverse<F>] : T
+```
+
 ## TODO
 
 - as const
