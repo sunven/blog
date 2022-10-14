@@ -88,6 +88,7 @@ export default defineConfig({
     logo: '/images/logo.png',
     nav,
     sidebar,
+    outline: [2, 6],
     socialLinks: [{ icon: 'github', link: 'https://github.com/sunven/blog' }],
     editLink: {
       pattern: 'https://github.com/sunven/blog/edit/master/docs/:path',

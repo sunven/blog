@@ -111,6 +111,7 @@
 ### browser
 
 - [后退前进缓存](/fe/browser/bfcache.md)
+- [Binary Data](/fe/browser/binary-data.md)
 - [Event Loop](/fe/browser/event-loop.md)
 - [浏览器如何渲染一个页面](/fe/browser/how-the-browser-renders-a-web-page.md)
 - [深入了解浏览器](/fe/browser/inside-browser.md)
@@ -127,6 +128,7 @@
 - [CSS 布局](/fe/css/csslayout.md)
 - [flex](/fe/css/flex.md)
 - [css](/fe/css/index.md)
+- [line-height](/fe/css/line-height.md)
 - [层叠上下文](/fe/css/stackingcontext.md)
 - [theme](/fe/css/theme.md)
 - [小技巧](/fe/css/小技巧.md)
@@ -144,7 +146,6 @@
 - [Service Worker 基础](/fe/other/serviceworkerbase.md)
 - [规范](/fe/other/standard.md)
 - [组件：有状态(stateful) vs 无状态(stateless)](/fe/other/stateful-vs-stateless.md)
-- [TypeScript](/fe/other/tsbase.md)
 - [video](/fe/other/vidoe.md)
 - [vite](/fe/other/vite.md)
 - [Web 优化](/fe/other/weboptimization.md)
@@ -171,6 +172,7 @@
 - [表达式与操作符](/js/advanced/expression-operating.md)
 - [prototype](/js/advanced/prototype.md)
 - [习题](/js/advanced/question.md)
+- [refactor trap](/js/advanced/refactor.md)
 - [作用域](/js/advanced/scope.md)
 
 ### basics
@@ -209,11 +211,13 @@
 
 ### other
 
+- [code in js](/js/other/coding-in-js.md)
 - [Execution Contexts](/js/other/execution-contexts.md)
 - [hoisting](/js/other/hoisting.md)
 - [js 类库及插件收集](/js/other/jslib.md)
 - [sh](/js/other/sh.md)
 - [shallow copy and deep copy](/js/other/shallow-copy-and-deep-copy.md)
+- [TypeScript](/js/other/tsbase.md)
 - [小技巧](/js/other/小技巧.md)
 
 ## react
@@ -283,6 +287,7 @@
 - [Flutter](/tool/environment/flutter.md)
 - [在 .NET Core 中运行 JavaScript](/tool/environment/js-run-in-dotnetcore.md)
 - [mongodb on mac](/tool/environment/mongodb-on-mac.md)
+- [多版本管理](/tool/environment/multi-version-management.md)
 - [mysql（解压缩版）在windows下的安装](/tool/environment/mysql-win-install.md)
 - [python-install](/tool/environment/python-install.md)
 - [VS Code Python配置](/tool/environment/running-python-in-vscoe.md)
