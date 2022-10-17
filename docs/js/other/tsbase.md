@@ -1043,6 +1043,13 @@ type TupleToNestedObject<T, U> = T extends [
 type Reverse<T> = T extends [...infer F, infer E] ? [E, ...Reverse<F>] : T
 ```
 
+### FlipArguments
+
+```ts
+type Reverse<T> = T extends [...infer F, infer E] ? [E, ...Reverse<F>] : T
+type FlipArguments<T> = T extends (...args: infer F) => infer R ? (...args: Reverse<F>) => R : T
+```
+
 ## TODO
 
 - as const
