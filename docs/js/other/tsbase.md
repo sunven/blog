@@ -1050,6 +1050,18 @@ type Reverse<T> = T extends [...infer F, infer E] ? [E, ...Reverse<F>] : T
 type FlipArguments<T> = T extends (...args: infer F) => infer R ? (...args: Reverse<F>) => R : T
 ```
 
+### FlattenDepth
+
+```ts
+type FlattenDepth<T, Depth extends number = 1, U extends any[] = []> = T extends [infer F, ...infer R]
+  ? F extends any[]
+    ? U["length"] extends Depth
+      ? [F, ...FlattenDepth<R, Depth, U>]
+      : [...FlattenDepth<F, Depth, [any, ...U]>, ...FlattenDepth<R, Depth, U>]
+    : [F, ...FlattenDepth<R, Depth, U>]
+  : T;
+```
+
 ## TODO
 
 - as const
