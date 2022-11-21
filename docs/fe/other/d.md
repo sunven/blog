@@ -56,3 +56,5 @@ import.meta.env.VITE_APP_RELEASE
 require 改为
 new URL('@/assets/img/caseSurvey/waitQs.svg', import.meta.url).href,
 ```
+
+<https://blog.csdn.net/yilingsj/article/details/125100463>
