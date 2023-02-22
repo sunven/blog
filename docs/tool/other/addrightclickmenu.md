@@ -111,7 +111,7 @@ Windows Registry Editor Version 5.00
 
 ### Windows Terminal
 
-```
+```powershell
 Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\directory\background\shell\wt]
