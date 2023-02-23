@@ -3,7 +3,7 @@
 **可以把执行上下文栈认为是一个存储函数调用的栈结构，遵循先进后出的原则**
 
 \*\*
-\*\*![img](https://cdn.nlark.com/yuque/0/2019/gif/85676/1553508982386-451c1855-98af-41b7-a595-5b5f27cce2f5.gif)
+\*\*![img](./images/execution-contexts-1.gif)
 
 - JavaScript 执行在单线程上，所有的代码都是排队执行。
 - 一开始浏览器执行全局的代码时，首先创建全局的执行上下文，压入执行栈的顶部。
@@ -37,7 +37,7 @@ changeColor()
 
 - changeColor 函数执行完成，changeColor 函数的执行上下文出栈，并且被销毁
 
-![img](https://cdn.nlark.com/yuque/0/2019/png/85676/1553509246539-904f689d-a8c1-4bf2-9360-cf35793f69b3.png)
+![img](./images/execution-contexts-2.png)
 
 参考：
 

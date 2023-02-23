@@ -54,4 +54,4 @@ const BooksList = ({ books }) => {
 1. 我们去盒马鲜生，想要吃一只帝王蟹，我们自己挑一只买好，送给厨房，厨房只负责做。不管我们吃多大的，还是想吃虾，厨房不用管。只负责做，我们负责提供材料。这个厨房就好比无状态组件。
 
 例如下图，qq.com 的一个板块儿。教育和历史是两个相同结构的块儿，我们想要封装一个 NewsList 的组件，那么我们只需要传给 NewsList 要展示的数据，NewsList 负责帮我们渲染出结果就好了，那么凡是遇到相同的模块，这个组件都适用。这就适合用无状态组件。
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/85676/1590539283832-5f37fce7-f5c8-42ea-b2ef-a8859acafbc5.png)
+![image.png](./images/stateful-vs-stateless.png)

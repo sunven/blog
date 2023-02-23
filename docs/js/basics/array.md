@@ -26,7 +26,7 @@ String.FromCodePoint()
 
 执行结果：
 
-![img](https://cdn.nlark.com/yuque/0/2019/png/85676/1554889931170-b0a052da-cc57-40d9-9de6-b260a28b7dfe.png)
+![img](./images//array1.png)
 
 长度为 20 的数组，每一项都为`undefined`
 
@@ -34,7 +34,7 @@ String.FromCodePoint()
 
 执行结果：
 
-![img](https://cdn.nlark.com/yuque/0/2019/png/85676/1554890450666-68fb2d54-0c20-473f-8e1e-12a5e7918f5e.png)
+![img](./images/array2.png)
 
 定义了一个数组，长度为 20，如果取其中一项，如`Array(20)[0]`为`undefined`
 
@@ -67,7 +67,7 @@ likeArray.apply(null, { length: 10 })
 ```
 
 执行结果：
-![img](https://cdn.nlark.com/yuque/0/2019/png/85676/1554892183151-03c8847c-d5f8-44b2-b928-b0f7b4de1aef.png)
+![img](./images/array3.png)
 
 所以`{ length: 10 }`传进去，也就是传了长度为 10 的数组，且数组每一项为`undefined`
 

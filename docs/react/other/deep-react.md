@@ -139,7 +139,7 @@ Veact.render(element, container)
 
 ## Fiber
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/85676/1616687683512-79b744ca-c449-443c-9507-b908cb885bec.png)
+![image.png](./images/fiber-tree.png)
 什么是 fiber
 一种数据结构，为了使查找下一个工作单元变得容易。这就是为什么每个 fiber 都链接到其第一个子节点，下一个兄弟姐妹和父节点
 
