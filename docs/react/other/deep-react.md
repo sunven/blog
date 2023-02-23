@@ -183,30 +183,24 @@ Didact.render(
       type,
       props: {
         ...props,
-        children: children.map(child =>
-          typeof child === "object" ? child : createTextElement(child)
-        )
-      }
-    };
+        children: children.map(child => (typeof child === 'object' ? child : createTextElement(child))),
+      },
+    }
   }
 
   function createTextElement(text) {
     return {
-      type: "TEXT_ELEMENT",
+      type: 'TEXT_ELEMENT',
       props: {
         nodeValue: text,
-        children: []
-      }
-    };
+        children: [],
+      },
+    }
   }
 
   function createDom(fiber) {
-    const dom =
-      fiber.type == "TEXT_ELEMENT"
-        ? document.createTextNode("")
-        : document.createElement(fiber.type)
-
-    const isProperty = key => key !== "children"
+    const dom = fiber.type == 'TEXT_ELEMENT' ? document.createTextNode('') : document.createElement(fiber.type)
+    const isProperty = key => key !== 'children'
     Object.keys(fiber.props)
       .filter(isProperty)
       .forEach(name => {
@@ -219,7 +213,7 @@ Didact.render(
   // 下一个工作单元，即下一个fiber
   let nextUnitOfWork = null
   // 根fiber
-  let rootFiber = null;
+  let rootFiber = null
 
   // 提交根fiber
   function commitRoot() {
@@ -245,16 +239,13 @@ Didact.render(
         children: [element],
       },
     }
-    nextUnitOfWork = rootFiber;
+    nextUnitOfWork = rootFiber
   }
-
 
   function workLoop(deadline) {
     let shouldYield = false
     while (nextUnitOfWork && !shouldYield) {
-      nextUnitOfWork = performUnitOfWork(
-        nextUnitOfWork
-      )
+      nextUnitOfWork = performUnitOfWork(nextUnitOfWork)
       shouldYield = deadline.timeRemaining() < 1
     }
 
@@ -281,8 +272,7 @@ Didact.render(
     // 二.为子节点创建fiber
     const elements = fiber.props.children
     let index = 0
-
-    // 下一个兄弟节点
+    // 记录上一个fiber
     let prevSibling = null
 
     // 循环子节点
@@ -305,7 +295,7 @@ Didact.render(
       }
       //这个if可以理解为，新创建的fiber，不是父fiber的子fiber，就是上一个fiber的兄弟fiber
 
-      // 上一个兄弟fiber为新创建的fiber
+      // 一次循环结束，上一个fiber为这次创建的fiber
       prevSibling = newFiber
       index++
     }
@@ -318,17 +308,18 @@ Didact.render(
     let nextFiber = fiber
     while (nextFiber) {
       if (nextFiber.sibling) {
-        // 2.没有【子fiber】，则【子fiber】的【下一个兄弟fiber】作为下一个工作单元
+        // 2.没有【子fiber】，则【兄弟fiber】作为下一个工作单元
         return nextFiber.sibling
       }
-      // 3.没有【子fiber】，也没有【下一个兄弟fiber】则【子fiber】的】下一个兄弟fiber】作为下一个工作单元
+      // 3.没有【子fiber】，也没有【兄弟fiber】，则说明这个节点，是某个父节点的最后一个子节点
+      // 则拿到这个fiber的【父fiber】继续while
       nextFiber = nextFiber.parent
     }
   }
 
   const Veact = {
     createElement,
-    render
+    render,
   }
 
   /** @jsx Veact.createElement */
@@ -337,10 +328,10 @@ Didact.render(
       <h1>Bable</h1>
       <h2 style="text-align:center">Yes</h2>
     </div>
-  );
+  )
 
-  const container = document.getElementById("app");
-  Veact.render(element(), container);
+  const container = document.getElementById('app')
+  Veact.render(element(), container)
 </script>
 ```
 
@@ -353,43 +344,35 @@ Didact.render(
       type,
       props: {
         ...props,
-        children: children.map(child =>
-          typeof child === "object" ? child : createTextElement(child)
-        )
-      }
-    };
+        children: children.map(child => (typeof child === 'object' ? child : createTextElement(child))),
+      },
+    }
   }
 
   function createTextElement(text) {
     return {
-      type: "TEXT_ELEMENT",
+      type: 'TEXT_ELEMENT',
       props: {
         nodeValue: text,
-        children: []
-      }
-    };
+        children: [],
+      },
+    }
   }
 
   function createDom(fiber) {
-    const dom =
-      fiber.type == "TEXT_ELEMENT"
-        ? document.createTextNode("")
-        : document.createElement(fiber.type)
-
+    const dom = fiber.type == 'TEXT_ELEMENT' ? document.createTextNode('') : document.createElement(fiber.type)
+    // 调用更新，由于上一次的属性传的空，所以就是新增操作
     updateDom(dom, {}, fiber.props)
-
     return dom
   }
 
   // 是不是事件
-  const isEvent = key => key.startsWith("on")
+  const isEvent = key => key.startsWith('on')
   // 是不是属性（排除事件和子节点这个属性）
-  const isProperty = key =>
-    key !== "children" && !isEvent(key)
+  const isProperty = key => key !== 'children' && !isEvent(key)
   // 属性值是不是新的
-  const isNew = (prev, next) => key =>
-    prev[key] !== next[key]
-  // 是不是不在新属性里，即旧属性
+  const isNew = (prev, next) => key => prev[key] !== next[key]
+  // 是不是不在新属性里，即旧属性 即要删除的
   const isGone = (prev, next) => key => !(key in next)
   //更新节点（属性，事件）
   function updateDom(dom, prevProps, nextProps) {
@@ -397,19 +380,10 @@ Didact.render(
     //移除发生了变化的事件，即事件名相同，内容不同
     Object.keys(prevProps)
       .filter(isEvent)
-      .filter(
-        key =>
-          !(key in nextProps) ||
-          isNew(prevProps, nextProps)(key)
-      )
+      .filter(key => !(key in nextProps) || isNew(prevProps, nextProps)(key))
       .forEach(name => {
-        const eventType = name
-          .toLowerCase()
-          .substring(2)
-        dom.removeEventListener(
-          eventType,
-          prevProps[name]
-        )
+        const eventType = name.toLowerCase().substring(2)
+        dom.removeEventListener(eventType, prevProps[name])
       })
 
     // 清空旧属性
@@ -417,7 +391,7 @@ Didact.render(
       .filter(isProperty)
       .filter(isGone(prevProps, nextProps))
       .forEach(name => {
-        dom[name] = ""
+        dom[name] = ''
       })
 
     // 设置新属性或者发生了变化的属性
@@ -433,23 +407,18 @@ Didact.render(
       .filter(isEvent)
       .filter(isNew(prevProps, nextProps))
       .forEach(name => {
-        const eventType = name
-          .toLowerCase()
-          .substring(2)
-        dom.addEventListener(
-          eventType,
-          nextProps[name]
-        )
+        const eventType = name.toLowerCase().substring(2)
+        dom.addEventListener(eventType, nextProps[name])
       })
   }
 
   // 下一个工作单元，即下一个fiber
   let nextUnitOfWork = null
   // 根fiber
-  let rootFiber = null;
+  let rootFiber = null
   // 最近一次创建的fiber树
   let lastRootFiberTree = null
-  //
+  // 要删除的fiber
   let deletions = null
 
   // 提交根fiber
@@ -457,6 +426,7 @@ Didact.render(
     // 处理需要删除的fiber
     deletions.forEach(commitWork)
     commitWork(rootFiber.child)
+    // 相当于记录oldFiber,由于fiber类似个树，也就记录了所有fiber的oldFiber
     lastRootFiberTree = rootFiber
     rootFiber = null
   }
@@ -471,21 +441,17 @@ Didact.render(
 
     if (
       // 新增
-      fiber.effectTag === "PLACEMENT" &&
+      fiber.effectTag === 'PLACEMENT' &&
       fiber.dom != null
     ) {
       domParent.appendChild(fiber.dom)
     } else if (
       // 修改
-      fiber.effectTag === "UPDATE" &&
+      fiber.effectTag === 'UPDATE' &&
       fiber.dom != null
     ) {
-      updateDom(
-        fiber.dom,
-        fiber.oldFiber.props,
-        fiber.props
-      )
-    } else if (fiber.effectTag === "DELETION") {
+      updateDom(fiber.dom, fiber.oldFiber.props, fiber.props)
+    } else if (fiber.effectTag === 'DELETION') {
       // 删除
       domParent.removeChild(fiber.dom)
     }
@@ -500,19 +466,16 @@ Didact.render(
       props: {
         children: [element],
       },
-      oldFiber: lastRootFiberTree
+      oldFiber: lastRootFiberTree,
     }
     deletions = []
-    nextUnitOfWork = rootFiber;
+    nextUnitOfWork = rootFiber
   }
-
 
   function workLoop(deadline) {
     let shouldYield = false
     while (nextUnitOfWork && !shouldYield) {
-      nextUnitOfWork = performUnitOfWork(
-        nextUnitOfWork
-      )
+      nextUnitOfWork = performUnitOfWork(nextUnitOfWork)
       shouldYield = deadline.timeRemaining() < 1
     }
 
@@ -532,6 +495,7 @@ Didact.render(
     }
 
     const elements = fiber.props.children
+    // 二、生成子fiber,处理有oldFiber的情况
     reconcileChildren(fiber, elements)
 
     // 三.准备下一个工作单元
@@ -542,10 +506,11 @@ Didact.render(
     let nextFiber = fiber
     while (nextFiber) {
       if (nextFiber.sibling) {
-        // 2.没有【子fiber】，则【子fiber】的【下一个兄弟fiber】作为下一个工作单元
+        // 2.没有【子fiber】，则【兄弟fiber】作为下一个工作单元
         return nextFiber.sibling
       }
-      // 3.没有【子fiber】，也没有【下一个兄弟fiber】则【子fiber】的】下一个兄弟fiber】作为下一个工作单元
+      // 3.没有【子fiber】，也没有【兄弟fiber】，则说明这个节点，是某个父节点的最后一个子节点
+      // 则拿到这个fiber的【父fiber】继续while
       nextFiber = nextFiber.parent
     }
   }
@@ -553,22 +518,15 @@ Didact.render(
   function reconcileChildren(currentFiber, elements) {
     let index = 0
     // 得到旧的fiber
-    let oldFiber =
-      currentFiber.oldFiber && currentFiber.oldFiber.child
+    let oldFiber = currentFiber.oldFiber && currentFiber.oldFiber.child
     let prevSibling = null
 
-    while (
-      index < elements.length ||
-      oldFiber != null
-    ) {
+    while (index < elements.length || oldFiber != null) {
       const element = elements[index]
       let newFiber = null
 
       // 节点类型是否相同
-      const sameType =
-        oldFiber &&
-        element &&
-        element.type == oldFiber.type
+      const sameType = oldFiber && element && element.type == oldFiber.type
 
       // 节点类型相同，保留节点，做更新操作
       if (sameType) {
@@ -580,7 +538,7 @@ Didact.render(
           //
           oldFiber: oldFiber,
           //标记为更新
-          effectTag: "UPDATE",
+          effectTag: 'UPDATE',
         }
       }
 
@@ -593,14 +551,14 @@ Didact.render(
           parent: currentFiber,
           oldFiber: null,
           // 编辑为新建
-          effectTag: "PLACEMENT",
+          effectTag: 'PLACEMENT',
         }
       }
 
       // 节点类型不同，存在旧的fiber，则需要删除旧的
       if (oldFiber && !sameType) {
         // 标记为删除
-        oldFiber.effectTag = "DELETION"
+        oldFiber.effectTag = 'DELETION'
         deletions.push(oldFiber)
       }
 
@@ -622,22 +580,22 @@ Didact.render(
 
   const Veact = {
     createElement,
-    render
+    render,
   }
   const updateValue = e => {
-    Veact.render(element(e.target.value), container);
+    Veact.render(element(e.target.value), container)
   }
   /** @jsx Veact.createElement */
-  const element = (value) => (
+  const element = value => (
     <div style="background: yellowgreen">
       <input onInput={updateValue} value={value} />
       <h1>{value}</h1>
       <h2 style="text-align:center">Yes</h2>
     </div>
-  );
+  )
 
-  const container = document.getElementById("app");
-  Veact.render(element('Bable'), container);
+  const container = document.getElementById('app')
+  Veact.render(element('Bable'), container)
 </script>
 ```
 
@@ -650,49 +608,39 @@ Didact.render(
 - 功能组件中的光纤没有 DOM 节点
 - 孩子们来自运行该功能，而不是直接从 props
 
-```javascript
-<script type="text/babel">
+```javascript<script type="text/babel">
   function createElement(type, props, ...children) {
     return {
       type,
       props: {
         ...props,
-        children: children.map(child =>
-          typeof child === "object" ? child : createTextElement(child)
-        )
-      }
-    };
+        children: children.map(child => (typeof child === 'object' ? child : createTextElement(child))),
+      },
+    }
   }
 
   function createTextElement(text) {
     return {
-      type: "TEXT_ELEMENT",
+      type: 'TEXT_ELEMENT',
       props: {
         nodeValue: text,
-        children: []
-      }
-    };
+        children: [],
+      },
+    }
   }
 
   function createDom(fiber) {
-    const dom =
-      fiber.type == "TEXT_ELEMENT"
-        ? document.createTextNode("")
-        : document.createElement(fiber.type)
-
+    const dom = fiber.type == 'TEXT_ELEMENT' ? document.createTextNode('') : document.createElement(fiber.type)
     updateDom(dom, {}, fiber.props)
-
     return dom
   }
 
   // 是不是事件
-  const isEvent = key => key.startsWith("on")
+  const isEvent = key => key.startsWith('on')
   // 是不是属性（排除事件和子节点这个属性）
-  const isProperty = key =>
-    key !== "children" && !isEvent(key)
+  const isProperty = key => key !== 'children' && !isEvent(key)
   // 属性值是不是新的
-  const isNew = (prev, next) => key =>
-    prev[key] !== next[key]
+  const isNew = (prev, next) => key => prev[key] !== next[key]
   // 是不是不在新属性里，即旧属性
   const isGone = (prev, next) => key => !(key in next)
   //更新节点（属性，事件）
@@ -701,19 +649,10 @@ Didact.render(
     //移除发生了变化的事件，即事件名相同，内容不同
     Object.keys(prevProps)
       .filter(isEvent)
-      .filter(
-        key =>
-          !(key in nextProps) ||
-          isNew(prevProps, nextProps)(key)
-      )
+      .filter(key => !(key in nextProps) || isNew(prevProps, nextProps)(key))
       .forEach(name => {
-        const eventType = name
-          .toLowerCase()
-          .substring(2)
-        dom.removeEventListener(
-          eventType,
-          prevProps[name]
-        )
+        const eventType = name.toLowerCase().substring(2)
+        dom.removeEventListener(eventType, prevProps[name])
       })
 
     // 清空旧属性
@@ -721,7 +660,7 @@ Didact.render(
       .filter(isProperty)
       .filter(isGone(prevProps, nextProps))
       .forEach(name => {
-        dom[name] = ""
+        dom[name] = ''
       })
 
     // 设置新属性或者发生了变化的属性
@@ -737,20 +676,15 @@ Didact.render(
       .filter(isEvent)
       .filter(isNew(prevProps, nextProps))
       .forEach(name => {
-        const eventType = name
-          .toLowerCase()
-          .substring(2)
-        dom.addEventListener(
-          eventType,
-          nextProps[name]
-        )
+        const eventType = name.toLowerCase().substring(2)
+        dom.addEventListener(eventType, nextProps[name])
       })
   }
 
   // 下一个工作单元，即下一个fiber
   let nextUnitOfWork = null
   // 根fiber
-  let rootFiber = null;
+  let rootFiber = null
   // 最近一次创建的fiber树
   let lastRootFiberTree = null
   //
@@ -778,24 +712,19 @@ Didact.render(
     }
     const domParent = domParentFiber.dom
 
-
     if (
       // 新增
-      fiber.effectTag === "PLACEMENT" &&
+      fiber.effectTag === 'PLACEMENT' &&
       fiber.dom != null
     ) {
       domParent.appendChild(fiber.dom)
     } else if (
       // 修改
-      fiber.effectTag === "UPDATE" &&
+      fiber.effectTag === 'UPDATE' &&
       fiber.dom != null
     ) {
-      updateDom(
-        fiber.dom,
-        fiber.oldFiber.props,
-        fiber.props
-      )
-    } else if (fiber.effectTag === "DELETION") {
+      updateDom(fiber.dom, fiber.oldFiber.props, fiber.props)
+    } else if (fiber.effectTag === 'DELETION') {
       // 删除
       commitDeletion(fiber, domParent)
     }
@@ -819,19 +748,16 @@ Didact.render(
       props: {
         children: [element],
       },
-      oldFiber: lastRootFiberTree
+      oldFiber: lastRootFiberTree,
     }
     deletions = []
-    nextUnitOfWork = rootFiber;
+    nextUnitOfWork = rootFiber
   }
-
 
   function workLoop(deadline) {
     let shouldYield = false
     while (nextUnitOfWork && !shouldYield) {
-      nextUnitOfWork = performUnitOfWork(
-        nextUnitOfWork
-      )
+      nextUnitOfWork = performUnitOfWork(nextUnitOfWork)
       shouldYield = deadline.timeRemaining() < 1
     }
 
@@ -845,8 +771,7 @@ Didact.render(
   requestIdleCallback(workLoop)
 
   function performUnitOfWork(fiber) {
-    const isFunctionComponent =
-      fiber.type instanceof Function
+    const isFunctionComponent = fiber.type instanceof Function
     if (isFunctionComponent) {
       updateFunctionComponent(fiber)
     } else {
@@ -873,20 +798,19 @@ Didact.render(
   let hookIndex = null
 
   function updateFunctionComponent(fiber) {
+    // 记录当前这个function组件的fiber
     wipFiber = fiber
+    // 可能有多个hook,即 多次useState 从0开始标记
     hookIndex = 0
     wipFiber.hooks = []
+    // type()执行，就会执行useState,就可以知道是哪个fiber
     const children = [fiber.type(fiber.props)]
     reconcileChildren(fiber, children)
   }
 
   function useState(initial) {
-    console.log(1);
     // 获取旧的hook
-    const oldHook =
-      wipFiber.oldFiber &&
-      wipFiber.oldFiber.hooks &&
-      wipFiber.oldFiber.hooks[hookIndex]
+    const oldHook = wipFiber.oldFiber && wipFiber.oldFiber.hooks && wipFiber.oldFiber.hooks[hookIndex]
     const hook = {
       state: oldHook ? oldHook.state : initial,
       queue: [],
@@ -900,8 +824,10 @@ Didact.render(
     const setState = action => {
       // 将需要执行操作放入队列中
       //下次渲染组件时，我们从旧的钩子队列中获取所有动作，然后将它们逐一应用于新的钩子状态，因此当我们返回更新后的状态
+      // setState可以调用多次，把操作存到queue里面
       hook.queue.push(action)
       // 下一个工作单元
+      // 从根节点开始 重新来
       rootFiber = {
         dom: lastRootFiberTree.dom,
         props: lastRootFiberTree.props,
@@ -927,22 +853,15 @@ Didact.render(
   function reconcileChildren(currentFiber, elements) {
     let index = 0
     // 得到旧的fiber
-    let oldFiber =
-      currentFiber.oldFiber && currentFiber.oldFiber.child
+    let oldFiber = currentFiber.oldFiber && currentFiber.oldFiber.child
     let prevSibling = null
 
-    while (
-      index < elements.length ||
-      oldFiber != null
-    ) {
+    while (index < elements.length || oldFiber != null) {
       const element = elements[index]
       let newFiber = null
 
       // 节点类型是否相同
-      const sameType =
-        oldFiber &&
-        element &&
-        element.type == oldFiber.type
+      const sameType = oldFiber && element && element.type == oldFiber.type
 
       // 节点类型相同，保留节点，做更新操作
       if (sameType) {
@@ -954,7 +873,7 @@ Didact.render(
           //
           oldFiber: oldFiber,
           //标记为更新
-          effectTag: "UPDATE",
+          effectTag: 'UPDATE',
         }
       }
 
@@ -967,14 +886,14 @@ Didact.render(
           parent: currentFiber,
           oldFiber: null,
           // 编辑为新建
-          effectTag: "PLACEMENT",
+          effectTag: 'PLACEMENT',
         }
       }
 
       // 节点类型不同，存在旧的fiber，则需要删除旧的
       if (oldFiber && !sameType) {
         // 标记为删除
-        oldFiber.effectTag = "DELETION"
+        oldFiber.effectTag = 'DELETION'
         deletions.push(oldFiber)
       }
 
@@ -997,10 +916,10 @@ Didact.render(
   const Veact = {
     createElement,
     render,
-    useState
+    useState,
   }
   const updateValue = e => {
-    Veact.render(element(e.target.value), container);
+    Veact.render(element(e.target.value), container)
   }
 
   function App(props) {
@@ -1009,15 +928,11 @@ Didact.render(
 
   function Counter() {
     const [state, setState] = Veact.useState(1)
-    return (
-      <h1 onClick={() => setState(c => c + 1)}>
-        Count: {state}
-      </h1>
-    )
+    return <h1 onClick={() => setState(c => c + 1)}>Count: {state}</h1>
   }
 
   /** @jsx Veact.createElement */
-  const element = (value) => (
+  const element = value => (
     <div style="background: yellowgreen">
       <input onInput={updateValue} value={value} />
       <h1>{value}</h1>
@@ -1025,10 +940,10 @@ Didact.render(
       <Counter />
       <h2 style="text-align:center">Yes</h2>
     </div>
-  );
+  )
 
-  const container = document.getElementById("app");
-  Veact.render(element('Bable'), container);
+  const container = document.getElementById('app')
+  Veact.render(element('Bable'), container)
 </script>
 ```
 
