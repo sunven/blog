@@ -608,7 +608,8 @@ Didact.render(
 - 功能组件中的光纤没有 DOM 节点
 - 孩子们来自运行该功能，而不是直接从 props
 
-```javascript<script type="text/babel">
+```javascript
+<script type="text/babel">
   function createElement(type, props, ...children) {
     return {
       type,
