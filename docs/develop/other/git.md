@@ -232,3 +232,13 @@ release 分支理解为 提测分支。来自 develop
 5、测试通过，将此次拉的分支合到master，如需发正式，从master发
 
 ![img](./images/git-model.png)
+
+## git worktree
+
+```sh
+git worktree add <新路径> -b <新分支名>
+git worktree add <新路径> -b <新分支名> <指定分支名>
+git worktree add ../worktree-fixa -b feature/fixa release
+```
+
+从release分支拉一个新分支feature/fixa，放到../worktree-fixa目录
