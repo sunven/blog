@@ -72,13 +72,13 @@ Blob 由一个可选的字符串 type（通常是 MIME 类型）和 blobParts �
 
 ## Data URL
 
-```text
+```txt
 data:[<mediatype>][;base64],<data>
 ```
 
 ## Object URL
 
-```text
+```txt
 blob:<origin>/<uuid>
 ```
 

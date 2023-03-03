@@ -16,7 +16,7 @@
     "@types/node": "^18.0.4",
     "esbuild": "^0.15.10",
     "sass": "^1.53.0",
-    "vitepress": "^1.0.0-alpha.20",
+    "vitepress": "^1.0.0-alpha.49",
     "vue": "^3.2.37"
   },
   "dependencies": {

@@ -117,6 +117,8 @@
 - [深入了解浏览器](/fe/browser/inside-browser.md)
 - [页面通信](/fe/browser/page-communication.md)
 - [页面生命周期](/fe/browser/page-lifecycle.md)
+- [per](/fe/browser/per.md)
+- [requestIdleCallback](/fe/browser/requestIdleCallback.md)
 - [前端缓存](/fe/browser/webcache.md)
 - [指标](/fe/browser/zhibiao.md)
 
@@ -138,9 +140,11 @@
 
 - [文章收录](/fe/other/articleinclusion.md)
 - [客户端存储](/fe/other/client-storage.md)
+- [d](/fe/other/d.md)
 - [demo](/fe/other/demo.md)
 - [拖放](/fe/other/drag-and-drop.md)
 - [html5](/fe/other/html5.md)
+- [issues](/fe/other/issues.md)
 - [# 加载](/fe/other/optimize.md)
 - [performance](/fe/other/performance.md)
 - [Service Worker 基础](/fe/other/serviceworkerbase.md)
@@ -215,6 +219,7 @@
 - [Execution Contexts](/js/other/execution-contexts.md)
 - [hoisting](/js/other/hoisting.md)
 - [js 类库及插件收集](/js/other/jslib.md)
+- [memory leaks](/js/other/memory-leaks.md)
 - [sh](/js/other/sh.md)
 - [shallow copy and deep copy](/js/other/shallow-copy-and-deep-copy.md)
 - [TypeScript](/js/other/tsbase.md)
