@@ -126,6 +126,8 @@ console.log(tree)
 document.body.innerHTML = '<pre>' + JSON.stringify(tree, null, ' ')
 ```
 
+缺点：需要确认根节点。这个例子中，根节点是0
+
 [http://jsfiddle.net/alexandrupausan/qjxpLhfu/](http://jsfiddle.net/alexandrupausan/qjxpLhfu/)
 
 ### 2
@@ -222,3 +224,5 @@ test(json)
 console.log(json)
 document.body.innerHTML = '<pre>' + JSON.stringify(json, null, '  ')
 ```
+
+缺点：test每次从0开始，内部还有递归，会有无意义的递归
