@@ -242,3 +242,36 @@ git worktree add ../worktree-fixa -b feature/fixa release
 ```
 
 从release分支拉一个新分支feature/fixa，放到../worktree-fixa目录
+
+## submodule
+
+<https://git-scm.com/docs/git-submodule>
+
+<https://git-scm.com/docs/gitsubmodules>
+
+添加子模块
+
+```sh
+# 会自动拉取代码   .gitmodules添加lodash
+git submodule add git@github.com:lodash/lodash.git lodash
+```
+
+更新
+
+新clone的项目不会自动clone submodule
+
+```sh
+git submodule init 用来初始化本地配置文件，将.gitmodules中关于[submodule]的部分拷贝到.git/config文件中。
+git submodule update 根据项目的.gitmodules文件，抓取远程仓库的代码。
+```
+
+删除
+
+```sh
+# 清空lodash目录（lodash文件夹本身未删除），移除$GIT_DIR/config中的lodash
+git submodule deinit lodash
+# .gitmodules移除lodash，删除lodash目录，config未修改
+git rm lodash
+
+# 手动删除 $GIT_DIR/modules/<name>/
+```
