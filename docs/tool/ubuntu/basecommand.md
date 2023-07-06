@@ -195,6 +195,12 @@ expect {
 expect eof
 ```
 
+复制
+
+``` sh
+cp -r ./tldp ./tldp_0706_bak
+```
+
 ## reference
 
 [https://jingyan.baidu.com/article/7e4409530787212fc0e2ef99.html](https://jingyan.baidu.com/article/7e4409530787212fc0e2ef99.html)
