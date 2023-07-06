@@ -201,6 +201,8 @@ expect eof
 cp -r ./tldp ./tldp_0706_bak
 ```
 
+wsl -e /root/autossh/100.65.38.26.sh
+
 ## reference
 
 [https://jingyan.baidu.com/article/7e4409530787212fc0e2ef99.html](https://jingyan.baidu.com/article/7e4409530787212fc0e2ef99.html)
