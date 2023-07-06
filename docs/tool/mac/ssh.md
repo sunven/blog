@@ -36,7 +36,7 @@ interact
 
 iTerm2 配置
 
-![](../../.images/Snipaste_2021-10-13_14-08-11.png)
+![img](../../.images/Snipaste_2021-10-13_14-08-11.png)
 
 /bin/zsh
 

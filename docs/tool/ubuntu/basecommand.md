@@ -1,5 +1,19 @@
 # Ubuntu 常用命令
 
+Accessing your WSL files in Windows
+
+```
+# in the wsl terminal
+explorer.exe .
+```
+
+Accessing your Windows files in the WSL terminal
+
+```
+# in the wsl terminal
+cd /mnt
+```
+
 ## 通用
 
 ```
@@ -148,6 +162,37 @@ sudo  apt-get  upgrade
 
 ```
 sudo  update-manager   -c  -d
+```
+
+自动登录
+
+```sh
+#!/usr/bin/expect -f
+set timeout -1
+spawn ssh root@100.65.38.26
+expect "*assword:*"
+send "Teng0606its!@#\n"
+interact
+
+```
+
+从本机拷贝到另外一台机器
+
+```sh
+#!/usr/bin/expect
+set timeout -1
+#从本机拷贝到另外一台机器
+spawn scp -r /mnt/f/work/tldp/front-end/build/* root@100.65.38.26:/www/tldp
+expect {
+ "(yes/no)?" {
+   send "yes\n"
+   expect "*assword:*" { send "Teng0606its1!@#\n"}
+  }
+  "*assword:*" {
+   send "Teng0606its1!@#\n"
+  }
+}
+expect eof
 ```
 
 ## reference
