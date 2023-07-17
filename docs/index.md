@@ -158,6 +158,7 @@
 
 ### question
 
+- [Good Question](/fe/question/good-question.md)
 - [这段代码打印什么](/fe/question/what-does-this-code-print.md)
 
 ### webapi

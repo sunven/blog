@@ -94,11 +94,14 @@ export default defineConfig({
       pattern: 'https://github.com/sunven/blog/edit/master/docs/:path',
       text: 'Edit this page on GitHub',
     },
-    algolia: {
-      appId: 'MFM87Q4KVR',
-      apiKey: 'f32cb77f611a2ed31fa6ba7fe0716f5b',
-      indexName: 'blog',
+    search: {
+      provider: 'local',
     },
+    // algolia: {
+    //   appId: 'MFM87Q4KVR',
+    //   apiKey: 'f32cb77f611a2ed31fa6ba7fe0716f5b',
+    //   indexName: 'blog',
+    // },
   },
   vue: {
     template: {

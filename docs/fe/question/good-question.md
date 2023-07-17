@@ -8,3 +8,5 @@
 
 - splitChunks
 - LimitChunkCountPlugin
+
+### 2. cacheGroups 有什么用
