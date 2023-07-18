@@ -32,3 +32,8 @@ yarn cache clean
 # 设置缓存目录
 yarn config set cache-folder "D:\yarn\cache"
 ```
+
+## deep
+
+- 并行下载
+- 缓存机制

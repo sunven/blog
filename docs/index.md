@@ -79,7 +79,6 @@
 ### nodejs
 
 - [Koa](/develop/nodejs/koa.md)
-- [pnpm](/develop/nodejs/pnpm.md)
 
 ### other
 
@@ -154,7 +153,6 @@
 - [vite](/fe/other/vite.md)
 - [Web 优化](/fe/other/weboptimization.md)
 - [webpack 基础](/fe/other/webpack.md)
-- [yarn常用命令](/fe/other/yarncommand.md)
 
 ### question
 
@@ -164,10 +162,6 @@
 ### webapi
 
 - [各种尺寸](/fe/webapi/whatever-sizing.md)
-
-### webpack
-
-- [webpack](/fe/webpack/webpack.md)
 
 ## js
 
@@ -316,7 +310,6 @@
 - [Hexo 基本使用](/tool/other/hexo.md)
 - [ImageMagick](/tool/other/imagemagick.md)
 - [Linux 命令](/tool/other/linuxcommand.md)
-- [npm](/tool/other/npm.md)
 - [Playground](/tool/other/playground.md)
 - [Postman](/tool/other/postman.md)
 - [Scoop](/tool/other/scoop.md)
@@ -333,6 +326,19 @@
 ### vscode
 
 - [如何打造一款属于自己的 Visual Studio Code 颜色主题](/tool/vscode/create-vscode-theme.md)
+
+## tool-chain
+
+### package-management
+
+- [npm vs yarn vs pnpm](/tool-chain/package-management/npm-yarn-pnpm.md)
+- [npm](/tool-chain/package-management/npm.md)
+- [pnpm](/tool-chain/package-management/pnpm.md)
+- [yarn常用命令](/tool-chain/package-management/yarn.md)
+
+### webpack
+
+- [webpack](/tool-chain/webpack/webpack.md)
 
 ## vue
 
