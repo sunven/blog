@@ -10,6 +10,28 @@ hard link
 - 硬链接不会新建 inode（索引节点），源文件与硬链接指向同一个索引节点
 - 硬链接不支持目录，只支持文件级别，也不支持跨分区
 - 删除源文件和所有硬链接之后，文件才真正被删除
+- 硬链接和源文件本质是同一个文件，只不过可以名字或者位置不一样，无所谓谁是硬链接文件，或者说互为硬链接。因为本质是同一个文件所以占用空间不会增加，
+- 在最后一个文件被删除之前就算删除其他硬链接文件也不会真正删除掉文件。
+- 但是对其中一个文件做修改，其他文件也受影响，因为本质是同一个文件。包括权限，属主的修改也会影响
+- 不能对文件夹使用硬链接
+
+```
+root@DESKTOP-EN5M5LI:/mnt/c/Users/Administrator/Desktop/pnpm-demo/node_modules/.pnpm/registry.npmmirror.com+@babel+helper-string-parser@7.22.5/node_modules/@babel/helper-string-parser/lib# ls -li
+total 32
+1688849861734995 -rwxrwxrwx 3 root root  7861 May 29 15:56 index.js
+2251799814834401 -rwxrwxrwx 3 root root 21631 Jul 19 16:28 index.js.map
+root@DESKTOP-EN5M5LI:/mnt/c/Users/Administrator/Desktop/pnpm-demo/node_modules/.pnpm/registry.npmmirror.com+@babel+helper-string-parser@7.22.5/node_modules/@babel/helper-string-parser/lib# stat index.js
+  File: index.js
+  Size: 7861            Blocks: 16         IO Block: 4096   regular file
+Device: 4ah/74d Inode: 1688849861734995  Links: 3
+Access: (0777/-rwxrwxrwx)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2023-07-19 17:05:22.371851300 +0800
+Modify: 2023-05-29 15:56:22.851195200 +0800
+Change: 2023-07-19 16:38:08.713217700 +0800
+ Birth: -
+root@DESKTOP-EN5M5LI:/mnt/c/Users/Administrator/Desktop/pnpm-demo/node_modules/.pnpm/registry.npmmirror.com+@babel+helper-string-parser@7.22.5/node_modules/@babel/helper-string-parser/lib# find /mnt/c/Users/Administrator/AppData/Local/pnpm/store/ -inum 1688849861734995
+/mnt/c/Users/Administrator/AppData/Local/pnpm/store/v3/files/60/25b32248ed4880de18eafaaf2a1d0ab4eab2180c502d9bbe8103e3d1b278d57807d3d103e243b509a913d9e54b0aecec80b33a2a5aa7ff629ad5fadf64b182
+```
 
 symbolic link
 
