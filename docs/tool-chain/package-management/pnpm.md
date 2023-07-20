@@ -1,44 +1,5 @@
 # pnpm
 
-- Hard link
-  - fube
-- Symbolic link
-  - 快捷方式
-
-hard link
-
-- 硬链接不会新建 inode（索引节点），源文件与硬链接指向同一个索引节点
-- 硬链接不支持目录，只支持文件级别，也不支持跨分区
-- 删除源文件和所有硬链接之后，文件才真正被删除
-- 硬链接和源文件本质是同一个文件，只不过可以名字或者位置不一样，无所谓谁是硬链接文件，或者说互为硬链接。因为本质是同一个文件所以占用空间不会增加，
-- 在最后一个文件被删除之前就算删除其他硬链接文件也不会真正删除掉文件。
-- 但是对其中一个文件做修改，其他文件也受影响，因为本质是同一个文件。包括权限，属主的修改也会影响
-- 不能对文件夹使用硬链接
-
-```
-root@DESKTOP-EN5M5LI:/mnt/c/Users/Administrator/Desktop/pnpm-demo/node_modules/.pnpm/registry.npmmirror.com+@babel+helper-string-parser@7.22.5/node_modules/@babel/helper-string-parser/lib# ls -li
-total 32
-1688849861734995 -rwxrwxrwx 3 root root  7861 May 29 15:56 index.js
-2251799814834401 -rwxrwxrwx 3 root root 21631 Jul 19 16:28 index.js.map
-root@DESKTOP-EN5M5LI:/mnt/c/Users/Administrator/Desktop/pnpm-demo/node_modules/.pnpm/registry.npmmirror.com+@babel+helper-string-parser@7.22.5/node_modules/@babel/helper-string-parser/lib# stat index.js
-  File: index.js
-  Size: 7861            Blocks: 16         IO Block: 4096   regular file
-Device: 4ah/74d Inode: 1688849861734995  Links: 3
-Access: (0777/-rwxrwxrwx)  Uid: (    0/    root)   Gid: (    0/    root)
-Access: 2023-07-19 17:05:22.371851300 +0800
-Modify: 2023-05-29 15:56:22.851195200 +0800
-Change: 2023-07-19 16:38:08.713217700 +0800
- Birth: -
-root@DESKTOP-EN5M5LI:/mnt/c/Users/Administrator/Desktop/pnpm-demo/node_modules/.pnpm/registry.npmmirror.com+@babel+helper-string-parser@7.22.5/node_modules/@babel/helper-string-parser/lib# find /mnt/c/Users/Administrator/AppData/Local/pnpm/store/ -inum 1688849861734995
-/mnt/c/Users/Administrator/AppData/Local/pnpm/store/v3/files/60/25b32248ed4880de18eafaaf2a1d0ab4eab2180c502d9bbe8103e3d1b278d57807d3d103e243b509a913d9e54b0aecec80b33a2a5aa7ff629ad5fadf64b182
-```
-
-symbolic link
-
-- 符号链接中存储的是源文件的路径，指向源文件，类似于 Windows 的快捷方式
-- 符号链接支持目录与文件，它与源文件是不同的文件，inode 值不一样，文件类型也不同，因此符号链接可以跨分区访问
-- 删除源文件后，符号链接依然存在，但是无法通过它访问到源文件
-
 *npm@3*之前采用非扁平化
 
 ```
@@ -119,3 +80,63 @@ pnpm更多特性：
 幽灵依赖问题：只有直接依赖会平铺在 node_modules 下，子依赖不会被提升，不会产生幽灵依赖。
 依赖分身问题：相同的依赖只会在全局 store 中安装一次。项目中的都是源文件的副本，几乎不占用任何空间，没有了依赖分身。
 最大的优点是节省磁盘空间，一个包全局只保存一份，剩下的都是软硬连接
+
+## deep
+
+![img](./.images/snipaste_20230720183726.png)
+
+package.json
+
+```json
+{
+  "dependencies": {
+    "dayjs": "^1.11.9",
+    "element-plus": "^2.3.8",
+    "vue": "^3.3.4"
+  }
+}
+```
+
+软链接
+
+![img](./.images/snipaste_20230720165804.png)
+
+`dayjs` `element-plus` `vue` 为软连接
+
+结合文件资源管理看
+
+![img](./.images/snipaste_20230720163634.png)
+
+`dayjs` `element-plus` `vue` 为快捷方式
+
+`dayjs`实际指向`/mnt/c/Users/Administrator/Desktop/pnpm-demo/node_modules/.pnpm/registry.npmmirror.com+dayjs@1.11.9/node_modules/dayjs/`
+
+进入`/mnt/c/Users/Administrator/Desktop/pnpm-demo/node_modules/.pnpm/registry.npmmirror.com+dayjs@1.11.9/node_modules/dayjs/`
+
+硬链接
+
+![img](./.images/snipaste_20230720165545.png)
+
+查看硬链接位置 `dayjs.min.js`
+
+![img](./.images/snipaste_20230720183234.png)
+
+symbolic link
+
+- 符号链接中存储的是源文件的路径，指向源文件，类似于 Windows 的快捷方式
+- 符号链接支持目录与文件，它与源文件是不同的文件，inode 值不一样，文件类型也不同，因此符号链接可以跨分区访问
+- 删除源文件后，符号链接依然存在，但是无法通过它访问到源文件
+
+hard link
+
+- 硬链接不会新建 inode（索引节点），源文件与硬链接指向同一个索引节点
+- 硬链接不支持目录，只支持文件级别，也不支持跨分区
+- 删除源文件和所有硬链接之后，文件才真正被删除
+- 硬链接和源文件本质是同一个文件，只不过可以名字或者位置不一样，无所谓谁是硬链接文件，或者说互为硬链接。因为本质是同一个文件所以占用空间不会增加，
+- 在最后一个文件被删除之前就算删除其他硬链接文件也不会真正删除掉文件。
+- 但是对其中一个文件做修改，其他文件也受影响，因为本质是同一个文件。包括权限，属主的修改也会影响
+- 不能对文件夹使用硬链接
+
+## reference
+
+[253.精读《pnpm》](https://github.com/ascoders/weekly/blob/master/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/253.%E7%B2%BE%E8%AF%BB%E3%80%8Apnpm%E3%80%8B.md)
