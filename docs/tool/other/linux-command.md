@@ -240,3 +240,15 @@ export https_proxy="http://192.168.64.1:1080"
 chsh -s /bin/zsh
 chsh -s $(which zsh)
 重新打开终端
+
+## on-my-zsh
+
+主题：
+
+<https://github.com/romkatv/powerlevel10k>
+
+插件：
+
+<https://github.com/zsh-users/zsh-syntax-highlighting>
+
+<https://github.com/zsh-users/zsh-autosuggestions>
