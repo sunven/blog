@@ -158,8 +158,27 @@ const style = {
 };
 ```
 
+- styled-components
 - css in js 没有统一标准
 - 实现库很多[http://michelebertoli.github.io/css-in-js/](http://michelebertoli.github.io/css-in-js/)
+
+### 优点
+
+局部作用域，超强隔离
+css 与 js 可以放一起（一个文件文件中）
+使用js 变量
+
+### 缺点
+
+<https://dev.to/srmagura/why-were-breaking-up-wiht-css-in-js-4g9b>
+
+- ReactDevTools 结构变得复杂
+- 运行时性能压力
+  - 渲染过程中，交还浏览器时，可能需要重新计算css规则
+- 增加了包的大小
+- 难以复用
+- 扩展性差
+  - 生成的className是随机的，覆盖样式变得困难
 
 ## css preprocessor
 
