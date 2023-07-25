@@ -18,7 +18,7 @@
 
 ## 解决问题
 
-### 同一个 BFC 下外边距会发生折叠
+### 同一个 BFC 下外边距会发生折叠 collapsing-margins
 
 ```html
 <head>
