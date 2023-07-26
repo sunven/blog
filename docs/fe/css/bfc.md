@@ -1,5 +1,22 @@
 # BFC
 
+## collapsing-margins
+
+<https://www.w3.org/TR/CSS2/box.html#collapsing-margins>
+
+<iframe src="https://codesandbox.io/embed/bfc-2p76z5?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="bfc"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
+两个或多个框（可以彼此相邻或嵌套）的相邻边距（没有非空内容、填充或边框区域或间隙将它们分开）组合形成一个边距。
+
+- 当两个元素的垂直边距接触时，只有具有最大边距值的元素的边距将被保留，而具有较小边距值的元素的边距将被折叠为零。
+- 如果一个元素具有负边距，则将边距值相加以确定最终值。
+- 如果两者均为负值，则使用较大的负值。此定义适用于相邻元素和嵌套元素
+
 它是一个只有块级盒子参与的独立块级渲染区域，它规定了内部的块级盒子如何布局，且与区域外部无关
 
 一个 BFC 区域包含创建该上下文元素的所有子元素，但是不包括创建了新的 BFC 的子元素的内部元素
@@ -18,7 +35,7 @@
 
 ## 解决问题
 
-### 同一个 BFC 下外边距会发生折叠 collapsing-margins
+### 同一个 BFC 下外边距会发生折叠
 
 ```html
 <head>

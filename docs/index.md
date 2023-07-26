@@ -293,14 +293,6 @@
 - [VS Code Python配置](/tool/environment/running-python-in-vscoe.md)
 - [SVN On Mac VS Code](/tool/environment/svn-on-vscode.md)
 
-### mac
-
-- [Mac 常用命令](/tool/mac/command.md)
-- [on-my-zsh](/tool/mac/on-my-zsh.md)
-- [Mac 常用软件](/tool/mac/soft.md)
-- [ssh](/tool/mac/ssh.md)
-- [装机清单](/tool/mac/装机清单.md)
-
 ### other
 
 - [添加右键菜单](/tool/other/addrightclickmenu.md)
@@ -309,19 +301,24 @@
 - [ffmpeg](/tool/other/ffmpeg.md)
 - [Hexo 基本使用](/tool/other/hexo.md)
 - [ImageMagick](/tool/other/imagemagick.md)
+- [Ubuntu 常用命令](/tool/other/linux-command.md)
 - [Linux 命令](/tool/other/linuxcommand.md)
+- [Mac 常用命令](/tool/other/mac-command.md)
+- [Mac 常用软件](/tool/other/mac-soft.md)
 - [Playground](/tool/other/playground.md)
 - [Postman](/tool/other/postman.md)
 - [Scoop](/tool/other/scoop.md)
 - [在 shell 脚本中利用 lftp 做自动部署](/tool/other/shelllftpdeploy.md)
+- [ssh](/tool/other/ssh.md)
 - [Visual Studio 相关](/tool/other/visualstudio.md)
 - [windows 命令](/tool/other/windowscommand.md)
 - [Windows 常用软件](/tool/other/windowssoft.md)
+- [wsl](/tool/other/wsl.md)
+- [装机清单](/tool/other/装机清单.md)
 
-### ubuntu
+### soft
 
-- [Ubuntu 常用命令](/tool/ubuntu/basecommand.md)
-- [Ubuntu](/tool/ubuntu/index.md)
+- [soft](/tool/soft/index.md)
 
 ### vscode
 

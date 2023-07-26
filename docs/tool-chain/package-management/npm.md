@@ -44,6 +44,17 @@
 9. `npm outdated`：检查包是否已经过时，此命令会列出所有已经过时的包，可以及时进行包的更新
 10. `npm help json`：打开 package.json
 
+设置缓存目录
+加 --global nvm切换版本后，不生效
+npm config set cache D:\npm\cache
+
+配置优先级
+
+1. per-project configuration file (/path/to/my/project/.npmrc)
+2. per-user configuration file (defaults to $HOME/.npmrc; configurable via CLI option --userconfig or environment variable $NPM_CONFIG_USERCONFIG)
+3. global configuration file (defaults to $PREFIX/etc/npmrc; configurable via CLI option --globalconfig or environment variable $NPM_CONFIG_GLOBALCONFIG)
+4. npm's built-in configuration file (/path/to/npm/npmrc)
+
 ### 更新 npm 至最新版本
 
 ```
