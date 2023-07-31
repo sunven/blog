@@ -1,6 +1,6 @@
 # blog
 
-a notes blog
+a notes blog.
 
 ## markdown lint
 
