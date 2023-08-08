@@ -1,7 +1,5 @@
 # theme
 
-
-
 ## prefers-color-scheme
 
 css
@@ -38,7 +36,7 @@ if (darkThemeMq.matches) {
 @media (prefers-color-scheme: dark) {
   html, img {
     filter: invert(1) hue-rotate(180deg);
-	}
+  }
 }
 ```
 
@@ -68,8 +66,6 @@ css系统颜色
 }
 ```
 
-
-
 ## theme-color
 
 ```html
@@ -81,4 +77,3 @@ css系统颜色
 ![img](./images/WechatIMG71.png)
 
 dark 模式下没效果，不知道为啥
-
