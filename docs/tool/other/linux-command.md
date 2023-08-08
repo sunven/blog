@@ -234,6 +234,8 @@ export https_proxy="http://192.168.64.1:1080"
 
 代理（ss）开启 允许局域网的连接
 
+host raw.githubusercontent.com
+
 1. 替换源 :%s/old/new/g
 2. 安装zsh
 3. 默认用zsh
