@@ -67,10 +67,6 @@
 - [透明代理基础](/develop/dotnet/transparentproxy.md)
 - [volatile](/develop/dotnet/volatile.md)
 
-### get-start
-
-- [node typescript](/develop/get-start/node-typescript.md)
-
 ### network
 
 - [HTTP](/develop/network/http.md)
@@ -263,6 +259,12 @@
 - [大型分布式网站架构设计与实践](/reading/other/distributed.md)
 - [HTML5与CSS3权威指南](/reading/other/html5css3.md)
 
+## Self-study Examination
+
+### English
+
+- [2019-10](/Self-study Examination/English/2019-10.md)
+
 ## subject
 
 ### math
@@ -289,6 +291,7 @@
 - [mongodb on mac](/tool/environment/mongodb-on-mac.md)
 - [多版本管理](/tool/environment/multi-version-management.md)
 - [mysql（解压缩版）在windows下的安装](/tool/environment/mysql-win-install.md)
+- [node typescript](/tool/environment/node-typescript.md)
 - [python-install](/tool/environment/python-install.md)
 - [VS Code Python配置](/tool/environment/running-python-in-vscoe.md)
 - [SVN On Mac VS Code](/tool/environment/svn-on-vscode.md)
