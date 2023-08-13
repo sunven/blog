@@ -185,6 +185,11 @@ git config --global core.safecrlf true
 git config --global core.autocrlf false
 ```
 
+core.autocrlf
+true： 提交时改成LF，检出时改成CRLF
+input：提交时改成LF，检出时不改
+false：提交时是什么就是什么，不改换行符，检出时也不改   (默认值)
+
 ## no matching host key type found. Their offer: ssh-rsa
 
  配置好公私钥之后，仍然无法直接用 git ssh的方式，下载代码，解决：
