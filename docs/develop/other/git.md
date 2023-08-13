@@ -43,7 +43,7 @@
 | git push origin :refs/tags/`<tagname>`           | 删除一个远程标签                                        |
 | **other**😊                                       |                                                         |
 | ssh-keygen -R github.com                         | 删除known_hosts配置                                     |
-| ssh -T git@github.com                            | 测试连接                                                |
+| ssh -T <git@github.com>                            | 测试连接                                                |
 
 ## no-fast-forward
 
