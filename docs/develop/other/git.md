@@ -107,10 +107,19 @@ ssh
 
 Socks 代理
 
+mac
+
 ```sh
 Host github.com
 HostName github.com
 ProxyCommand nc -v -x 127.0.0.1:1086 %h %p
+```
+
+windows
+
+```
+Host github.com
+  ProxyCommand connect -H 127.0.0.1:10801 %h %p
 ```
 
 http
