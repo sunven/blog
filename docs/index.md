@@ -71,6 +71,7 @@
 
 - [HTTP](/develop/network/http.md)
 - [HTTPS](/develop/network/https.md)
+- [tcp](/develop/network/tcp.md)
 
 ### nodejs
 
@@ -264,15 +265,18 @@
 ### English
 
 - [2016-04](/Self-study Examination/English/2016-04.md)
-- [2016.10](/Self-study Examination/English/2016-10.md)
+- [2016-10](/Self-study Examination/English/2016-10.md)
 - [2017-04](/Self-study Examination/English/2017-04.md)
 - [2017-10](/Self-study Examination/English/2017-10.md)
 - [2018-04](/Self-study Examination/English/2018-04.md)
 - [2018-10](/Self-study Examination/English/2018-10.md)
 - [2019-04](/Self-study Examination/English/2019-04.md)
 - [2019-10](/Self-study Examination/English/2019-10.md)
-- [2020.08](/Self-study Examination/English/2020-08.md)
-- [2020-08](/Self-study Examination/English/2020-10.md)
+- [2020-08](/Self-study Examination/English/2020-08.md)
+- [2020-10](/Self-study Examination/English/2020-10.md)
+- [2021-04](/Self-study Examination/English/2021-04.md)
+- [2021-10](/Self-study Examination/English/2021-10.md)
+- [2022-04](/Self-study Examination/English/2022-04.md)
 
 ## subject
 
