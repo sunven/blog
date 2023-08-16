@@ -150,6 +150,12 @@ git config --global --unset https.proxy
 
 ## 代码量统计
 
+行数
+
+```sh
+git ls-files | xargs cat | wc -l
+```
+
 个人代码量：
 
 ```sh
