@@ -228,6 +228,7 @@
 - [React文章收录](/react/other/collect.md)
 - [深入 React](/react/other/deep-react.md)
 - [Flux](/react/other/flux.md)
+- [官方文档](/react/other/official-documentation.md)
 - [React 高阶组件](/react/other/react-hoc.md)
 - [redux reselect](/react/other/redux-reselect.md)
 
@@ -277,6 +278,10 @@
 - [2021-04](/Self-study Examination/English/2021-04.md)
 - [2021-10](/Self-study Examination/English/2021-10.md)
 - [2022-04](/Self-study Examination/English/2022-04.md)
+
+### other
+
+- [english](/Self-study Examination/other/note.md)
 
 ## subject
 
