@@ -4,7 +4,7 @@
 
 - [常用算法](/develop/algorithm/commonlyused.md)
 - [算法](/develop/algorithm/index.md)
-- [重学数据结构与算法](/develop/algorithm/重学数据结构与算法.md)
+- [重学数据结构与算法](/develop/algorithm/%E9%87%8D%E5%AD%A6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.md)
 
 ### designpatterns
 
@@ -95,7 +95,7 @@
 
 ### safe
 
-- [前端安全](/develop/safe/前端安全.md)
+- [前端安全](/develop/safe/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8.md)
 
 ### sql
 
@@ -129,8 +129,8 @@
 - [line-height](/fe/css/line-height.md)
 - [层叠上下文](/fe/css/stackingcontext.md)
 - [theme](/fe/css/theme.md)
-- [小技巧](/fe/css/小技巧.md)
-- [移动端布局](/fe/css/移动端布局.md)
+- [小技巧](/fe/css/%E5%B0%8F%E6%8A%80%E5%B7%A7.md)
+- [移动端布局](/fe/css/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80.md)
 
 ### other
 
@@ -182,7 +182,7 @@
 - [HTML5 API](/js/basics/html5api.md)
 - [面向对象的程序设计-继承](/js/basics/inherit.md)
 - [ISSUE](/js/basics/issue.md)
-- [Map、WeakMap、Set、WeakSet](/js/basics/Map、WeakMap、Set、WeakSet.md)
+- [Map、WeakMap、Set、WeakSet](/js/basics/Map%E3%80%81WeakMap%E3%80%81Set%E3%80%81WeakSet.md)
 - [模块化](/js/basics/modularization.md)
 - [Proxy & Reflec](/js/basics/proxy-and-reflect.md)
 - [正则表达式](/js/basics/regex.md)
@@ -215,7 +215,7 @@
 - [sh](/js/other/sh.md)
 - [shallow copy and deep copy](/js/other/shallow-copy-and-deep-copy.md)
 - [TypeScript](/js/other/tsbase.md)
-- [小技巧](/js/other/小技巧.md)
+- [小技巧](/js/other/%E5%B0%8F%E6%8A%80%E5%B7%A7.md)
 
 ## react
 
@@ -265,23 +265,23 @@
 
 ### English
 
-- [2016-04](/Self-study Examination/English/2016-04.md)
-- [2016-10](/Self-study Examination/English/2016-10.md)
-- [2017-04](/Self-study Examination/English/2017-04.md)
-- [2017-10](/Self-study Examination/English/2017-10.md)
-- [2018-04](/Self-study Examination/English/2018-04.md)
-- [2018-10](/Self-study Examination/English/2018-10.md)
-- [2019-04](/Self-study Examination/English/2019-04.md)
-- [2019-10](/Self-study Examination/English/2019-10.md)
-- [2020-08](/Self-study Examination/English/2020-08.md)
-- [2020-10](/Self-study Examination/English/2020-10.md)
-- [2021-04](/Self-study Examination/English/2021-04.md)
-- [2021-10](/Self-study Examination/English/2021-10.md)
-- [2022-04](/Self-study Examination/English/2022-04.md)
+- [2016-04](/Self-study%20Examination/English/2016-04.md)
+- [2016-10](/Self-study%20Examination/English/2016-10.md)
+- [2017-04](/Self-study%20Examination/English/2017-04.md)
+- [2017-10](/Self-study%20Examination/English/2017-10.md)
+- [2018-04](/Self-study%20Examination/English/2018-04.md)
+- [2018-10](/Self-study%20Examination/English/2018-10.md)
+- [2019-04](/Self-study%20Examination/English/2019-04.md)
+- [2019-10](/Self-study%20Examination/English/2019-10.md)
+- [2020-08](/Self-study%20Examination/English/2020-08.md)
+- [2020-10](/Self-study%20Examination/English/2020-10.md)
+- [2021-04](/Self-study%20Examination/English/2021-04.md)
+- [2021-10](/Self-study%20Examination/English/2021-10.md)
+- [2022-04](/Self-study%20Examination/English/2022-04.md)
 
 ### other
 
-- [english](/Self-study Examination/other/note.md)
+- [english](/Self-study%20Examination/other/note.md)
 
 ## subject
 
@@ -335,7 +335,7 @@
 - [windows 命令](/tool/other/windowscommand.md)
 - [Windows 常用软件](/tool/other/windowssoft.md)
 - [wsl](/tool/other/wsl.md)
-- [装机清单](/tool/other/装机清单.md)
+- [装机清单](/tool/other/%E8%A3%85%E6%9C%BA%E6%B8%85%E5%8D%95.md)
 
 ### soft
 
@@ -372,7 +372,7 @@
 - [vue 中的发布/订阅模式模式](/vue/other/publish-subscribe-mode-in-vue.md)
 - [VUE 文章收录](/vue/other/vuecollect.md)
 - [Vuex 中 modules 和 plugins](/vue/other/vuex-modules-plugins.md)
-- [VUE 组件通信](/vue/other/VUE组件通信.md)
+- [VUE 组件通信](/vue/other/VUE%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1.md)
 
 ### rtfsc
 

@@ -24,7 +24,7 @@ export function autoSideBar(navbar: DefaultTheme.NavItemWithChildren[]) {
           }
           return {
             text,
-            link: link + c.name,
+            link: encodeURI(link + c.name), // encodeURI: 目录空格, md显示不是链接
           }
         })
       return {
