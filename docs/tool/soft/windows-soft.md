@@ -22,6 +22,8 @@
 - [Universal USB Installer](https://universal-usb-installer.en.softonic.com/)
 - Fiddler
 - Wireshark
+- SpaceSniffer
+- wiztree
 - [TreeSize Free](https://www.jam-software.com/treesize_free/)
 - [spaceketeer](http://10southstudios.com/spaceketeer)
 - [eagle](https://eagle.cool/)
