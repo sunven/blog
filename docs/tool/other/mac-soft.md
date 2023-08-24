@@ -1,7 +1,5 @@
 # Mac 常用软件
 
-
-
 |      | mac                                                          | windows |
 | ---- | ------------------------------------------------------------ | ------- |
 | 压缩 | [The Unarchiver](https://theunarchiver.com/)、[Keka](https://www.keka.io/zh-cn/) |         |
