@@ -21,6 +21,7 @@
 2. `npm install <moudleName> --save` ：本地安装
 3. `npm install express`：默认会安装 express 的最新版本
 4. `npm install express@3.0.6`：安装指定版本
+5. `npm install antd50@npm:antd@5.8.6 -S` 别名
 
 ### 删
 
