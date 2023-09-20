@@ -19,3 +19,5 @@ destroyed > re-created key变了
 - 能根据state 或 props 计算得到
 
 是状态
+
+副作用在哪里处理，useEffect 是最后一招
