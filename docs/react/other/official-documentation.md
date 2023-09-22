@@ -21,3 +21,7 @@ destroyed > re-created key变了
 是状态
 
 副作用在哪里处理，useEffect 是最后一招
+
+How does React know which state to return?
+
+- order
