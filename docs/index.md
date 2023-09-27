@@ -1,6 +1,4 @@
-# LLWEB
-
-## develop
+# LLWEB## develop
 
 ### algorithm
 
@@ -88,6 +86,7 @@
 - [其它](/develop/other/other.md)
 - [Postman 请求加密加签，结果验签解密](/develop/other/postmanencrypt.md)
 - [base64 原理](/develop/other/principle-of-base64.md)
+- [编程范式](/develop/other/programming-paradigm.md)
 - [Scaling webapps](/develop/other/scaling-webapps.md)
 - [TFS 集成 Postman](/develop/other/tfs-integration-postman.md)
 
@@ -283,7 +282,6 @@
 
 ### other
 
-- [english](/Self-study%20Examination/other/note.md)
 
 ## subject
 
@@ -335,30 +333,30 @@
 - [ssh](/tool/other/ssh.md)
 - [Visual Studio 相关](/tool/other/visualstudio.md)
 - [windows 命令](/tool/other/windowscommand.md)
-- [Windows 常用软件](/tool/other/windowssoft.md)
 - [wsl](/tool/other/wsl.md)
 - [装机清单](/tool/other/%E8%A3%85%E6%9C%BA%E6%B8%85%E5%8D%95.md)
 
 ### soft
 
-- [soft](/tool/soft/index.md)
+- [Index](/tool/soft/index.md)
+- [Windows 常用软件](/tool/soft/windows-soft.md)
 
 ### vscode
 
 - [如何打造一款属于自己的 Visual Studio Code 颜色主题](/tool/vscode/create-vscode-theme.md)
 
-## tool-chain
+## toolchain
 
 ### package-management
 
-- [npm vs yarn vs pnpm](/tool-chain/package-management/npm-yarn-pnpm.md)
-- [npm](/tool-chain/package-management/npm.md)
-- [pnpm](/tool-chain/package-management/pnpm.md)
-- [yarn常用命令](/tool-chain/package-management/yarn.md)
+- [npm vs yarn vs pnpm](/toolchain/package-management/npm-yarn-pnpm.md)
+- [npm](/toolchain/package-management/npm.md)
+- [pnpm](/toolchain/package-management/pnpm.md)
+- [yarn常用命令](/toolchain/package-management/yarn.md)
 
 ### webpack
 
-- [webpack](/tool-chain/webpack/webpack.md)
+- [webpack](/toolchain/webpack/webpack.md)
 
 ## vue
 
@@ -382,3 +380,4 @@
 - [diff](/vue/rtfsc/diff.md)
 - [【vue3】深入理解diff](/vue/rtfsc/vue3-diff-in-deep.md)
 - [reactive](/vue/rtfsc/vue3-reactive-in-deep.md)
+

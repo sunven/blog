@@ -3,7 +3,6 @@ import { defineConfig } from 'vitepress'
 import { autoNavBar, fixNavBar } from './utils/navBarUtil'
 import { autoSideBar } from './utils/sideBarUtil'
 import { genIndex } from './utils/genIndexUtil'
-import mathPlugin from './plugins/markdown-it-katex'
 // 生成nav
 let nav = autoNavBar()
 // 生成sidebar
@@ -13,54 +12,6 @@ nav = fixNavBar(nav, sidebar)
 // 生成首页
 genIndex(sidebar)
 
-//https://developer.mozilla.org/zh-CN/docs/Web/MathML/Element
-//var as=new Set();document.querySelectorAll('.main-page-content a[href*="MathML/Element"]').forEach(item=>{var a=item.innerText;a=a.replace('<','');a=a.replace('>','');a=a.replace('(en-US)','');a=a.trim(' ');as.add(a)});console.log(Array.from(as))
-const mathml = [
-  'math',
-  'maction',
-  'maligngroup',
-  'malignmark',
-  'menclose',
-  'merror',
-  'mfenced',
-  'mfrac',
-  'mglyph',
-  'mi',
-  'mlabeledtr',
-  'mlongdiv',
-  'mmultiscripts',
-  'mn',
-  'mo',
-  'mover',
-  'mpadded',
-  'mphantom',
-  'mroot',
-  'mrow',
-  'ms',
-  'mscarries',
-  'mscarry',
-  'msgroup',
-  'mstack',
-  'msline',
-  'mspace',
-  'msqrt',
-  'msrow',
-  'mstyle',
-  'msub',
-  'msup',
-  'msubsup',
-  'mtable',
-  'mtd',
-  'mtext',
-  'mtr',
-  'munder',
-  'munderover',
-  'semantics',
-  'annotation',
-  'annotation-xml',
-  'mprescripts',
-  'none',
-]
 export default defineConfig({
   //base: '/blog/',
   lang: 'zh-CN',
@@ -103,17 +54,7 @@ export default defineConfig({
     //   indexName: 'blog',
     // },
   },
-  vue: {
-    template: {
-      compilerOptions: {
-        isCustomElement: tag => mathml.includes(tag),
-      },
-    },
-  },
   markdown: {
-    config: md => {
-      md.use(mathPlugin)
-      // md.use(require('markdown-it-katex')) // 不支持行内 katex 中有 < 符号
-    },
+    math: true,
   },
 })
