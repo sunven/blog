@@ -21,3 +21,15 @@ destroyed > re-created key变了
 是状态
 
 副作用在哪里处理，useEffect 是最后一招
+
+How does React know which state to return?
+
+- order
+
+## Why is mutating state not recommended in React?
+
+- console.log 打印有延迟。不变可以看到原来的值
+- 优化 memo
+- 新特性依赖
+- 需求 undo/redo
+- 实现简单 不考虑响应式 性能
