@@ -33,3 +33,22 @@ How does React know which state to return?
 - 新特性依赖
 - 需求 undo/redo
 - 实现简单 不考虑响应式 性能
+
+## Resetting state at the same position
+
+```js
+{isPlayerA ? (
+  <Counter person="Taylor" />
+) : (
+  <Counter person="Sarah" />
+)}
+```
+
+```js
+{isPlayerA &&
+  <Counter person="Taylor" />
+}
+{!isPlayerA &&
+  <Counter person="Sarah" />
+}
+```
