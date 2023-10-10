@@ -7,3 +7,11 @@ keep-alive: 允许单个 TCP 连接发送和接收多个 HTTP 请求/响应，�
 <https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Redirections>
 
 ![img](./images/httpredirect.png)
+
+### 301 302
+
+区别如下：
+
+1. 301 Moved Permanently（永久重定向）：服务器返回301状态码时，表示被请求的资源已经被永久移动到了一个新的URL。客户端在接收到301响应后，会自动使用新的URL进行后续的请求。搜索引擎也会将原始URL的搜索排名转移到新的URL上。通常情况下，浏览器会将301缓存起来，下次访问同样的原始URL时会直接跳转到新的URL。
+
+2. 302 Found（临时重定向）：服务器返回302状态码时，表示被请求的资源临时移动到了一个新的URL。客户端在接收到302响应后，会使用新的URL进行后续的请求。搜索引擎不会将原始URL的搜索排名转移到新的URL上。浏览器通常不会缓存302响应，因此每次访问原始URL时都会重新跳转到新的URL。

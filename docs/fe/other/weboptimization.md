@@ -253,9 +253,9 @@ JavaScript 和 CSS 文件被浏览器缓存。HTML 文档中内联的 JavaScript
 
 使用 301 和 302 状态代码完成重定向。以下是 301 响应中 HTTP 头的示例：
 
-      HTTP / 1.1 301永久移动
-      位置：http://example.com/newuri
-      内容类型：text / html
+HTTP / 1.1 301永久移动
+位置：<http://example.com/newuri>
+内容类型：text / html
 
 浏览器自动将用户带到该 Location 字段中指定的 URL 。重定向所需的所有信息都在头文件中。响应的身体通常是空的。尽管他们的名字，在实践中也不会缓存 301 和 302 的响应，除非额外的标题，例如 Expires 或者 Cache-Control 表明它应该是。元刷新标签和 JavaScript 是将用户引导到其他 URL 的其他方法，但如果必须执行重定向，首选技术是使用标准的 3xx HTTP 状态代码，主要是为了确保后退按钮正常工作。
 
@@ -275,14 +275,14 @@ JavaScript 和 CSS 文件被浏览器缓存。HTML 文档中内联的 JavaScript
 
 实体标签（ETag）是 Web 服务器和浏览器用来确定浏览器缓存中的组件是否与源服务器上的组件匹配的机制。（“实体”是另一个单词“组件”：图像，脚本，样式表等）添加了 ETag，以提供一种验证比上次更改日期更灵活的实体的机制。ETag 是唯一标识组件特定版本的字符串。唯一的格式约束是字符串被引用。源服务器使用 ETag 响应头指定组件的 ETag 。
 
-      HTTP / 1.1 200 OK
+HTTP / 1.1 200 OK
       最后修改：星期二，2006年12月12日03:03:59 GMT
       ETag：“10c24bc-4ab-457e1c1f”
       内容长度：12195
 
 之后，如果浏览器必须验证组件，它将使用 If-None-Match 头将 ETag 传递回原始服务器。如果 ETag 匹配，则返回一个 304 状态代码，将此示例的响应减少 12195 个字节。
 
-      GET /i/yahoo.gif HTTP / 1.1
+GET /i/yahoo.gif HTTP / 1.1
       主持人：us.yimg.com
       If-Modified-Since：Tue，2006年12月12日03:03:59 GMT
       If-None-Match：“10c24bc-4ab-457e1c1f”
