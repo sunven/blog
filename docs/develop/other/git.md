@@ -274,6 +274,8 @@ git worktree add ../worktree-fixa -b feature/fixa release
 
 <https://git-scm.com/docs/gitsubmodules>
 
+<https://juejin.cn/post/7154398231449829383>
+
 添加子模块
 
 ```sh
