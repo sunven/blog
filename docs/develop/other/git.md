@@ -290,6 +290,10 @@ git submodule init 用来初始化本地配置文件，将.gitmodules中关于[s
 git submodule update 根据项目的.gitmodules文件，抓取远程仓库的代码。
 ```
 
+git submodule update --remote：这个命令会更新子模块并将其切换到最新的远程提交。
+
+git submodule update：使 submodule 的分支处于主项目里指定的 commit id。可能并不是拉 submodule 的 master 最新代码
+
 删除
 
 ```sh
