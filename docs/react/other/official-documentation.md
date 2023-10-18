@@ -52,3 +52,9 @@ How does React know which state to return?
   <Counter person="Sarah" />
 }
 ```
+
+## Escape Hatches
+
+在开发版本中，React会立即运行并清理您的Effect多一次。这确保您不会忘记实现清理函数。
+
+effect 开始同步某些内容，然后停止同步它
