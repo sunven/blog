@@ -306,3 +306,11 @@ git rm lodash
 
 # 手动删除 $GIT_DIR/modules/<name>/
 ```
+
+## submodule vs subtree
+
+<https://stackoverflow.com/questions/31769820/differences-between-git-submodule-and-subtree>
+
+submodule is link
+
+subtree is copy
