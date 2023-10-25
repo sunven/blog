@@ -18,7 +18,7 @@
     "esbuild": "^0.15.10",
     "markdown-it-mathjax3": "^4.3.2",
     "sass": "^1.53.0",
-    "vitepress": "1.0.0-rc.20",
+    "vitepress": "^1.0.0-rc.24",
     "vue": "^3.3.4"
   },
   "dependencies": {
