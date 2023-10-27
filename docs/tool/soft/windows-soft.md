@@ -31,3 +31,4 @@
 - [linqpad](http://www.linqpad.net/)
 - [Snipaste](https://zh.snipaste.com/)
 - [typora](https://www.typora.io/)
+- [vlc](https://github.com/videolan/vlc)
