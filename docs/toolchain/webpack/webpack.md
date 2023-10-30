@@ -417,3 +417,34 @@ module.exports = MiniWebpack
   },
 })vite
 ```
+
+## roadhog react-app-rewired
+
+roadhog > af-webpack
+react-app-rewired > customize-cra
+
+## css-loader
+
+现象：
+
+```css
+body {
+  background-image: url('./a.png');
+}
+```
+
+报错：`Module not found: Error: Can't resolve './a.png' in 'xxx'`
+实际 enhanced-resolve Resolver.resolve 报错
+
+```css
+body {
+  background-image: url('/a.png');
+}
+```
+
+正常
+
+老版本(<=3.x)的 css-loader 中，用 loader-utils 包的 isUrlRequest 方法判断 url 是否需要 require
+loader-utils <= 2.x
+/ 开头不require
+<https://github.com/webpack/loader-utils/blob/6688b5028106f144ee9f543bebc8e6a87b57829f/lib/isUrlRequest.js#L24>

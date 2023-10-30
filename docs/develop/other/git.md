@@ -314,3 +314,8 @@ git rm lodash
 submodule is link
 
 subtree is copy
+
+## gist
+
+github secret gist
+只有知道 url 的才能看到

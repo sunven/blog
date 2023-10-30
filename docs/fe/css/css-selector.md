@@ -41,9 +41,9 @@
 | p:nth-last-child(2)   | 匹配其父元素的倒数第 n 个子元素                                                                                    |
 | p:nth-of-type(2)      | 与:nth-child()作用类似，但是仅匹配使用同种标签的元素                                                               |
 | p:nth-last-of-type(2) | 与:nth-last-child() 作用类似，但是仅匹配使用同种标签的元素                                                         |
-| p:first-child         | 匹配父元素的第一个子元素                                                                                           |
+| p:first-child         | 匹配父元素的第一个子元,p必须是某个父节点的第一个子元素素                                                                                           |
 | p:last-child          | 匹配父元素的最后一个子元素，等同于:nth-last-child(1)                                                               |
-| p:first-of-type       | 匹配父元素下使用同种标签的第一个子元素，等同于:nth-of-type(1)                                                      |
+| p:first-of-type       | 匹配父元素下使用同种标签的第一个子元素,某个父节点的子元素中第一个p元素，等同于:nth-of-type(1)                                                      |
 | p:last-of-type        | 匹配父元素下使用同种标签的最后一个子元素，等同于:nth-last-of-type(1)                                               |
 | p:only-child          | 匹配父元素下仅有的一个子元素，等同于:first-child:last-child 或 :nth-child(1):nth-last-child(1)                     |
 | p;only-of-type        | 匹配父元素下使用同种标签的唯一一个子元素，等同于:first-of-type:last-of-type 或 :nth-of-type(1):nth-last-of-type(1) |
