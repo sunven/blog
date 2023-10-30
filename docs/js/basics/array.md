@@ -78,3 +78,8 @@ likeArray.apply(null, { length: 10 })
 <https://www.cnblogs.com/afeihome/p/6750539.html>
 
 <https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply>
+
+## other
+
+Array(5)  每一项 empty,length 为 5 ，但遍历时不会循环
+Array.from(Array(5)) 每一项 undefined

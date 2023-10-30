@@ -10,3 +10,7 @@
 &lt; &entity_name;
 `&#60;` &#entity_number; &#x开头16进制
 \u003c Unicode
+
+## other
+
+拖拽到a标签上，会触发a标签点击行为

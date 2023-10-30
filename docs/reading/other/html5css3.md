@@ -70,6 +70,13 @@
 }
 ```
 
+:nth-child(An+B [of S]? )
+结构伪类：<https://www.w3.org/TR/selectors/#the-nth-child-pseudo>
+
+参考：
+<https://css-tricks.com/almanac/selectors/n/nth-child/>
+<https://css-tricks.com/how-nth-child-works/>
+
 ### nth-last-child
 
 父元素中倒数指定序号的子元素

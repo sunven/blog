@@ -448,3 +448,9 @@ body {
 loader-utils <= 2.x
 / 开头不require
 <https://github.com/webpack/loader-utils/blob/6688b5028106f144ee9f543bebc8e6a87b57829f/lib/isUrlRequest.js#L24>
+
+资源路径
+output.publicPath + output.filname
+设置__webpack_public_path__后，相当于替代了output.publicPath
+> 即是动态的
+__webpack_public_path__ + output.filname
