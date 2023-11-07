@@ -14,6 +14,7 @@
 8. `npm ls -g`：查看全局包
 9. `npm ls -g --depth 0`：查看全局包
 10. `npm ls vue -g`：查看 vue 目录
+11. `npm info eslint-config-airbnb@latest peerDependencies` 查看包的 peerDependencies
 
 ### 增
 
