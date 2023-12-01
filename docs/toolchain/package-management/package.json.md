@@ -22,3 +22,11 @@ package.json中，{ “node-sass": "npm:sass"}
 2. node-sass、dart-sass 更快
 3. 这里的 "npm:" 前缀表示需要从 npm 包管理器中安装这个依赖项
 4. “node-sass": "npm:sass" 表示用node-sass时实际用sass
+
+批量更新包
+
+<https://github.com/raineorshine/npm-check-updates>
+
+<https://github.com/dylang/npm-check>
+
+<https://marketplace.visualstudio.com/items?itemName=pflannery.vscode-versionlens>
