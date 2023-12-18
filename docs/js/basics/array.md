@@ -36,6 +36,8 @@ String.FromCodePoint()
 
 ![img](./images/array2.png)
 
+Array(20) 进for, 不进forEach
+
 定义了一个数组，长度为 20，如果取其中一项，如`Array(20)[0]`为`undefined`
 
 ### apply
