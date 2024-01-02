@@ -22,14 +22,14 @@
 | git branch                                       | 查看分支                                                |
 | git branch `<name>`                              | 创建分支                                                |
 | git checkout `<name>`                            | 切换分支                                                |
-| git checkout -b `<name>`                         | 创建+切换分支                                           |
+| git checkout -b `<name>`                         | 创建 + 切换分支                                           |
 | git merge `<name>`                               | 合并某分支到当前分支                                    |
 | git branch -d `<name>`                           | 删除分支                                                |
 | git log --graph --pretty=oneline --abbrev-commit | 查看分支的合并情况                                      |
-| git merge --abort                                | 终止merge                                               |
+| git merge --abort                                | 终止 merge                                               |
 | git checkout -b branch-name origin/branch-name   | 在本地创建和远程分支对应的分支                          |
-| git fetch                                        | 从远程获取最新版本到本地，不会自动merge                 |
-| git pull                                         | 更新分支 从远程获取最新版本并merge到本地                |
+| git fetch                                        | 从远程获取最新版本到本地，不会自动 merge                 |
+| git pull                                         | 更新分支 从远程获取最新版本并 merge 到本地                |
 | git push origin test                             | 把分支推到远程分支                                      |
 | **tag**😊                                         |                                                         |
 | git tag `<name>`                                 | 用于新建一个标签，默认为 HEAD，也可以指定一个 commit id |
@@ -42,7 +42,7 @@
 | git tag -d `<tagname>`                           | 删除一个本地标签                                        |
 | git push origin :refs/tags/`<tagname>`           | 删除一个远程标签                                        |
 | **other**😊                                       |                                                         |
-| ssh-keygen -R github.com                         | 删除known_hosts配置                                     |
+| ssh-keygen -R github.com                         | 删除 known_hosts 配置                                     |
 | ssh -T <git@github.com>                            | 测试连接                                                |
 
 ## no-fast-forward
@@ -119,12 +119,12 @@ windows
 
 ```
 Host github.com
-  ProxyCommand connect -H 127.0.0.1:10801 %h %p
+  ProxyCommand connect -H 127.0.0.1:7890 %h %p
 ```
 
 http
 
-指定github.com
+指定 github.com
 
 ```sh
 git config --global http.https://github.com.proxy http://127.0.0.1:8080
@@ -168,7 +168,7 @@ git log --author="username" --pretty=tformat: --numstat | awk '{ add += $1; subs
 git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done
 ```
 
-## 同步更新fork的仓库
+## 同步更新 fork 的仓库
 
 1. 添加一个将被同步给 fork 远程的上游仓库
    - `git remote add upstream https://github.com/apache/flink.git`
@@ -187,7 +187,7 @@ git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git l
 
 [解决 切换 github 账号后无法 push 的问题](https://www.jianshu.com/p/391a1e591eec)
 
-[Git 最著名报错 “ERROR: Permission to XXX.git denied to user”终极解决方案](https://www.jianshu.com/p/12badb7e6c10)
+[Git 最著名报错“ERROR: Permission to XXX.git denied to user”终极解决方案](https://www.jianshu.com/p/12badb7e6c10)
 
 [Git's famous “ERROR: Permission to .git denied to user”](https://stackoverflow.com/questions/5335197/gits-famous-error-permission-to-git-denied-to-user)
 
@@ -201,18 +201,18 @@ git config --global core.autocrlf false
 ```
 
 core.autocrlf
-true： 提交时改成LF，检出时改成CRLF
-input：提交时改成LF，检出时不改
+true：提交时改成 LF，检出时改成 CRLF
+input：提交时改成 LF，检出时不改
 false：提交时是什么就是什么，不改换行符，检出时也不改   (默认值)
 
 core.safecrlf
-true: 拒绝提交包含混合换行符的文件  （会提示 Fatal:xxx）
+true: 拒绝提交包含混合换行符的文件（会提示 Fatal:xxx）
 false: 允许提交包含混合换行符的文件
 warn: 提交包含混合换行符的文件时给出警告  (默认值)
 
 ## no matching host key type found. Their offer: ssh-rsa
 
- 配置好公私钥之后，仍然无法直接用 git ssh的方式，下载代码，解决：
+ 配置好公私钥之后，仍然无法直接用 git ssh 的方式，下载代码，解决：
 
 `.ssh/config`增加以下二项
 
@@ -245,16 +245,16 @@ git pull --all
 
 release 分支理解为 提测分支。来自 develop
 
-如果测试有bug，在release1.2 分支修复，合并回develop，有冲突解决
+如果测试有 bug，在 release1.2 分支修复，合并回 develop，有冲突解决
 
-测试完成要发布了，分别合并回develop 和 master
+测试完成要发布了，分别合并回 develop 和 master
 
 问题：
-1、从master拉分支，分支名：bugfix/xxxxxx   feature/xxxxx
-2、开发自测完将新拉分支合到dev，开发环境自测一波
-3、开发环境自测没问题，将新拉分支合到test，用test发预发环境
-4、测试发现bug/需求调整等，重复2，3步骤
-5、测试通过，将此次拉的分支合到master，如需发正式，从master发
+1、从 master 拉分支，分支名：bugfix/xxxxxx   feature/xxxxx
+2、开发自测完将新拉分支合到 dev，开发环境自测一波
+3、开发环境自测没问题，将新拉分支合到 test，用 test 发预发环境
+4、测试发现 bug/需求调整等，重复 2，3 步骤
+5、测试通过，将此次拉的分支合到 master，如需发正式，从 master 发
 
 ![img](./images/git-model.png)
 
@@ -266,7 +266,7 @@ git worktree add <新路径> -b <新分支名> <指定分支名>
 git worktree add ../worktree-fixa -b feature/fixa release
 ```
 
-从release分支拉一个新分支feature/fixa，放到../worktree-fixa目录
+从 release 分支拉一个新分支 feature/fixa，放到../worktree-fixa 目录
 
 ## submodule
 
@@ -285,7 +285,7 @@ git submodule add git@github.com:lodash/lodash.git lodash
 
 更新
 
-新clone的项目不会自动clone submodule
+新 clone 的项目不会自动 clone submodule
 
 ```sh
 git submodule init 用来初始化本地配置文件，将.gitmodules中关于[submodule]的部分拷贝到.git/config文件中。
