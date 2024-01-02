@@ -94,9 +94,9 @@ var Enum;
 ## 字面量类型
 
 ```ts
-// let 不行，如果是let foo类型是number
+// let 不行，如果是 let foo 类型是 number
 const foo = 123;
-let bar: typeof foo; // 'bar' 类型与 'foo' 类型相同（在这里是： 123）
+let bar: typeof foo; // 'bar' 类型与 'foo' 类型相同（在这里是：123）
 
 bar = 123; // ok
 bar = 789; // Type '789' is not assignable to type '123'
@@ -121,7 +121,7 @@ const fn2 = () => { throw new Error() }
 
 let a: never = fn();
 a = fn1() // 函数声明不能识别为 never
-a = fn2() // 函数表达式（字面量） 可以识别为 never
+a = fn2() // 函数表达式（字面量）可以识别为 never
 ```
 
 ```typescript
@@ -139,9 +139,9 @@ function controlFlowAnalysisWithNever(foo: Foo) {
 }
 ```
 
-如果Foo变为`type Foo = string | number | boolean;`
+如果 Foo 变为`type Foo = string | number | boolean;`
 
-在else中，foo就是boolean类型，编译就会报错
+在 else 中，foo 就是 boolean 类型，编译就会报错
 
 ## 索引签名
 
@@ -190,7 +190,7 @@ const somethingFieldState = foo["something"];
 // 使用它来创建一个对象时，将不会工作
 const bar: FormState = {
   // 'isValid' 不能赋值给 'FieldState'
-  isValid: false, // 这里的isValid 要么符合属性，要么符合签名，不能都符合，所以报错
+  isValid: false, // 这里的 isValid 要么符合属性，要么符合签名，不能都符合，所以报错
   // isValid: { value: "" },
 };
 
@@ -275,7 +275,7 @@ const foo1: Foo = {
 };
 ```
 
-- `<>` 与 JSX 的语法存在歧义, 建议 as
+- `<>` 与 JSX 的语法存在歧义，建议 as
 - 编译时语法，不是类型转换
 - 应避免使用类型断言
 
@@ -339,7 +339,7 @@ class StringPadder implements Padder {
 let padder: Padder = new SpaceRepeatingPadder(6);
 
 if (padder instanceof SpaceRepeatingPadder) {
-  // padder的类型收窄为 'SpaceRepeatingPadder'
+  // padder 的类型收窄为 'SpaceRepeatingPadder'
 }
 ```
 
@@ -384,7 +384,7 @@ function area(s: Shape) {
 }
 ```
 
-kind就为该类型的辨识
+kind 就为该类型的辨识
 
 ## 接口
 
@@ -511,7 +511,7 @@ function sealed(constructor: Function) {
 
 function enumerable(value: boolean) {
   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-    // 类中方法 enumerable 默认为false 不可枚举
+    // 类中方法 enumerable 默认为 false 不可枚举
     descriptor.enumerable = value;
   };
 }
@@ -553,7 +553,7 @@ const br = new BugReport('title');
 // test @configurable
 // 与 @sealed 有冲突
 // console.log('delete x before', br.x);
-// // delete 操作只会在自身的属性上起作用,即 delete br.x 无效
+// // delete 操作只会在自身的属性上起作用，即 delete br.x 无效
 // delete BugReport.prototype.x
 // console.log('delete x after', br.x)
 
@@ -661,11 +661,24 @@ fun(animalToGreyhound)
 - 返回值类型是协变的 `A ≼ B 就意味着 (T → A) ≼ (T → B)`
 - 而参数类型是逆变的 `A ≼ B 就意味着 (B → T) ≼ (A → T)`
 
+## type interface
+
+不同点：
+
+- type 可用于 string、number、bool、undefined、null，而 interface 只能描述对象（含数组、函数、包装对象、元组）
+- 同名 interface 会合并，而同名 type 会报错
+- type 声明的是类型别名，而 interface 声明的是新类型。
+
+相同点：
+
+- 都能描述对象（含数组、函数、包装对象）
+- 都能用于扩展一个类型。type 用交叉类型做到这一点，interface 用 extends 做到这一点。
+
 ## type-challenges
 
 Equal
 
-- 捏造一个T
+- 捏造一个 T
 
 ```ts
 export type Equal<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2 ? true : false;
@@ -784,9 +797,9 @@ type Chainable<T = {}> = {
 ```
 
 - T = {} 来作为默认值 用来存储
-- K必须要，要判断重复的key
-- key 重复，且value类型形同，则never
-- Omit 排除同名key,即同名key的覆盖
+- K 必须要，要判断重复的 key
+- key 重复，且 value 类型形同，则 never
+- Omit 排除同名 key，即同名 key 的覆盖
 
 PromiseAll
 
@@ -831,9 +844,9 @@ type AppendArgument<Fn, A> = Fn extends (...args: infer P) => infer R ? (...args
 ### Permutation
 
 ```ts
-// T extends U中的T如果是一个联合类型,如：A | B | C，则这个表达式会被展开成
+// T extends U 中的 T 如果是一个联合类型，如：A | B | C，则这个表达式会被展开成
 // (A extends U ? X : Y) | (B extends U ? X : Y) | (C extends U ? X : Y)
-// [U] extends [never] 而不是 U extends never 因为  U是联合类型 条件类型会走分配得到的是一个联合类型  不符合期望
+// [U] extends [never] 而不是 U extends never 因为  U 是联合类型 条件类型会走分配得到的是一个联合类型  不符合期望
 type Permutation<T, U = T> = [U] extends [never] ? [] : (T extends U  ? [T, ...Permutation<Exclude<U, T>>] : [])
 ```
 
@@ -910,7 +923,7 @@ type IsNever<T> = [T] extends [never] ? true : false
 
 - 泛型为联合类型时进行分发处理
 
-todo: 为何要copy B
+todo: 为何要 copy B
 
 ```ts
 type IsUnion<A, B = A> = [A] extends [never] ? false : (
