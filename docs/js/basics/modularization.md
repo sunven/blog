@@ -18,7 +18,7 @@ moduleA.js 代码
 ```js
 console.log("I'm A")
 /*
-此处可以放jquery源码
+此处可以放 jquery 源码
 使得该文件变大，以便异步加载时看效果
 */
 ```
@@ -109,9 +109,9 @@ async A loaded
 
 ![img](./images/Snipaste_2022-07-22_19-24-17.png)
 
-如果要解析的html很多，由于async下载结束之后立刻执行，那么也会阻塞
+如果要解析的 html 很多，由于 async 下载结束之后立刻执行，那么也会阻塞
 
-对于模块脚本，那么脚本及其所有依赖都会在延缓队列中执行，因此它们会被并行请求，并尽快解析和执行,表现与defer类似
+对于模块脚本，那么脚本及其所有依赖都会在延缓队列中执行，因此它们会被并行请求，并尽快解析和执行，表现与 defer 类似
 
 相同之处：
 
@@ -148,8 +148,8 @@ RequireJS 的标准
 
 ```js
 define(['./a', './b'], function(a, b) {
-  //运行至此，a.js和b.js已经下载完成
-  //a模块和b模块已经执行完
+  //运行至此，a.js 和 b.js 已经下载完成
+  //a 模块和 b 模块已经执行完
   a.doing()
   b.doing()
 })
@@ -193,7 +193,7 @@ MyModules.define('bar', [], function() {
   }
 })
 
-// 定义一个foo方法，foo方法会调用模块中之前定义的bar方法
+// 定义一个 foo 方法，foo 方法会调用模块中之前定义的 bar 方法
 MyModules.define('foo', ['bar'], function(bar) {
   var hungry = 'hippo'
 
@@ -233,10 +233,10 @@ SeaJS 的标准
 ```js
 define(function(require, exports, module) {
   var a = require('./a')
-  //等待a.js下载、执行完
+  //等待 a.js 下载、执行完
   a.doing()
   var b = require('./b')
-  //等待b.js下载、执行完
+  //等待 b.js 下载、执行完
   b.doing()
 })
 ```
@@ -290,7 +290,7 @@ ESM 加载模块的方式同样取决于所处的环境，Node.js 同步加载�
 
 ![img](./images/async-defer.svg)
 
-模块脚本默认是延迟的。因此，无需添加defer到您的`<script type="module">`标签！不仅主模块的下载与 HTML 解析并行发生，所有依赖模块也是如此！
+模块脚本默认是延迟的。因此，无需添加 defer 到您的`<script type="module">`标签！不仅主模块的下载与 HTML 解析并行发生，所有依赖模块也是如此！
 
 ### export
 
@@ -329,10 +329,15 @@ export function fn() {
 
 ### import
 
-用于导入由另一个模块导出的绑定。无论是否声明了 strict mode ，导入的模块都运行在严格模式下
+用于导入由另一个模块导出的绑定。无论是否声明了 strict mode，导入的模块都运行在严格模式下
 
 - 在 HTML 中需要包含 `type="module"` 的 `<script>` 元素才能正确识别模块
 - 不能通过 file:// URL 引用 JS 模块，否则将导致 CORS 错误
+
+```js
+import myDefault, * as myModule from "/modules/my-module.js";
+// myModule.default and myDefault point to the same binding
+```
 
 #### import()
 
@@ -353,7 +358,7 @@ import('./demo.js').then(({ a, b, c, fn }) => {
 await 用法
 
 ```javascript
-// 注：await需要在async方法中才能使用
+// 注：await 需要在 async 方法中才能使用
 const { a, b, c, fn } = await import('./demo.js')
 console.log(a, b, c, fn())
 ```
@@ -366,7 +371,7 @@ console.log(a, b, c, fn())
 
 依赖于 ES2015 中的 [import](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import) 和 [export](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/export) 语句，用来检测代码模块是否被导出、导入，且被 JavaScript 文件使用
 
-在现代 JavaScript 应用程序中，我们使用模块打包(如[webpack](https://webpack.js.org/)或[Rollup](https://github.com/rollup/rollup))将多个 JavaScript 文件打包为单个文件时自动删除未引用的代码。这对于准备预备发布代码的工作非常重要，这样可以使最终文件具有简洁的结构和最小化大小
+在现代 JavaScript 应用程序中，我们使用模块打包 (如[webpack](https://webpack.js.org/)或[Rollup](https://github.com/rollup/rollup)) 将多个 JavaScript 文件打包为单个文件时自动删除未引用的代码。这对于准备预备发布代码的工作非常重要，这样可以使最终文件具有简洁的结构和最小化大小
 
 main.js
 
@@ -410,6 +415,6 @@ bundle.js
 })();
 ```
 
-不是esmodule, 无法分析哪些方法被使用，因为库一般作为一个全局变量引入，rollup打包可能有已下警告：
+不是 esmodule, 无法分析哪些方法被使用，因为库一般作为一个全局变量引入，rollup 打包可能有已下警告：
 
 `Use output.globals to specify browser global variable names corresponding to external modules`
