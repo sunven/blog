@@ -27,6 +27,31 @@ TYPED_ARRAY
 
 `Int8Array`, `Uint8Array`, `Uint8ClampedArray`, `Int16Array`, `Uint16Array`, `Int32Array`, `Uint32Array`, `Float32Array`, `Float64Array`
 
+### 对象
+
+对象的属性插入次序在遍历时是可预测的
+
+- 先遍历所有数字键（integer keys），按照升序排序
+- 然后遍历所有的字符串键，包括Symbol键，按照它们被添加到对象中的顺序排列。
+
+```js
+const s1 = Symbol('1')
+const s2 = Symbol('2')
+const obj = {
+  "b": 1,
+  "2": 2,
+  s2: 's2',
+  "a": 3,
+  1: 4,
+  s1: 's1',
+  "c": 5
+};
+
+for (let i in obj) {
+  console.log(i, obj[i]);
+}
+```
+
 ### 1、bool
 
 #### 假值
