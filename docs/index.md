@@ -76,10 +76,12 @@
 ### nodejs
 
 - [Koa](/develop/nodejs/koa.md)
+- [other](/develop/nodejs/other.md)
 
 ### other
 
 - [DNS](/develop/other/dns.md)
+- [memos 部署到 fly.io](/develop/other/fly.io.md)
 - [GIT](/develop/other/git.md)
 - [爬取 html 生成 pdf](/develop/other/htmlgenpdf.md)
 - [OSI 模型](/develop/other/osi.md)
@@ -112,6 +114,7 @@
 - [Event Loop](/fe/browser/event-loop.md)
 - [浏览器如何渲染一个页面](/fe/browser/how-the-browser-renders-a-web-page.md)
 - [深入了解浏览器](/fe/browser/inside-browser.md)
+- [other](/fe/browser/other.md)
 - [页面通信](/fe/browser/page-communication.md)
 - [页面生命周期](/fe/browser/page-lifecycle.md)
 - [per](/fe/browser/per.md)
@@ -137,9 +140,11 @@
 
 - [文章收录](/fe/other/articleinclusion.md)
 - [客户端存储](/fe/other/client-storage.md)
+- [Concept](/fe/other/concept.md)
 - [d](/fe/other/d.md)
 - [demo](/fe/other/demo.md)
 - [拖放](/fe/other/drag-and-drop.md)
+- [HTML](/fe/other/html.md)
 - [html5](/fe/other/html5.md)
 - [issues](/fe/other/issues.md)
 - [# 加载](/fe/other/optimize.md)
@@ -174,6 +179,7 @@
 
 ### basics
 
+- [# 前言](/js/basics/a.md)
 - [Array](/js/basics/array.md)
 - [backbonejs](/js/basics/backbonejs.md)
 - [canvas](/js/basics/canvas.md)
@@ -232,6 +238,8 @@
 - [官方文档](/react/other/official-documentation.md)
 - [React 高阶组件](/react/other/react-hoc.md)
 - [redux reselect](/react/other/redux-reselect.md)
+- [react-router-dom v5](/react/other/router.md)
+- [Tips](/react/other/tips.md)
 
 ## reading
 
@@ -279,7 +287,9 @@
 - [2021-04](/Self-study%20Examination/English/2021-04.md)
 - [2021-10](/Self-study%20Examination/English/2021-10.md)
 - [2022-04](/Self-study%20Examination/English/2022-04.md)
-- [1](/Self-study%20Examination/English/%E4%BD%9C%E6%96%87.md)
+- [2022-10](/Self-study%20Examination/English/2022-10.md)
+- [2023-04](/Self-study%20Examination/English/2023-04.md)
+- [composition](/Self-study%20Examination/English/composistion.md)
 
 ### other
 
@@ -333,6 +343,7 @@
 - [在 shell 脚本中利用 lftp 做自动部署](/tool/other/shelllftpdeploy.md)
 - [ssh](/tool/other/ssh.md)
 - [Visual Studio 相关](/tool/other/visualstudio.md)
+- [vscode](/tool/other/vscode.md)
 - [windows 命令](/tool/other/windowscommand.md)
 - [wsl](/tool/other/wsl.md)
 - [装机清单](/tool/other/%E8%A3%85%E6%9C%BA%E6%B8%85%E5%8D%95.md)
@@ -348,16 +359,22 @@
 
 ## toolchain
 
+### other
+
+- [other](/toolchain/other/other.md)
+
 ### package-management
 
 - [npm vs yarn vs pnpm](/toolchain/package-management/npm-yarn-pnpm.md)
 - [npm](/toolchain/package-management/npm.md)
+- [package.json](/toolchain/package-management/package.json.md)
 - [pnpm](/toolchain/package-management/pnpm.md)
 - [yarn常用命令](/toolchain/package-management/yarn.md)
 
 ### webpack
 
 - [webpack](/toolchain/webpack/webpack.md)
+- [webpack5](/toolchain/webpack/webpack5.md)
 
 ## vue
 
