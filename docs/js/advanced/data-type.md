@@ -32,7 +32,8 @@ TYPED_ARRAY
 对象的属性插入次序在遍历时是可预测的
 
 - 先遍历所有数字键（integer keys），按照升序排序
-- 然后遍历所有的字符串键，包括Symbol键，按照它们被添加到对象中的顺序排列。
+- 然后遍历所有字符串键，按照它们被添加到对象中的顺序
+- 最后遍历所有Symbol键，按照它们被添加到对象中的顺序
 
 ```js
 const s1 = Symbol('1')
@@ -40,13 +41,16 @@ const s2 = Symbol('2')
 const obj = {
   "b": 1,
   "2": 2,
-  s2: 's2',
+  [s2]: 's2',
   "a": 3,
   1: 4,
-  s1: 's1',
+  [s1]: 's1',
   "c": 5
 };
 
+Reflect.ownKeys(obj) // ['1', '2', 'b', 'a', 'c', Symbol(2), Symbol(1)]
+
+// for in, Object.keys 不列举 Symbol 键
 for (let i in obj) {
   console.log(i, obj[i]);
 }
