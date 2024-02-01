@@ -315,6 +315,8 @@ submodule is link
 
 subtree is copy
 
+## mono-repo vs multi-repo
+
 ## gist
 
 github secret gist
