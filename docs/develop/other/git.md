@@ -101,6 +101,8 @@ git config --system -l
 
 ## 设置代理
 
+<https://hellodk.cn/post/975>
+
 ssh
 
 `~/.ssh/config`文件
@@ -129,13 +131,18 @@ http
 ```sh
 git config --global http.https://github.com.proxy http://127.0.0.1:8080
 git config --global https.https://github.com.proxy http://127.0.0.1:8080
+
+git config --global http.https://github.com.proxy socks5://127.0.0.1:7890
+git config --global http.https://github.com.proxy socks5h://127.0.0.1:7890
 ```
 
 取消
 
 ```sh
 git config --global --unset http.proxy
+git config --global --unset http.https://github.com.proxy
 git config --global --unset https.proxy
+git config --global --unset https.https://github.com.proxy
 ```
 
 ## 查看提交次数
