@@ -53,8 +53,8 @@ npm config set cache D:\npm\cache
 配置优先级
 
 1. per-project configuration file (/path/to/my/project/.npmrc)
-2. per-user configuration file (defaults to $HOME/.npmrc; configurable via CLI option --userconfig or environment variable $NPM_CONFIG_USERCONFIG)
-3. global configuration file (defaults to $PREFIX/etc/npmrc; configurable via CLI option --globalconfig or environment variable $NPM_CONFIG_GLOBALCONFIG)
+2. per-user configuration file (defaults to $HOME/.npmrc; configurable via CLI option --userconfig or environment variable $NPM_CONFIG_USERCONFIG) `npm config get userconfig`
+3. global configuration file (defaults to $PREFIX/etc/npmrc; configurable via CLI option --globalconfig or environment variable $NPM_CONFIG_GLOBALCONFIG) `npm config get globalconfig`
 4. npm's built-in configuration file (/path/to/npm/npmrc)
 
 ### 更新 npm 至最新版本
