@@ -63,6 +63,12 @@ npm config set cache D:\npm\cache
 npm install -g npm
 ```
 
+## 代理
+
+```sh
+npm config set proxy=http://127.0.0.1:7890
+```
+
 ## npm 源的配置
 
 nrm:<https://www.npmjs.com/package/nrm>
