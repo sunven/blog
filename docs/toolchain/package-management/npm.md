@@ -45,6 +45,8 @@
 8. `npm search <packageName>`：发布一个 npm 包的时候，需要检验某个包名是否已存在
 9. `npm outdated`：检查包是否已经过时，此命令会列出所有已经过时的包，可以及时进行包的更新
 10. `npm help json`：打开 package.json
+11. npm view react@'16.x - 17.x' version
+12. npm view react@'>= 16.8 < 17.x' version
 
 设置缓存目录
 加 --global nvm切换版本后，不生效
