@@ -99,6 +99,14 @@ package.json
 
 软链接
 
+```sh
+# git bash
+ls -li
+readlink antd
+```
+
+第三列数字就是硬链接的数量
+
 ![img](./.images/snipaste_20230720165804.png)
 
 `dayjs` `element-plus` `vue` 为软连接
@@ -114,6 +122,13 @@ package.json
 进入`/mnt/c/Users/Administrator/Desktop/pnpm-demo/node_modules/.pnpm/registry.npmmirror.com+dayjs@1.11.9/node_modules/dayjs/`
 
 硬链接
+
+```
+pnpm store path
+find /c/Users/Administrator/AppData/Local/pnpm/store/v3  -inum 562949955488092
+```
+
+同一个硬链接 inode number 一样
 
 ![img](./.images/snipaste_20230720165545.png)
 
