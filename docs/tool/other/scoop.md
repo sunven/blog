@@ -22,3 +22,7 @@ irm get.scoop.sh -outfile 'install.ps1'
 ```
 
 不是管理员运行则去掉`-RunAsAdmin`
+
+<https://github.com/kkzzhizhou/scoop-apps>
+
+<https://github.com/lzwme/scoop-proxy-cn>
