@@ -28,7 +28,7 @@ irm get.scoop.sh -outfile 'install.ps1'
 <https://github.com/ScoopInstaller/Scoop/wiki/Using-Scoop-behind-a-proxy>
 
 ```sh
-scoop config proxy socks5h://127.0.0.1:7890
+scoop config proxy 127.0.0.1:7890
 ```
 
 <https://github.com/kkzzhizhou/scoop-apps>
