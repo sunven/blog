@@ -23,6 +23,12 @@ irm get.scoop.sh -outfile 'install.ps1'
 
 不是管理员运行则去掉`-RunAsAdmin`
 
+## proxy
+
+```sh
+scoop config proxy socks5h://127.0.0.1:7890
+```
+
 <https://github.com/kkzzhizhou/scoop-apps>
 
 <https://github.com/lzwme/scoop-proxy-cn>
