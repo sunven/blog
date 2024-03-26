@@ -6,22 +6,15 @@
 
 ```sh
 [environment]::setEnvironmentVariable('SCOOP','D:\scoop','User')
+# powershell 7
 [System.Environment]::SetEnvironmentVariable('SCOOP', 'D:\scoop', [System.EnvironmentVariableTarget]::User)
 ```
 
 - 1
 
 ```sh
-irm get.scoop.sh -outfile 'install.ps1'
+iwr -useb get.scoop.sh | iex
 ```
-
-- 2
-
-```sh
-.\install.ps1 -RunAsAdmin -ScoopDir 'D:\Applications\Scoop' -ScoopGlobalDir 'D:\GlobalScoopApps' -NoProxy
-```
-
-不是管理员运行则去掉`-RunAsAdmin`
 
 ## proxy
 
@@ -34,3 +27,22 @@ scoop config proxy 127.0.0.1:7890
 <https://github.com/kkzzhizhou/scoop-apps>
 
 <https://github.com/lzwme/scoop-proxy-cn>
+
+## choco
+
+```sh
+[environment]::setEnvironmentVariable('ChocolateyInstall','D:\chocolatey','User')
+[environment]::setEnvironmentVariable('ChocolateyToolsLocation','D:\tools','User')
+```
+
+```sh
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+```
+
+```sh
+ choco config set proxy http://127.0.0.1:7890
+```
+
+uninstall
+
+<https://docs.chocolatey.org/en-us/choco/uninstallation>
