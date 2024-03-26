@@ -2,6 +2,13 @@
 
 ## Installation
 
+- 0
+
+```sh
+[environment]::setEnvironmentVariable('SCOOP','D:\scoop','User')
+[System.Environment]::SetEnvironmentVariable('SCOOP', 'D:\scoop', [System.EnvironmentVariableTarget]::User)
+```
+
 - 1
 
 ```sh
