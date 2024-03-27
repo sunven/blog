@@ -42,7 +42,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 ```
 
 ```sh
- choco config set proxy http://127.0.0.1:7890
+choco config set proxy http://127.0.0.1:7890
 ```
 
 uninstall
