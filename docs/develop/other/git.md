@@ -297,6 +297,7 @@ git submodule add git@github.com:lodash/lodash.git lodash
 ```sh
 git submodule init 用来初始化本地配置文件，将.gitmodules中关于[submodule]的部分拷贝到.git/config文件中。
 git submodule update 根据项目的.gitmodules文件，抓取远程仓库的代码。
+git submodule update --init --recursive  初始化,拉取所有子模块
 ```
 
 git submodule update --remote：这个命令会更新子模块并将其切换到最新的远程提交。
