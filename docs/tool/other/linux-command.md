@@ -21,6 +21,7 @@ cd /mnt
 ```
 查看版本：cat /etc/issue
 lsb_release -c
+lsb_release -a
 查看服务状态：
 ps -e|grep ssh
 sudo service ssh status
