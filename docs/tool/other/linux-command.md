@@ -213,6 +213,8 @@ wsl -e /root/autossh/100.65.38.26.sh
 
 ## WSL zsh
 
+自动代理：<https://gist.github.com/libChan/3a804a46b532cc326a2ee55b27e8ac19?permalink_comment_id=5019483#gistcomment-5019483>
+
 查看wsl代理地址(nameserver)
 
 ```sh
