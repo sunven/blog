@@ -18,3 +18,6 @@ docker update --restart=always dd83f1551a52
 
 docker ghcr 镜像
 <https://sci.nju.edu.cn/9e/05/c30384a564741/page.htm>
+
+更新
+docker-compose up -d
