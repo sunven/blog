@@ -12,16 +12,7 @@
     "docs:serve": "vitepress serve docs"
   },
   "devDependencies": {
-    "@types/katex": "^0.14.0",
-    "@types/markdown-it": "^12.2.3",
-    "@types/node": "^18.0.4",
-    "esbuild": "^0.15.10",
-    "markdown-it-mathjax3": "^4.3.2",
-    "sass": "^1.53.0",
-    "vitepress": "^1.0.0-rc.24",
-    "vue": "^3.3.4"
-  },
-  "dependencies": {
-    "katex": "^0.15.1"
+    "@types/node": "^20.14.2",
+    "vitepress": "^1.2.3"
   }
 }

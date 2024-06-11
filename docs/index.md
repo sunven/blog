@@ -179,7 +179,6 @@
 
 ### basics
 
-- [# 前言](/js/basics/a.md)
 - [Array](/js/basics/array.md)
 - [backbonejs](/js/basics/backbonejs.md)
 - [canvas](/js/basics/canvas.md)
@@ -339,12 +338,10 @@
 - [Mac 常用软件](/tool/other/mac-soft.md)
 - [Playground](/tool/other/playground.md)
 - [Postman](/tool/other/postman.md)
-- [Scoop](/tool/other/scoop.md)
 - [在 shell 脚本中利用 lftp 做自动部署](/tool/other/shelllftpdeploy.md)
 - [ssh](/tool/other/ssh.md)
 - [Visual Studio 相关](/tool/other/visualstudio.md)
 - [vscode](/tool/other/vscode.md)
-- [windows 命令](/tool/other/windowscommand.md)
 - [wsl](/tool/other/wsl.md)
 - [装机清单](/tool/other/%E8%A3%85%E6%9C%BA%E6%B8%85%E5%8D%95.md)
 

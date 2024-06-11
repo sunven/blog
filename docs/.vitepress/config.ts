@@ -13,6 +13,7 @@ nav = fixNavBar(nav, sidebar)
 genIndex(sidebar)
 
 export default defineConfig({
+  metaChunk: true,
   //base: '/blog/',
   lang: 'zh-CN',
   //debug: true,
