@@ -20,6 +20,8 @@ jobs:
           # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
           fetch-depth: 0
       - uses: pnpm/action-setup@v4
+        with:
+          version: 9
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
