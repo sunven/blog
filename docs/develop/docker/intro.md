@@ -697,3 +697,10 @@ docker service rm
 [狂神 Docker 学习笔记\_Lemonyuki 的博客-CSDN 博客](https://blog.csdn.net/GTX_WU/article/details/118370049)
 
 [Docker 入门学习笔记(21h/2d 4.14-16) (u19900101.github.io)](https://u19900101.github.io/2021-04-16-Docker入门学习笔记_21h2d/)
+
+```sh
+# grep 筛选 -v 不匹配
+docker images | grep -v 'latest' | awk 'NR>1 {print $3}' | xargs docker rmi
+# awk 'NR>1 && $2!="latest" {print $3}'：从第二行开始筛选标签不为 latest 的镜像 ID。
+docker images my-app | awk 'NR>1 && $2!="latest" {print $3}' | xargs docker rmi
+```
