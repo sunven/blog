@@ -219,6 +219,20 @@ true: 拒绝提交包含混合换行符的文件（会提示 Fatal:xxx）
 false: 允许提交包含混合换行符的文件
 warn: 提交包含混合换行符的文件时给出警告  (默认值)
 
+.gitattributes 文件中
+
+注释
+
+```
+* text=auto
+```
+
+或改为：
+
+```
+* text=eol=lf
+```
+
 ## no matching host key type found. Their offer: ssh-rsa
 
  配置好公私钥之后，仍然无法直接用 git ssh 的方式，下载代码，解决：
