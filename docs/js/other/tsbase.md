@@ -281,6 +281,8 @@ const foo1: Foo = {
 
 ## 类型守卫
 
+lodash isEmpty 的例子：<https://github.com/DefinitelyTyped/DefinitelyTyped/pull/60401>
+
 ### in
 
 ```typescript
