@@ -1088,3 +1088,8 @@ type FlattenDepth<T, Depth extends number = 1, U extends any[] = []> = T extends
 - 泛型提供约束
 
 suppressImplicitAnyIndexErrors: 禁止 TypeScript 在使用动态属性访问时报告隐式 any 类型错误
+
+## & {} 力量
+
+- 去除 undefined
+- `type Color = "primary" | "secondary" | string;`
