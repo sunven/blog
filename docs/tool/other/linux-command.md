@@ -34,6 +34,7 @@ netstat -ntulp |grep 80
 ## 更换Ubuntu apt-get源
 
 > Ubuntu 版本不一样，源地址也不同
+> <https://developer.aliyun.com/mirror/ubuntu>
 
 1、原文件备份
 
