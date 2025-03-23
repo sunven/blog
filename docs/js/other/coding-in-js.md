@@ -134,3 +134,29 @@ encodeURI('严') //'%E4%B8%A5'
 ### 实践
 
 - js 如何base64编码（兼容中文）
+
+```
+
+原因是window.atob()不支持unicode字符  
+所以需要修改为  
+rawdata = decodeURIComponent(escape(window.atob(str)))  
+  
+  反之亦然  
+  data = window.btoa(unescape(encodeURIComponent(str)))  
+
+
+  // 编码中文 → Base64
+function encodeChinese(str) {
+  const encoder = new TextEncoder();
+  const bytes = encoder.encode(str);
+  return btoa(String.fromCharCode(...bytes));
+}
+
+
+function decodeChinese(base64) {
+  const binaryStr = atob(base64);
+  const bytes = new Uint8Array([...binaryStr].map(c => c.charCodeAt(0)));
+  const decoder = new TextDecoder('utf-8');
+  return decoder.decode(bytes);
+}
+```
